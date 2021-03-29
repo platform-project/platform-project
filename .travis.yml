@@ -3,6 +3,10 @@ language: php
 php:
     - 7.2
     - 7.3
+before_install:
+ - sudo apt-get update > /dev/null
+install:
+ - sudo apt-get install --force-yes phpunit
 before_script:
     - composer install --dev
 script: phpunit
