@@ -42,7 +42,7 @@ By implementing this solution, a developer should not be limited to one approach
  - Minimum 1 Gb Hard-disk space
  - 512MB - 1GB RAM
 
-### Build Status [![Build Status](https://travis-ci.org/platform-project/platform-project.png?branch=master)](https://travis-ci.org/platform-project/platform-project)
+### Build Status [![Build Status](https://travis-ci.org/platform-project/platform-project.png?branch=0.0)](https://travis-ci.org/platform-project/platform-project)
 - This project is built and tested specifically on [Chromium Browser](http://www.chromium.org)
 - This project has been tested to work on Ubuntu 9.04 up to the latest.
 - This project has been tested to work with PHP 5.3 and PHP 5.4 using [Travis CI](https://travis-ci.org/platform-project/platform-project)
