@@ -1,15 +1,14 @@
-dist: trusty
+dist: xenial
 language: php
 php:
-    - 5.6
-    - 7.0
-    - 7.1
-    - 7.2
-    
+    - 7.3
+before_install:
+ - sudo apt-get update > /dev/null
+install:
+ - sudo apt-get install --force-yes phpunit
 before_script:
-    - curl -s http://getcomposer.org/installer | php
-    - php composer.phar install --dev
-script: phpunit --coverage-html report
+    - composer install --dev
+script: phpunit --migrate-configuration --bootstrap ./sandbox/system/autoload.php
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
