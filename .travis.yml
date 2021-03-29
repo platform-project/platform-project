@@ -9,7 +9,7 @@ install:
  - sudo apt-get install --force-yes phpunit
 before_script:
     - composer install --dev
-script: phpunit --migrate-configuration
+script: phpunit --migrate-configuration --bootstrap ./sandbox/system/autoload.php
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
