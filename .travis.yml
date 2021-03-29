@@ -9,7 +9,7 @@ php:
 before_script:
     - curl -s http://getcomposer.org/installer | php
     - php composer.phar install --dev
-script: phpunit --coverage-html ./sandbox/system/caches/report
+script: phpunit --coverage-html report
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
   - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
