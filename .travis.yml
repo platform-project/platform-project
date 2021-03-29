@@ -4,6 +4,7 @@ php:
     - 7.3
     - 7.4
 before_script:
+    - sudo pecl install sqlite3
     - composer install --dev
 script: phpunit
 after_script:
