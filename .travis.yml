@@ -1,0 +1,15 @@
+dist: trusty
+language: php
+php:
+    - 5.6
+    - 7.0
+    - 7.1
+    - 7.2
+    
+before_script:
+    - curl -s http://getcomposer.org/installer | php
+    - php composer.phar install --dev
+script: phpunit --coverage-html ./sandbox/system/caches/report
+after_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
