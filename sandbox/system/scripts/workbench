@@ -1,0 +1,18 @@
+#!/bin/bash
+PROJECT_PATH=/sandbox/workspace/projects/laravel
+CURRENT_PATH=`pwd`
+
+startup(){
+    ln -s $PROJECT_PATH/domain $CURRENT_PATH/domain
+}
+
+shutdown(){
+    rm -f $CURRENT_PATH/domain
+}
+
+if [ "$1" == "startup" ]
+then
+  startup
+else
+  shutdown
+fi

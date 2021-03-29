@@ -1,0 +1,33 @@
+{
+    "app": {
+        "launch": {
+            "web_url": "http://platform.entilda.com"
+        },
+        "urls": ["http://platform.entilda.com"]
+    },
+    "description": "Platform Browser for Platform OS",
+    "icons": [{
+        "16": "assets/icon/favicon.png",
+        "32": "assets/icon/icon_platforms_32x32.png",
+        "64": "assets/icon/icon_platforms_64x64.png",
+        "128": "assets/icon/icon_platforms_128x128.png",
+        "src": "assets/icon/apple-touch-icon.png",
+        "sizes": "180x180",
+        "type": "image/png"
+    }],
+    "key": "unknown",
+    "name": "Platform Browser",
+    "short_name": "Platform",
+    "start_url": "index.php",
+    "display": "standalone",
+    "orientation": "any",
+    "gcm_sender_id": "00000000000",
+    "gcm_user_visible_only": true,
+    "prefer_related_applications": true,
+    "related_applications": [{
+        "platform": "play",
+        "id": "com.entilda.platform.android"
+    }],
+    "update_url": "http://clients2.google.com/service/update2/crx",
+    "version": "0.1"
+}

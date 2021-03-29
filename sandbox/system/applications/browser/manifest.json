@@ -1,0 +1,19 @@
+{
+   "app": {
+      "launch": {
+         "web_url": "http://platform.entilda.com"
+      },
+      "urls": [ "http://platform.entilda.com" ]
+   },
+   "description": "Platform Browser for Platform OS",
+   "icons": {
+      "16": "assets/icon/favicon.png"
+      "32": "assets/icon/favicon.png"
+      "64": "assets/icon/favicon.png"
+      "128": "assets/icon/icon_platforms_128x128.png"
+   },
+   "key": "unknown",
+   "name": "Platform Browser",
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "0.1"
+}

@@ -1,0 +1,171 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,400);
+
+.toasts {
+  position: fixed;
+  bottom: 2em;
+  left: 1em;
+  opacity: 0;
+}
+.toasts .floatingText {
+  position: relative;
+  display: inherit;
+  background-color: #212121;
+  border-radius: 0.19em;
+  padding: 1em 2em;
+  text-align: left;
+  font-weight: 300;
+  font-size: 0.8em;
+  min-width: 15em;
+  color: #FFF;
+  font-family: 'Roboto';
+}
+
+.floatingContainer {
+  position: fixed;
+  bottom: 4em;
+  left: 2em;
+  z-index: 1;
+}
+.floatingContainer:hover .subActionButton {
+  transition: opacity 1.2s;
+}
+.floatingContainer:hover .subActionButton + .subActionButton {
+  transition: opacity 0.8s;
+}
+.floatingContainer:hover .subActionButton + .subActionButton + .subActionButton {
+  transition: opacity 0.4s;
+}
+
+.actionButton {
+  height: 3em;
+  width: 3em;
+  background-color: #D32F2F;
+  position: relative;
+  border-radius: 50%;
+  z-index: 1000;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+}
+.actionButton .floatingText {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  min-width: 10em;
+  font-family: 'Roboto';
+  color: #FFF;
+  text-align: right;
+}
+.actionButton .floatingText.show {
+  display: inherit;
+  opacity: 1;
+}
+.actionButton .floatingTextBG {
+  padding: 0.2em 0.5em;
+  background-color: rgba(33, 33, 33, 0.8);
+  border-radius: .3em;
+}
+.actionButton.display {
+  display: inherit;
+}
+.actionButton:before {
+  color: #FFF;
+  position: absolute;
+  margin-top: .6em;
+  margin-left: .7em;
+  opacity: 1;
+  font-size: 1.4em;
+  font-weight: 400;
+}
+.actionButton:after {
+  color: #FFF;
+  position: absolute;
+  margin-top: .6em;
+  margin-left: .7em;
+  font-size: 1.4em;
+  font-weight: 400;
+  opacity: 0;
+}
+.actionButton.open::before {
+  transform: rotate3d(0, 0, 1, 0deg);
+  opacity: 0;
+}
+.actionButton.open::after {
+  transform: rotate3d(0, 0, 1, 0deg);
+  opacity: 1;
+}
+.actionButton:hover {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.14), 0 8px 16px rgba(0, 0, 0, 0.28);
+}
+.actionButton .icon {
+  color: white;
+  font-size: 24px;
+  position: relative;
+  left: 0px;
+  top: 8px;
+}
+.subActionButton {
+  background-color: #4e80ad;
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
+  margin-bottom: .6em;
+  margin-left: .5em;
+  opacity: 0;
+  position: relative;
+  z-index: 1000;
+  left: 10px;
+  cursor: pointer;
+}
+.subActionButton .floatingText {
+  position: absolute;
+  top: 4px;
+  left: 0px;
+  min-width: 10em;
+  font-family: 'Roboto';
+  color: #FFF;
+  text-align: right;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.subActionButton .floatingText.show {
+  opacity: 1;
+}
+.subActionButton .floatingTextBG {
+  padding: 0.2em 0.5em;
+  background-color: rgba(33, 33, 33, 0.8);
+  border-radius: .3em;
+}
+.subActionButton.display {
+  opacity: 1;
+}
+.subActionButton:hover {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.14), 0 8px 16px rgba(0, 0, 0, 0.28);
+}
+.subActionButton .icon {
+  font-size: 16px;
+  color: white;
+  position: relative;;
+  left: 0px;
+  top: 3px;
+  cursor: pointer;
+}
+#addFile {
+  /*text-indent: 1000px !important;*/
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  opacity: 0;
+  position: relative;
+  cursor: pointer;
+  top: -22px;
+}
+#addDirectory {
+  /*text-indent: 1000px !important;*/
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  opacity: 0;
+  position: relative;
+  cursor: pointer;
+  top: -22px;
+}

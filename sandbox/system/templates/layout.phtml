@@ -1,0 +1,55 @@
+<?php
+/**
+ * @copyright Copyright (C) 2011-2012 The Platform Authors. All rights reserved.
+ * @license   GNU/GPL, see LICENSE.php
+ * Platform is free software. This version may have been modified pursuant
+ * to the GNU General Public License, and as distributed it includes or
+ * is derivative of works licensed under the GNU General Public License or
+ * other free or open source software licenses.
+ * See COPYRIGHT.php for copyright notices and details.
+ */
+?>
+<div class="layout">
+<!-- layout -->
+<div class="top_left"></div>
+<div class="top"></div>
+<div class="top_right"></div>
+<br clear="all" />
+<div class="left"></div>
+<div class="center">
+  <!-- site content implementation begins here -->
+  <?php platform_launch_default_icon($_SERVER['QUERY_STRING']) ?>
+  <div class="toolbar">
+    <?php
+    $qstr = explode(':', $_SERVER['QUERY_STRING']);
+    $title = end($qstr); ?>
+    <?php $title = empty($title) ? 'platform' : $title; ?>
+    <h2><?php echo ucwords(basename($title)) ?></h2>
+    <a class="link_back" href="javascript: history.back(1)"></a>
+    <div class="search">
+      <div class="searchbox">
+        <input type="text" id="search" name="search" value="" class="search" border="0" autocomplete="on" />
+        <input type="image" src="<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>platform-toolbar-search-button.png" class="searchbutton" title="Search" alt="Search" />
+      </div>
+    </div>
+    <a class="link_home" href="<?php echo PLATFORM_URI ?>?platform"></a> <img src="<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_application_launcher.png" alt="Application Launcher" border="0" usemap="#application_launcher" class="application_launcher_icon" />
+    <div class="application_launcher_content"></div>
+  </div>
+  <br clear="all" />
+  <div id="main">
+    <?php platform_launch_sandbox_system_template('navigation'); ?>
+    <div id="main_content">
+      <div class="splash_screen"></div>
+    </div>
+  </div>
+</div>
+<div class="right"></div>
+<br clear="all" />
+<div class="bottom_left"></div>
+<div class="bottom"></div>
+<div class="bottom_right"></div>
+<br clear="all" />
+<div id="watermark"></div><br clear="all" />
+
+<!-- layout -->
+</div>

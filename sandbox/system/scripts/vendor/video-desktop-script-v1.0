@@ -1,0 +1,45 @@
+#!/bin/bash
+echo "Installing mplayer and zenity"
+sudo apt-get install mplayer 
+sudo apt-get install zenity
+#
+sudo add-apt-repository ppa:diesch/testing
+sudo apt-get update
+sudo apt-get install classicmenu-indicator
+sudo apt-get install alacarte
+#
+echo "Changing into ~/Downloads/ folder"
+cd ~/Downloads/
+#
+echo "Downloading and installing xwinwrapcvs.deb file"
+wget http://www.n00bsonubuntu.net/downloads/xwinwrapcvs.deb
+sudo dpkg -i xwinwrapcvs.deb
+echo "Installation complete, now removing the downloaded xwinwrapcvs.deb"
+rm xwinwrapcvs.deb
+#
+echo "Downloading videos"
+wget http://www.n00bsonubuntu.net/downloads/Videos.tar.gz
+echo "Unpacking and moving videos"
+tar -xvzf Videos.tar.gz
+mv Anonymous.wmv ~/Videos/
+mv cypersphere.wmv ~/Videos/
+mv Digital_DNA.wmv ~/Videos/
+mv Plasmaball.wmv ~/Videos/
+mv Ubuntu.wmv ~/Videos/
+echo "Videos moved to Videos folder, now removing the downloaded Videos.tar.gz file"
+rm Videos.tar.gz
+#
+echo "Downloading VideoWallpaper files"
+wget http://www.n00bsonubuntu.net/downloads/VideoWallpapers.tar.gz
+echo "Unpacking and moving video wallpaper scripts"
+tar -xvzf VideoWallpapers.tar.gz
+mv VideoWallpapers ~/Documents/
+chmod +x ~/Documents/VideoWallpapers/Anonymous-Video-wallpaper
+chmod +x ~/Documents/VideoWallpapers/cypersphere-wallpaper
+chmod +x ~/Documents/VideoWallpapers/digital-dna-wallpaper
+chmod +x ~/Documents/VideoWallpapers/plasmaball-wallpaper
+chmod +x ~/Documents/VideoWallpapers/quit-wallpaper
+chmod +x ~/Documents/VideoWallpapers/ubuntu-wallpaper
+echo "Folder Wallpapers scripts moved to Documents folder, now removing the downloaded VideoWallpapers.tar.gz file"
+rm VideoWallpapers.tar.gz
+#

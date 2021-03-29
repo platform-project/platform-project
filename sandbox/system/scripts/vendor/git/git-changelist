@@ -1,0 +1,15 @@
+#!/bin/sh
+GITEXECDIR="$(git --exec-path)"
+. "$GITEXECDIR/git-sh-setup"
+
+USAGE="COMMITS"
+_changelist() {
+    if [ "$#" = 0 ] 
+    then
+      git diff --name-only
+    else
+        usage
+    fi  
+}
+
+_changelist $1

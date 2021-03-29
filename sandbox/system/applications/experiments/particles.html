@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Particles</title>
+    <style>
+        
+    </style>
+    <script type="text/javascript">
+        window.onload = function() {
+            var canvas = document.createElement("canvas"),
+                c = canvas.getContext("2d");
+            canvas.width = window.outerWidth;
+            canvas.height = window.outerHeight;
+
+            document.body.appendChild(canvas);
+            clearCanvas();
+
+            var posX = canvas.width / 2,
+                posY = canvas.height / 2,
+                vx = 15,
+                vy = 5,
+                gravity = 1;
+
+            setInterval(function() {
+                clearCanvas();
+                posX += vx;
+                posY += vy;
+
+                if (posY > 300) {
+                    vy *= -0.5;
+                    vx *= -0.5;
+                    posY = 300;
+                }
+
+                vy += gravity;
+
+                c.fillStyle = "white";
+                c.fillRect(posX, posY, 10, 10);
+            }, 30);
+
+            function clearCanvas() {
+                setBackground();
+                c.fillStyle = "black";
+                c.fillRect(0, 0, canvas.width, canvas.height);
+            }
+
+            function setBackground() {
+                var background = new Image();
+                background.src = "https://wallpapercave.com/wp/2wuJNqK.jpg";
+
+                // Make sure the image is loaded first otherwise nothing will draw.
+                background.onload = function() {
+                    c.drawImage(background, 0, 0);
+                }
+            }
+        };
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>

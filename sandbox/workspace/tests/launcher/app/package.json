@@ -1,0 +1,10 @@
+{
+    "name": "launcher",
+    "version": "0.0.0",
+    "description": "Platform Launcher",
+    "main": "electron.js",
+    "author": "The Platform Authors",
+    "scripts": {
+        "start": "electron ."
+    }
+}

@@ -1,0 +1,14 @@
+body {
+    background: #333F47;
+}
+
+#context {
+    width: 400px;
+    height: 300px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

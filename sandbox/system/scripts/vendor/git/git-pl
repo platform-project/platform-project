@@ -1,0 +1,14 @@
+#!/bin/sh
+GITEXECDIR="$(git --exec-path)"
+. "$GITEXECDIR/git-sh-setup"
+
+_pl() {
+    if [ "$#" = 0 ] 
+    then
+      git pull --rebase
+    else
+        usage
+    fi  
+}
+
+_pl $1

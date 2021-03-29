@@ -1,0 +1,34 @@
+CACHE MANIFEST
+# 2011-03-28: v1
+
+# Explicitly cached 'master entries'.
+CACHE:
+assets/css/style.css
+assets/css/jquery.jgrowl.css
+assets/fonts/foundation-icons/foundation-icons.css
+assets/icon/favicon.png
+assets/images/application-128x128.png
+assets/images/delete.png
+assets/images/left.png
+assets/images/right.png
+assets/images/refresh.png
+assets/images/logo-small.png
+assets/js/jquery/3.0.0/jquery.min.js
+assets/js/jquery/jquery.jgrowl.js
+cache.html
+index.html
+
+# Resources that require the user to be online.
+NETWORK:
+*
+index.php
+#/myapi
+https://maps.googleapis.com
+
+# static.html will be server if main.py is inaccessible
+# offline.png will be served in place of all images in images/large/
+# offline.html will be served in place of all other .html files
+FALLBACK:
+#/main.py /static.html
+#images/large/ images/offline.png
+*.html offline.html

@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, http://code.google.com/p/wwwsqldesigner/ -->
+<!-- Active URL: http://platform/sandbox/system/applications/wwwsqldesigner/ -->
+<sql>
+<datatypes db="mysql">
+  <group label="Numeric" color="rgb(238,238,170)">
+    <type label="Integer" length="0" sql="INTEGER" re="INT" quote=""/>
+    <type label="Decimal" length="1" sql="DECIMAL" re="DEC" quote=""/>
+    <type label="Single precision" length="0" sql="FLOAT" quote=""/>
+    <type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
+  </group>
+
+  <group label="Character" color="rgb(255,200,200)">
+    <type label="Char" length="1" sql="CHAR" quote="'"/>
+    <type label="Varchar" length="1" sql="VARCHAR" quote="'"/>
+    <type label="Text" length="0" sql="MEDIUMTEXT" re="TEXT" quote="'"/>
+    <type label="Binary" length="1" sql="BINARY" quote="'"/>
+    <type label="Varbinary" length="1" sql="VARBINARY" quote="'"/>
+    <type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'"/>
+  </group>
+
+  <group label="Date &amp; Time" color="rgb(200,255,200)">
+    <type label="Date" length="0" sql="DATE" quote="'"/>
+    <type label="Time" length="0" sql="TIME" quote="'"/>
+    <type label="Datetime" length="0" sql="DATETIME" quote="'"/>
+    <type label="Year" length="0" sql="YEAR" quote=""/>
+    <type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
+  </group>
+  
+  <group label="Miscellaneous" color="rgb(200,200,255)">
+    <type label="ENUM" length="1" sql="ENUM" quote=""/>
+    <type label="SET" length="1" sql="SET" quote=""/>
+    <type label="Bit" length="0" sql="bit" quote=""/>
+  </group>
+</datatypes><table x="313" y="35" name="tblJobSeeker">
+<row name="pkIdxJobSeekerId" null="1" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="surname" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="username" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="password" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="mobileNumber" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="telNumber" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="emailAddress" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="gender" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="nationality" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="disability" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="addressOne" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="addressTwo" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="city" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="province" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="postalCode" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="country" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="identityNumber" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="dob" null="1" autoincrement="0">
+<datatype>VARCHAR(10)</datatype>
+<default>NULL</default></row>
+<row name="lastLoggedIn" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="blocked" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="blockedReason" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="isRejectedProfilePic" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="picRejectionReason" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="socialLinkedIn " null="1" autoincrement="0">
+<datatype>VARCHAR(1024)</datatype>
+<default>NULL</default></row>
+<row name="socialTwitter" null="1" autoincrement="0">
+<datatype>VARCHAR(1024)</datatype>
+<default>NULL</default></row>
+<row name="socialLink" null="1" autoincrement="0">
+<datatype>VARCHAR(1024)</datatype>
+<default>NULL</default></row>
+<row name="fbProfileId" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="vimeoURL" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="showSocial" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="insertVideo" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="profileCompletePercentage" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="cvTemplate" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="coverLetter" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="careerGoals" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="dateDeactivated" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="dateDeactivated" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="timeEmailVerified" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="timeProofedProfilePic" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="reminderEmailVerified" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="receiveNotification" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="receiveNewsletter" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="receiveMatch" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="receiveSystem" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="receiveMarketing" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="receiveAlert" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxProfilePictureId" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxEquityId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxEthnicityId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxEmploymentStatusId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxEduLevelId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxSourceId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default><relation table="tblSource" row="pkIdxSourceId" />
+</row>
+<row name="active" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkIdxJobSeekerId</part>
+</key>
+</table>
+<table x="43" y="36" name="tblCareer">
+<row name="pkIdxCareerId" null="1" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="jobTitle" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="telephoneNumber" null="1" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+<default>NULL</default></row>
+<row name="emailAddress" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="adText" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="area" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="minimumSalary" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="maximumSalary" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="isProofread" null="1" autoincrement="0">
+<datatype>INTEGER(6)</datatype>
+<default>NULL</default></row>
+<row name="isPaid" null="1" autoincrement="0">
+<datatype>INTEGER(6)</datatype>
+<default>NULL</default></row>
+<row name="toPrint" null="1" autoincrement="0">
+<datatype>INTEGER(6)</datatype>
+<default>NULL</default></row>
+<row name="blocked" null="1" autoincrement="0">
+<datatype>INTEGER(6)</datatype>
+<default>NULL</default></row>
+<row name="refNum" null="1" autoincrement="0">
+<datatype>VARCHAR(20)</datatype>
+<default>NULL</default></row>
+<row name="archiveActive" null="1" autoincrement="0">
+<datatype>INTEGER(6)</datatype>
+<default>NULL</default></row>
+<row name="isTopAd" null="1" autoincrement="0">
+<datatype>INTEGER(6)</datatype>
+<default>NULL</default></row>
+<row name="contactHide" null="1" autoincrement="0">
+<datatype>INTEGER(6)</datatype>
+<default>NULL</default></row>
+<row name="dupAdID" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="printEditionNumber" null="1" autoincrement="0">
+<datatype>VARCHAR(7)</datatype>
+<default>NULL</default></row>
+<row name="viewCount" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="startDate" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="expiryDate" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="proofreadDateTime" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="isManual" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxEmployerId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxCategoryId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default><relation table="tblCategory" row="pkIdxCategoryId" />
+</row>
+<row name="fkIdxRegionId" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="tblRegion" row="pkIdxRegionId" />
+</row>
+<row name="fkIdxAdKindId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default><relation table="tblAdKind" row="pkidxAdKindId" />
+</row>
+<row name="fkIdxLiveProductId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxSourceId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default><relation table="tblSource" row="pkIdxSourceId" />
+</row>
+<row name="fkIdxSalaryTypeId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxCurrencyId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxCurrencyId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxQuestionsId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxEditionNumber" null="1" autoincrement="0">
+<datatype>VARCHAR(7)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxAdminUserId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default><relation table="tblAdminUser" row="pkIdxAdminUserId" />
+</row>
+<row name="active" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkIdxCareerId</part>
+</key>
+</table>
+<table x="1570" y="40" name="tblGuest">
+<row name="pkIdxGuestId" null="1" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="emailAddress" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="ipAddress" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="userAgent" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="geoLocation" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="fkIdxSourceId" null="1" autoincrement="0">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default><relation table="tblSource" row="pkIdxSourceId" />
+</row>
+<row name="active" null="1" autoincrement="0">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkIdxGuestId</part>
+</key>
+</table>
+<table x="935" y="36" name="tblGuestAlertsCriteria">
+<row name="pkIdxNotificationFieldsId" null="1" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="emailAddress" null="1" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+<default>NULL</default></row>
+<row name="mobileNumber" null="1" autoincrement="0">
+<datatype>VARCHAR(20)</datatype>
+<default>NULL</default></row>
+<row name="relevance" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="keywords" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="category" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="section" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="region" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="alertName" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="posted" null="1" autoincrement="0">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default></row>
+<row name="searchType" null="1" autoincrement="0">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default></row>
+<row name="alertEmail" null="1" autoincrement="0">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default></row>
+<row name="alertSMS" null="1" autoincrement="0">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default></row>
+<row name="matchFound" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="lastEmail" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="timeEmailVerified" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="timeSMSVerified" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="timeMatchFound" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="fkIdxSourceId" null="1" autoincrement="0">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default></row>
+<row name="active" null="1" autoincrement="0">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkIdxNotificationFieldsId</part>
+</key>
+</table>
+<table x="1257" y="35" name="tblJobSeekerAlertsCriteria">
+<row name="pkIdxNotificationFieldsId" null="1" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxJobSeekerId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default><relation table="tblJobSeeker" row="pkIdxJobSeekerId" />
+</row>
+<row name="relevance" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="keywords" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="category" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="section" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="region" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="alertName" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="posted" null="1" autoincrement="0">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default></row>
+<row name="searchType" null="1" autoincrement="0">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default></row>
+<row name="alertEmail" null="1" autoincrement="0">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default></row>
+<row name="alertSMS" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="matchFound" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>0</default></row>
+<row name="lastEmail" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="timeMatchFound" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="fkIdxSourceId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>1</default></row>
+<row name="active" null="1" autoincrement="0">
+<datatype>INTEGER(4)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkIdxNotificationFieldsId</part>
+</key>
+</table>
+<table x="1572" y="288" name="tblRegion">
+<row name="pkIdxRegionId" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="regionName" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="seoFriendlyName" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="parentRegionId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="regionCode" null="1" autoincrement="0">
+<datatype>VARCHAR(4)</datatype>
+<default>NULL</default></row>
+<row name="sortOrder" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="active" null="1" autoincrement="0">
+<datatype>INTEGER(6)</datatype>
+<default>NULL</default></row>
+<row name="printRegion" null="1" autoincrement="0">
+<datatype>INTEGER(6)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkIdxRegionId</part>
+</key>
+</table>
+<table x="1498" y="610" name="tblSource">
+<row name="pkIdxSourceId" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="description" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="active" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkIdxSourceId</part>
+</key>
+</table>
+<table x="959" y="775" name="tblAdKind">
+<row name="pkidxAdKindId" null="1" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>VARCHAR(20)</datatype>
+<default>NULL</default></row>
+<row name="sortOrder" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="description" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="pricePerAd" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="requiredFields" null="1" autoincrement="0">
+<datatype>VARCHAR(1024)</datatype>
+<default>NULL</default></row>
+<row name="printFields" null="1" autoincrement="0">
+<datatype>VARCHAR(1024)</datatype>
+<default>NULL</default></row>
+<row name="maxCharacters" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="active" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkidxAdKindId</part>
+</key>
+</table>
+<table x="1717" y="633" name="tblJMailer">
+<row name="pkIdxJMailer" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="data" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkIdxJMailer</part>
+</key>
+</table>
+<table x="1718" y="771" name="tblJQueueMailer">
+<row name="pkIdxJMailer" null="1" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="data" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="fkIdxJobSeekerId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxEmployerId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkIdxJMailer</part>
+</key>
+</table>
+<table x="1733" y="554" name="migrations">
+<row name="migration" null="1" autoincrement="1">
+<datatype>VARCHAR(255)</datatype>
+<default>NULL</default></row>
+<row name="batch" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>migration</part>
+</key>
+</table>
+<table x="1495" y="773" name="tblARPBuyNowClicked">
+<row name="pkIdxTrackId" null="1" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxEmployerId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkIdxTrackId</part>
+</key>
+</table>
+<table x="937" y="593" name="tblActivationDate">
+<row name="pkIdxActivationDateId" null="1" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxEmployerId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="activationDate" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="extensionDate" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="extra" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkIdxActivationDateId</part>
+</key>
+</table>
+<table x="1489" y="947" name="tblAdminPosition">
+<row name="pkIdxAdminPositionId" null="1" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="positionName" null="1" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkIdxAdminPositionId</part>
+</key>
+</table>
+<table x="1487" y="1074" name="tblAdminSignatureType">
+<row name="pkIdxAdminSignatureTypeId" null="1" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="signature" null="1" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkIdxAdminSignatureTypeId</part>
+</key>
+</table>
+<table x="1193" y="776" name="tblAdminUser">
+<row name="pkIdxAdminUserId" null="1" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+<default>NULL</default></row>
+<row name="surname" null="1" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+<default>NULL</default></row>
+<row name="username" null="1" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+<default>NULL</default></row>
+<row name="password" null="1" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+<default>NULL</default></row>
+<row name="emailAddress" null="1" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxAdminPositionId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default><relation table="tblAdminPosition" row="pkIdxAdminPositionId" />
+</row>
+<row name="fkIdxAdminSignatureTypeId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default><relation table="tblAdminSignatureType" row="pkIdxAdminSignatureTypeId" />
+</row>
+<row name="telNumber" null="1" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+<default>'012 342 3840'</default></row>
+<row name="faxNumber" null="1" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+<default>NULL</default></row>
+<row name="isDefault" null="1" autoincrement="0">
+<datatype>INTEGER(1)</datatype>
+<default>NULL</default></row>
+<row name="showInStats" null="1" autoincrement="0">
+<datatype>INTEGER(1)</datatype>
+<default>0</default></row>
+<row name="active" null="1" autoincrement="0">
+<datatype>INTEGER(1)</datatype>
+<default>0</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkIdxAdminUserId</part>
+</key>
+</table>
+<table x="1240" y="534" name="tblCategory">
+<row name="pkIdxCategoryId" null="1" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="categoryName" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="seoFriendlyName" null="1" autoincrement="0">
+<datatype>INTEGER(100)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxParentCategoryId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="printCategoryNumber" null="1" autoincrement="0">
+<datatype>INTEGER(6)</datatype>
+<default>NULL</default></row>
+<row name="active" null="1" autoincrement="0">
+<datatype>INTEGER(6)</datatype>
+<default>NULL</default></row>
+<row name="openXId" null="1" autoincrement="0">
+<datatype>INTEGER(6)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkIdxCategoryId</part>
+</key>
+</table>
+<table x="637" y="35" name="tblEmployer">
+<row name="pkIdxEmployerId" null="1" autoincrement="1">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="username" null="1" autoincrement="0">
+<datatype>VARCHAR(20)</datatype>
+<default>NULL</default></row>
+<row name="password" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="emailAddress" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="telephoneNumber" null="1" autoincrement="0">
+<datatype>VARCHAR(20)</datatype>
+<default>NULL</default></row>
+<row name="mobileNumber" null="1" autoincrement="0">
+<datatype>VARCHAR(20)</datatype>
+<default>NULL</default></row>
+<row name="companyName" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="contactPerson" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="privateTel" null="1" autoincrement="0">
+<datatype>VARCHAR(20)</datatype>
+<default>NULL</default></row>
+<row name="privateEmail" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="address" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="faxNumber" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="city" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="postalCode" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="url" null="1" autoincrement="0">
+<datatype>VARCHAR(256)</datatype>
+<default>NULL</default></row>
+<row name="profile" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="isPrivate" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="showContactDetails" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="receiveNotification" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="receiveNewsletter" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="receiveMatch" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="receiveSystem" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="receiveAds" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="receiveAlert" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="receiveMarketing" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="lead" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="sendCVEmailCounter" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="displayPopup" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="startDate" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="endDate" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="lastLoggedIn" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="timeEmailVerified" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="timeProofed" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="timeVerified" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="timeUpsold" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="blockedDate" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="blocked" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="blockedReason" null="1" autoincrement="0">
+<datatype>VARCHAR(1024)</datatype>
+<default>NULL</default></row>
+<row name="isRejected" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="isCod" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxLogoId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxPrintLogoId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxAdminUserId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxLimitTypeId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxRegionId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxEmployerTypeId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="fkIdxSourceId" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="active" null="1" autoincrement="0">
+<datatype>INTEGER(11)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>pkIdxEmployerId</part>
+</key>
+</table>
+</sql>

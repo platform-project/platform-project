@@ -1,0 +1,193 @@
+movie 'flowplayer.swf' compressed // flash 10, total frames: 2, frame rate: 24 fps, 500x375 px
+  
+  fileAttributes attrUseNetwork,attrActionScript3,attrHasMetadata
+  
+  metadata '<rdf:RDF xmlns:rdf=\'http://www.w3.org/1999/02/22-rdf-syntax-ns#\'><rdf:Description rdf:about=\'\' xmlns:dc=\'http://purl.org/dc/elements/1.1\'><dc:format>application/x-shockwave-flash</dc:format><dc:title>Adobe Flex 4 Application</dc:title><dc:description>http://www.adobe.com/products/flex</dc:description><dc:publisher>unknown</dc:publisher><dc:creator>unknown</dc:creator><dc:language>EN</dc:language><dc:date>Jul 26, 2011</dc:date></rdf:Description></rdf:RDF>'
+  
+  scriptLimits recursion 1000 timeout 60
+  
+  // unknown tag 82 length 13516
+  
+  // unknown tag 76 length 34
+
+  defineMovieClip 2 // total frames: 1
+  end // of defineMovieClip 2
+
+  defineMovieClip 4 // total frames: 1
+  end // of defineMovieClip 4
+
+  defineMovieClip 6 // total frames: 1
+  end // of defineMovieClip 6
+
+  defineMovieClip 8 // total frames: 1
+  end // of defineMovieClip 8
+
+  defineMovieClip 10 // total frames: 1
+  end // of defineMovieClip 10
+
+  defineMovieClip 12 // total frames: 1
+  end // of defineMovieClip 12
+
+  defineMovieClip 14 // total frames: 1
+  end // of defineMovieClip 14
+
+  defineMovieClip 15 // total frames: 1
+  end // of defineMovieClip 15
+
+  defineMovieClip 16 // total frames: 1
+  end // of defineMovieClip 16
+
+  defineMovieClip 20 // total frames: 20
+  end // of defineMovieClip 20
+
+  defineMovieClip 23 // total frames: 10
+  end // of defineMovieClip 23
+
+  defineMovieClip 26 // total frames: 19
+  end // of defineMovieClip 26
+
+  defineMovieClip 27 // total frames: 1
+  end // of defineMovieClip 27
+
+  defineMovieClip 30 // total frames: 1
+  end // of defineMovieClip 30
+
+  defineMovieClip 31 // total frames: 1
+  end // of defineMovieClip 31
+
+  defineMovieClip 35 // total frames: 20
+  end // of defineMovieClip 35
+
+  defineMovieClip 36 // total frames: 1
+  end // of defineMovieClip 36
+
+  defineMovieClip 38 // total frames: 1
+  end // of defineMovieClip 38
+
+  defineMovieClip 39 // total frames: 1
+  end // of defineMovieClip 39
+
+  defineMovieClip 40 // total frames: 1
+  end // of defineMovieClip 40
+
+  defineMovieClip 41 // total frames: 1
+  end // of defineMovieClip 41
+
+  defineMovieClip 43 // total frames: 20
+  end // of defineMovieClip 43
+
+  defineMovieClip 44 // total frames: 1
+  end // of defineMovieClip 44
+
+  defineMovieClip 45 // total frames: 1
+  end // of defineMovieClip 45
+
+  defineMovieClip 46 // total frames: 1
+  end // of defineMovieClip 46
+
+  defineMovieClip 47 // total frames: 1
+  end // of defineMovieClip 47
+
+  defineMovieClip 48 // total frames: 1
+  end // of defineMovieClip 48
+
+  defineMovieClip 49 // total frames: 1
+  end // of defineMovieClip 49
+
+  defineMovieClip 51 // total frames: 10
+  end // of defineMovieClip 51
+
+  defineMovieClip 54 // total frames: 20
+  end // of defineMovieClip 54
+
+  defineMovieClip 55 // total frames: 1
+  end // of defineMovieClip 55
+
+  defineMovieClip 56 // total frames: 1
+  end // of defineMovieClip 56
+
+  defineMovieClip 57 // total frames: 1
+  end // of defineMovieClip 57
+
+  defineMovieClip 60 // total frames: 20
+  end // of defineMovieClip 60
+
+  defineMovieClip 62 // total frames: 1
+  end // of defineMovieClip 62
+
+  defineMovieClip 64 // total frames: 1
+  end // of defineMovieClip 64
+
+  defineMovieClip 65 // total frames: 20
+  end // of defineMovieClip 65
+
+  defineMovieClip 66 // total frames: 1
+  end // of defineMovieClip 66
+
+  defineMovieClip 69 // total frames: 20
+  end // of defineMovieClip 69
+
+  defineMovieClip 70 // total frames: 1
+  end // of defineMovieClip 70
+
+  defineMovieClip 71 // total frames: 1
+  end // of defineMovieClip 71
+
+  defineMovieClip 74 // total frames: 20
+  end // of defineMovieClip 74
+
+  defineMovieClip 75 // total frames: 1
+  end // of defineMovieClip 75
+
+  defineMovieClip 76 // total frames: 1
+  end // of defineMovieClip 76
+  
+  exportAssets
+    2 as 'org.flowplayer.view.CanvasLogo'
+    4 as 'org.flowplayer.view.FlowplayerLogo'
+    6 as 'org.flowplayer.view.PlayOverlay'
+    8 as 'org.flowplayer.view.BufferAnimation'
+    10 as 'org.flowplayer.view.LabelHolder'
+    12 as 'org.flowplayer.view.LabelHolderRight'
+    14 as 'org.flowplayer.LabelHolderLeft'
+    15 as 'fp.TimeRightEdge'
+    16 as 'fp.ScrubberTopEdge'
+    23 as 'fp.FullScreenOffButton'
+    27 as 'fp.PlayButton'
+    31 as 'fp.VolumeLeftEdge'
+    36 as 'fp.Dragger'
+    38 as 'fp.ButtonBottomEdge'
+    39 as 'fp.ButtonTopEdge'
+    40 as 'fp.ScrubberLeftEdge'
+    44 as 'fp.StopButton'
+    45 as 'fp.ScrubberBottomEdge'
+    46 as 'fp.VolumeTopEdge'
+    47 as 'fp.TimeBottomEdge'
+    48 as 'fp.TimeTopEdge'
+    49 as 'fp.ButtonLeftEdge'
+    51 as 'fp.FullScreenOnButton'
+    55 as 'fp.PauseButton'
+    56 as 'fp.VolumeBottomEdge'
+    57 as 'fp.ScrubberRightEdge'
+    62 as 'fp.UnMuteButton'
+    64 as 'fp.TimeLeftEdge'
+    66 as 'fp.MuteButton'
+    70 as 'fp.PrevButton'
+    71 as 'fp.ButtonRightEdge'
+    75 as 'fp.NextButton'
+    76 as 'fp.VolumeRightEdge'
+    20 as 'buttons_modern_fla.FullScreenOnOver_47'
+    26 as 'buttons_modern_fla.PlayOver_51'
+    35 as 'buttons_modern_fla.DraggerOver_44'
+    43 as 'buttons_modern_fla.StopOver_41'
+    54 as 'buttons_modern_fla.PauseOver_20'
+    60 as 'buttons_modern_fla.UnMuteOver_35'
+    65 as 'buttons_modern_fla.MuteOver_38'
+    69 as 'buttons_modern_fla.PrevOver_23'
+    74 as 'buttons_modern_fla.NextOver_29'
+  end // of exportAssets
+  
+  // unknown tag 82 length 293182
+  
+  // unknown tag 76 length 1066
+end

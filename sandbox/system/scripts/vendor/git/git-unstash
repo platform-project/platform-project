@@ -1,0 +1,10 @@
+#!/bin/sh
+GITEXECDIR="$(git --exec-path)"
+. "$GITEXECDIR/git-sh-setup"
+
+_unstash() {
+  ((!$#)) && echo "No branch name specified, command ignored!" && exit 1
+  git stash branch $1
+}
+
+_unstash $1

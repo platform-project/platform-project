@@ -1,0 +1,15 @@
+#!/bin/sh
+GITEXECDIR="$(git --exec-path)"
+. "$GITEXECDIR/git-sh-setup"
+
+USAGE="COMMITS"
+_history() {
+    if [ "$#" = 0 ] 
+    then
+      git log --pretty=format:"%h %s" --graph
+    else
+        usage
+    fi  
+}
+
+_history $1

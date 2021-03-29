@@ -1,0 +1,29 @@
+html { height: 100%; }
+body { font-family: Ubuntu; height: 100%; margin: 0; padding: 0; overflow: hidden; background: white; }
+body { background: transparent url("../images/games-bg.png") no-repeat top center; width: 100%; opacity: 0.75; }
+div.content { width: 100%; height: 100%; background: transparent url('../images/background-apps.png') no-repeat center center fixed; }
+footer { background: black; width: 100%; height: 64px; z-index: 1; position: absolute; bottom: 0px; }
+
+#app { display: block; float: left; }
+#app span.logo.image { display: block; position: relative; top: -40px; width: 96px; height: 96px; }
+#app span.logo.text { display: block; position: relative; top: -82px; left: 80px; font-size: 24px; font-weight: bold; text-align: left; color: white; padding: 5px 0 0 20px; }
+.games.catalog {
+    position: absolute;
+    bottom: 200px;
+    padding: 10px;
+}
+
+.games.catalog .item {
+    float: left;
+    padding: 10px;
+}
+
+.games.catalog .item a {
+    border: 5px solid #ccc;
+    border-radius: 5px;
+    opacity: 0.75;
+}
+
+.games.catalog .item a:hover {
+    opacity: 1;
+}

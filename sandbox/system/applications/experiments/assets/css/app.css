@@ -1,0 +1,251 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Ubuntu;
+    overflow: hidden;
+    background: white;
+}
+
+body {
+    background: transparent url("../images/experiments-bg.png") center no-repeat;
+    width: 100%;
+    opacity: 0.96;
+}
+
+div.content {
+    width: 100%;
+    height: 100%;
+    background: transparent url('../images/background-apps.png') no-repeat center center fixed;
+}
+
+footer {
+    background: black;
+    width: 100%;
+    height: 64px;
+    z-index: 1;
+    position: absolute;
+    bottom: 0px;
+}
+
+#app {
+    display: block;
+    float: left;
+}
+
+#app span.logo.image {
+    display: block;
+    position: relative;
+    top: -40px;
+    width: 96px;
+    height: 96px;
+}
+
+#app span.logo.text {
+    display: block;
+    position: relative;
+    top: -82px;
+    left: 80px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: left;
+    color: white;
+    padding: 5px 0 0 20px;
+}
+
+.experiments.catalog {
+    position: absolute;
+    bottom: 200px;
+    padding: 10px;
+}
+
+.experiments.catalog .item {
+    float: left;
+    padding: 10px;
+}
+
+.experiments.catalog .item a {
+    border: 5px solid #ccc;
+    border-radius: 5px;
+    opacity: 0.75;
+}
+
+.experiments.catalog .item a:hover {
+    opacity: 1;
+}
+
+
+/* { experiments.app } */
+
+html,
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+@font-face {
+    font-family: OpenSansSemibold;
+    src: url('../assets/fonts/OpenSans/OpenSans-Semibold.ttf');
+}
+
+@keyframes orbit {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.pm-loader.is-exiting {
+    opacity: 0;
+}
+
+.pm-loader.is-hidden {
+    display: none;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+}
+
+.pm-loader {
+    width: 100%;
+    height: 100%;
+    z-index: 300;
+    position: absolute;
+    background: #111;
+    transition: opacity 0.5s linear;
+}
+
+.pm-loader-text {
+    color: #fff;
+    height: 70px;
+    font-size: 14px;
+    text-align: center;
+    position: relative;
+    -webkit-user-select: none;
+    font-family: OpenSansSemibold, sans-serif;
+}
+
+.pm-loader-text li {
+    opacity: 0;
+    display: none;
+    list-style: none;
+    transition: 0.5s;
+}
+
+.pm-loader-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pm-loader-atoms {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+}
+
+.pm-loader-center-atom {
+    top: 33px;
+    left: 33px;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.pm-loader-orbit-1 {
+    top: 20px;
+    left: 20px;
+    width: 56px;
+    height: 56px;
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+
+.pm-loader-orbit-2 {
+    top: 8px;
+    left: 8px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: absolute;
+    border: 1px solid #fff;
+}
+
+.pm-loader-orbit-3 {
+    top: -4px;
+    left: -4px;
+    width: 104px;
+    height: 104px;
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid #fff;
+}
+
+.pm-loader-atom-1 {
+    width: 8px;
+    height: 8px;
+    margin-top: 4px;
+    margin-left: 4px;
+    border-radius: 50%;
+    background-color: #fff;
+    transform-origin: 24px 24px;
+    animation: orbit 1s infinite;
+    animation-timing-function: linear;
+    -webkit-transform-origin: 24px 24px;
+}
+
+.pm-loader-atom-2 {
+    width: 8px;
+    height: 8px;
+    margin-top: 8px;
+    margin-left: 8px;
+    border-radius: 50%;
+    background-color: #fff;
+    transform-origin: 32px 32px;
+    animation: orbit 2s infinite;
+    animation-timing-function: linear;
+    -webkit-transform-origin: 32px 32px;
+}
+
+.pm-loader-atom-3 {
+    width: 8px;
+    height: 8px;
+    margin-top: 11px;
+    margin-left: 11px;
+    border-radius: 50%;
+    background-color: #fff;
+    transform-origin: 41px 41px;
+    animation: orbit 3s infinite;
+    animation-timing-function: linear;
+    -webkit-transform-origin: 41px 41px;
+}
+
+.app-root {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+}
+
+.app-root.is-hidden {
+    display: none;
+}

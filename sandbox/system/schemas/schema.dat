@@ -1,0 +1,11 @@
+networks
+	- gateway
+	- dns
+	- bssid
+	- speed
+	- last_discovered
+servers
+sites
+databases
+mirrors
+services

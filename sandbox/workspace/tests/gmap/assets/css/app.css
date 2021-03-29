@@ -1,0 +1,14 @@
+html { height: 100%; }
+body { font-family: Ubuntu; height: 100%; margin: 0; padding: 0; overflow: hidden; }
+
+#map_canvas { width: 100%; height: 100%; }
+#directions_panel { position: absolute; left: 410px; width: 240px; height: 400px; overflow: auto; }
+#overlay_canvas { background: black; width: 100%; height: 50px; z-index: 1; position: absolute; bottom: 0px; }
+
+#brand { display: block; float: left; }
+#brand span.navigator.logo { display: block; position: relative; top: -55px; width: 168px; height: 108px; }
+#brand span.navigator.text { display: block; position: relative; top: -96px; left: 80px; font-size: 24px; font-weight: bold; text-align: left; color: white; padding: 5px 0 0 20px; }
+
+#coordinate { display: block; color: white; float: right; position: relative; top: 15px; left: -50px; }
+#coordinate label { font-size: 10px; font-weight: bolder; margin: 10px; }
+#coordinate span.coords { font-size: 20px; font-weight: bolder; margin: 0 5px 0 0; }

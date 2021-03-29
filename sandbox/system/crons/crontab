@@ -1,0 +1,23 @@
+#########################################################
+# Memory Aid 
+# environment    HOME=$HOME SHELL=$SHELL LOGNAME=$LOGNAME PATH=$PATH
+#########################################################
+#
+# string         meaning
+# ------         -------
+# @reboot        Run once, at startup.
+# @yearly        Run once a year, "0 0 1 1 *".
+# @annually      (same as @yearly)
+# @monthly       Run once a month, "0 0 1 * *".
+# @weekly        Run once a week, "0 0 * * 0".
+# @daily         Run once a day, "0 0 * * *".
+# @midnight      (same as @daily)
+# @hourly        Run once an hour, "0 * * * *".
+#mm     hh      Mday    Mon     Dow     CMD # minute, hour, month-day month DayofW CMD
+#........................................Minute of the hour
+#|      .................................Hour in the day (0..23)
+#|      |       .........................Day of month, 1..31 (mon,tue,wed)
+#|      |       |       .................Month (1.12) Jan, Feb.. Dec
+#|      |       |       |        ........day of the week 0-6  7==0
+#|      |       |       |        |      |command to be executed
+#V      V       V       V        V      V

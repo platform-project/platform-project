@@ -1,0 +1,879 @@
+<?php
+/**
+ * @copyright Copyright (C) 2011-2012 The Platform Authors. All rights reserved.
+ * @license   GNU/GPL, see LICENSE.php
+ * Platform is free software. This version may have been modified pursuant
+ * to the GNU General Public License, and as distributed it includes or
+ * is derivative of works licensed under the GNU General Public License or
+ * other free or open source software licenses.
+ * See COPYRIGHT.php for copyright notices and details.
+ */
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Platform Browser [platform://<?php echo strtolower($_SERVER['SERVER_NAME']) ?><?php echo dirname($_SERVER['SCRIPT_NAME']) ?>]</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--
+replace:
+/sites/
+with:
+http://<?php echo $_SERVER['SERVER_NAME'] ?>/sites/
+-->
+<style type="text/css">
+body {
+  font-family: Arial;
+  background: #eee;
+  margin: 0px;
+  padding: 0px;
+}
+ul li {
+  list-style: none;
+}
+td img {
+  display: block;
+}
+.logo {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>logo-small.png) no-repeat;
+  border: 0 none;
+    display: block;
+    height: 38px;
+    margin: -96px 80px 0px auto;
+    position: relative;
+    width: 96px;
+    z-index: 3;
+  float: right;
+}
+#watermark {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>logo-watermark.png) no-repeat;
+  position: relative;
+  display: block;
+  float: right;
+  margin: -250px 80px 0px 0px;
+  width: 561px;
+  height: 196px;
+  z-index: 2;
+}
+.layout {
+  width: 1024px;
+}
+#main #navigation {
+  display: block;
+  float: left;
+  overflow-y: auto;
+  width: 360px;
+  height: 540px;
+  background: #fefefe /*-webkit-gradient(linear, 0% 0%, 0% 100%, from(#F0F0F0), to(#D2D2D2))*/;
+  -webkit-border-radius: 1ex;
+}
+#main #navigation::-webkit-scrollbar {
+  -webkit-border-radius: 1ex;
+  background: #ddd;
+  height: 2px;
+  width: 8px;
+}
+
+#main #navigation::-webkit-scrollbar-thumb {
+  background: #aaa; /*-webkit-gradient(linear, 0% 0%, 0% 100%, from(#F0F0F0), to(#D2D2D2));*/
+  -webkit-border-radius: 1ex;
+  padding: 2px;
+  height: 2px;
+  width: 8px;
+}
+
+#main #navigation ul li {
+ width: 300px;
+}
+#main #main_content {
+  display: block;
+  float: left;
+}
+.wrapper {
+  width: 1024px;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+.toolbar {
+  position: absolute;
+  width: 720px;
+  height: 39px;
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>platform-toolbar-background.png) no-repeat;
+  left: 114px;
+  top: 10px;
+  margin: 0px;
+}
+.toolbar h2 {
+  font: bold 18px/24px Arial;
+  position: absolute;
+  top: 7px;
+  left: 17px;
+  margin: 0px
+}
+.toolbar .link_back {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>platform-toolbar-back.png) no-repeat;
+  position: absolute;
+  top: 5px;
+  left: 281px;
+  margin: 0px;
+  width: 60px;
+  height: 28px;
+  z-index: 3;
+}
+.toolbar .link_home {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>platform-toolbar-home.png) no-repeat;
+  position: absolute;
+  top: 5px;
+  left: 638px;
+  margin: 0px;
+  width: 73px;
+  height: 28px;
+  z-index: 3;
+}
+.toolbar .searchbox {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>platform-toolbar-search.png) no-repeat;
+  position: absolute;
+  top: 6px;
+  left: 474px;
+  margin: 0px;
+  width: 156px;
+  height: 28px;
+}
+.toolbar input.search {
+  position: absolute;
+  top: 4px;
+  left: 15px;
+  border: 0px none;
+  border-bottom-style: none;
+  background: transparent;
+  width: 108px;
+  height: 18px;
+  padding-left: 5px;
+  font: normal 14px/16px Arial;
+}
+.toolbar input.searchbutton {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>platform-toolbar-search-button.png) no-repeat;
+  position: absolute;
+  top: 4px;
+  left: 126px;
+  border: 0px none;
+  background: transparent;
+  width: 22px;
+  height: 19px;
+  font: normal 12px/14px Arial
+}
+.application_launcher_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_application_launcher.png) no-repeat;
+  position: absolute;
+  background: transparent;
+  width: 188px;
+  height: 71px;
+  top: -12px;
+  left: 328px;
+  z-index: 3;
+}
+.application_launcher_content {
+  display: none;
+  position: absolute;
+  top: 35px;
+  left: 222px;
+  width: 480px;
+  height: 320px;
+  background: #000;
+  opacity: 0.80;
+  z-index: 0;
+  /* bottomright round corner */
+  -moz-border-radius-bottomright: 5px;
+  -khtml-border-radius-bottomright: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  /* bottomleft round corner */
+  -moz-border-radius-bottomleft: 5px;
+  -khtml-border-radius-bottomleft: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+}
+.application_launcher_content .content {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  font-weight: bold;
+  color: #fff;
+  margin: 15px;
+}
+.application_launcher_content .content a {
+  text-decoration: none;
+  color: #fff;
+  line-height: 20px;
+}
+.splash_screen{
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>platform-splash.png) no-repeat;
+  position: absolute;
+  top: 80px;
+  left: 318px;
+  display: none;
+  float: left;
+  width: 561px;
+  height: 454px;
+  z-index: 3;
+}
+.default_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_platform.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_platform_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_platform.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_servers_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_servers.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_sandbox_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_sandbox.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_sites_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_sites.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_networks_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_networks.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_lan_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_lan.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_social_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_social.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_wireless_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_wireless.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_system_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_system.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_applications_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_applications.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_bugs_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_bugs.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_documentations_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_documentations.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_manuals_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_manuals.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_wiki_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_wiki.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_framework_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_framework.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_libraries_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_libraries.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_platforms_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_platforms_platforms.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_plugins_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_plugins.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_modules_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_modules.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.default_mirrors_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_mirrors.png) no-repeat;
+  display: block;
+  float: left;
+  width: 96px;
+  height: 96px;
+  margin: -18px 0px 0px 0px;
+}
+.listicon_link {
+  font: bold 16px/18px Arial;
+  color: black;
+  text-decoration: none;
+}
+a.listicon_link:hover {
+  font: bold 16px/18px Arial;
+  color: #900;
+  text-decoration: none;
+}
+.listicon_sites_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_sites_16x16.png) no-repeat;
+  display: block;
+  float: left;
+  width: 16px;
+  height: 16px;
+  margin: 2px 10px 0px 20px;
+}
+.listicon_mirrors_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_mirrors_16x16.png) no-repeat;
+  display: block;
+  float: left;
+  width: 16px;
+  height: 16px;
+  margin: 2px 10px 0px 20px;
+}
+.listicon_servers_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_servers_16x16.png) no-repeat;
+  display: block;
+  float: left;
+  width: 16px;
+  height: 16px;
+  margin: 2px 10px 0px 20px;
+}
+.listicon_wireless_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_wireless_16x16.png) no-repeat;
+  display: block;
+  float: left;
+  width: 16px;
+  height: 16px;
+  margin: 2px 10px 0px 20px;
+}
+.listicon_lan_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_lan_16x16.png) no-repeat;
+  display: block;
+  float: left;
+  width: 16px;
+  height: 16px;
+  margin: 2px 10px 0px 20px;
+}
+.listicon_social_icon {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_social_16x16.png) no-repeat;
+  display: block;
+  float: left;
+  width: 16px;
+  height: 16px;
+  margin: 2px 10px 0px 20px;
+}
+.listview_link {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>listview_background.png) no-repeat;
+  font: bold 16px/18px Arial;
+  color: black;
+  padding: 18px 10px 0px 20px;
+  display: block;
+  float: left;
+  width: 258px;
+  height: 52px;
+  text-decoration: none;
+}
+a.listview_link:hover {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>listview_mouseover.png) no-repeat;
+  display: block;
+  float: left;
+  width: 258px;
+  height: 52px;
+  z-index: 0;
+}
+.listview_applications {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_platform_applications.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+  z-index: 1;
+}
+.listview_networks {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_platform_networks.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+  z-index: 1;
+}
+.listview_sandbox {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_platform_sandbox.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+  z-index: 1;
+}
+
+.listview_servers {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_platform_servers.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+  z-index: 1;
+}
+.listview_sites {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_platform_sites.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+  z-index: 1;
+}
+.listview_mirrors {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_platform_mirrors.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+  z-index: 1;
+}
+.listview_help {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_platform_help.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+  z-index: 1;
+}
+.listview_info {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_platform_info.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+  z-index: 1;
+}
+.listview_social {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_networks_social.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_lan {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_networks_lan.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_wireless {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_networks_wireless.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_framework {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_sandbox_framework.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_libraries {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_sandbox_libraries.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_packages {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_system_packages.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_platforms {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_system_platforms.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_plugins {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_system_plugins.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_modules {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_system_modules.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_scripts {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_system_scripts.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_widgets {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_system_widgets.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_repository {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_sandbox_repository.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_system {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_sandbox_system.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_bugs {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_help_bugs.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_documentations {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_help_documentations.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_manuals {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_help_manuals.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_Wiki {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_help_wiki.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_workspace {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_sandbox_workspace.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_code {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_repository_code.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+  z-index: 1;
+}
+.listview_README {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_readme.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+  z-index: 1;
+}
+.listview_TODO {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_todo.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+  z-index: 1;
+}
+
+.listview_software {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_repository_software.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+  z-index: 1;
+}
+.listview_background {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>listview_background.png) no-repeat;
+  display: block;
+  float: left;
+  width: 258px;
+  height: 52px;
+  z-index: 0;
+}
+.listview_mouseover {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>listview_mouseover.png) no-repeat;
+  display: block;
+  width: 258px;
+  height: 52px;
+  z-index: 0;
+}
+.top_left {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>top_left.png) no-repeat;
+  border: 0px none;
+  float:  left;
+  position: relative;
+  width: 45px;
+  height: 39px;
+}
+.top {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>top.png) repeat-x;
+  border: 0px none;
+  float:  left;
+  position: relative;
+  width: 900px;
+  height: 39px;
+}
+.top_right {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>top_right.png) no-repeat;
+  border: 0px none;
+  float: left;
+  position: relative;
+  width: 45px;
+  height: 39px;
+}
+.left {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>left.png) repeat-y;
+  border: 0px none;
+  float: left;
+  position: relative;
+  width: 45px;
+  height: 640px;
+}
+.center {
+  background: #ffffff;
+  border: 0px none;
+  float: left;
+  position: relative;
+  width: 900px;
+  height: 640px;
+}
+.right {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>right.png) repeat-y;
+  border: 0px none;
+  float: left;
+  position: relative;
+  width: 45px;
+  height: 640px;
+}
+.bottom_left {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>bottom_left.png) no-repeat;
+  border: 0px none;
+  float: left;
+  position: relative;
+  width: 45px;
+  height: 95px;
+}
+.bottom {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>bottom.png) repeat-x;
+  border: 0px none;
+  float: left;
+  position: relative;
+  width: 900px;
+  height: 95px;
+}
+.bottom_right {
+  background: transparent url(<?php echo PLATFORM_SITES_IMAGES_URI . DS ?>bottom_right.png) no-repeat;
+  border: 0px none;
+  float: left;
+  position: relative;
+  width: 45px;
+  height: 95px;
+}
+.content {
+  position: relative;
+  float: left;
+  text-align: left;
+  background: #fff;
+  color: #000;
+  font: normal 12px/14px Arial;
+}
+.footer {
+  position: relative;
+  float: left;
+  margin-top: -52px;
+  width: 1024px;
+  height: 28px;
+  text-align: left;
+  color: #eee;
+}
+.footer p {
+  position: absolute;
+  margin: 0 auto;
+  text-align: left;
+  font: normal 14px/16px Arial;
+  color: #000;
+  left: 347px;
+  top: 21px;
+}
+</style>
+<?php js_add_jquery(); ?>
+<script type="text/javascript">
+$(document).ready(function(){
+  $.fn.center = function() {
+    this.css("position", "absolute");
+    //this.css("top", ($(window).height() - this.height()) / 2 + $(window).scrollTop() + "px");
+    this.css("left", ($(window).width() - this.width()) / 2 + $(window).scrollLeft() + "px");
+    return this;
+  }
+  search_index();
+  $('#logo').center();
+});
+
+function search_index(){
+  $('.search').keypress(function(){
+    search_index_callback();
+  });
+  $('.search').keypress(function(){
+    $('.application_launcher_content').slideDown('slow');
+  });
+  $('.search').blur(function(){
+    $('.application_launcher_content').slideUp('slow');
+  });
+  $('.searchbutton').click(function(){
+    search_index_callback();
+  });
+  $('.searchbutton').click(function(){
+    $('.application_launcher_content').slideDown('slow');
+  });
+}
+
+function search_index_callback(){
+  $.ajax({
+    url: 'http://<?php _e($_SERVER['SERVER_NAME']) ?>/sandbox/workspace/tests/indexer/index.php',
+    type: 'POST',
+    data: 'search=' + $('input#search.search').val(),
+    success: function(data){
+      $('.application_launcher_content').html(data);
+    },
+  });
+}
+</script>
+</head>
+<body>
+<div class="wrapper"><!-- wrapper -->

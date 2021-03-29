@@ -1,0 +1,620 @@
+/* =============================================================================
+HTML5 CSS Reset Minified - Eric Meyer
+========================================================================== */
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent
+}
+
+body {
+    line-height: 1
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block
+}
+
+nav ul {
+    list-style: none
+}
+
+blockquote,
+q {
+    quotes: none
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: none
+}
+
+a {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    text-decoration: none
+}
+
+mark {
+    background-color: #ff9;
+    color: #000;
+    font-style: italic;
+    font-weight: bold
+}
+
+del {
+    text-decoration: line-through
+}
+
+abbr[title],
+dfn[title] {
+    border-bottom: 1px dotted;
+    cursor: help
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0
+}
+
+input,
+select {
+    vertical-align: middle
+}
+
+li {
+    list-style: none
+}
+
+
+/* =============================================================================
+My CSS
+========================================================================== */
+
+
+/* ---- base ---- */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+}
+
+html {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    font: normal 75% Arial, Helvetica, sans-serif;
+}
+
+canvas {
+    display: block;
+    vertical-align: bottom;
+}
+
+
+/* ---- stats.js ---- */
+
+.count-particles {
+    background: #000022;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 80px;
+    color: #13E8E9;
+    font-size: .8em;
+    text-align: left;
+    text-indent: 4px;
+    line-height: 14px;
+    padding-bottom: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.js-count-particles {
+    font-size: 1.1em;
+}
+
+#stats,
+.count-particles {
+    -webkit-user-select: none;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#stats {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+}
+
+.count-particles {
+    border-radius: 0 0 3px 3px;
+}
+
+
+/* ---- { particles.js} ---- */
+
+#particles-js {
+    position: absolute;
+    display: block;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+#particles-js canvas {
+    background: transparent;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+
+/* ---- { launch.app } --- */
+
+.zoom {
+    zoom: 0.5;
+}
+
+.zoom-moz {
+    -moz-transform: scale(0.5);
+    -moz-transform-origin: 0 0;
+}
+
+#viewport.space {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+#spacebot.container {
+    width: 96px;
+    height: 96px;
+    position: absolute;
+    bottom: 10px;
+    left: 80px;
+    background: transparent url('../images/icons/spacebot-96x96.png') center no-repeat;
+    opacity: 0.8;
+    z-index: 999;
+}
+
+#elements.container {
+    background: transparent url('../images/elements-table-800x450.png') center no-repeat;
+    display: block;
+    min-width: 800px;
+    max-width: 1080px;
+    height: 450px;
+    margin: 0 auto;
+    border: 1px solid lightgreen;
+    position: absolute;
+    top: 20px;
+    left: 400px;
+    opacity: 0.6;
+    z-index: 999;
+}
+
+#camera canvas {
+    position: absolute;
+    left: 500px;
+    top: 100px;
+    border: 0px none;
+    color: white;
+    margin: 0 auto;
+    z-index: 999;
+    display: none;
+}
+
+#analysis.container {
+    display: block;
+    min-width: 310px;
+    max-width: 600px;
+    height: 300px;
+    margin: 0 auto;
+    z-index: 100;
+}
+
+#controls {
+    display: block;
+    width: 100%;
+    height: 64px;
+    position: fixed;
+    bottom: -10px;
+    left: 200px;
+    z-index: 999;
+    float: right;
+}
+
+#controls .control {
+    font-size: 32px;
+    color: white;
+}
+
+#controls a.control {
+    float: left;
+    padding: 0 5px;
+    width: 64px;
+    cursor: pointer;
+    opacity: 0.33;
+}
+
+#controls a.control:hover {
+    opacity: 1;
+}
+
+#controls a.control.atom {
+    background: transparent url('../images/icons/platform-atom-32x32.png') no-repeat;
+    float: left;
+    margin: 0 10px;
+    padding: 0 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    position: relative;
+    top: 3px;
+}
+
+#controls a.control.element {
+    background: transparent url('../images/icons/platform-element-32x32.png') no-repeat;
+    float: left;
+    margin: 0 10px;
+    padding: 0 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    position: relative;
+    top: 3px;
+}
+
+#controls a.control.experiment {
+    background: transparent url('../images/icons/platform-experiments-32x32.png') no-repeat;
+    float: left;
+    margin: 0 20px;
+    padding: 0 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    position: relative;
+    top: 3px;
+}
+
+#controls a.control.explorer {
+    background: transparent url('../images/icons/platform-explorer-32x32.png') no-repeat;
+    float: left;
+    margin: 0 20px;
+    padding: 0 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    position: relative;
+    top: 3px;
+}
+
+#controls a.control.symbol {
+    background: transparent url('../images/icons/platform-symbol-32x32.png') no-repeat;
+    float: left;
+    margin: 0 20px;
+    padding: 0 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    position: relative;
+    top: 3px;
+}
+
+.galaxy {
+    margin: 0;
+    z-index: 2;
+}
+
+#milkyway.galaxy {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 350px;
+    background: transparent url('../images/galaxy.jpg') center repeat;
+}
+
+#solar {
+    background: #000;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+}
+
+.solar.star {
+    display: block;
+    position: absolute;
+    left: 0px;
+    bottom: 100px;
+    padding: 20px;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    z-index: 11;
+}
+
+.star.name {
+    font-size: 1.0em;
+    font-family: "Ubuntu", serif;
+    color: #f5f5f5;
+    display: block;
+    position: absolute;
+    top: 100px;
+    left: 45px;
+    text-align: center;
+}
+
+#sun.solar.star {
+    background: transparent url("../images/solar/thumbnails/sun.png") center no-repeat;
+    position: absolute;
+    left: -300px;
+    z-index: 9;
+}
+
+.solar.planet {
+    display: block;
+    position: absolute;
+    left: 0px;
+    bottom: 300px;
+    padding: 20px;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.planet.name {
+    font-size: 1.0em;
+    font-family: "Ubuntu", serif;
+    color: #f5f5f5;
+    display: block;
+    position: absolute;
+    top: 100px;
+    left: 30px;
+    text-align: center;
+}
+
+
+/*
+.solar.planet .planet.name {
+    display: none;
+}
+
+.solar.planet:hover .planet.name {
+    display: block;
+}
+*/
+
+#milkyway #solar #mercury.solar.planet {
+    background: transparent url("../images/solar/thumbnails/mercury.png") center no-repeat;
+    position: absolute;
+    bottom: 320px;
+    left: 30px;
+    z-index: 3 !important;
+}
+
+#mercury.solar .planet.name {
+    position: relative;
+    left: 30px;
+}
+
+#milkyway #solar #venus.solar.planet {
+    background: transparent url("../images/solar/thumbnails/venus.png") center no-repeat;
+    position: absolute;
+    bottom: 340px;
+    left: 150px;
+    z-index: 4 !important;
+}
+
+#venus.solar .planet.name {
+    position: relative;
+    left: 40px;
+}
+
+#milkyway #solar #earth.solar.planet {
+    background: transparent url("../images/solar/thumbnails/earth.png") center no-repeat;
+    position: absolute;
+    bottom: 360px;
+    left: 270px;
+    z-index: 5 !important;
+}
+
+#earth.solar.planet:hover {
+    background: transparent url("../images/solar/thumbnails/earth-ring.png") center no-repeat;
+    position: relative;
+    left: 270px;
+    z-index: 5 !important;
+}
+
+#earth.solar .planet.name {
+    position: relative;
+    left: 40px;
+}
+
+#milkyway #solar #mars.solar.planet {
+    background: transparent url("../images/solar/thumbnails/mars.png") center no-repeat;
+    position: absolute;
+    bottom: 380px;
+    left: 390px;
+    z-index: 6 !important;
+}
+
+#mars.solar .planet.name {
+    position: relative;
+    left: 40px;
+}
+
+#milkyway #solar #jupiter.solar.planet {
+    background: transparent url("../images/solar/thumbnails/jupiter.png") center no-repeat;
+    position: absolute;
+    bottom: 400px;
+    left: 510px;
+    z-index: 7 !important;
+}
+
+#jupiter.solar .planet.name {
+    position: relative;
+    left: 40px;
+}
+
+#milkyway #solar #saturn.solar.planet {
+    background: transparent url("../images/solar/thumbnails/saturn.jpg") center no-repeat;
+    position: absolute;
+    bottom: 420px;
+    left: 630px;
+    z-index: 8 !important;
+}
+
+#saturn.solar .planet.name {
+    position: relative;
+    left: 40px;
+}
+
+#milkyway #solar #uranus.solar.planet {
+    background: transparent url("../images/solar/thumbnails/uranus.jpg") center no-repeat;
+    position: absolute;
+    bottom: 440px;
+    left: 750px;
+    z-index: 18;
+}
+
+#uranus.solar .planet.name {
+    position: relative;
+    left: 40px;
+}
+
+#milkyway #solar #neptune.solar.planet {
+    background: transparent url("../images/solar/thumbnails/neptune.jpg") center no-repeat;
+    position: absolute;
+    bottom: 460px;
+    left: 870px;
+    z-index: 9 !important;
+}
+
+#neptune.solar .planet.name {
+    position: relative;
+    left: 35px;
+}
+
+#milkyway #solar #pluto.solar.planet {
+    background: transparent url("../images/solar/thumbnails/pluto.jpg") center no-repeat;
+    position: absolute;
+    bottom: 480px;
+    left: 990px;
+    z-index: 10 !important;
+}
+
+#pluto.solar .planet.name {
+    position: relative;
+    left: 40px;
+}
+
+svg.momentum {
+    display: none;
+}

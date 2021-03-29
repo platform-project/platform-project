@@ -1,0 +1,18 @@
+#!/bin/sh
+WORKSTATION_0=mercury
+WORKSTATION_1=jupiter
+WORKSTATION_2=mars
+WORKSTATION_3=uranius
+
+WIRELESS_0=ap-router
+WIRELESS_1=rb-router
+
+PING_INTERVAL=5
+
+nohup ping -i $PING_INTERVAL $WIRELESS_0 &
+nohup ping -i $PING_INTERVAL $WIRELESS_1 &
+
+nohup ping -i $PING_INTERVAL $WORKSTATION_0 &
+nohup ping -i $PING_INTERVAL $WORKSTATION_1 &
+nohup ping -i $PING_INTERVAL $WORKSTATION_2 &
+nohup ping -i $PING_INTERVAL $WORKSTATION_3 &

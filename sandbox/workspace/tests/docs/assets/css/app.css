@@ -1,0 +1,285 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline
+}
+
+body {
+  color: #222222;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  cursor: default;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+    display: block
+}
+
+ol,ul {
+    list-style: none
+}
+
+blockquote,q {
+    quotes: none
+}
+
+blockquote:before,blockquote:after,q:before,q:after {
+    content: '';
+    content: none
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+nav {
+    height: 48px !important;   
+}
+
+a {
+  color: #009bda;
+}
+
+i {
+  margin-right: 3px;
+}
+
+p, span {
+  letter-spacing: 0.6px;
+}
+
+pre {
+  font-family: inherit;
+  font-weight: normal;
+  line-height: 1.6;
+  letter-spacing: 0.6px;
+  white-space: pre-wrap;
+  /* CSS 3 */
+  white-space: -moz-pre-wrap;
+  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;
+  /* Opera 4-6 */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+}
+
+label {
+  font-weight: bold;
+  cursor: default;
+}
+
+/* layout */
+.center {
+  margin: 0 auto;
+  text-align: center; 
+}
+
+.hide {
+  display: none;
+}
+
+.top-bar-section ul li {
+  background: transparent !important;
+}
+
+.header-content {
+  height: 48px !important;
+}
+
+.top-content {
+  
+}
+
+.center-content {
+  height: 200px; 
+  border-top: 1px solid #e5e5e5;
+}
+
+.bottom-content {
+  height: 322px; 
+  border-top: 1px solid #e5e5e5;
+}
+
+.footer-content {
+  height: 100px; 
+  border-top: 1px solid #e5e5e5
+}
+
+/* custom */
+.water {
+  opacity: 0.95;
+}
+
+.circle {
+  display: block;
+  width: 150px;
+  height: 150px;
+  margin: 1em auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-border-radius: 99em;
+  -moz-border-radius: 99em;
+  border-radius: 99em;
+  border: 5px solid #eee;
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);  
+}
+
+.shadow {
+  box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
+  content: "";
+  height: 56px;
+  left: -2%;
+  position: fixed;
+  width: 104%;
+}
+
+/* text */
+.tiny {
+  font-size: 12px !important;
+}
+
+.medium {
+  font-size: 18px !important;
+}
+
+.large {
+  font-size: 24px !important;
+}
+
+.x-large {
+  font-size: 36px !important;
+}
+
+.xx-large {
+  font-size: 48px !important;
+}
+
+.xxx-large {
+  font-size: 64px !important;
+}
+
+.huge {
+  font-size: 72px !important;
+}
+
+.skinny {
+  font-size: 24px !important;
+  font-weight: 300;
+}
+
+.black-text {
+  color: #111;
+}
+
+.white-text {
+  color: #fff;
+}
+
+.dark-gray-text {
+  color: #aaa !important;
+}
+
+.red-text {
+  color: #c50000 !important;
+}
+
+.blue-text {
+  color: #009bda !important;
+}
+
+.pink-text {
+  color: #f1158c;
+}
+
+.purple-text {
+  color: #6f4a4a;
+}
+
+.title-text {
+  padding: 0px;
+}
+
+.heading-text {
+  font-weight: bold;
+}
+
+.subheading-text {
+  font-weight: normal;
+}
+
+.phone-text {
+  font-weight: bold;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.copyright-text {
+  color: #8f8f8f;
+  font-weight: 100;
+  margin-top: 34px;
+  padding-bottom: 6px;
+}
+
+/* backgrounds */
+.gray-background {
+  background: #e8e8e8 !important;
+}
+
+.white-background {
+  background: #fff !important;
+}
+
+.smoke-background {
+  background: #f5f5f5 !important;
+}
+
+.dark-gray-background {
+  background: #ddd !important;
+}
+
+.black-background {
+  background: #111 !important;
+}
+
+.green-background {
+  background-color: #v !important;
+}
+
+.pink-background {
+  background-color: #f1158c !important;
+}
+
+.red-background {
+  background-color: #c50000 !important;
+}
+
+.blue-background {
+  background-color: #009bda !important;
+}
+
+
+/* buttons */
+.button {
+  border-radius: 3px !important;
+}
+
+/* application */
+#app { display: block; float: left; }
+#app span.logo.image { display: block; position: relative; top: -40px; width: 96px; height: 96px; }
+#app span.logo.text { display: block; position: relative; top: -100px; left: 90px; font-size: 40px; font-weight: bold; text-align: left; color: white; padding: 5px 0 0 20px; }
+
+html.app { height: 100%; }
+body.app { font-family: Ubuntu; height: 100%; margin: 0; padding: 0; overflow: hidden; background: white url('../images/strip.png') repeat-x center center fixed !important; }
+footer.app { background: black; width: 100%; height: 64px; z-index: 1; position: absolute; bottom: 0px; }
+
+body.app div.content { width: 100%; height: 100%; background: transparent url('../images/background.png') no-repeat center center fixed; }
+
+

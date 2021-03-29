@@ -1,0 +1,8 @@
+html { height: 100%; }
+body { font-family: Ubuntu; height: 100%; margin: 0; padding: 0; overflow: hidden; background: white url('../images/strip.png') repeat-x center center fixed; }
+div.content { width: 100%; height: 100%; background: transparent url('../images/background.png') no-repeat center center fixed; }
+footer { background: black; width: 100%; height: 64px; z-index: 1; position: absolute; bottom: 0px; }
+
+#app { display: block; float: left; }
+#app span.logo.image { display: block; position: relative; top: -40px; width: 96px; height: 96px; }
+#app span.logo.text { display: block; position: relative; top: -82px; left: 80px; font-size: 24px; font-weight: bold; text-align: left; color: white; padding: 5px 0 0 20px; }
