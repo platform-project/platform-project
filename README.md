@@ -35,8 +35,8 @@ By implementing this solution, a developer should not be limited to one approach
 
 
 ### System requirement
- - Linux or Mac OSX or Windows (with Cygwin installed)
- - Web-server, not limited to Apache2
+ - Ubuntu Linux or Debian variant
+ - Built-in Web-server
  - Supports [Blink](http://www.chromium.org/blink) engine, a [WebKit](http://www.webkit.org/) fork
  - PHP and PECL
  - Minimum 1 Gb Hard-disk space
@@ -44,7 +44,7 @@ By implementing this solution, a developer should not be limited to one approach
 
 ### Build Status [![Build Status](https://travis-ci.com/platform-project/platform-project.png?branch=0.0)](https://travis-ci.com/platform-project/platform-project)
 - This project is built and tested specifically on [Chromium Browser](http://www.chromium.org)
-- This project has been tested to work on Ubuntu 18.04 up to the latest.
+- This project has been tested to work on Ubuntu 16.04 up to the latest.
 - This project has been tested to work with PHP 7.3 using [Travis CI](https://travis-ci.org/platform-project/platform-project)
 
 ### Help
