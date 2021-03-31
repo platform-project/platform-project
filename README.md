@@ -44,8 +44,8 @@ By implementing this solution, a developer should not be limited to one approach
 
 ### Build Status [![Build Status](https://travis-ci.com/platform-project/platform-project.png?branch=0.0)](https://travis-ci.com/platform-project/platform-project)
 - This project is built and tested specifically on [Chromium Browser](http://www.chromium.org)
-- This project has been tested to work on Ubuntu 9.04 up to the latest.
-- This project has been tested to work with PHP 5.3 and PHP 5.4 using [Travis CI](https://travis-ci.org/platform-project/platform-project)
+- This project has been tested to work on Ubuntu 18.04 up to the latest.
+- This project has been tested to work with PHP 7.3 using [Travis CI](https://travis-ci.org/platform-project/platform-project)
 
 ### Help
 - Please submit all issues and pull requests to the [Platform Project on GitHub](https://github.com/platform-project/platform-project/issues) repository!
