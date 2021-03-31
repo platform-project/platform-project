@@ -121,7 +121,8 @@ platform_check_status()
 {
   echo "Checking system status..."
   echo ""
-  if [[ $GIT_STATUS = *"master [ahead"* ]]; 
+  git fetch origin > /dev/null
+  if [[ $GIT_STATUS = *"0.0 [ahead"* || $GIT_STATUS = *"0.0 [behind"* ]]; 
   then
     echo "Updates are available"
   else
