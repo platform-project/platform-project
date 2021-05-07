@@ -3,19 +3,20 @@
 # Author: The Platform Authors <platform@entilda.com>
 # Base System: Platform
 # Build Name: nojitsu
-# Build Initial: 0.02 build 20180207
-# Copyright: The Platform Authors 2011 - 2018
+# Build Initial: 0.00 build 20210328
+# Copyright: The Platform Authors 2011 - 2021
 # License: GNU Public Licence
 # Scripting Engine: Shell Script
-# Version Initial: 2012-04-30
-# Version: 0.05 build 20180416 nojitsu
+# Version Initial: 2011-03-28
+# Version: 0.00 build 20110328 nojitsu
 # Website: http://platform.entilda.com
 APP_NAME="Platform"
 APP_UID="platform"
 APP_CMD="$APP_UID"
-APP_REVISION="{REVISION}"
-APP_DATETIME=`date +%Y-%m-%d_%Hh%Mm%Ss`         # Datestamp e.g 2002-09-21
-APP_DATE=`date +%Y-%m-%d_%Hh%Mm`                # Datestamp e.g 2002-09-21
+APP_REVISION="0.0"
+APP_UA="$APP_NAME/$APP_REVISION"
+APP_DATETIME=`date +%Y.%m.%d.%Hh%Mm%Ss`         # Datestamp e.g 2002.09.21.0h0m0s
+APP_DATE=`date +%Y.%m.%d`                       # Datestamp e.g 2002.09.21
 APP_DOW=`date +%A`                              # Day of the week e.g. Monday
 APP_DNOW=`date +%u`                             # Day number of the week 1 to 7 where 1 represents Monday
 APP_DOM=`date +%d`                              # Date of the Month e.g. 27
@@ -24,7 +25,7 @@ APP_W=`date +%V`                                # Week Number e.g 37
 APP_Y=`date +%Y`                                # Year e.g 2010
 APP_STATUS="Latest build"
 APP_BUILD_NAME="nojitsu"
-APP_VERSION="0.05 build $APP_DATETIME $APP_BUILD_NAME"
+APP_VERSION="$APP_REVISION build $APP_DATETIME $APP_BUILD_NAME"
 APP_CODENAME="Genie Ejekajo"
 APP_PACKAGES_URI="http://platform.entilda.com/sandbox/system/packages/system.list"
 APP_SNAPSHOT_URI="http://platform.entilda.com/snapshots/platform.pva"
@@ -90,7 +91,7 @@ OS_DEPENDENCIES="$APP_PATH/sandbox/system/packages/os.list"
 PLATFORM_HOME="$APP_PATH"
 PLATFORM_USER="$SYS_USER"
 PLATFORM_DOMAIN="platform.entilda.com"
-PLATFORM_ALIVE=`/bin/ping -c 1 "$PLATFORM_DOMAIN" | awk '/1 packets transmitted, 1 received, 0% packet loss/' | awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}'`
+PLATFORM_ALIVE=`ping -c 1 "$PLATFORM_DOMAIN" | awk '/1 packets transmitted, 1 received, 0% packet loss/' | awk '{print $1 $2 $3 $4 $5 $6 $7 $8 $9 $10}'`
 PLATFORM_ALIAS="/bin/pl"
 PLATFORM_BIN="/bin/platform"
 PLATFORM_CLI_URI="http://$PLATFORM_DOMAIN/platform"
@@ -120,7 +121,8 @@ platform_check_status()
 {
   echo "Checking system status..."
   echo ""
-  if [[ $GIT_STATUS = *"master [ahead"* ]]; 
+  git fetch origin > /dev/null
+  if [[ $GIT_STATUS = *"0.0 [ahead"* || $GIT_STATUS = *"0.0 [behind"* ]]; 
   then
     echo "Updates are available"
   else
@@ -138,7 +140,7 @@ platform_status()
   echo "Hostname: $HOSTNAME"
   echo "Operating System: $OS_KERNEL"
   echo "Author: The Platform Authors <platform@entilda.com>"
-  echo "Copyright: The Platform Authors 2011 - 2018"
+  echo "Copyright: The Platform Authors 2011 - $APP_Y"
   echo "License: MIT License"
   echo "Website: http://platform.entilda.com (maintenance)"
   echo ""
@@ -227,7 +229,7 @@ platform_rc()
     then
       # Breathe, I am alive!
       echo "Connecting to $PLATFORM_DOMAIN..."
-      sudo -k && cd && /usr/bin/wget --continue $PLATFORM_CLI_URI && sudo chmod 0777 /home/$PLATFORM_USER/platform && sudo mv /home/$PLATFORM_USER/platform $PLATFORM_BIN && sudo ln -s $PLATFORM_BIN $PLATFORM_ALIAS
+      sudo -k && cd && /usr/bin/wget --continue --user-agent="$APP_UA" $PLATFORM_CLI_URI && sudo chmod 0777 /home/$PLATFORM_USER/platform && sudo mv /home/$PLATFORM_USER/platform $PLATFORM_BIN && sudo ln -s $PLATFORM_BIN $PLATFORM_ALIAS
       echo "Binary installed: $PLATFORM_BIN"
     fi
   fi
@@ -616,7 +618,7 @@ platform_destroy(){
 platform_uninstall(){
   if [ ! -e "$PLATFORM_USER_HOME/system.list" ]
   then
-    /usr/bin/wget $APP_PACKAGES_URI -O $PLATFORM_USER_HOME/system.list > /dev/null 2>&1
+    /usr/bin/wget --user-agent="$APP_UA" $APP_PACKAGES_URI -O $PLATFORM_USER_HOME/system.list > /dev/null 2>&1
   fi
 
   while read i;
@@ -681,7 +683,7 @@ platform_install_packages(){
   if [ ! -e "$PLATFORM_USER_HOME/system.list" ]
   then
     echo "downloading packages ..."
-    /usr/bin/wget $APP_PACKAGES_URI -O $PLATFORM_USER_HOME/system.list > /dev/null 2>&1
+    /usr/bin/wget --user-agent="$APP_UA" $APP_PACKAGES_URI -O $PLATFORM_USER_HOME/system.list > /dev/null 2>&1
   fi
 
   while read i;
@@ -1098,7 +1100,7 @@ case $PARAM in
   echo ""
   if [ "$2" = "" ]
   then
-    /usr/bin/wget --continue "$APP_SNAPSHOT_URI"
+    /usr/bin/wget --continue --user-agent="$APP_UA" $APP_SNAPSHOT_URI
   fi
 
   if [ "$2" != "" ]
@@ -1107,7 +1109,7 @@ case $PARAM in
     then
       /usr/bin/php -r "readfile('$APP_COMPOSER_URI');" | /usr/bin/php -- --install-dir="$CUR_PATH" --filename=composer > /dev/null 2>&1
     else
-      /usr/bin/wget --continue "$2"
+      /usr/bin/wget --continue --user-agent="$APP_UA" "$2"
     fi
   fi
   echo ""
