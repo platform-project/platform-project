@@ -20,7 +20,7 @@
 platform_launch_initialize();
 
 function load_mapbox(){
-  $content = file_get_contents('https://api.mapbox.com/styles/v1/bileckme/cjaj6vkteaj5z2smunv6u2sek.html?fresh=true&title=false&access_token=pk.eyJ1IjoiYmlsZWNrbWUiLCJhIjoiamxRcXlxdyJ9.jTp5ycdGgWMAej6SfVhM2g#17.0/-25.913036/28.138857/0');
+  $content = file_get_contents('https://api.mapbox.com/styles/v1/bileckme/cjaj6vkteaj5z2smunv6u2sek.html?fresh=true&title=false&access_token=pk.eyJ1IjoiYmlsZWNrbWUiLCJhIjoiY2szMDFsM2VzMGw2aTNubW1kam1hdDFyeCJ9.S9Gj66W6-72sdRnfZfOXTg#17.0/-25.913036/28.138857/0');
   ob_start();
 ?>
 <!DOCTYPE html>
