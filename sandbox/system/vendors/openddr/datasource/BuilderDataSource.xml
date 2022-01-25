@@ -1,144 +1,3388 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+    Copyright 2011-2021 OpenDDR LLC and others.
+ 
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0 Unless required by
+    applicable law or agreed to in writing, software distributed
+    under the License is distributed on an "AS IS" BASIS, WITHOUT
+    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions
+    and limitations under the License.
+-->
 <ODDR>
     <version>
-        <ver>1.16</ver>
-        <last_updated>2013-03-28 09:30:00</last_updated>
-        <official_url>openddr.org</official_url>
-        <maintainers>
-        </maintainers>
-        <authors>
-        </authors>
-        <statement>
-		     <![CDATA[
-				Copyright 2011 OpenDDR LLC
-		This file is made available under the terms of the Open Database License: http://opendatacommons.org/licenses/odbl/1.0/.
-		Any rights in individual contents of the database are licensed under the Database Contents License: http://opendatacommons.org/licenses/dbcl/1.0/
-		]]>
+        <ver>2.0-SNAPSHOT</ver>
+		<last_updated>2021-01-29 05:00:00</last_updated>
+        <official_url>http://openddr.mobi</official_url>
+        <statement>Licensed under http://www.apache.org/licenses/LICENSE-2.0
         </statement>
     </version>
     <Builders>
-        <builder class="org.openddr.simpleapi.oddr.builder.device.AndroidDeviceBuilder">
-        	<device id="U9202L-3">
+        <builder class="mobi.openddr.simple.builder.device.DesktopOSDeviceBuilder">
+            <!--<device id="appleDesktop"> -->
+            <device id="desktopDevice">
+                <list>
+                    <value>macintosh</value>
+                </list>
+            </device>
+            <!--<device id="windowsDesktop"> -->
+            <device id="desktopDevice">
+                <list>
+                    <value>windows nt</value>
+                </list>
+            </device>
+            <!--<device id="linuxDesktop"> -->
+            <device id="desktopDevice">
+                <list>
+                    <value>x11</value>
+                </list>
+            </device>
+        </builder>
+        <builder class="mobi.openddr.simple.builder.device.SimpleDeviceBuilder">
+            <device id="genericPhone">
+                <list>
+                    <value>LG</value>
+                    <value>NetFront</value>
+                    <value>Palm</value>
+                    <value>SAMSUNG-SGH</value>
+                    <value>Up.Browser</value>
+                    <value>Windows CE</value>
+                    <value>Windows CE; IEMobile</value>
+                </list>
+            </device>
+            <device id="genericAndroid">
+                <list>
+                    <value>android</value>
+                </list>
+            </device>
+            <device id="genericBB10">
+                <list>
+                    <value>bb10</value>
+                </list>
+            </device>
+            <device id="genericFirefoxOS">
+                <list>
+                    <value>Mozilla/5.0 .Mobile</value>
+                    <value>Mozilla/5.0 .Tablet</value>
+                </list>
+            </device>
+            <device id="desktopDevice">
+                <list>
+                    <value>Mozilla/4.0</value>
+                    <value>Mozilla/5.0 .compatible</value>
+                    <value>Mozilla/5.0 .Windows</value>
+                    <value>Mozilla/5.0 .Macintosh</value>
+                    <value>Mozilla/5.0 .X11</value>
+                    <value>Mozilla/5.0 .Ubuntu</value>
+                    <value>Opera</value>
+                    <!--<value>Safari</value> -->
+                    <value>Chrome</value>
+                    <value>Konqueror</value>
+                </list>
+            </device>
+        </builder>
+        <builder class="mobi.openddr.simple.builder.device.BotDeviceBuilder">
+            <device id="genericWebBot">
+                <list>
+                    <value>Slurp</value>
+                    <value>Feedfetcher</value>
+                    <value>Googlebot</value>
+                    <value>bingbot</value>
+                    <value>Baiduspider</value>
+                    <value>msnbot</value>
+                    <value>YandexBot</value>
+                    <value>proximic</value>
+                    <value>YoudaoBot</value>
+                    <value>Genieo</value>
+                    <value>heritrix</value>
+                    <value>facebookexternalhit</value>
+                    <value>Sosospider</value>
+                    <value>CrystalSemanticsBot</value>
+                    <value>Blekkobot</value>
+                </list>
+            </device>
+        </builder>
+        <builder class="mobi.openddr.simple.builder.device.AndroidDeviceBuilder">
+            <device id="SAMSUNG SM-G389F">
+                <list>
+                    <value>SAMSUNG SM-G389F</value>
+                </list>
+            </device>
+             <device id="SAMSUNG SM-G390F">
+                <list>
+                    <value>SAMSUNG SM-G390F</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-J710F">
+                <list>
+                    <value>SAMSUNG SM-J710F</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-A310F">
+                <list>
+                    <value>SAMSUNG SM-A310F</value>
+                </list>
+            </device>
+             <device id="SM-A320F">
+                <list>
+                    <value>SM-A320F</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-J330FN">
+                <list>
+                    <value>SAMSUNG SM-J330FN</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-J730F">
+                <list>
+                    <value>SAMSUNG SM-J730F</value>
+                </list>
+            </device>
+            <device id="LG-H820">
+                <list>
+                    <value>LG-H820</value>
+                    <value>H820</value>
+                </list>
+            </device>
+            <device id="LG-H870">
+                <list>
+                    <value>LG-H870</value>
+                     <value>H870</value>
+                    <value>LG G6</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-J330F">
+                <list>
+                    <value>SAMSUNG SM-J330F</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-J320F">
+                <list>
+                    <value>SAMSUNG SM-J320F</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-G928F">
+                <list>
+                    <value>SAMSUNG SM-G928F</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-G925F">
+                <list>
+                    <value>SAMSUNG SM-G925F</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-G920F">
+                <list>
+                    <value>SAMSUNG SM-G920F</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-T820">
+                <list>
+                    <value>SM-T820</value>
+                    <value>SM-T825</value>
+                </list>
+            </device>
+            <device id="SM-N920F">
+                <list>
+                    <value>SM-N920F</value>
+                </list>
+            </device>
+            <device id="LG-K350">
+                <list>
+                    <value>LG-K350</value>
+                </list>
+            </device>
+            <device id="BLN-AL20">
+                <list>
+                    <value>BLN-AL20</value>
+                </list>
+            </device>
+            <device id="BLN-L22">
+                <list>
+                    <value>BLN-L22</value>
+                </list>
+            </device>
+            <device id="BLN-L21">
+                <list>
+                    <value>BLN-L21</value>
+                </list>
+            </device>
+            <device id="BLN-AL40">
+                <list>
+                    <value>BLN-AL40</value>
+                </list>
+            </device>
+            <device id="BLN-TL10">
+                <list>
+                    <value>BLN-TL10</value>
+                </list>
+            </device>
+            <device id="BLN-L24">
+                <list>
+                    <value>BLN-L24</value>
+                </list>
+            </device>
+            <device id="BLN-AL10">
+                <list>
+                    <value>BLN-AL10</value>
+                </list>
+            </device>
+            <device id="WAS-LX1">
+                <list>
+                    <value>WAS-LX1</value>
+                </list>
+            </device>
+            <device id="WAS-LX1A">
+                <list>
+                    <value>WAS-LX1A</value>
+                </list>
+            </device>
+            <device id="SM-N950FD">
+                <list>
+                    <value>SM-N950FD</value>
+                </list>
+            </device>
+            <device id="SM-N950F">
+                <list>
+                    <value>SM-N950F</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-G950FD">
+                <list>
+                    <value>SAMSUNG SM-G950FD</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-G950F">
+                <list>
+                    <value>SAMSUNG SM-G950F</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-G955F">
+                <list>
+                    <value>SAMSUNG SM-G955F</value>
+                </list>
+            </device>
+            <device id="SM-G955FD">
+                <list>
+                    <value>SM-G955FD</value>
+                </list>
+            </device>
+            <device id="FRD-DL00">
+                <list>
+                    <value>FRD-DL00</value>
+                </list>
+            </device>
+            <device id="FRD-AL10">
+                <list>
+                    <value>FRD-AL10</value>
+                </list>
+            </device>
+            <device id="FRD-AL00">
+                <list>
+                    <value>FRD-AL00</value>
+                </list>
+            </device>
+            <device id="FRD-L02">
+                <list>
+                    <value>FRD-L02</value>
+                </list>
+            </device>
+            <device id="FRD-L19">
+                <list>
+                    <value>FRD-L19</value>
+                </list>
+            </device>
+            <device id="FRD-L09">
+                <list>
+                    <value>FRD-L09</value>
+                </list>
+            </device>
+            <device id="ASUS_Z012DE">
+                <list>
+                    <value>ASUS_Z012DE</value>
+                </list>
+            </device>
+            <device id="ASUS_Z012DB">
+                <list>
+                    <value>ASUS_Z012DB</value>
+                </list>
+            </device>
+            <device id="ASUS_Z017D">
+                <list>
+                    <value>ASUS_Z017D</value>
+                </list>
+            </device>
+            <device id="ASUS_Z010DD">
+                <list>
+                    <value>ASUS_Z010DD</value>
+                </list>
+            </device>
+            <device id="ZE520KL">
+                <list>
+                    <value>ZE520KL</value>
+                </list>
+            </device>
+            <device id="ZE552KL">
+                <list>
+                    <value>ZE552KL</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-A500F">
+                <list>
+                    <value>SAMSUNG SM-A500F</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-A510F">
+                <list>
+                    <value>SAMSUNG SM-A510F</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-A520F">
+                <list>
+                    <value>SAMSUNG SM-A520F</value>
+                </list>
+            </device>
+            <device id="PRA-LA1">
+                <list>
+                    <value>PRA-LA1</value>
+                </list>
+            </device>
+            <device id="ALE-L21">
+                <list>
+                    <value>ALE-L21</value>
+                </list>
+            </device>
+            <device id="RNE-L21">
+                <list>
+                    <value>RNE-L21</value>
+                </list>
+            </device>
+            <device id="EVA-L29">
+                <list>
+                    <value>EVA-L29</value>
+                </list>
+            </device>
+            <device id="EVA-L09">
+                <list>
+                    <value>EVA-L09</value>
+                </list>
+            </device>
+            <device id="EVA-L19">
+                <list>
+                    <value>EVA-L19</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-J510FN">
+                <list>
+                    <value>SAMSUNG SM-J510FN</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-J510F">
+                <list>
+                    <value>SAMSUNG SM-J510F</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-J500F">
+                <list>
+                    <value>SAMSUNG SM-J500F</value>
+                </list>
+            </device>
+            <device id="SM-J530F">
+                <list>
+                    <value>SM-J530F</value>
+                </list>
+            </device>
+            <device id="HUAWEI VNS-L31">
+                <list>
+                    <value>HUAWEI VNS-L23</value>
+                </list>
+            </device>
+            <device id="HUAWEI VNS-L31">
+                <list>
+                    <value>HUAWEI VNS-L31</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-G935F">
+                <list>
+                    <value>SAMSUNG SM-G935F</value>
+                </list>
+            </device>
+            <device id="SM-G935FD">
+                <list>
+                    <value>SM-G935FD</value>
+                </list>
+            </device>
+            <device id="SM-G930FD">
+                <list>
+                    <value>SM-G930FD</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-G930F">
+                <list>
+                    <value>SAMSUNG SM-G930F</value>
+                </list>
+            </device>
+            <device id="D5316">
+                <list>
+                    <value>D5316</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH Fierce">
+                <list>
+                    <value>ALCATEL ONE TOUCH Fierce</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 5035E">
+                <list>
+                    <value>ALCATEL ONE TOUCH 5035E</value>
+                </list>
+            </device>
+            <device id="LG-D285">
+                <list>
+                    <value>LG-D285</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 6016D">
+                <list>
+                    <value>ALCATEL ONE TOUCH 6016D</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONETOUCH 6036Y">
+                <list>
+                    <value>ALCATEL ONETOUCH 6036Y</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONETOUCH 6036A">
+                <list>
+                    <value>ALCATEL ONETOUCH 6036A</value>
+                </list>
+            </device>
+            <device id="SM-N750K">
+                <list>
+                    <value>SM-N750K</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-T325">
+                <list>
+                    <value>SAMSUNG SM-T325</value>
+                </list>
+            </device>
+            <device id="SM-G110">
+                <list>
+                    <value>SM-G110</value>
+                    <value>SM-G110B</value>
+                    <value>SM-G110B/DS</value>
+                    <value>SM-G110H</value>
+                    <value>SM-G110M</value>
+                </list>
+            </device>
+            <device id="SM-G130">
+                <list>
+                    <value>SM-G130</value>
+                    <value>SM-G130H</value>
+                    <value>SM-G130HN</value>
+                    <value>SM-G130M</value>
+                </list>
+            </device>
+            <device id="SM-G130E">
+                <list>
+                    <value>SM-G130E</value>
+                </list>
+            </device>
+            <device id="SM-G310">
+                <list>
+                    <value>SM-G310</value>
+                    <value>SM-G310HN</value>
+                    <value>SM-G313</value>
+                    <value>SM-G313HN</value>
+                    <value>SM-G313HU</value>
+                    <value>SM-G313HZ</value>
+                    <value>SM-G313M</value>
+                    <value>SM-G313ML</value>
+                    <value>SM-G313MU</value>
+                </list>
+            </device>
+            <device id="SM-G350">
+                <list>
+                    <value>SM-G350</value>
+                    <value>SM-G350L</value>
+                    <value>SM-G3502L</value>
+                </list>
+            </device>
+            <device id="SM-G350E">
+                <list>
+                    <value>SM-G350E</value>
+                </list>
+            </device>
+            <device id="SM-G350H">
+                <list>
+                    <value>SM-G350H</value>
+                    <value>SM-G355H</value>
+                    <value>SM-G355HN</value>
+                    <value>SM-G355M</value>
+                </list>
+            </device>
+            <device id="SM-G3502">
+                <list>
+                    <value>SM-G3502</value>
+                    <value>SM-G3502I</value>
+                    <value>SM-G3502T</value>
+                </list>
+            </device>
+            <device id="SM-G3509">
+                <list>
+                    <value>SM-G3509</value>
+                    <value>SM-G3509I</value>
+                </list>
+            </device>
+            <device id="SM-G357FZ">
+                <list>
+                    <value>SM-G357FZ</value>
+                    <value>SM-G357M</value>
+                </list>
+            </device>
+            <device id="SM-G3518">
+                <list>
+                    <value>SM-G3518</value>
+                </list>
+            </device>
+            <device id="SM-G3589W">
+                <list>
+                    <value>SM-G3589W</value>
+                </list>
+            </device>
+            <device id="SM-G3812B">
+                <list>
+                    <value>SM-G3812B</value>
+                </list>
+            </device>
+            <device id="SM-G3818">
+                <list>
+                    <value>SM-G3818</value>
+                    <value>SM-G3819D</value>
+                </list>
+            </device>
+            <device id="SM-G386F">
+                <list>
+                    <value>SM-G386F</value>
+                </list>
+            </device>
+            <device id="SM-G386T">
+                <list>
+                    <value>SM-G386T</value>
+                </list>
+            </device>
+            <device id="SM-G386W">
+                <list>
+                    <value>SM-G386W</value>
+                </list>
+            </device>
+            <device id="SM-G530">
+                <list>
+                    <value>SM-G530DS</value>
+                    <value>SM-G530F</value>
+                    <value>SM-G530FZ</value>
+                    <value>SM-G530H</value>
+                    <value>SM-G530Y</value>
+                </list>
+            </device>
+            <device id="SM-G530BT">
+                <list>
+                    <value>SM-G530BT</value>
+                </list>
+            </device>
+            <device id="SM-G710">
+                <list>
+                    <value>SM-G710</value>
+                    <value>SM-G7105L</value>
+                    <value>SM-G7106</value>
+                    <value>SM-G7108</value>
+                    <value>SM-G7108V</value>
+                    <value>SM-G7102T</value>
+                    <value>SM-G7109</value>
+                </list>
+            </device>
+            <device id="SM-G7102">
+                <list>
+                    <value>SM-G7102</value>
+                </list>
+            </device>
+            <device id="SM-G7102T">
+                <list>
+                    <value>SM-G7102T</value>
+                </list>
+            </device>
+            <device id="SM-G7105">
+                <list>
+                    <value>SM-G7105</value>
+                </list>
+            </device>
+            <device id="SM-G730W8">
+                <list>
+                    <value>SM-G730W8</value>
+                </list>
+            </device>
+            <device id="SM-G800F">
+                <list>
+                    <value>SM-G800A</value>
+                    <value>SM-G800F</value>
+                    <value>SM-G800H</value>
+                    <value>SM-G800HQ</value>
+                    <value>SM-G800M</value>
+                    <value>SM-G800R4</value>
+                    <value>SM-G800X</value>
+                    <value>SM-G800Y</value>
+                </list>
+            </device>
+            <device id="SAMSUNG GT-I8200">
+                <list>
+                    <value>SAMSUNG GT-I8200</value>
+                </list>
+            </device>
+            <device id="SM-G870">
+                <list>
+                    <value>SM-G870A</value>
+                    <value>SM-G870F</value>
+                </list>
+            </device>
+            <device id="SM-G900M">
+                <list>
+                    <value>SM-G900M</value>
+                </list>
+            </device>
+            <device id="SM-G900">
+                <list>
+                    <value>SM-G900</value>
+                    <value>SM-G9006V</value>
+                    <value>SM-G9008V</value>
+                    <value>SM-G9009D</value>
+                    <value>SM-G9009W</value>
+                    <value>SM-G900A</value>
+                    <value>SM-G900AZ</value>
+                    <value>SM-G900F</value>
+                    <value>SM-G900FD</value>
+                    <value>SM-G900FQ</value>
+                    <value>SM-G900H</value>
+                    <value>SM-G900I</value>
+                    <value>SM-G900K</value>
+                    <value>SM-G900MD</value>
+                    <value>SM-G900P</value>
+                    <value>SM-G900R4</value>
+                    <value>SM-G900R6</value>
+                    <value>SM-G900R7</value>
+                    <value>SM-G900S</value>
+                    <value>SM-G900T1</value>
+                    <value>SM-G900V</value>
+                    <value>SM-G900W</value>
+                    <value>SM-G900W8</value>
+                    <value>SM-G900X</value>
+                    <value>SM-G901F</value>
+                </list>
+            </device>
+            <device id="SM-G906L">
+                <list>
+                    <value>SM-G906L</value>
+                </list>
+            </device>
+            <device id="SM-G910S">
+                <list>
+                    <value>SM-G910S</value>
+                </list>
+            </device>
+            <device id="SM-S801">
+                <list>
+                    <value>SM-S801</value>
+                    <value>SM-G850A</value>
+                    <value>SM-G850F</value>
+                    <value>SM-G850FQ</value>
+                    <value>SM-G850M</value>
+                    <value>SM-G850T</value>
+                    <value>SM-G850W</value>
+                    <value>SM-G850Y</value>
+                    <value>SM-G8508S</value>
+                </list>
+            </device>
+            <device id="HuaweiU8180">
+                <list>
+                    <value>U8180</value>
+                </list>
+            </device>
+            <device id="HUAWEI P2-6070">
+                <list>
+                    <value>HUAWEI P2-6070</value>
+                </list>
+            </device>
+            <device id="ZTE R83">
+                <list>
+                    <value>ZTE R83</value>
+                </list>
+            </device>
+            <device id="SAMSUNG-SGH-I337">
+                <list>
+                    <value>SAMSUNG SGH-I337</value>
+                </list>
+            </device>
+            <device id="ZTE R880H">
+                <list>
+                    <value>ZTE R880H</value>
+                </list>
+            </device>
+            <device id="ZTE V795">
+                <list>
+                    <value>ZTE V795</value>
+                </list>
+            </device>
+            <device id="GT-S7580L">
+                <list>
+                    <value>GT-S7580L</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-G900T">
+                <list>
+                    <value>SM-G900T</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-G900T">
+                <list>
+                    <value>SAMSUNG SM-G900T</value>
+                </list>
+            </device>
+            <device id="SM-T525">
+                <list>
+                    <value>SM-T525</value>
+                </list>
+            </device>
+            <device id="GT-I9152P">
+                <list>
+                    <value>GT-I9152P</value>
+                </list>
+            </device>
+            <device id="D5306">
+                <list>
+                    <value>D5306</value>
+                </list>
+            </device>
+            <device id="SGP521">
+                <list>
+                    <value>SGP521</value>
+                </list>
+            </device>
+            <device id="D2303">
+                <list>
+                    <value>D2303</value>
+                </list>
+            </device>
+            <device id="D2305">
+                <list>
+                    <value>D2305</value>
+                </list>
+            </device>
+            <device id="D2302">
+                <list>
+                    <value>D2302</value>
+                </list>
+            </device>
+            <device id="LG-D618">
+                <list>
+                    <value>LG-D618</value>
+                </list>
+            </device>
+            <device id="LG-D855">
+                <list>
+                    <value>LG-D855</value>
+                </list>
+            </device>
+            <device id="LG-LS990">
+                <list>
+                    <value>LG-LS990</value>
+                </list>
+            </device>
+            <device id="LG-D620">
+                <list>
+                    <value>LG-D620</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-N7505">
+                <list>
+                    <value>SAMSUNG SM-N7505</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-N7502">
+                <list>
+                    <value>SAMSUNG SM-N7502</value>
+                </list>
+            </device>
+            <device id="LG-F350K">
+                <list>
+                    <value>LG-F350K</value>
+                </list>
+            </device>
+            <device id="SGP512">
+                <list>
+                    <value>SGP512</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-G900V">
+                <list>
+                    <value>SAMSUNG SM-G900V</value>
+                </list>
+            </device>
+            <device id="SAMSUNG-SM-G900A">
+                <list>
+                    <value>SAMSUNG-SM-G900A</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 6010D">
+                <list>
+                    <value>ALCATEL ONE TOUCH 6010D</value>
+                </list>
+            </device>
+            <device id="V72C">
+                <list>
+                    <value>V72C</value>
+                </list>
+            </device>
+            <device id="D6503">
+                <list>
+                    <value>D6503</value>
+                </list>
+            </device>
+            <device id="LG-D830">
+                <list>
+                    <value>LG-D830</value>
+                </list>
+            </device>
+            <device id="LG-F350S">
+                <list>
+                    <value>LG-F350S</value>
+                </list>
+            </device>
+            <device id="LG-F350L">
+                <list>
+                    <value>LG-F350L</value>
+                </list>
+            </device>
+            <device id="GT-S7582">
+                <list>
+                    <value>GT-S7582</value>
+                </list>
+            </device>
+            <device id="VS890">
+                <list>
+                    <value>VS890</value>
+                </list>
+            </device>
+            <device id="SGH-T399">
+                <list>
+                    <value>SGH-T399</value>
+                </list>
+            </device>
+            <device id="N9100">
+                <list>
+                    <value>N9100</value>
+                </list>
+            </device>
+            <device id="N9510">
+                <list>
+                    <value>N9510</value>
+                </list>
+            </device>
+            <device id="N861">
+                <list>
+                    <value>N861</value>
+                </list>
+            </device>
+            <device id="SPH-M950">
+                <list>
+                    <value>SPH-M950</value>
+                </list>
+            </device>
+            <device id="SAMSUNG-SGH-I467">
+                <list>
+                    <value>SAMSUNG-SGH-I467</value>
+                </list>
+            </device>
+            <device id="SAMSUNG GT-I9507V">
+                <list>
+                    <value>SAMSUNG GT-I9507V</value>
+                </list>
+            </device>
+            <device id="ZTE-Z740">
+                <list>
+                    <value>ZTE-Z740</value>
+                </list>
+            </device>
+            <device id="Z750C">
+                <list>
+                    <value>Z750C</value>
+                </list>
+            </device>
+            <device id="N9101">
+                <list>
+                    <value>N9101</value>
+                </list>
+            </device>
+            <device id="ZTE-Z998">
+                <list>
+                    <value>ZTE-Z998</value>
+                </list>
+            </device>
+            <device id="N9810">
+                <list>
+                    <value>N9810</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-G7106">
+                <list>
+                    <value>SAMSUNG SM-G7106</value>
+                </list>
+            </device>
+            <device id="GT-S5312">
+                <list>
+                    <value>GT-S5312</value>
+                </list>
+            </device>
+            <device id="XT557">
+                <list>
+                    <value>XT557</value>
+                </list>
+            </device>
+            <device id="C2004">
+                <list>
+                    <value>C2004</value>
+                </list>
+            </device>
+            <device id="SCH-S960L">
+                <list>
+                    <value>SCH-S960L</value>
+                </list>
+            </device>
+            <device id="ZTE_N9511">
+                <list>
+                    <value>ZTE_N9511</value>
+                </list>
+            </device>
+            <device id="XT886">
+                <list>
+                    <value>XT886</value>
+                </list>
+            </device>
+            <device id="SGH-S730M">
+                <list>
+                    <value>SGH-S730M</value>
+                </list>
+            </device>
+            <device id="LG-AS730">
+                <list>
+                    <value>LG-AS730</value>
+                </list>
+            </device>
+            <device id="SM-G730V">
+                <list>
+                    <value>SM-G730V</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SCH-R890">
+                <list>
+                    <value>SAMSUNG SCH-R890</value>
+                </list>
+            </device>
+            <device id="ZTE-Z992">
+                <list>
+                    <value>ZTE-Z992</value>
+                </list>
+            </device>
+            <device id="Z796C">
+                <list>
+                    <value>Z796C</value>
+                </list>
+            </device>
+            <device id="SGH-S730G">
+                <list>
+                    <value>SGH-S730G</value>
+                </list>
+            </device>
+            <device id="SGH-S959G">
+                <list>
+                    <value>SGH-S959G</value>
+                </list>
+            </device>
+            <device id="XT605">
+                <list>
+                    <value>XT605</value>
+                </list>
+            </device>
+            <device id="LG-D680">
+                <list>
+                    <value>LG-D680</value>
+                </list>
+            </device>
+            <device id="GT-S6810M">
+                <list>
+                    <value>GT-S6810M</value>
+                </list>
+            </device>
+            <device id="WT19a">
+                <list>
+                    <value>WT19a</value>
+                </list>
+            </device>
+            <device id="WT19a">
+                <list>
+                    <value>SonyEricssonWT19a</value>
+                </list>
+            </device>
+            <device id="C1604">
+                <list>
+                    <value>C1604</value>
+                </list>
+            </device>
+            <device id="LG-E450f">
+                <list>
+                    <value>LG-E450f</value>
+                </list>
+            </device>
+            <device id="ST21a">
+                <list>
+                    <value>ST21a</value>
+                </list>
+            </device>
+            <device id="SonyEricssonST25a">
+                <list>
+                    <value>ST25a</value>
+                </list>
+            </device>
+            <device id="XT621">
+                <list>
+                    <value>XT621</value>
+                </list>
+            </device>
+            <device id="LG-P712">
+                <list>
+                    <value>LG-P712</value>
+                </list>
+            </device>
+            <device id="LG-E987">
+                <list>
+                    <value>LG-E987</value>
+                </list>
+            </device>
+            <device id="LG-P778">
+                <list>
+                    <value>LG-P778</value>
+                </list>
+            </device>
+            <device id="HUAWEI Y300-0100">
+                <list>
+                    <value>HUAWEI Y300-0100</value>
+                </list>
+            </device>
+            <device id="LG-P714">
+                <list>
+                    <value>LG-P714</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-G3815">
+                <list>
+                    <value>SM-G3815</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 8008D">
+                <list>
+                    <value>ALCATEL ONE TOUCH 8008D</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 5020D">
+                <list>
+                    <value>ALCATEL ONE TOUCH 5020D</value>
+                </list>
+            </device>
+            <device id="HUAWEI MT1-U06">
+                <list>
+                    <value>HUAWEI MT1-U06</value>
+                </list>
+            </device>
+            <device id="HUAWEI G525-U00">
+                <list>
+                    <value>HUAWEI G525-U00</value>
+                </list>
+            </device>
+            <device id="GT-S5310">
+                <list>
+                    <value>GT-S5310</value>
+                </list>
+            </device>
+            <device id="GT-S7390">
+                <list>
+                    <value>GT-S7390</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-G3815">
+                <list>
+                    <value>SAMSUNG SM-G3815</value>
+                </list>
+            </device>
+            <device id="LG-US780">
+                <list>
+                    <value>LG-US780</value>
+                </list>
+            </device>
+            <device id="HUAWEI G510-0100">
+                <list>
+                    <value>HUAWEI G510-0100</value>
+                </list>
+            </device>
+            <device id="HUAWEI G700-U10">
+                <list>
+                    <value>HUAWEI G700-U10</value>
+                </list>
+            </device>
+            <device id="LG-E440">
+                <list>
+                    <value>LG-E440</value>
+                </list>
+            </device>
+            <device id="SM-T520">
+                <list>
+                    <value>SM-T520</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-P905V">
+                <list>
+                    <value>SAMSUNG SM-P905V</value>
+                </list>
+            </device>
+            <device id="SM-G7102">
+                <list>
+                    <value>SM-G7102</value>
+                </list>
+            </device>
+            <device id="D5303">
+                <list>
+                    <value>D5303</value>
+                </list>
+            </device>
+            <device id="GT-S5280">
+                <list>
+                    <value>GT-S5280</value>
+                </list>
+            </device>
+            <device id="XT321">
+                <list>
+                    <value>XT321</value>
+                </list>
+            </device>
+            <device id="SM-T311">
+                <list>
+                    <value>SM-T311</value>
+                </list>
+            </device>
+            <device id="GT-I8260">
+                <list>
+                    <value>GT-I8260</value>
+                </list>
+            </device>
+            <device id="HTC6600LVW">
+                <list>
+                    <value>HTC6600LVW</value>
+                </list>
+            </device>
+            <device id="SM-T110">
+                <list>
+                    <value>SM-T110</value>
+                </list>
+            </device>
+            <device id="SM-P900">
+                <list>
+                    <value>SM-P900</value>
+                </list>
+            </device>
+            <device id="SM-T111">
+                <list>
+                    <value>SM-T111</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-T900">
+                <list>
+                    <value>SAMSUNG SM-T900</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-P901">
+                <list>
+                    <value>SM-P901</value>
+                </list>
+            </device>
+            <device id="EK-GC200">
+                <list>
+                    <value>EK-GC200</value>
+                </list>
+            </device>
+            <device id="D2104">
+                <list>
+                    <value>D2104</value>
+                </list>
+            </device>
+            <device id="Lenovo K910L">
+                <list>
+                    <value>Lenovo K910L</value>
+                </list>
+            </device>
+            <device id="HW-HUAWEI_MT2-C00">
+                <list>
+                    <value>HW-HUAWEI_MT2-C00</value>
+                </list>
+            </device>
+            <device id="SM-G7105">
+                <list>
+                    <value>SM-G7105</value>
+                </list>
+            </device>
+            <device id="SM-P605V">
+                <list>
+                    <value>SM-P605V</value>
+                </list>
+            </device>
+            <device id="D2004">
+                <list>
+                    <value>D2004</value>
+                </list>
+            </device>
+            <device id="D2005">
+                <list>
+                    <value>D2005</value>
+                </list>
+            </device>
+            <device id="XT1052">
+                <list>
+                    <value>XT1052</value>
+                </list>
+            </device>
+            <device id="GT-I8580">
+                <list>
+                    <value>GT-I8580</value>
+                </list>
+            </device>
+            <device id="XT1033">
+                <list>
+                    <value>XT1033</value>
+                </list>
+            </device>
+            <device id="XT937C">
+                <list>
+                    <value>XT937C</value>
+                </list>
+            </device>
+            <device id="SM-G710S">
+                <list>
+                    <value>SM-G710S</value>
+                </list>
+            </device>
+            <device id="LG-D806">
+                <list>
+                    <value>LG-D806</value>
+                </list>
+            </device>
+            <device id="SM-G3812">
+                <list>
+                    <value>SM-G3812</value>
+                </list>
+            </device>
+            <device id="H30-T00">
+                <list>
+                    <value>H30-T00</value>
+                </list>
+            </device>
+            <device id="LG-E985T">
+                <list>
+                    <value>LG-E985T</value>
+                </list>
+            </device>
+            <device id="SO-02F">
+                <list>
+                    <value>SO-02F</value>
+                </list>
+            </device>
+            <device id="LG-D955">
+                <list>
+                    <value>LG-D955</value>
+                </list>
+            </device>
+            <device id="SAMSUNG GT-I8580">
+                <list>
+                    <value>SAMSUNG GT-I8580</value>
+                </list>
+            </device>
+            <device id="LGL23">
+                <list>
+                    <value>LGL23</value>
+                </list>
+            </device>
+            <device id="LG-F310L">
+                <list>
+                    <value>LG-F310L</value>
+                </list>
+            </device>
+            <device id="XT937C">
+                <list>
+                    <value>XT937C</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 7040A">
+                <list>
+                    <value>ALCATEL ONE TOUCH 7040A</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 7040D">
+                <list>
+                    <value>ALCATEL ONE TOUCH 7040D</value>
+                </list>
+            </device>
+            <device id="SM-T217T">
+                <list>
+                    <value>SM-T217T</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 7041X">
+                <list>
+                    <value>ALCATEL ONE TOUCH 7041X</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 7041D">
+                <list>
+                    <value>ALCATEL ONE TOUCH 7041D</value>
+                </list>
+            </device>
+            <device id="GT-I9060">
+                <list>
+                    <value>GT-I9060</value>
+                </list>
+            </device>
+            <device id="HTC-809d">
+                <list>
+                    <value>HTC-809d</value>
+                </list>
+            </device>
+            <device id="HTC 8088">
+                <list>
+                    <value>HTC 8088</value>
+                </list>
+            </device>
+            <device id="SM-N750">
+                <list>
+                    <value>SM-N750</value>
+                </list>
+            </device>
+            <device id="LG-D958">
+                <list>
+                    <value>LG-D958</value>
+                </list>
+            </device>
+            <device id="C8813">
+                <list>
+                    <value>C8813</value>
+                </list>
+            </device>
+            <device id="XT1032">
+                <list>
+                    <value>XT1032</value>
+                </list>
+            </device>
+            <device id="SM-N910">
+                <list>
+                    <value>SM-N910</value>
+                    <value>SM-N910A</value>
+                    <value>SM-N910C</value>
+                    <value>SM-N910D</value>
+                    <value>SM-N910F</value>
+                    <value>SM-N910G</value>
+                    <value>SM-N910H</value>
+                    <value>SM-N910J</value>
+                    <value>SM-N910K</value>
+                    <value>SM-N910L</value>
+                    <value>SM-N910P</value>
+                    <value>SM-N910R4</value>
+                    <value>SM-N910T</value>
+                    <value>SM-N910U</value>
+                    <value>SM-N910S</value>
+                    <value>SM-N910V</value>
+                    <value>SM-N910W8</value>
+                    <value>SM-N915F</value>
+                    <value>SM-N915S</value>
+                    <value>SM-N9106V</value>
+                    <value>SM-N9106W</value>
+                    <value>SM-N9108V</value>
+                    <value>SM-N9108W</value>
+                    <value>SM-N9109W</value>
+                </list>
+            </device>
+            <device id="SM-N9008V">
+                <list>
+                    <value>SM-N9008V</value>
+                </list>
+            </device>
+            <device id="SHV-E220S">
+                <list>
+                    <value>SHV-E220S</value>
+                </list>
+            </device>
+            <device id="LG-E617G">
+                <list>
+                    <value>LG-E617G</value>
+                </list>
+            </device>
+            <device id="SAMSUNG-SGH-I927">
+                <list>
+                    <value>SGH-I927</value>
+                </list>
+            </device>
+            <device id="SCH-I699">
+                <list>
+                    <value>SCH-I699</value>
+                </list>
+            </device>
+            <device id="SAMSUNG-SGH-I847">
+                <list>
+                    <value>SAMSUNG-SGH-I847</value>
+                </list>
+            </device>
+            <device id="SHV-E270K">
+                <list>
+                    <value>SHV-E270K</value>
+                </list>
+            </device>
+            <device id="GT-S6313T">
+                <list>
+                    <value>GT-S6313T</value>
+                </list>
+            </device>
+            <device id="LG-VS410PP">
+                <list>
+                    <value>LG-VS410PP</value>
+                </list>
+            </device>
+            <device id="LGL75C">
+                <list>
+                    <value>LGL75C</value>
+                </list>
+            </device>
+            <device id="SAMSUNG-SM-G730A">
+                <list>
+                    <value>SAMSUNG-SM-G730A</value>
+                </list>
+            </device>
+            <device id="LG-MS870">
+                <list>
+                    <value>LG-MS870</value>
+                </list>
+            </device>
+            <device id="SAMSUNG-SM-T217A">
+                <list>
+                    <value>SAMSUNG-SM-T217A</value>
+                </list>
+            </device>
+            <device id="LG-F120K">
+                <list>
+                    <value>LG-F120K</value>
+                </list>
+            </device>
+            <device id="GT-S6812">
+                <list>
+                    <value>GT-S6812</value>
+                </list>
+            </device>
+            <device id="LG-P659">
+                <list>
+                    <value>LG-P659</value>
+                </list>
+            </device>
+            <device id="GT-S6310">
+                <list>
+                    <value>GT-S6310</value>
+                </list>
+            </device>
+            <device id="LG-VS980">
+                <list>
+                    <value>VS980</value>
+                </list>
+            </device>
+            <device id="SAMSUNG GT-I9507">
+                <list>
+                    <value>GT-I9507</value>
+                </list>
+            </device>
+            <device id="SAMSUNG GT-I9190">
+                <list>
+                    <value>GT-I9190</value>
+                </list>
+            </device>
+            <device id="GT-I9268">
+                <list>
+                    <value>GT-I9268</value>
+                </list>
+            </device>
+            <device id="XT1049">
+                <list>
+                    <value>XT1049</value>
+                </list>
+            </device>
+            <device id="SonyST26a">
+                <list>
+                    <value>SonyST26a</value>
+                </list>
+            </device>
+            <device id="U8667">
+                <list>
+                    <value>U8667</value>
+                </list>
+            </device>
+            <device id="ONE TOUCH 4007A">
+                <list>
+                    <value>ONE TOUCH 4007A</value>
+                </list>
+            </device>
+            <device id="ALCATEL_one_touch_903">
+                <list>
+                    <value>ALCATEL_one_touch_903</value>
+                </list>
+            </device>
+            <device id="LG-L38C">
+                <list>
+                    <value>LG-L38C</value>
+                </list>
+            </device>
+            <device id="XT919">
+                <list>
+                    <value>XT919</value>
+                </list>
+            </device>
+            <device id="XT914">
+                <list>
+                    <value>XT914</value>
+                </list>
+            </device>
+            <device id="GT-S6810L">
+                <list>
+                    <value>GT-S6810L</value>
+                </list>
+            </device>
+            <device id="LG-E976">
+                <list>
+                    <value>LG-E976</value>
+                </list>
+            </device>
+            <device id="HTC_C525c">
+                <list>
+                    <value>C525c</value>
+                </list>
+            </device>
+            <device id="X501_USA_Cricket">
+                <list>
+                    <value>X501_USA_Cricket</value>
+                </list>
+            </device>
+            <device id="HTC_C525c">
+                <list>
+                    <value>HTC_C525c</value>
+                </list>
+            </device>
+            <device id="SonyST23a">
+                <list>
+                    <value>SonyST23a</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 916A">
+                <list>
+                    <value>ALCATEL ONE TOUCH 916A</value>
+                </list>
+            </device>
+            <device id="CM980">
+                <list>
+                    <value>CM980</value>
+                </list>
+            </device>
+            <device id="SCH-R530C">
+                <list>
+                    <value>SCH-R530C</value>
+                </list>
+            </device>
+            <device id="LG-E450j">
+                <list>
+                    <value>LG-E450j</value>
+                </list>
+            </device>
+            <device id="LG-D500">
+                <list>
+                    <value>LG-D500</value>
+                </list>
+            </device>
+            <device id="GT-I8260L">
+                <list>
+                    <value>GT-I8260L</value>
+                </list>
+            </device>
+            <device id="C5306">
+                <list>
+                    <value>C5306</value>
+                </list>
+            </device>
+            <device id="SCH-R530X">
+                <list>
+                    <value>SCH-R530X</value>
+                </list>
+            </device>
+            <device id="SonyEricssonST27a">
+                <list>
+                    <value>SonyEricssonST27a</value>
+                </list>
+            </device>
+            <device id="LG-P716">
+                <list>
+                    <value>LG-P716</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 6033A">
+                <list>
+                    <value>ALCATEL ONE TOUCH 6033A</value>
+                </list>
+            </device>
+            <device id="LGMS769">
+                <list>
+                    <value>LGMS769</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 4010A">
+                <list>
+                    <value>ALCATEL ONE TOUCH 4010A</value>
+                </list>
+            </device>
+            <device id="GT-I9080L">
+                <list>
+                    <value>GT-I9080L</value>
+                </list>
+            </device>
+            <device id="HUAWEI Y300-0151">
+                <list>
+                    <value>HUAWEI Y300-0151</value>
+                </list>
+            </device>
+            <device id="HUAWEI-M931">
+                <list>
+                    <value>HUAWEI-M931</value>
+                </list>
+            </device>
+            <device id="SM-T310">
+                <list>
+                    <value>SM-T310</value>
+                </list>
+            </device>
+            <device id="HTC T528w">
+                <list>
+                    <value>HTC T528w</value>
+                </list>
+            </device>
+            <device id="HUAWEI H881C">
+                <list>
+                    <value>HUAWEI H881C</value>
+                </list>
+            </device>
+            <device id="LG-P713">
+                <list>
+                    <value>LG-P713</value>
+                </list>
+            </device>
+            <device id="GT-S7560">
+                <list>
+                    <value>GT-S7560</value>
+                </list>
+            </device>
+            <device id="LGMS659">
+                <list>
+                    <value>LGMS659</value>
+                </list>
+            </device>
+            <device id="HUAWEI Y210-0200">
+                <list>
+                    <value>HUAWEI Y210-0200</value>
+                </list>
+            </device>
+            <device id="Acer-Z110">
+                <list>
+                    <value>Acer-Z110</value>
+                </list>
+            </device>
+            <device id="SGH-I257M">
+                <list>
+                    <value>SGH-I257M</value>
+                </list>
+            </device>
+            <device id="LG-E988">
+                <list>
+                    <value>LG-E988</value>
+                </list>
+            </device>
+            <device id="GT-S5282">
+                <list>
+                    <value>GT-S5282</value>
+                </list>
+            </device>
+            <device id="ALCATEL_one_touch_909S">
+                <list>
+                    <value>ALCATEL_one_touch_909S</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 918N">
+                <list>
+                    <value>ALCATEL ONE TOUCH 918N</value>
+                </list>
+            </device>
+            <device id="SO-01F">
+                <list>
+                    <value>SO-01F</value>
+                </list>
+            </device>
+            <device id="LG-E425f">
+                <list>
+                    <value>LG-E425f</value>
+                </list>
+            </device>
+            <device id="SO-04E">
+                <list>
+                    <value>SO-04E</value>
+                </list>
+            </device>
+            <device id="SCH-R740C">
+                <list>
+                    <value>SCH-R740C</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 4030A">
+                <list>
+                    <value>ALCATEL ONE TOUCH 4030A</value>
+                </list>
+            </device>
+            <device id="SonyEricssonST23i">
+                <list>
+                    <value>ST23i</value>
+                </list>
+            </device>
+            <device id="U8186">
+                <list>
+                    <value>U8186</value>
+                </list>
+            </device>
+            <device id="HTC One 801e">
+                <list>
+                    <value>HTC One</value>
+                </list>
+            </device>
+            <device id="Nexus 5">
+                <list>
+                    <value>Nexus 5</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SGH-M919">
+                <list>
+                    <value>SGH-M919</value>
+                </list>
+            </device>
+            <device id="L36h">
+                <list>
+                    <value>L36h</value>
+                </list>
+            </device>
+            <device id="LG-D959">
+                <list>
+                    <value>LG-D959</value>
+                </list>
+            </device>
+            <device id="HUAWEI G730-U00">
+                <list>
+                    <value>HUAWEI G730-U00</value>
+                </list>
+            </device>
+            <device id="LG-D505">
+                <list>
+                    <value>LG-D505</value>
+                </list>
+            </device>
+            <device id="SM-T2105">
+                <list>
+                    <value>SM-T2105</value>
+                </list>
+            </device>
+            <device id="HTC 9088">
+                <list>
+                    <value>HTC 9088</value>
+                </list>
+            </device>
+            <device id="D5503">
+                <list>
+                    <value>D5503</value>
+                </list>
+            </device>
+            <device id="GT-N9005">
+                <list>
+                    <value>GT-N9005</value>
+                </list>
+            </device>
+            <device id="SC-04D">
+                <list>
+                    <value>SC-04D</value>
+                </list>
+            </device>
+            <device id="HTC 8060">
+                <list>
+                    <value>HTC6600LVW 4G</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 6033M">
+                <list>
+                    <value>ALCATEL ONE TOUCH 6033M</value>
+                </list>
+            </device>
+            <device id="GT-P3000">
+                <list>
+                    <value>GT-P3000</value>
+                </list>
+            </device>
+            <device id="SM-P605L">
+                <list>
+                    <value>SM-P605L</value>
+                </list>
+            </device>
+            <device id="SHV-250K">
+                <list>
+                    <value>SHV-250K</value>
+                </list>
+            </device>
+            <device id="SonyLT25i">
+                <list>
+                    <value>Xperia V</value>
+                </list>
+            </device>
+            <device id="SonyEricssonST25a">
+                <list>
+                    <value>Xperia U</value>
+                </list>
+            </device>
+            <device id="HTC_PH39100">
+                <list>
+                    <value>Vivid 4G</value>
+                </list>
+            </device>
+            <device id="HTC 8060">
+                <list>
+                    <value>HTC 8060</value>
+                </list>
+            </device>
+            <device id="LG-VS980">
+                <list>
+                    <value>LG-VS980</value>
+                </list>
+            </device>
+            <device id="C6806">
+                <list>
+                    <value>Xperia Z Ultra</value>
+                </list>
+            </device>
+            <device id="LG-P760">
+                <list>
+                    <value>P760</value>
+                </list>
+            </device>
+            <device id="HTC 801e">
+                <list>
+                    <value>HTC 801e</value>
+                </list>
+            </device>
+            <device id="GT-I9500">
+                <list>
+                    <value>Sumsung Galaxy S4</value>
+                </list>
+            </device>
+            <device id="SonyEricssonLT22i">
+                <list>
+                    <value>Xperia P</value>
+                </list>
+            </device>
+            <device id="SonySGP321">
+                <list>
+                    <value>Xperia Tablet Z LTE</value>
+                </list>
+            </device>
+            <device id="SGP311">
+                <list>
+                    <value>SGP311</value>
+                </list>
+            </device>
+            <device id="SGP312">
+                <list>
+                    <value>SGP312</value>
+                </list>
+            </device>
+            <device id="LG-P880">
+                <list>
+                    <value>Optimus 4X HD</value>
+                </list>
+            </device>
+            <device id="C6916">
+                <list>
+                    <value>C6916</value>
+                </list>
+            </device>
+            <device id="ONE TOUCH 6012A">
+                <list>
+                    <value>ONE TOUCH 6012A</value>
+                </list>
+            </device>
+            <device id="ONE TOUCH 6012E">
+                <list>
+                    <value>ONE TOUCH 6012E</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 7025D">
+                <list>
+                    <value>ALCATEL ONE TOUCH 7025D</value>
+                </list>
+            </device>
+            <device id="P-03E">
+                <list>
+                    <value>P-03E</value>
+                </list>
+            </device>
+            <device id="SCH-R960">
+                <list>
+                    <value>SCH-R960</value>
+                </list>
+            </device>
+            <device id="GT-I8550">
+                <list>
+                    <value>GT-I8550</value>
+                </list>
+            </device>
+            <device id="GT-S7275R">
+                <list>
+                    <value>GT-S7275R</value>
+                </list>
+            </device>
+            <device id="SonySOL22">
+                <list>
+                    <value>SonySOL22</value>
+                </list>
+            </device>
+            <device id="XT939G">
+                <list>
+                    <value>XT939G</value>
+                </list>
+            </device>
+            <device id="SCH-I739">
+                <list>
+                    <value>SCH-I739</value>
+                </list>
+            </device>
+            <device id="GT-S7898">
+                <list>
+                    <value>GT-S7898</value>
+                </list>
+            </device>
+            <device id="LG-D686">
+                <list>
+                    <value>LG-D686</value>
+                </list>
+            </device>
+            <device id="SHV-E370K">
+                <list>
+                    <value>SHV-E370K</value>
+                </list>
+            </device>
+            <device id="GT-I9150">
+                <list>
+                    <value>GT-I9150</value>
+                </list>
+            </device>
+            <device id="LG-F340S">
+                <list>
+                    <value>LG-F340S</value>
+                </list>
+            </device>
+            <device id="SHV-E330K">
+                <list>
+                    <value>SHV-E330K</value>
+                </list>
+            </device>
+            <device id="SHW-250S">
+                <list>
+                    <value>SHW-250S</value>
+                </list>
+            </device>
+            <device id="SM-P605M">
+                <list>
+                    <value>SM-P605M</value>
+                </list>
+            </device>
+            <device id="SCL22">
+                <list>
+                    <value>SCL22</value>
+                </list>
+            </device>
+            <device id="SM-N9000Q">
+                <list>
+                    <value>SM-N9000Q</value>
+                </list>
+            </device>
+            <device id="SC-02F">
+                <list>
+                    <value>SC-02F</value>
+                </list>
+            </device>
+            <device id="SPH-L720T">
+                <list>
+                    <value>SPH-L720T</value>
+                </list>
+            </device>
+            <device id="SCH-I435">
+                <list>
+                    <value>SCH-I435</value>
+                </list>
+            </device>
+            <device id="LG-E470f">
+                <list>
+                    <value>LG-E470f</value>
+                </list>
+            </device>
+            <device id="SGH-M819N">
+                <list>
+                    <value>SGH-M819N</value>
+                </list>
+            </device>
+            <device id="LG-LS995">
+                <list>
+                    <value>LG-LS995</value>
+                </list>
+            </device>
+            <device id="LG-D950">
+                <list>
+                    <value>LG-D950</value>
+                </list>
+            </device>
+            <device id="SM-P905">
+                <list>
+                    <value>SM-P905</value>
+                    <value>SM-P905M</value>
+                </list>
+            </device>
+            <device id="LG-V507L">
+                <list>
+                    <value>LG-V507L</value>
+                </list>
+            </device>
+            <device id="LG-D685">
+                <list>
+                    <value>LG-D685</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SM-P605S">
+                <list>
+                    <value>SAMSUNG SM-P605S</value>
+                </list>
+            </device>
+            <device id="SM-N9008">
+                <list>
+                    <value>SM-N9008</value>
+                </list>
+            </device>
+            <device id="HTC Desire SV">
+                <list>
+                    <value>HTC Desire SV</value>
+                </list>
+            </device>
+            <device id="SM-T215">
+                <list>
+                    <value>SM-T215</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SGH-T399">
+                <list>
+                    <value>SAMSUNG SGH-T399</value>
+                </list>
+            </device>
+            <device id="SM-P601">
+                <list>
+                    <value>SM-P601</value>
+                </list>
+            </device>
+            <device id="SM-P602">
+                <list>
+                    <value>SM-P602</value>
+                </list>
+            </device>
+            <device id="SM-P607">
+                <list>
+                    <value>SM-P607</value>
+                    <value>SM-P607T</value>
+                </list>
+            </device>
+            <device id="SM-T217S">
+                <list>
+                    <value>SM-T217S</value>
+                </list>
+            </device>
+            <device id="L-01F">
+                <list>
+                    <value>L-01F</value>
+                </list>
+            </device>
+            <device id="ZTE V988">
+                <list>
+                    <value>ZTE V988</value>
+                </list>
+            </device>
+            <device id="GT-S7260">
+                <list>
+                    <value>GT-S7260</value>
+                </list>
+            </device>
+            <device id="LG-F300L">
+                <list>
+                    <value>LG-F300L</value>
+                </list>
+            </device>
+            <device id="LG-F300K">
+                <list>
+                    <value>LG-F300K</value>
+                </list>
+            </device>
+            <device id="GT-S7262">
+                <list>
+                    <value>GT-S7262</value>
+                </list>
+            </device>
+            <device id="SM-N9002">
+                <list>
+                    <value>SM-N9002</value>
+                </list>
+            </device>
+            <device id="SOL23">
+                <list>
+                    <value>SOL23</value>
+                </list>
+            </device>
+            <device id="GT-I9230">
+                <list>
+                    <value>GT-I9230</value>
+                </list>
+            </device>
+            <device id="LG-D802">
+                <list>
+                    <value>LG-D802</value>
+                </list>
+            </device>
+            <device id="LG-D805">
+                <list>
+                    <value>LG-D805</value>
+                </list>
+            </device>
+            <device id="C6906">
+                <list>
+                    <value>C6906</value>
+                </list>
+            </device>
+            <device id="HUAWEI P6-C00">
+                <list>
+                    <value>HUAWEI P6-C00</value>
+                </list>
+            </device>
+            <device id="SHV-E310L">
+                <list>
+                    <value>SHV-E310L</value>
+                </list>
+            </device>
+            <device id="LG-F300S">
+                <list>
+                    <value>LG-F300S</value>
+                </list>
+            </device>
+            <device id="HTC 619d">
+                <list>
+                    <value>HTC 619d</value>
+                </list>
+            </device>
+            <device id="C6843">
+                <list>
+                    <value>C6843</value>
+                </list>
+            </device>
+            <device id="ME302C">
+                <list>
+                    <value>ME302C</value>
+                </list>
+            </device>
+            <device id="GT-I9128">
+                <list>
+                    <value>GT-I9128</value>
+                </list>
+            </device>
+            <device id="SM-N9006">
+                <list>
+                    <value>SM-N9006</value>
+                </list>
+            </device>
+            <device id="SM-N9009">
+                <list>
+                    <value>SM-N9009</value>
+                </list>
+            </device>
+            <device id="SM-N900L">
+                <list>
+                    <value>SM-N900L</value>
+                </list>
+            </device>
+            <device id="Nexus 4">
+                <list>
+                    <value>Lg e960</value>
+                </list>
+            </device>
+            <device id="GT-N7100">
+                <list>
+                    <value>Galaxy Note II</value>
+                </list>
+            </device>
+            <device id="HTC_Desire_601">
+                <list>
+                    <value>HTC_Desire_601</value>
+                </list>
+            </device>
+            <device id="S520">
+                <list>
+                    <value>S520</value>
+                </list>
+            </device>
+            <device id="LG-V500">
+                <list>
+                    <value>LG-V500</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SPH-L520">
+                <list>
+                    <value>SAMSUNG SPH-L520</value>
+                </list>
+            </device>
+            <device id="HTC Desire 500">
+                <list>
+                    <value>HTC Desire 500</value>
+                </list>
+            </device>
+            <device id="HUAWEI HN3-U01">
+                <list>
+                    <value>HUAWEI HN3-U01</value>
+                </list>
+            </device>
+            <device id="SAMSUNG-SM-N900A">
+                <list>
+                    <value>SAMSUNG-SM-N900A</value>
+                </list>
+            </device>
+            <device id="C6943">
+                <list>
+                    <value>C6943</value>
+                </list>
+            </device>
+            <device id="SM-T210">
+                <list>
+                    <value>SM-T210</value>
+                </list>
+            </device>
+            <device id="SM-T212">
+                <list>
+                    <value>SM-T212</value>
+                </list>
+            </device>
+            <device id="SM-T312">
+                <list>
+                    <value>SM-T312</value>
+                </list>
+            </device>
+            <device id="SM-T230">
+                <list>
+                    <value>SM-T230</value>
+                    <value>SM-T230NU</value>
+                    <value>SM-T230NT</value>
+                    <value>SM-T231</value>
+                    <value>SM-T235</value>
+                    <value>SM-T235Y</value>
+                </list>
+            </device>
+            <device id="SM-T330">
+                <list>
+                    <value>SM-T330</value>
+                    <value>SM-T330NU</value>
+                    <value>SM-T331</value>
+                    <value>SM-T335</value>
+                    <value>SM-T337A</value>
+                    <value>SM-T337T</value>
+                    <value>SM-T337V</value>
+                </list>
+            </device>
+            <device id="SM-T530">
+                <list>
+                    <value>SM-T530</value>
+                    <value>SM-T530NU</value>
+                    <value>SM-T531</value>
+                    <value>SM-T535</value>
+                    <value>SM-T537A</value>
+                    <value>SM-T537V</value>
+                </list>
+            </device>
+            <device id="SM-T320">
+                <list>
+                    <value>SM-T320</value>
+                </list>
+            </device>
+            <device id="SM-T365">
+                <list>
+                    <value>SM-T365</value>
+                </list>
+            </device>
+            <device id="SM-T700">
+                <list>
+                    <value>SM-T700</value>
+                    <value>SM-T705</value>
+                    <value>SM-T705M</value>
+                    <value>SM-T705C</value>
+                    <value>SM-T705Y</value>
+                </list>
+            </device>
+            <device id="SM-T800">
+                <list>
+                    <value>SM-T800</value>
+                    <value>SM-T800X</value>
+                    <value>SM-T805</value>
+                    <value>SM-T805M</value>
+                    <value>SM-T805W</value>
+                    <value>SM-T805Y</value>
+                    <value>SM-T807P</value>
+                </list>
+            </device>
+            <device id="GT-N7108D">
+                <list>
+                    <value>GT-N7108D</value>
+                </list>
+            </device>
+            <device id="C6902">
+                <list>
+                    <value>C6902</value>
+                </list>
+            </device>
+            <device id="SM-N900P">
+                <list>
+                    <value>SM-N900P</value>
+                </list>
+            </device>
+            <device id="SC-01F">
+                <list>
+                    <value>SC-01F</value>
+                </list>
+            </device>
+            <device id="SM-N900R4">
+                <list>
+                    <value>SM-N900R4</value>
+                </list>
+            </device>
+            <device id="Nexus 4">
+                <list>
+                    <value>LG-E960</value>
+                </list>
+            </device>
+            <device id="SM-P605">
+                <list>
+                    <value>SM-P605</value>
+                </list>
+            </device>
+            <device id="SM-P600">
+                <list>
+                    <value>SM-P600</value>
+                </list>
+            </device>
+            <device id="SM-N900S">
+                <list>
+                    <value>SM-N900S</value>
+                </list>
+            </device>
+            <device id="SM-N900V">
+                <list>
+                    <value>SM-N900V</value>
+                </list>
+            </device>
+            <device id="SM-N900">
+                <list>
+                    <value>SM-N900</value>
+                </list>
+            </device>
+            <device id="SM-N900K">
+                <list>
+                    <value>SM-N900K</value>
+                </list>
+            </device>
+            <device id="SM-N9005">
+                <list>
+                    <value>SM-N9005</value>
+                </list>
+            </device>
+            <device id="SM-N900T">
+                <list>
+                    <value>SM-N900T</value>
+                </list>
+            </device>
+            <device id="LG-E986">
+                <list>
+                    <value>LG-E986</value>
+                </list>
+            </device>
+            <device id="LG-D800/D800">
+                <list>
+                    <value>LG-D800/D800</value>
+                </list>
+            </device>
+            <device id="LG-D801">
+                <list>
+                    <value>LG-D801</value>
+                </list>
+            </device>
+            <device id="LG-F320K">
+                <list>
+                    <value>LG-F320K</value>
+                </list>
+            </device>
+            <device id="LG-F320S">
+                <list>
+                    <value>LG-F320S</value>
+                </list>
+            </device>
+            <device id="GT-I9506">
+                <list>
+                    <value>GT-I9506</value>
+                </list>
+            </device>
+            <device id="XT627">
+                <list>
+                    <value>XT627</value>
+                </list>
+            </device>
+            <device id="XT1055">
+                <list>
+                    <value>XT1055</value>
+                </list>
+            </device>
+            <device id="SAMSUNG GT-I9507">
+                <list>
+                    <value>SAMSUNG GT-I9507</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 6034R">
+                <list>
+                    <value>ALCATEL ONE TOUCH 6034R</value>
+                </list>
+            </device>
+            <device id="GT-I8558">
+                <list>
+                    <value>GT-I8558</value>
+                </list>
+            </device>
+            <device id="GT-I9158">
+                <list>
+                    <value>GT-I9158</value>
+                </list>
+            </device>
+            <device id="SCH-P709">
+                <list>
+                    <value>SCH-P709</value>
+                </list>
+            </device>
+            <device id="LG-D803">
+                <list>
+                    <value>LG-D803</value>
+                </list>
+            </device>
+            <device id="SCH-P729">
+                <list>
+                    <value>SCH-P729</value>
+                </list>
+            </device>
+            <device id="ME571KL">
+                <list>
+                    <value>ME571KL</value>
+                </list>
+            </device>
+            <device id="LG-D605">
+                <list>
+                    <value>LG-D605</value>
+                </list>
+            </device>
+            <device id="SHV-E210K">
+                <list>
+                    <value>SHV-E210K</value>
+                </list>
+            </device>
+            <device id="SAMSUNG-SM-C105A">
+                <list>
+                    <value>SAMSUNG-SM-C105A</value>
+                </list>
+            </device>
+            <device id="SPH-L600">
+                <list>
+                    <value>SPH-L600</value>
+                </list>
+            </device>
+            <device id="LG-F320L">
+                <list>
+                    <value>LG-F320L</value>
+                </list>
+            </device>
+            <device id="C2305">
+                <list>
+                    <value>C2305</value>
+                </list>
+            </device>
+            <device id="C6903">
+                <list>
+                    <value>C6903</value>
+                </list>
+            </device>
+            <device id="LG-LS980">
+                <list>
+                    <value>LG-LS980</value>
+                </list>
+            </device>
+            <device id="XT1056">
+                <list>
+                    <value>XT1056</value>
+                </list>
+            </device>
+            <device id="GT-S7273T">
+                <list>
+                    <value>GT-S7273T</value>
+                </list>
+            </device>
+            <device id="HTC6500LVW">
+                <list>
+                    <value>HTC6500LVW</value>
+                </list>
+            </device>
+            <device id="XT1060">
+                <list>
+                    <value>XT1060</value>
+                </list>
+            </device>
+            <device id="SHV-E330L">
+                <list>
+                    <value>SHV-E330L</value>
+                </list>
+            </device>
+            <device id="GT-S7270">
+                <list>
+                    <value>GT-S7270</value>
+                </list>
+            </device>
+            <device id="ME173X">
+                <list>
+                    <value>ME173X</value>
+                </list>
+            </device>
+            <device id="XT1080">
+                <list>
+                    <value>XT1080</value>
+                </list>
+            </device>
+            <device id="XT1030">
+                <list>
+                    <value>XT1030</value>
+                </list>
+            </device>
+            <device id="C6802">
+                <list>
+                    <value>C6802</value>
+                </list>
+            </device>
+            <device id="C6833">
+                <list>
+                    <value>C6833</value>
+                </list>
+            </device>
+            <device id="C6806">
+                <list>
+                    <value>C6806</value>
+                </list>
+            </device>
+            <device id="SHV-E330S">
+                <list>
+                    <value>SHV-E330S</value>
+                </list>
+            </device>
+            <device id="GT-S7272">
+                <list>
+                    <value>GT-S7272</value>
+                </list>
+            </device>
+            <device id="SM-T315">
+                <list>
+                    <value>SM-T315</value>
+                </list>
+            </device>
+            <device id="XT1053">
+                <list>
+                    <value>XT1053</value>
+                </list>
+            </device>
+            <device id="GT-N7108">
+                <list>
+                    <value>GT-N7108</value>
+                </list>
+            </device>
+            <device id="SGH-I467M">
+                <list>
+                    <value>SGH-I467M</value>
+                </list>
+            </device>
+            <device id="SAMSUNG-SGH-I857">
+                <list>
+                    <value>SAMSUNG-SGH-I857</value>
+                </list>
+            </device>
+            <device id="SPH-P600">
+                <list>
+                    <value>SPH-P600</value>
+                </list>
+            </device>
+            <device id="LG-LS720">
+                <list>
+                    <value>LG-LS720</value>
+                </list>
+            </device>
+            <device id="SPH-M840">
+                <list>
+                    <value>SPH-M840</value>
+                </list>
+            </device>
+            <device id="LG-LG870">
+                <list>
+                    <value>LG-LG870</value>
+                </list>
+            </device>
+            <device id="GT-S6310T">
+                <list>
+                    <value>GT-S6310T</value>
+                </list>
+            </device>
+            <device id="SAMSUNG-SGH-I527">
+                <list>
+                    <value>SAMSUNG-SGH-I527</value>
+                </list>
+            </device>
+            <device id="SonySGP321">
+                <list>
+                    <value>SonySGP321</value>
+                </list>
+            </device>
+            <device id="GT-I9192">
+                <list>
+                    <value>GT-I9192</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SCH-R970X">
+                <list>
+                    <value>SAMSUNG SCH-R970X</value>
+                </list>
+            </device>
+            <device id="GT-P5210">
+                <list>
+                    <value>GT-P5210</value>
+                </list>
+            </device>
+            <device id="LG-E989">
+                <list>
+                    <value>LG-E989</value>
+                </list>
+            </device>
+            <device id="SAMSUNG GT-I9190">
+                <list>
+                    <value>SAMSUNG GT-I9190</value>
+                </list>
+            </device>
+            <device id="LG-E445">
+                <list>
+                    <value>LG-E445</value>
+                </list>
+            </device>
+            <device id="C1904">
+                <list>
+                    <value>C1904</value>
+                </list>
+            </device>
+            <device id="GT-I9502">
+                <list>
+                    <value>GT-I9502</value>
+                </list>
+            </device>
+            <device id="SC-04E">
+                <list>
+                    <value>SC-04E</value>
+                </list>
+            </device>
+            <device id="GT-I9508">
+                <list>
+                    <value>GT-I9508</value>
+                </list>
+            </device>
+            <device id="ZTE U956">
+                <list>
+                    <value>ZTE U956</value>
+                </list>
+            </device>
+            <device id="L-05E">
+                <list>
+                    <value>L-05E</value>
+                </list>
+            </device>
+            <device id="SAMSUNG-SGH-I257">
+                <list>
+                    <value>SAMSUNG-SGH-I257</value>
+                </list>
+            </device>
+            <device id="SAMSUNG GT-I9192">
+                <list>
+                    <value>SAMSUNG GT-I9192</value>
+                </list>
+            </device>
+            <device id="F-06E">
+                <list>
+                    <value>F-06E</value>
+                </list>
+            </device>
+            <device id="SM-C101">
+                <list>
+                    <value>SM-C101</value>
+                </list>
+            </device>
+            <device id="SM-C105">
+                <list>
+                    <value>SM-C105</value>
+                    <value>SM-C105L</value>
+                    <value>SM-C105S</value>
+                </list>
+            </device>
+            <device id="SM-C111">
+                <list>
+                    <value>SM-C111</value>
+                    <value>SM-C111M</value>
+                </list>
+            </device>
+            <device id="SM-C115">
+                <list>
+                    <value>SM-C115</value>
+                    <value>SM-C115L</value>
+                    <value>SM-C115M</value>
+                </list>
+            </device>
+            <device id="SH-05E">
+                <list>
+                    <value>SH-05E</value>
+                </list>
+            </device>
+            <device id="HUAWEI P6-U06">
+                <list>
+                    <value>HUAWEI P6-U06</value>
+                </list>
+            </device>
+            <device id="C6616">
+                <list>
+                    <value>C6616</value>
+                </list>
+            </device>
+            <device id="C5503">
+                <list>
+                    <value>C5503</value>
+                </list>
+            </device>
+            <device id="GT-P5200">
+                <list>
+                    <value>GT-P5200</value>
+                </list>
+            </device>
+            <device id="SAMSUNG-SGH-I537">
+                <list>
+                    <value>SAMSUNG-SGH-I537</value>
+                </list>
+            </device>
+            <device id="C1905">
+                <list>
+                    <value>C1905</value>
+                </list>
+            </device>
+            <device id="GT-I9205">
+                <list>
+                    <value>GT-I9205</value>
+                </list>
+            </device>
+            <device id="GT-I9295">
+                <list>
+                    <value>GT-I9295</value>
+                </list>
+            </device>
+            <device id="SH-06E">
+                <list>
+                    <value>SH-06E</value>
+                </list>
+            </device>
+            <device id="GT-I9195">
+                <list>
+                    <value>GT-I9195</value>
+                </list>
+            </device>
+            <device id="ZTE V967S">
+                <list>
+                    <value>ZTE V967S</value>
+                </list>
+            </device>
+            <device id="XT1058">
+                <list>
+                    <value>XT1058</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SGH-U468">
+                <list>
+                    <value>SAMSUNG SGH-U468</value>
+                </list>
+            </device>
+            <device id="SCH-V727">
+                <list>
+                    <value>SCH-V727</value>
+                </list>
+            </device>
+            <device id="GT-P5220">
+                <list>
+                    <value>GT-P5220</value>
+                </list>
+            </device>
+            <device id="C5502">
+                <list>
+                    <value>C5502</value>
+                </list>
+            </device>
+            <device id="GT-B9150">
+                <list>
+                    <value>GT-B9150</value>
+                </list>
+            </device>
+            <device id="SCH-I879">
+                <list>
+                    <value>SCH-I879</value>
+                </list>
+            </device>
+            <device id="GT-N8005">
+                <list>
+                    <value>GT-N8005</value>
+                </list>
+            </device>
+            <device id="GT-N7005">
+                <list>
+                    <value>GT-N7005</value>
+                </list>
+            </device>
+            <device id="SCH-R820">
+                <list>
+                    <value>SCH-R820</value>
+                </list>
+            </device>
+            <device id="HTC One 801e">
+                <list>
+                    <value>HTC One 801e</value>
+                </list>
+            </device>
+            <device id="XT626">
+                <list>
+                    <value>XT626</value>
+                </list>
+            </device>
+            <device id="XT912">
+                <list>
+                    <value>XT912</value>
+                </list>
+            </device>
+            <device id="ME371MG">
+                <list>
+                    <value>ME371MG</value>
+                </list>
+            </device>
+            <device id="LG-F240S">
+                <list>
+                    <value>LG-F240S</value>
+                </list>
+            </device>
+            <device id="C6602">
+                <list>
+                    <value>C6602</value>
+                </list>
+            </device>
+            <device id="ZTE V768">
+                <list>
+                    <value>ZTE V768</value>
+                </list>
+            </device>
+            <device id="SHV-E300K">
+                <list>
+                    <value>SHV-E300K</value>
+                </list>
+            </device>
+            <device id="LG-F180S">
+                <list>
+                    <value>LG-F180S</value>
+                </list>
+            </device>
+            <device id="ME172V">
+                <list>
+                    <value>ME172V</value>
+                </list>
+            </device>
+            <device id="ZTE N9120">
+                <list>
+                    <value>ZTE N9120</value>
+                </list>
+            </device>
+            <device id="SHV-E300L">
+                <list>
+                    <value>SHV-E300L</value>
+                </list>
+            </device>
+            <device id="SGH-I337M">
+                <list>
+                    <value>SGH-I337M</value>
+                </list>
+            </device>
+            <device id="A1-810">
+                <list>
+                    <value>A1-810</value>
+                </list>
+            </device>
+            <device id="SAMSUNG GT-I9205">
+                <list>
+                    <value>SAMSUNG GT-I9205</value>
+                </list>
+            </device>
+            <device id="GT-I8730T">
+                <list>
+                    <value>GT-I8730T</value>
+                </list>
+            </device>
+            <device id="ZTE-U V889F">
+                <list>
+                    <value>ZTE-U V889F</value>
+                </list>
+            </device>
+            <device id="V370">
+                <list>
+                    <value>V370</value>
+                </list>
+            </device>
+            <device id="GT-I8262">
+                <list>
+                    <value>GT-I8262</value>
+                </list>
+            </device>
+            <device id="GT-I8552">
+                <list>
+                    <value>GT-I8552</value>
+                </list>
+            </device>
+            <device id="HTC6445LVW">
+                <list>
+                    <value>HTC6445LVW</value>
+                </list>
+            </device>
+            <device id="SM-T211">
+                <list>
+                    <value>SM-T211</value>
+                </list>
+            </device>
+            <device id="C2104">
+                <list>
+                    <value>C2104</value>
+                </list>
+            </device>
+            <device id="SCH-I959">
+                <list>
+                    <value>SCH-I959</value>
+                </list>
+            </device>
+            <device id="VS870 4G">
+                <list>
+                    <value>VS870 4G</value>
+                </list>
+            </device>
+            <device id="HTC 802w">
+                <list>
+                    <value>HTC 802w</value>
+                </list>
+            </device>
+            <device id="HTC 802d">
+                <list>
+                    <value>HTC 802d</value>
+                </list>
+            </device>
+            <device id="SCH-S738C">
+                <list>
+                    <value>SCH-S738C</value>
+                </list>
+            </device>
+            <device id="LG-F100L">
+                <list>
+                    <value>LG-F100L</value>
+                </list>
+            </device>
+            <device id="LG-F240K">
+                <list>
+                    <value>LG-F240K</value>
+                </list>
+            </device>
+            <device id="C5302">
+                <list>
+                    <value>C5302</value>
+                </list>
+            </device>
+            <device id="SAMSUNG SGH-M919">
+                <list>
+                    <value>SAMSUNG SGH-M919</value>
+                </list>
+            </device>
+            <device id="GT-I9200">
+                <list>
+                    <value>GT-I9200</value>
+                </list>
+            </device>
+            <device id="ME370T">
+                <list>
+                    <value>ME370T</value>
+                </list>
+            </device>
+            <device id="V811">
+                <list>
+                    <value>V811</value>
+                </list>
+            </device>
+            <device id="V360">
+                <list>
+                    <value>V360</value>
+                </list>
+            </device>
+            <device id="LT30a">
+                <list>
+                    <value>LT30a</value>
+                </list>
+            </device>
+            <device id="LG-E425g">
+                <list>
+                    <value>LG-E425g</value>
+                </list>
+            </device>
+            <device id="XT926">
+                <list>
+                    <value>XT926</value>
+                </list>
+            </device>
+            <device id="SonyLT30p">
+                <list>
+                    <value>Xperia T</value>
+                </list>
+            </device>
+            <device id="LG-E973">
+                <list>
+                    <value>Optimus G</value>
+                </list>
+            </device>
+            <device id="SCH-I545">
+                <list>
+                    <value>SCH-I545</value>
+                </list>
+            </device>
+            <device id="P690">
+                <list>
+                    <value>Optimus Net</value>
+                </list>
+            </device>
+            <device id="SonyEricssonLT18i">
+                <list>
+                    <value>lt18</value>
+                </list>
+            </device>
+            <device id="ASUS Transformer Pad TF700T">
+                <list>
+                    <value>Transformer Infinity</value>
+                </list>
+            </device>
+            <device id="ASUS-TF810C">
+                <list>
+                    <value>ASU2JS</value>
+                </list>
+            </device>
+
+            <device id="SHW-E250S">
+                <list>
+                    <value>SHW-E250S</value>
+                </list>
+            </device>
+            <device id="HTC Z560e">
+                <list>
+                    <value>One S</value>
+                </list>
+            </device>
+            <device id="SGH-T879">
+                <list>
+                    <value>SAMSUNG-SGH-T879</value>
+                </list>
+            </device>
+            <device id="GT-S7572">
+                <list>
+                    <value>GT-S7572</value>
+                </list>
+            </device>
+            <device id="LG-F260S">
+                <list>
+                    <value>LG-F260S</value>
+                </list>
+            </device>
+            <device id="XT920">
+                <list>
+                    <value>XT920</value>
+                </list>
+            </device>
+            <device id="GT-N5110">
+                <list>
+                    <value>GT-N5110</value>
+                </list>
+            </device>
+            <device id="L-04E">
+                <list>
+                    <value>L-04E</value>
+                </list>
+            </device>
+            <device id="SCH-R970">
+                <list>
+                    <value>SCH-R970</value>
+                </list>
+            </device>
+            <device id="SPH-L720">
+                <list>
+                    <value>SPH-L720</value>
+                </list>
+            </device>
+            <device id="SGH-T999L">
+                <list>
+                    <value>SGH-T999L</value>
+                </list>
+            </device>
+            <device id="LG-E455">
+                <list>
+                    <value>LG-E455</value>
+                </list>
+            </device>
+            <device id="C1505">
+                <list>
+                    <value>SonyC1505</value>
+                </list>
+            </device>
+            <device id="Alcatel_one_touch_918_Orange">
+                <list>
+                    <value>Alcatel_one_touch_918_Orange</value>
+                </list>
+            </device>
+            <device id="GT-I9505">
+                <list>
+                    <value>SAMSUNG GT-I9505-ORANGE</value>
+                </list>
+            </device>
+            <device id="GT-I9505">
+                <list>
+                    <value>GT-I9505</value>
+                </list>
+            </device>
+            <device id="SGP321">
+                <list>
+                    <value>SGP321</value>
+                </list>
+            </device>
+            <device id="LG-E460">
+                <list>
+                    <value>LG-E460</value>
+                </list>
+            </device>
+            <device id="HUAWEI P2-6011">
+                <list>
+                    <value>HUAWEI P2-6011-orange</value>
+                </list>
+            </device>
+            <device id="HUAWEI P2-6011">
+                <list>
+                    <value>HUAWEI P2-6011</value>
+                </list>
+            </device>
+            <device id="HTC first">
+                <list>
+                    <value>HTC first</value>
+                </list>
+            </device>
+            <device id="SAMSUNG-EK-GC100">
+                <list>
+                    <value>EK-GC100</value>
+                </list>
+            </device>
+            <device id="C1505">
+                <list>
+                    <value>C1505</value>
+                </list>
+            </device>
+            <device id="ALCATEL_ONE_TOUCH_6010X_Orange">
+                <list>
+                    <value>ALCATEL_ONE_TOUCH_6010X_Orange</value>
+                </list>
+            </device>
+            <device id="ALCATEL ONE TOUCH 997">
+                <list>
+                    <value>ALCATEL ONE TOUCH 997</value>
+                </list>
+            </device>
+            <device id="GT-I9500">
+                <list>
+                    <value>GT-I9500</value>
+                </list>
+            </device>
+            <device id="U9202L-3">
                 <list>
                     <value>U9202L-3</value>
                 </list>
             </device>
-        	<device id="GT-S5303">
+            <device id="GT-S5303">
                 <list>
                     <value>GT-S5303</value>
                 </list>
             </device>
-        	<device id="SonyLT29i">
+            <device id="SonyLT29i">
                 <list>
                     <value>LT29i</value>
                 </list>
             </device>
-        	<device id="LG-E977">
+            <device id="LG-E977">
                 <list>
                     <value>LG-E977</value>
                 </list>
             </device>
-        	<device id="ME301T">
+            <device id="ME102">
+                <list>
+                    <value>K00F</value>
+                </list>
+            </device>
+            <device id="ME301T">
                 <list>
                     <value>ME301T</value>
                 </list>
             </device>
-        	<device id="HUAWEI D2-0082">
+            <device id="HUAWEI D2-0082">
                 <list>
                     <value>HUAWEI D2-0082</value>
                 </list>
             </device>
-        	<device id="C2105">
+            <device id="C2105">
                 <list>
                     <value>C2105</value>
                 </list>
             </device>
-        	<device id="SHV-E300S">
+            <device id="SHV-E300S">
                 <list>
                     <value>SHV-E300S</value>
                 </list>
             </device>
-        	<device id="XT915">
+            <device id="XT915">
                 <list>
                     <value>XT915</value>
                 </list>
             </device>
-        	<device id="SonySO-02E">
+            <device id="SonySO-02E">
                 <list>
                     <value>SO-02E</value>
                 </list>
             </device>
-        	<device id="SH837W">
+            <device id="SH837W">
                 <list>
                     <value>SH837W</value>
                 </list>
             </device>
-        	<device id="SonyLT25i">
+            <device id="SonyLT25i">
                 <list>
                     <value>LT25i</value>
                 </list>
             </device>
-       		<device id="LG-E435">
+            <device id="LG-E435">
                 <list>
                     <value>LG-E435</value>
                 </list>
             </device>
-        	<device id="F160L">
+            <device id="F160L">
                 <list>
                     <value>F160L</value>
                 </list>
             </device>
-        	<device id="GT-I8262D">
+            <device id="GT-I8262D">
                 <list>
                     <value>GT-I8262D</value>
                 </list>
             </device>
-        	<device id="HUAWEI C8813">
+            <device id="HUAWEI C8813">
                 <list>
                     <value>HUAWEI C8813</value>
                 </list>
             </device>
-        	<device id="GT-S7710">
+            <device id="GT-S7710">
                 <list>
                     <value>GT-S7710</value>
                 </list>
             </device>
-        	<device id="SAMSUNG GT-B7810">
+            <device id="SAMSUNG GT-B7810">
                 <list>
                     <value>SAMSUNG GT-B7810</value>
                 </list>
             </device>
-        	<device id="HTC6435LVW 4G">
+            <device id="HTC6435LVW">
                 <list>
-                    <value>HTC6435LVW 4G</value>
+                    <value>HTC6435LVW</value>
                 </list>
             </device>
-        	<device id="MZ607">
+            <device id="MZ607">
                 <list>
                     <value>MZ607</value>
                 </list>
             </device>
-        	<device id="GT-S6810P">
+            <device id="GT-S6810P">
                 <list>
                     <value>GT-S6810P</value>
                 </list>
             </device>
-        	<device id="LG-P875">
+            <device id="LG-P875">
                 <list>
                     <value>LG-P875</value>
                 </list>
             </device>
-        	<device id="W732">
+            <device id="W732">
                 <list>
                     <value>W732</value>
                 </list>
             </device>
-        	<device id="ZTE V790">
+            <device id="ZTE V790">
                 <list>
                     <value>ZTE V790</value>
                 </list>
             </device>
-        	<device id="HUAWEI U8950-1">
+            <device id="HUAWEI U8950-1">
                 <list>
                     <value>HUAWEI U8950-1</value>
                 </list>
@@ -148,17 +3392,17 @@
                     <value>P-02E</value>
                 </list>
             </device>
-        	<device id="SO-01E">
+            <device id="SO-01E">
                 <list>
                     <value>SO-01E</value>
                 </list>
             </device>
-        	<device id="SonySO-02E">
+            <device id="SonySO-02E">
                 <list>
                     <value>SonySO-02E</value>
                 </list>
             </device>
-        	<device id="SC-05D">
+            <device id="SC-05D">
                 <list>
                     <value>SC-05D</value>
                 </list>
@@ -188,12 +3432,12 @@
                     <value>GT-S6312</value>
                 </list>
             </device>
-           <device id="C1504">
+            <device id="C1504">
                 <list>
                     <value>C1504</value>
                 </list>
             </device>
-           <device id="SAMSUNG-SGH-I337">
+            <device id="SAMSUNG-SGH-I337">
                 <list>
                     <value>SAMSUNG-SGH-I337</value>
                 </list>
@@ -223,7 +3467,7 @@
                     <value>LG-P715</value>
                 </list>
             </device>
-           <device id="LG-E975">
+            <device id="LG-E975">
                 <list>
                     <value>LG-E975</value>
                 </list>
@@ -233,17 +3477,17 @@
                     <value>LG-E430</value>
                 </list>
             </device>
-           <device id="GT-I8730">
+            <device id="GT-I8730">
                 <list>
                     <value>GT-I8730</value>
                 </list>
             </device>
-           <device id="HUAWEI C8812">
+            <device id="HUAWEI C8812">
                 <list>
                     <value>HUAWEI C8812</value>
                 </list>
             </device>
-           <device id="HUAWEI C8812">
+            <device id="HUAWEI C8812">
                 <list>
                     <value>HUAWEI C8812</value>
                 </list>
@@ -283,7 +3527,7 @@
                     <value>LG-SU640</value>
                 </list>
             </device>
-           <device id="GT-I9152">
+            <device id="GT-I9152">
                 <list>
                     <value>GT-I9152</value>
                 </list>
@@ -293,17 +3537,17 @@
                     <value>LG-SU880</value>
                 </list>
             </device>
-           <device id="LG-F200S">
+            <device id="LG-F200S">
                 <list>
                     <value>LG-F200S</value>
                 </list>
             </device>
-           <device id="LG-F180L">
+            <device id="LG-F180L">
                 <list>
                     <value>LG-F180L</value>
                 </list>
             </device>
-           <device id="LG-F160S">
+            <device id="LG-F160S">
                 <list>
                     <value>LG-F160S</value>
                 </list>
@@ -493,6 +3737,17 @@
                     <value>ASUS Transformer Pad TF700KL</value>
                 </list>
             </device>
+            <device id="ASUS Transformer Pad TF700KL">
+                <list>
+                    <value>ASUS Transformer Pad TF700KL</value>
+                </list>
+            </device>
+            <device id="ASUS ZenPad 10">
+                <list>
+                    <value>ASUS ZenPad 10</value>
+                    <value>P00C</value>
+                </list>
+            </device>
             <device id="XT389">
                 <list>
                     <value>XT389</value>
@@ -651,6 +3906,11 @@
             <device id="HTC One X+">
                 <list>
                     <value>PM63100</value>
+                </list>
+            </device>
+            <device id="HTC One M8">
+                <list>
+                    <value>HTC6525LVW</value>
                 </list>
             </device>
             <device id="HTC J Z321e">
@@ -1573,6 +4833,11 @@
                     <value>Nexus 7</value>
                 </list>
             </device>
+            <device id="Nexus9">
+                <list>
+                    <value>Nexus 9</value>
+                </list>
+            </device>
             <device id="ST21i2">
                 <list>
                     <value>ST21i2</value>
@@ -1985,7 +5250,7 @@
             </device>
             <device id="DROID X2">
                 <list>
-                    <value>MB870</value>
+                    <value>DROID X2</value>
                 </list>
             </device>
             <device id="SonyEricssonLT22i">
@@ -2871,6 +6136,42 @@
             <device id="XT532">
                 <list>
                     <value>XT532</value>
+                </list>
+            </device>
+            <device id="flyiq245">
+                <list>
+                    <value>iq245</value>
+                    <value>iq245plus</value>
+                </list>
+            </device>
+            <device id="flyiq256">
+                <list>
+                    <value>iq256</value>
+                </list>
+            </device>
+            <device id="flyiq430">
+                <list>
+                    <value>iq430</value>
+                </list>
+            </device>
+            <device id="flyiq440">
+                <list>
+                    <value>iq440</value>
+                </list>
+            </device>
+            <device id="flyiq441">
+                <list>
+                    <value>iq441</value>
+                </list>
+            </device>
+            <device id="flyiq442">
+                <list>
+                    <value>iq442</value>
+                </list>
+            </device>
+            <device id="flyiq445">
+                <list>
+                    <value>iq445</value>
                 </list>
             </device>
             <device id="SAMSUNG GT-S5369">
@@ -4090,11 +7391,6 @@
             </device>
             <device id="SonyEricssonWT19i">
                 <list>
-                    <value>SonyEricssonWT19a</value>
-                </list>
-            </device>
-            <device id="SonyEricssonWT19i">
-                <list>
                     <value>WT19i</value>
                 </list>
             </device>
@@ -4960,7 +8256,7 @@
             </device>
             <device id="A501">
                 <list>
-                    <value> A501 </value>
+                    <value>A501</value>
                 </list>
             </device>
             <device id="SonyEricssonR800at">
@@ -5141,6 +8437,11 @@
             <device id="LG-P509">
                 <list>
                     <value>LG-P509</value>
+                </list>
+            </device>
+            <device id="Droid">
+                <list>
+                    <value>Droid</value>
                 </list>
             </device>
             <device id="ZTE-LINK">
@@ -5735,7 +9036,7 @@
             </device>
             <device id="X10">
                 <list>
-                    <value>X10</value>
+                    <value>Sony X10</value>
                 </list>
             </device>
             <device id="Eris">
@@ -6398,8 +9699,57 @@
                     <value>ISW11HT</value>
                 </list>
             </device>
+            <device id="PixelXL">
+                <list>
+                    <value>Pixel XL</value>
+                     <value>Pixel</value>
+                     <value>XL</value>
+                </list>
+            </device>
+            <device id="Nokia2">
+                <list>
+                    <value>Nokia</value>
+                     <value>2</value>
+                </list>
+            </device>
+            <device id="Nokia2.1">
+                <list>
+                    <value>Nokia</value>
+                     <value>21</value>
+                </list>
+            </device>
+            <device id="Nokia3">
+                <list>
+                    <value>Nokia</value>
+                    <value>3</value>
+                </list>
+            </device>
+            <device id="Nokia3.1">
+                <list>
+                    <value>Nokia</value>
+                    <value>31</value>
+                </list>
+            </device>
+            <device id="Nokia6">
+                <list>
+                    <value>Nokia</value>
+                    <value>6</value>
+                </list>
+            </device>
+            <device id="Nokia6.1">
+                <list>
+                    <value>Nokia</value>
+                    <value>61</value>
+                </list>
+            </device>
+            <device id="Nokia8">
+                <list>
+                    <value>Nokia</value>
+                    <value>8</value>
+                </list>
+            </device>
         </builder>
-        <builder class="org.openddr.simpleapi.oddr.builder.device.SymbianDeviceBuilder">
+        <builder class="mobi.openddr.simple.builder.device.SymbianDeviceBuilder">
             <device id="Nokia600">
                 <list>
                     <value>Nokia600</value>
@@ -6861,7 +10211,97 @@
                 </list>
             </device>
         </builder>
-        <builder class="org.openddr.simpleapi.oddr.builder.device.WinPhoneDeviceBuilder">
+        <builder class="mobi.openddr.simple.builder.device.WinPhoneDeviceBuilder">
+            <device id="SM-W750V">
+                <list>
+                    <value>SM-W750V</value>
+                </list>
+            </device>
+            <device id="Lumia 625">
+                <list>
+                    <value>Lumia 625</value>
+                </list>
+            </device>
+            <device id="Lumia530">
+                <list>
+                    <value>Lumia 530</value>
+                </list>
+            </device>
+            <device id="Lumia930">
+                <list>
+                    <value>Lumia 930</value>
+                </list>
+            </device>
+            <device id="Lumia635">
+                <list>
+                    <value>Lumia 635</value>
+                </list>
+            </device>
+            <device id="SGH-I187">
+                <list>
+                    <value>SGH-I187</value>
+                </list>
+            </device>
+            <device id="Lumia 929">
+                <list>
+                    <value>Lumia 929</value>
+                </list>
+            </device>
+            <device id="Lumia 1320">
+                <list>
+                    <value>Lumia 1320</value>
+                </list>
+            </device>
+            <device id="Lumia 1520">
+                <list>
+                    <value>Lumia 1520</value>
+                </list>
+            </device>
+            <device id="Lumia 1020">
+                <list>
+                    <value>Lumia 1020</value>
+                </list>
+            </device>
+            <device id="Lumia 925">
+                <list>
+                    <value>Lumia 925</value>
+                </list>
+            </device>
+            <device id="Nokia 620">
+                <list>
+                    <value>Lumia 620</value>
+                </list>
+            </device>
+            <device id="Lumia 521">
+                <list>
+                    <value>Lumia 521</value>
+                </list>
+            </device>
+            <device id="Lumia 720">
+                <list>
+                    <value>Lumia 720</value>
+                </list>
+            </device>
+            <device id="Lumia 520">
+                <list>
+                    <value>Lumia 520</value>
+                </list>
+            </device>
+            <device id="SGH-T899M">
+                <list>
+                    <value>SGH-T899M</value>
+                </list>
+            </device>
+            <device id="Nokia 620">
+                <list>
+                    <value>Nokia 620</value>
+                </list>
+            </device>
+            <device id="Lumia 928">
+                <list>
+                    <value>Lumia 928</value>
+                </list>
+            </device>
             <device id="A620b">
                 <list>
                     <value>A620b</value>
@@ -7060,6 +10500,13 @@
             <device id="ASUS-P552w">
                 <list>
                     <value>ASUS-P552w</value>
+                </list>
+            </device>
+            <device id="ASUS-M80">
+                <list>
+                    <value>ASUS-M80</value>
+                    <value>M80TA</value>
+                    <value>M81C</value><!-- TODO separate device? -->
                 </list>
             </device>
             <device id="HTC_S740">
@@ -7363,7 +10810,7 @@
                 </list>
             </device>
         </builder>
-        <builder class="org.openddr.simpleapi.oddr.builder.device.IOSDeviceBuilder">
+        <builder class="mobi.openddr.simple.builder.device.IOSDeviceBuilder">
             <device id="iPad">
                 <list>
                     <value>iPad</value>
@@ -7380,7 +10827,7 @@
                 </list>
             </device>
         </builder>
-        <builder class="org.openddr.simpleapi.oddr.builder.device.TwoStepDeviceBuilder">
+        <builder class="mobi.openddr.simple.builder.device.TwoStepDeviceBuilder">
             <device id="SAMSUNG-SGH-i780">
                 <list>
                     <value>SAMSUNG</value>
@@ -9865,12 +13312,6 @@
                     <value>blackberry9300</value>
                 </list>
             </device>
-	    <device id="BlackBerry9300">
-                <list>
-                    <value>[Bb]lack.?[Bb]erry</value>
-                    <value>blackberry 9300</value>
-                </list>
-            </device>
             <device id="BlackBerry8330m">
                 <list>
                     <value>[Bb]lack.?[Bb]erry</value>
@@ -11059,22 +14500,10 @@
                     <value>TF101</value>
                 </list>
             </device>
-            <device id="iPad">
-                <list>
-                    <value>iPad</value>
-                    <value>iPad</value>
-                </list>
-            </device>
             <device id="NokiaC2-00">
                 <list>
                     <value>Nokia</value>
                     <value>C2-00</value>
-                </list>
-            </device>
-            <device id="iPhone">
-                <list>
-                    <value>iPhone</value>
-                    <value>iPhone</value>
                 </list>
             </device>
             <device id="NGM_Premier">
@@ -11141,6 +14570,12 @@
                 <list>
                     <value>Nokia</value>
                     <value>300</value>
+                </list>
+            </device>
+            <device id="PLAYSTATION_2">
+                <list>
+                 	<value>PLAYSTATION</value>
+                    <value>PS2</value>
                 </list>
             </device>
             <device id="PLAYSTATION_3">
@@ -12343,16 +15778,58 @@
                     <value>305</value>
                 </list>
             </device>
-	    <device id="Droid">
+            <device id="GT-N7100">
                 <list>
-                    <value>Droid</value>
+                    <value>android</value>
+                    <value>GT-N7100</value>
                 </list>
             </device>
-	    <device id="genericRIM">
+            <device id="Nokia501">
                 <list>
-                    <value>[Bb]lack.?[Bb]erry</value>
+                    <value>Nokia</value>
+                    <value>501</value>
                 </list>
             </device>
+             <device id="SM-T807V">
+               <list>
+                    <value>SM-T807V</value>
+                </list>
+            </device>
+            <device id="SM-N960">
+               <list>
+                    <value>SM-N9600</value>
+                </list>
+            </device>
+            <device id="SM-N960F">
+               <list>
+                    <value>SM-N960F</value>
+                </list>
+            </device>
+            <device id="SM-N960N">
+               <list>
+                    <value>SM-N960N</value>
+                </list>
+            </device>
+            <device id="SM-N960U">
+               <list>
+                    <value>SM-N960U</value>
+                </list>
+            </device>
+            <device id="LG-LM-V600">
+               <list>
+                    <value>LM-V600</value>
+                </list>
+            </device>
+            <device id="LG-LM-K410">
+               <list>
+                    <value>LM-K410</value>
+                </list>
+            </device>
+            <device id="LG-LM-X430">
+               <list>
+                    <value>LM-X430</value>
+                </list>
+            </device>         
         </builder>
     </Builders>
 </ODDR>
