@@ -45,7 +45,7 @@ By implementing this solution, a developer should not be limited to one approach
 ### Build Status [![Codeship Status for platform-hq/platform](https://app.codeship.com/projects/0aa591f0-f2dd-0135-e1c2-66b5dd16fd19/status?branch=0.0)](https://app.codeship.com/projects/272130)
 - This project is built and tested specifically on [Chromium Browser](http://www.chromium.org)
 - This project has been tested to work on Ubuntu 16.04 up to the latest.
-- This project has been tested to work with PHP 7.3 using [Travis CI](https://travis-ci.org/platform-project/platform-project)
+- This project has been tested to work with PHP 7.3+ using [CodeShip](https://app.codeship.com/)
 
 ### Help
 - Please submit all issues and pull requests to the [Platform Project on GitHub](https://github.com/platform-project/platform-project/issues) repository!
