@@ -146,7 +146,7 @@ function db_insert_sqlite($table, $columns, $values, &$db){
 }
 
 if(!function_exists('sqlite_open')) {
-  function sqlite_open($location,$mode) { 
+  function sqlite_open($location,$mode=null) { 
     $handle = new SQLite3($location); 
     return $handle; 
   } 
