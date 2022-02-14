@@ -46,7 +46,9 @@ function load_mapbox(){
     <div id="directions_panel"></div>
     <div id="overlay_canvas">
       <div id="brand">
-        <span class="navigator logo" style="background: transparent url('<?php echo image_data_uri("assets/images/map.png", "png"); ?>') no-repeat; display: block; width: 168px; height: 108px;"></span><span class="navigator text">navi<span style="color: rgb(118, 160, 213);">gate</span><!--<sup>&lt;maps&gt;</sup><sub>&lt;/maps&gt;</sub>--></span>
+        <a class="home" href="javascript:{}">
+          <span class="navigator logo" style="background: transparent url('<?php echo image_data_uri("assets/images/map.png", "png"); ?>') no-repeat; display: block; width: 168px; height: 108px;"></span><span class="navigator text">navi<span style="color: rgb(118, 160, 213);">gate</span><!--<sup>&lt;maps&gt;</sup><sub>&lt;/maps&gt;</sub>--></span>
+        </a>
       </div>
       <div id="map_controls">
         <span class="control satellite"><a href="javascript:{}"><i class="fa-solid fa-satellite"></i> Satellite</a></span> &nbsp; 
@@ -57,6 +59,11 @@ function load_mapbox(){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" integrity="sha512-yFjZbTYRCJodnuyGlsKamNE/LlEaEAxSUDe5+u61mV8zzqJVFOH7TnULE2/PP/l5vKWpUNnF4VGVkXh3MjgLsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
       $(function (){
+
+        $('#brand .home').click(function(){
+            location.reload(true);
+        });
+
         $('#map_controls .control.satellite a').click(function(){
             $('#map_satellite').css('display', 'block');
             $('#map_street').css('display', 'none');

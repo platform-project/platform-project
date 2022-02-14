@@ -10,6 +10,7 @@ body { font-family: Ubuntu; height: 100%; margin: 0; padding: 0; overflow: hidde
 #overlay_canvas { background: black; width: 100%; height: 50px; z-index: 10; position: absolute; bottom: 0px; }
 
 #brand { float: left; display: block; z-index: 10; }
+#brand .home { text-decoration: none; }
 #brand span.navigator.logo { display: block; position: relative; top: -55px; width: 168px; height: 108px; }
 #brand span.navigator.text { display: block; position: relative; top: -96px; left: 80px; font-size: 24px; font-weight: bold; text-align: left; color: white; padding: 5px 0 0 20px; }
 
