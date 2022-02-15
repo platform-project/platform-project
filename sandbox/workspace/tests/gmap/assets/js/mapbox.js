@@ -15,7 +15,7 @@ function setUpMap(center){
     // satellite view
     var map_satellite = new mapboxgl.Map({
         container: 'map_satellite',
-        style: 'mapbox://styles/mapbox/satellite-v9',
+        style: 'mapbox://styles/mapbox/satellite-streets-v11',
         zoom: 17,
         center: center
     });
@@ -47,7 +47,7 @@ function setUpMap(center){
     // night view
     var map_night = new mapboxgl.Map({
         container: 'map_night',
-        style: 'mapbox://styles/bileckme/cjaj6vkteaj5z2smunv6u2sek',
+        style: 'mapbox://styles/mapbox/dark-v10',
         zoom: 17,
         center: center
     });
