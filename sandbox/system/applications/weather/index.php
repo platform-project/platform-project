@@ -22,29 +22,35 @@ platform_launch_initialize();
 ?>
 <!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Weather</title>
-<link href="./assets/css/coverr.css" rel="stylesheet" type="text/css">
-
+<title>Screeny | Online Desktop Screensaver</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keyword" content="screeny, screensaver">
+<meta name="description" content="Online Desktop Screensaver">
+<meta name="author" content="Platform - platform.entilda.com">
+<link rel="shortcut icon" type="image/png" href="favicon.png" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
 @font-face {
   font-family: OpenSansSemibold;
   src: url('./assets/fonts/OpenSans/OpenSans-Semibold.ttf');
 }
 
-.platform.logo {
-  background: transparent url(./assets/images/icons/application-128x128.png) no-repeat;
-  width: 128px;
-  height: 128px;
-  position: fixed;
-  bottom: 0px;
-  left: 0px;
-  opacity: 0.88;
-}
-
 * {
   font-family: OpenSansSemibold;
 }
 
+.logo {
+  background: transparent url(./logo.png) no-repeat;
+  width: 128x;
+  height: 128px;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0.88;
+}
 
 body { 
   margin: 0; 
@@ -114,6 +120,9 @@ a:hover {
 #motion {
   border-radius: 5px; 
   display: none;
+  position: absolute;
+  left: 60vh;
+  top: 0vh;
 }
 
 #motion button { 
@@ -150,12 +159,13 @@ div#motion:hover {
 }
 
 #datetime {
-  background: rgba(0,0,0,0.8);
-  border-radius: 5px;
-  padding: 5px;
-  position: absolute;
-  top: 0px;
-  float: left;
+    background: rgba(0,0,0,0.8);
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    top: 0px;
+    left: 37px;
+    float: left;
 }
 
 div.controls {
@@ -219,8 +229,48 @@ div.quotes.frame {
   padding: 10px;
   border-radius: 5px;
   position: relative;
-  top: -80px;
+  margin-top: -100px;
   display: none;
+}
+
+a.item.news { 
+  border-radius: 5px;
+}
+
+a.item.quotes { 
+  border-radius: 5px;
+}
+
+a.item.weather { 
+  border-radius: 5px;
+}
+
+div.news.frame {
+  background: rgba(0, 0, 0, 0.5);
+  width: 90%;
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+  margin-top: -100px;
+}
+
+ul.news.data {
+    list-style: none;
+    width: auto;
+    position: relative;
+    left: -18px;
+}
+
+ul.news.data li a {
+    border-radius: 5px;
+}
+
+a.news.title {
+    width: 96%;
+}
+
+li.news.title {
+    padding: 5px;
 }
 
 @media screen and (max-width: 500px) { 
@@ -239,14 +289,14 @@ div.quotes.frame {
   <script src='https://code.responsivevoice.org/responsivevoice.js?key=5znGKiaR'></script>
   </head>
   <body>
-  <video autoplay="" loop="" poster="./assets/images/fullscreen.jpg" id="bgvid" class="clip" src="./assets/videos/13.motion-bg.mp4">
-    <source src="./assets/videos/13.motion-bg-vp9.webm" type="video/webm; codecs=vp9">
-    <source src="./assets/videos/13.motion-bg-vp8.webm" type="video/webm">
-    <source src="./assets/videos/13.motion-bg.mp4" type="video/mp4">
+  <video autoplay="" loop="" poster="./assets/images/fullscreen.jpg" id="bgvid" class="clip" src="./assets/videos/00.mp4">
+    <source src="./assets/videos/00.webm" type="video/webm; codecs=vp9">
+    <source src="./assets/videos/00.webm" type="video/webm">
+    <source src="./assets/videos/00.mp4" type="video/mp4">
   </video> 
   <span class="display">
     <div class="controls">
-      <span class="text weather"><span class="temperature">6</span> <sup>o</sup>C <span class="description">partly cloudy</span></span>
+      <span class="text weather"><span class="temperature">0</span> <sup>o</sup>C <span class="description">partly cloudy</span></span>
       <a class="icon weather"><img class="glyph" src="http://openweathermap.org/img/wn/02n@2x.png" /></a>
       <span class="text weather"><span class="location"></span></span>
     </div>
@@ -262,10 +312,9 @@ div.quotes.frame {
     <p id="datetime" class="datetime"></p>
     
     <p class="navigation menu">      
-      <!--<a class="item articles" href="javascript:{}">Articles</a>&nbsp;
-      <a class="item news" href="javascript:{}">News</a>&nbsp;-->
-      <a class="item quotes" href="javascript:{}">Quotes</a>&nbsp;
-      <a class="item weather" href="javascript:{}">Weather</a>
+      <a class="item news" href="javascript:{}"><i class="fa-solid fa-newspaper"></i> News</a>&nbsp;
+      <a class="item quotes" href="javascript:{}"><i class="fa-solid fa-rss"></i> Quotes</a>&nbsp;
+      <a class="item weather" href="javascript:{}"><i class="fa-solid fa-cloud-bolt"></i> Weather</a>
     </p>
 
     <p>
@@ -279,7 +328,16 @@ div.quotes.frame {
       </div>
     </p>
 
-    <button>Day Motion</button>
+    <p>
+      <div class="frame news" style="">
+        <p>
+           <ul class="news data" style="list-style: none"></ul>
+        </p>
+        <p></p>
+      </div>
+    </p>
+
+    <button><i class="fa-solid fa-moon"></i> Dark Mode</button>
   </div>
 
   <!--<div class="platform logo"></div>-->
@@ -302,10 +360,10 @@ div.quotes.frame {
     video.classList.toggle("stopfade");
     if (video.paused) {
       video.play();
-      pauseButton.innerHTML = "Day Motion";
+      pauseButton.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode';
     } else {
       video.pause();
-      pauseButton.innerHTML = "Night Still";
+      pauseButton.innerHTML = '<i class="fa-solid fa-lightbulb"></i> Light Mode';
     }
   }, false);
 
@@ -317,8 +375,10 @@ div.quotes.frame {
   <script type="text/javascript" src="./assets/js/fullscreen.js"></script>
   <script type="text/javascript" src="./assets/js/clips.js"></script>
   <script type="text/javascript" src="./assets/js/ga.js"></script>
-  <script type="text/javascript" src="./assets/js/time.js"></script>
+  <script type="text/javascript" src="./assets/js/news.js"></script>
   <script type="text/javascript" src="./assets/js/quotes.js"></script>
+  <script type="text/javascript" src="./assets/js/time.js"></script>
   <script type="text/javascript" src="./assets/js/weather.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js" integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </body>
   </html>

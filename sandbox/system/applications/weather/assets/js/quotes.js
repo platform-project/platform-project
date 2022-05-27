@@ -1,6 +1,12 @@
 var quotes = {
     quote: [
-        "Nothing happens until you move.",
+        "I'd rather be a poor man in this world but a rich man in the Kingdom of God!",
+        "If you Do Not do the work... You Will Not reap the benefits!",
+        "Plan Your Work Well... Play Your Role Properly... And Watch All Your Efforts Grow Into Fruition!",
+        "Act Right... But Act Wise!",
+        "Your Work Is Simplified... And Becomes Easier... Only When You Work Smarter Rather Than Harder!",
+        "Forget the Fight For Power... Quit the Power Struggle... And Begin To Accept People... Your Neighbours, Your Colleagues, Your Friends, Your Family As Equals!",
+        "Nothing happens until you move.", 
         "The greatest barrier to success is the fear of failure.",
         "Nothing is so fatiguing as the eternal hanging on of an uncompleted task.",
         "Striving for excellence motivates you; striving for perfection is demoralizing.",
@@ -593,6 +599,12 @@ var quotes = {
     ],
 
     author: [
+        "Akinbiyi Akinpelu",
+        "Akinbiyi Akinpelu",
+        "Akinbiyi Akinpelu",
+        "Akinbiyi Akinpelu",
+        "Akinbiyi Akinpelu",
+        "Akinbiyi Akinpelu",
         "Robin Sharma",
         "Sven Goran Eriksson",
         "William James",
@@ -1188,10 +1200,7 @@ var quotes = {
 
 var qseed = Math.floor(Math.random() * quotes.quote.length);
 
-$("p em.quote").html(quotes.quote[qseed]);
-$("p span.author").html(quotes.author[qseed]);
-
-setInterval(function() {
+function getQuotes(){
     qseed = Math.floor(Math.random() * quotes.quote.length);
     qtext = quotes.quote[qseed];
     qauthor = quotes.author[qseed];
@@ -1199,4 +1208,10 @@ setInterval(function() {
     $("p span.author").html(qauthor);
     vquote = qtext + " " + qauthor;
     responsiveVoice.speak(vquote);
+}
+
+getQuotes();
+
+setInterval(function() {
+    getQuotes();
 }, 60000);
