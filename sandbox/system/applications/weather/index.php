@@ -127,10 +127,10 @@ a:hover {
 
 #motion button { 
   display: block;
-  width: 80%;
+  width: 30%;
   padding: .4rem;
   border: none; 
-  margin: 1rem auto; 
+  margin: 1.3rem auto; 
   font-size: 1.3rem;
   background: rgba(255,255,255,0.23);
   color: #fff;
@@ -279,7 +279,7 @@ li.news.title {
 
 @media all and (max-device-width: 800px) {
   body { background: url("./assets/images/fullscreen.jpg") #000 no-repeat center center fixed; background-size: cover; }
-  #bgvid, #motion button { display: none; }
+  #bgvid, #motion button#darcontrast { display: none; }
   div{width:70%;} 
 }
 
@@ -336,15 +336,22 @@ li.news.title {
         <p></p>
       </div>
     </p>
-
-    <button><i class="fa-solid fa-moon"></i> Dark Mode</button>
+    <button id="contrast"><i class="fa-solid fa-moon"></i> Dark Mode</button>
+    <button id="refresh"><i class="fa-solid fa-rotate-right"></i> Refresh</button>
   </div>
 
   <!--<div class="platform logo"></div>-->
   <script>
   responsiveVoice.speak();
+  refreshButton = document.querySelector("#motion button#refresh");
+
+  refreshButton.addEventListener("click", function() {
+    window.location.reload(); 
+  }, false);
+
+
   var video = document.getElementById("bgvid"),
-  pauseButton = document.querySelector("#motion button");
+  pauseButton = document.querySelector("#motion button#contrast");
 
   function vidFade() {
     video.classList.add("stopfade");

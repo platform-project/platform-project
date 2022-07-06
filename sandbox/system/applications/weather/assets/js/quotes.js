@@ -1199,9 +1199,7 @@ var quotes = {
 };
 
 var qseed = Math.floor(Math.random() * quotes.quote.length);
-
-function getQuotes(){
-    qseed = Math.floor(Math.random() * quotes.quote.length);
+function getQuotes(qseed){
     qtext = quotes.quote[qseed];
     qauthor = quotes.author[qseed];
     $("p em.quote").html(qtext);
@@ -1210,8 +1208,9 @@ function getQuotes(){
     responsiveVoice.speak(vquote);
 }
 
-getQuotes();
+getQuotes(qseed);
 
 setInterval(function() {
-    getQuotes();
+    var qseed = Math.floor(Math.random() * quotes.quote.length);
+    getQuotes(qseed);
 }, 60000);

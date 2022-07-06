@@ -267,16 +267,16 @@ function platform_launch_path_to($request){
       $path = PLATFORM_BASE_PATH . DS;
       platform_launch_listview_lists($path . $request, $exclusions);
       // rewrite output
-      $pages = array('Cake PHP'       => '/sandbox/framework/cakephp/',
+      $pages = array(/*'Cake PHP'       => '/sandbox/framework/cakephp/',
                      'Code Igniter'   => '/sandbox/framework/codeigniter/',
                      'Django'         => '/sandbox/framework/django/',
                      'Drupal'         => '/sandbox/framework/drupal/',
-                     'Laravel'        => '/sandbox/framework/laravel/',
-                     'Phalcon PHP'    => '/sandbox/framework/phalcon/',
-                     'Ruby On Rails'  => '/sandbox/framework/rails/',
+                     'Laravel'        => '/sandbox/framework/laravel/',*/
+                     'Phalcon'    => '/sandbox/framework/phalcon/',
+                     /*'Ruby On Rails'  => '/sandbox/framework/rails/',
                      'Symfony'        => '/sandbox/framework/symfony/',
-                     'Yii'            => '/sandbox/framework/yii/',
-                     'Zend Framework' => '/sandbox/framework/zf/');
+                     'Yii'            => '/sandbox/framework/yii/',*/
+                     'Zend' => '/sandbox/framework/zf/');
       platform_launch_listview_lists_raw($pages);
       break;
     case 'library':

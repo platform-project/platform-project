@@ -4,7 +4,7 @@ LAUNCHER_APP_USER=`whoami`
 
 load_nvm(){
   export NVM_DIR="/home/$LAUNCHER_APP_USER/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm use "v8.1.3" > /dev/null 2>&1
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm use "stable" > /dev/null 2>&1
 }
 
 launch_app(){
