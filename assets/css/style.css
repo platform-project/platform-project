@@ -844,3 +844,21 @@ iframe#site::-webkit-scrollbar-thumb {
     height: 2px;
     width: 8px;
 }
+
+#splash {
+    width: 100vw;
+    height: 120vh;
+    background-color: #fff;
+    z-index: 999;
+    display: block;
+}
+
+#splash .splash_logo {
+    background: transparent url('../images/platform-browser-128x128.png') no-repeat;
+    width: 128px;
+    height: 128px;
+    position: relative;
+    top: 40vh;
+    left: 50vw;
+    display: block;
+}

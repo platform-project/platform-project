@@ -18,6 +18,8 @@
         right: 0;
     }
   </style>
+  <script src="alert/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="alert/dist/sweetalert.css">
 </head>
 <body>
 
@@ -46,30 +48,44 @@ platform_launch_initialize();
 ?&gt;</pre>
     
 <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" type="text/javascript"></script>
 <script>
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/twilight");
-    editor.getSession().setMode("ace/mode/php");
-    save_file = function(){
-      var contents = editor.getSession().getValue();
-      $.post("index.php", { contents: contents }, function(){
-          //TODO: add error checking
-          alert('saving...');
-      });
-    }
-
-    canon.addCommand({
-      name: "save",
-      bindKey: {
-        win: "Ctrl-S",
-        mac: "Command-S",
-        sender: "editor|cli"
-      },
-      exec: function(){
-        save_file();
-      }
+  var editor = ace.edit("editor");
+  editor.setTheme("ace/theme/twilight");
+  editor.getSession().setMode("ace/mode/php");
+  save_file = function(){
+    var contents = editor.getSession().getValue();
+    confirm();
+    $.post("index.php", { contents: contents }, function(){
+      console.log('saving file...');      
     });
-</script>
+  }
 
+  function confirm(){
+    swal({ 
+      title: "File saved",   
+      text: "",   
+      type: "success",   
+      showCancelButton: false,   
+      confirmButtonColor: "#DD6B55",   
+      confirmButtonText: "Okay",   
+      cancelButtonText: "No",   
+      closeOnConfirm: false,   
+      closeOnCancel: false }
+    );
+  }
+
+  editor.commands.addCommand({
+    name: "save",
+    bindKey: {
+      win: "Ctrl-S",
+      mac: "Command-S",
+      sender: "editor|cli"
+    },
+    exec: function(){
+      save_file();
+    }
+  });
+</script>
 </body>
 </html>

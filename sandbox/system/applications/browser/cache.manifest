@@ -5,6 +5,7 @@ CACHE MANIFEST
 CACHE:
 assets/css/style.css
 assets/css/jquery.jgrowl.css
+assets/fonts/foundation-icons/foundation-icons.css
 assets/icon/favicon.png
 assets/images/application-128x128.png
 assets/images/delete.png
@@ -12,17 +13,23 @@ assets/images/left.png
 assets/images/right.png
 assets/images/refresh.png
 assets/images/logo-small.png
-assets/js/jquery-1.4.2.min.js
-assets/js/jquery.jgrowl.js
+assets/js/jquery/3.0.0/jquery.min.js
+assets/js/jquery/jquery.jgrowl.js
 cache.html
+splash.html
+offline.html
 index.html
 
 # Resources that require the user to be online.
 NETWORK:
 *
-#index.php
+index.php
+index.html
+browser.html
+offline.html
+splash.html
 #/myapi
-#http://api.twitter.com
+https://maps.googleapis.com
 
 # static.html will be server if main.py is inaccessible
 # offline.png will be served in place of all images in images/large/
@@ -30,4 +37,4 @@ NETWORK:
 FALLBACK:
 #/main.py /static.html
 #images/large/ images/offline.png
-#*.html /offline.hmtl
+*.html offline.html

@@ -16,12 +16,18 @@ assets/images/logo-small.png
 assets/js/jquery/3.0.0/jquery.min.js
 assets/js/jquery/jquery.jgrowl.js
 cache.html
+splash.html
+offline.html
 index.html
 
 # Resources that require the user to be online.
 NETWORK:
 *
 index.php
+index.html
+browser.html
+offline.html
+splash.html
 #/myapi
 https://maps.googleapis.com
 

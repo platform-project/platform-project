@@ -21,8 +21,8 @@
 platform_launch_initialize();
 
 if (isset($_POST['contents'])){
-  $r = file_put_contents("foo.txt", $_POST['contents']) or die("Can't open file");
+  $r = file_put_contents("files/newfile-".date("Y-m-d").".php", $_POST['contents']) or die("Can't open file");
 }
 
-platform_launch('editor.html');
+redirect_to('editor/editor.html');
 ?>

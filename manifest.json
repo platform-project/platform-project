@@ -18,7 +18,10 @@
     "key": "unknown",
     "name": "Platform Browser",
     "short_name": "Platform",
-    "start_url": "index.php",
+    "start_url": "/splash.html",
+    "scope": "/splash.html",
+    "background_color": "white",
+    "theme_color": "white",
     "display": "standalone",
     "orientation": "any",
     "gcm_sender_id": "00000000000",
@@ -26,7 +29,7 @@
     "prefer_related_applications": true,
     "related_applications": [{
         "platform": "play",
-        "id": "com.entilda.platform.android"
+        "id": "com.entilda.platform.app"
     }],
     "update_url": "http://clients2.google.com/service/update2/crx",
     "version": "0.1"

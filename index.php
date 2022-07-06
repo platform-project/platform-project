@@ -41,5 +41,5 @@ switch( PLATFORM_ENGINE ) {
  * Detect browser type
  */
 if (!isset($_SERVER['QUERY_STRING'])){
-  redirect_to('browser.html');
+  redirect_to('splash.html');
 }
