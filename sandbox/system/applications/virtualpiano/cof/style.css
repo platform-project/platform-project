@@ -1,0 +1,248 @@
+html {box-sizing: border-box;}
+:root {
+  --pageBg: #FFFFFF;
+  --imgOpacity: .8;
+  --bgFill: hsla(214,71%,80%,1);
+
+  --btnBg:          hsla(214,71%,100%,.5);
+  --btnShadow:      hsla(214,71%,10%,.5);
+  --btnShadowHover: hsla(214,71%,10%,1);
+  --btnColor:       hsla(214,71%,45%,1);
+  --btnColorHover:  hsla(214,71%,100%,1);
+
+  --rotationBgFill: #c4d0e2;
+  --rotationBgOpacity: 1;
+  --rotationBgStroke: #fff;
+  --rotationMajorStroke: #fff;
+  --rotationMajorStrokeWidth: 3;
+
+  --circlesMajorStroke: #fff;
+  --circlesMajorStrokeWidth: 3;
+
+  --shieldFill: #fff;
+  --shieldStroke: #eef;
+  --shieldOverlayFill: #acbcd6;
+  --shieldOverlayFillOpacity: 0.7;
+  --shieldSus4Fill: none;
+  --shieldSus4FillOpacity: 0.25;
+  --shieldKeyFill: #d7d8fb;
+
+  --shieldTextLinesColor: #000;
+  --shieldTextLinesFill: #000;
+  --shieldTextLinesShadow: 0 1px 1px #fff;
+
+  --shieldTextFill: #000;
+}
+
+/* If the OS has dark mode set then... */
+/* Change light <--> dark for testing */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pageBg: #224472;
+    --imgOpacity: 1;
+    --bgFill: hsla(214,71%,25%,.5);
+
+    --rotationBgFill: #fff;
+    --rotationBgOpacity: 0.25;
+    --rotationBgStroke: #000;
+    --rotationMajorStroke: #000;
+    --rotationMajorStrokeWidth: 1;
+
+    --circlesMajorStroke: currentcolor;
+    --circlesMajorStrokeWidth: 1;
+
+    --shieldFill: #fff;
+    --shieldStroke: currentcolor;
+    --shieldOverlayFill: #41437b;
+    --shieldOverlayFillOpacity: 0.65;
+    --shieldSus4Fill: #000;
+    --shieldSus4FillOpacity: 0.2;
+    --shieldKeyFill: #d7d8fb;
+
+    --shieldTextLinesColor: #fff;
+    --shieldTextLinesFill: #fff;
+    --shieldTextLinesShadow: 0 2px 1px #000;
+
+    --shieldTextFill: #000;
+  }
+}
+
+*,
+*::before,
+*::after {box-sizing: inherit;}
+body {
+  margin: 0;
+  font-family: sans-serif;
+  text-rendering: optimizeLegibility;
+  color: #000;
+  background-color: var(--pageBg);
+}
+.-visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px,1px,1px,1px);
+}
+
+
+
+/* Fullscreen button added by JS, if supported */
+
+[class^="fullScreen_btn"]::-moz-focus-inner {
+  border: 0;
+}
+[class^="fullScreen_btn"] {
+  position: absolute;
+  padding: .5rem;
+  background-color: var(--btnBg);
+  border: .125rem solid var(--btnColor);
+  border-radius: .24rem;
+  box-shadow: 0 .125rem .25rem var(--btnShadow);
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  color: var(--btnColor);
+  font-size: inherit;
+  cursor: pointer;
+  transition: all .3s;
+}
+[class^="fullScreen_btn"]:hover,
+[class^="fullScreen_btn"]:focus {
+  color: var(--btnColorHover);
+  background-color: var(--btnColor);
+  border-color: var(--btnColorHover);
+  box-shadow: 0 .25rem .5rem var(--btnShadowHover);
+  outline: none;
+  transform: scale(1.2);
+}
+
+[class^="fullScreen_svg"] {
+  display: block;
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: currentColor;
+  transition: fill .3s;
+}
+
+
+
+.circle {
+  margin: 0 auto;
+}
+.circle:-webkit-full-screen {
+  width: 100%;
+  height: 100%;
+}
+
+.svg_circle-of-fifths {
+  width: 100%;
+  max-width: calc(100vmin - 2.8rem);
+  overflow: visible;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+
+.imgLayer,
+.rotationLayer,
+.circlesLayer,
+.shieldLayer,
+.textLayer,
+.shieldTextLines {
+  pointer-events: none;
+}
+
+
+.bgLayer {
+  fill: var(--bgFill);
+}
+
+.imgLayer {
+  opacity: var(--imgOpacity);
+}
+
+.clickLayer_major {
+  stroke: currentcolor;
+  stroke-width: 1;
+}
+
+.rotationLayer {
+  /* Variables updated by the JS */
+  --rotation: 0deg;
+  --transitionDuration: .3s;
+  will-change: transform;
+  transform-origin: 50% 50%;
+  transform: rotate(var(--rotation)) translateZ(0px);
+  transition: var(--transitionDuration) transform linear;
+}
+.rotationLayer_bg {
+  fill-rule: evenodd;
+  fill: var(--rotationBgFill);
+  fill-opacity var(--rotationBgOpacity);
+  stroke: var(--rotationBgStroke);
+  stroke-width: 2;
+}
+.rotationLayer_minor {
+  opacity: .85;
+}
+.rotationLayer_major {
+  opacity: .85;
+  stroke: var(--rotationMajorStroke);
+  stroke-width: var(--rotationMajorStrokeWidth);
+}
+
+.circlesLayer {
+  fill: none;
+  stroke: var(--circlesMajorStroke);
+  stroke-width: var(--circlesMajorStrokeWidth);
+}
+
+.shieldLayer {
+  fill: var(--shieldFill);
+  stroke: var(--shieldStroke);
+  stroke-width: 2;
+}
+.sheildLayer_overlay {
+  fill: var(--shieldOverlayFill);
+  fill-opacity: var(--shieldOverlayFillOpacity);
+}
+.sheildLayer_sus4 {
+  fill: var(--shieldSus4Fill);
+  fill-opacity: var(--shieldSus4FillOpacity);
+}
+.shieldLayer_key {
+  fill: var(--shieldKeyFill);
+}
+
+.shieldTextLines {
+  fill: var(--shieldTextLinesFill);
+/*   stroke: var(--shieldTextLinesStroke); */
+  color: var(--shieldTextLinesColor);
+}
+.shieldTextLines_circle,
+.shieldTextLines_click,
+.shieldTextLines_tap {
+  text-shadow: var(--shieldTextLinesShadow);
+}
+.shieldTextLines_key {
+   fill: #000;
+}
+
+.shieldText {
+  fill: var(--shieldTextFill);
+}
+
+
+[data-rotate]:hover {
+  cursor: pointer;
+  fill: #fff;
+}
+[data-drag] {
+  cursor: move;
+}
+
+/* Dragging requires pointer events */
+.noPointerEvents .requiresPointerEvents {
+  display: none;
+}
