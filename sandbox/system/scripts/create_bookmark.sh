@@ -1,6 +1,11 @@
 #!/bin/bash
-BOOKMARK_PATH="/var/www/platform/sandbox/workspace/bookmarks/"
-PLATFORM_SYSTEM_APPLICATIONS_PATH="/var/www/platform/sandbox/system/applications/"
+BOOKMARK_PATH="/var/www/platform/sandbox/workspace/bookmarks"
+PLATFORM_SYSTEM_APPLICATIONS_PATH="/var/www/platform/sandbox/system/applications"
+script=$0
+bookmark=$1
+url=$2
+
+#echo $bookmark " v " $url 
 
 sudo -k
 fix_permissions(){
@@ -9,11 +14,18 @@ fix_permissions(){
 
 generate_content_php()
 {
-    if [ -z $1 ] && [ -z $2 ]
+    if [ -z $bookmark ] && [ -z $url ]
     then
+        echo ""
+        echo "Please specify a bookmark name and url"
+        echo "USAGE:"
+        echo ""
+        echo "$script $bookmark $url"
+    else 
+        touch $BOOKMARK_PATH/$bookmark/index.php
         echo "<?php
 /**
- * $1
+ * $bookmark
  * Bookmark link to URL
  *
  * @version     $Id: index.php 40 2011-02-09 14:10:00Z biyi $
@@ -33,88 +45,81 @@ generate_content_php()
 // initilizing platform for self-contained objects
 platform_launch_initialize();
 
-redirect_to('$2');
-?>" > BOOKMARK_PATH/$1/index.php
-    else 
-        echo ""
-        echo "Please specify a bookmark name and url"
-        echo ""
-        echo "USAGE:"
-        echo ""
-        echo "$0 $1 $2"
+redirect_to('$url');
+?>" > $BOOKMARK_PATH/$bookmark/index.php
     fi 
 }
 
 generate_content_html()
 {
-    if [ -z $1 ] && [ -z $2 ]
+    if [ -z $bookmark ] && [ -z $url ]
     then
+        echo ""
+        echo "Please specify a bookmark name and url"
+        echo "USAGE:"
+        echo ""
+        echo "$@"
+    else 
+        touch $BOOKMARK_PATH/$bookmark/index.html
         echo "<html>
 <head>
-  <title>$1</title>
+  <title>$bookmark</title>
   <script>
-  window.location.href = \"$2\";
+  window.location.href = \"$url\";
   </script>
 </head>
 <body>
 </body>
-</html>" > BOOKMARK_PATH/$1/index.html
-    else 
-        echo ""
-        echo "Please specify a bookmark name and url"
-        echo ""
-        echo "USAGE:"
-        echo ""
-        echo "$0 $1 $2"
+</html>" > $BOOKMARK_PATH/$bookmark/index.html
+        
     fi
 } 
 
 create_bookmark()
 {
-    if [ -z $1 ] && [ -z $2 ]
+    if [ -z $bookmark ] && [ -z $url ]
     then
+        echo ""
+        echo "Please specify a bookmark name and url"
+        echo "USAGE:"
+        echo ""
+        echo "$script $bookmark $url"
+    else  
         if [ ! -d "$BOOKMARK_PATH" ]
         then
         mkdir -p $BOOKMARK_PATH
         fi
 
-        if [ ! -d "$BOOKMARK_PATH/$1" ]
+        if [ ! -d "$BOOKMARK_PATH/$bookmark" ]
         then
         echo ""
-        echo "Creating bookmark $1..."
-        mkdir -p $BOOKMARK_PATH/$1 
-        touch $BOOKMARK_PATH/$1/README.md && echo "#README" > $BOOKMARK_PATH/$1/README.md 
-        touch $BOOKMARK_PATH/$1/TODO.md && echo "#TODO" > $BOOKMARK_PATH/$1/TODO.md 
-        cd $BOOKMARK_PATH/$1 && fix_permissions
-        echo ""
-        echo "Creating bookmark in '$BOOKMARK_PATH/$1'..."
-        echo ""
+        echo "Creating bookmark $bookmark..."
+        mkdir -p $BOOKMARK_PATH/$bookmark 
+        touch $BOOKMARK_PATH/$bookmark/README.md && echo "#README" > $BOOKMARK_PATH/$bookmark/README.md 
+        touch $BOOKMARK_PATH/$bookmark/TODO.md && echo "#TODO" > $BOOKMARK_PATH/$bookmark/TODO.md 
+        cd $BOOKMARK_PATH && fix_permissions && cd ~
         generate_content_php
         generate_content_html
-        ln -s $BOOKMARK_PATH/$1 $PLATFORM_SYSTEM_APPLICATIONS_PATH/$1
+        echo ""
+        echo "Creating bookmark in '$BOOKMARK_PATH/$bookmark'..."
+        echo ""
+        ln -s $BOOKMARK_PATH/$bookmark $PLATFORM_SYSTEM_APPLICATIONS_PATH/
         echo ""
         echo "Bookmark created."
         echo ""
         echo ""
         echo "Quick note"
         echo "----------"
-        echo "Start by adding content to '$BOOKMARK_PATH/$1/README.md'..."
+        echo "Start by adding content to '$BOOKMARK_PATH/$bookmark/README.md'..."
         echo ""
-        echo "If wish to rename the bookmark, then Edit or Rename '$1' to whatever you want."
+        echo "If wish to rename the bookmark, then Edit or Rename '$bookmark' to whatever you want."
         echo ""
         echo ""
         echo "Enjoy!"
         else 
             echo ""
-            echo "Bookmark '$1' already exists"
+            echo "Bookmark '$bookmark' already exists"
         fi
-    else  
-        echo ""
-        echo "Please specify a bookmark name and url"
-        echo ""
-        echo "USAGE:"
-        echo ""
-        echo "$0 $1 $2"
     fi
 } 
 
