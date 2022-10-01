@@ -323,7 +323,7 @@ canvas {
     height: 64px;
     position: fixed;
     bottom: -10px;
-    left: 200px;
+    left:   50%;
     z-index: 999;
     float: right;
 }
