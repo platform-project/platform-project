@@ -304,7 +304,7 @@
                             case 'sites':
                             case 'system':
                             case 'workspace':
-                                address = server + "/?" + command;
+                                address = server + "/?" + command + '/';
                                 break;
                         }
                     }
@@ -312,7 +312,7 @@
                 case 'apps':
                     address = (command.length === 0) ?
                         server + "/?applications" :
-                        server + "/sandbox/system/applications/" + command;
+                        server + "/sandbox/system/applications/" + command + "/";
                     break;
                 case 'applications':
                 case 'framework':
@@ -331,22 +331,22 @@
                     break;
 
                 case 'tests':
-                    address = server + "/sandbox/workspace/tests/" + command;
+                    address = server + "/sandbox/workspace/tests/" + command + '/';
                     break;
 
                 case 'studio':
-                    address = server + "/sandbox/workspace/tests/studio/" + command;
+                    address = server + "/sandbox/workspace/tests/studio/" + command + '/';
                     break;
 
                 case 'sh':
                 case 'shell':
                 case 'console':
-                    address = server + "/sandbox/system/applications/console?command=" + command;
+                    address = server + "/sandbox/system/applications/console?command=" + command + '/';
                     break;
 
                 case 'radio':
                 case 'fm':
-                    address = http + command + '.fm/';
+                    address = server + "/sandbox/system/applications/radio/";
                     break;
 
                 case 'pictures':
