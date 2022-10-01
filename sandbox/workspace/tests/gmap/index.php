@@ -40,9 +40,35 @@ function load_mapbox(){
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
     <link rel="stylesheet" type="text/css" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css">
-    <div id="map_satellite"></div>
+    
+    <div id="map_satellite">
+      <a class="control weather" href="javascript:{}">&nbsp;</a>
+      <div class="windy-weather" 
+        data-windywidget="windy-weather"
+        data-thememode="dark"
+        data-appid="bb55adfb185d93350bb6bf1911e36d73"
+        data-spotid="18335"
+        data-dayofweek="6"
+        data-starthour="12"
+        data-windunit="knots"
+        data-tempunit="C"
+        data-mode="full">
+      </div>
+      <script async="true" data-cfasync="false" type="text/javascript" src="https://windy.app/widgets-code/forecast/windy_weather_async.js?v13"></script>
+    </div>
     <div id="map_street"></div>
     <div id="map_night"></div>
+    <div id="map_weather">
+    <div class="windy"
+      data-windywidget="map"
+      data-fullscreen="true"
+      data-spots="showWindybar"
+			data-route="true"
+			data-nogesturehandling="true"
+      data-appid="windyapp">
+    </div>
+<script async="true" data-cfasync="false" type="text/javascript" src="https://windy.app/widget3/windy_map_async.js"></script>
+    </div>
     <div id="directions_panel"></div>
     <div id="overlay_canvas">
       <div id="brand">
@@ -54,6 +80,7 @@ function load_mapbox(){
         <span class="control satellite"><a href="javascript:{}"><i class="fa-solid fa-satellite"></i> Satellite</a></span> &nbsp; 
         <span class="control street"><a href="javascript:{}"><i class="fa-solid fa-road"></i> Street</a></span> &nbsp; 
         <span class="control night"><a href="javascript:{}"><i class="fa-solid fa-moon"></i> Night</a></span> &nbsp; 
+        <span class="control weather"><a href="javascript:{}"><i class="fa-solid fa-sun"></i> Weather</a></span> &nbsp; 
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" integrity="sha512-yFjZbTYRCJodnuyGlsKamNE/LlEaEAxSUDe5+u61mV8zzqJVFOH7TnULE2/PP/l5vKWpUNnF4VGVkXh3MjgLsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -64,24 +91,37 @@ function load_mapbox(){
             location.reload(true);
         });
 
+        $('#map_satellite .control.weather').click(function(){
+            $('.windy-weather').toggle();
+        });
+
         $('#map_controls .control.satellite a').click(function(){
             $('#map_satellite').css('display', 'block');
             $('#map_street').css('display', 'none');
             $('#map_night').css('display', 'none');
+            $('#map_weather').css('display', 'none');
         });
 
         $('#map_controls .control.street a').click(function(){
             $('#map_satellite').css('display', 'none');
             $('#map_street').css('display', 'block');
             $('#map_night').css('display', 'none');
+            $('#map_weather').css('display', 'none');
         });
 
         $('#map_controls .control.night a').click(function(){
             $('#map_satellite').css('display', 'none');
             $('#map_street').css('display', 'none');
             $('#map_night').css('display', 'block');
+            $('#map_weather').css('display', 'none');
         });
         
+        $('#map_controls .control.weather a').click(function(){
+            $('#map_satellite').css('display', 'none');
+            $('#map_street').css('display', 'none');
+            $('#map_night').css('display', 'none');
+            $('#map_weather').css('display', 'block');
+        });
       });
     </script>
   </body>

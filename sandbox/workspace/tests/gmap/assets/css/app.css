@@ -5,6 +5,12 @@ body { font-family: Ubuntu; height: 100%; margin: 0; padding: 0; overflow: hidde
 #map_satellite { width: 100%; height: 100%; z-index: 1; }
 #map_street { width: 100%; height: 100%; z-index: 2; }
 #map_night { width: 100%; height: 100%; z-index: 3; }
+#map_weather { width: 100%; height: 100%; z-index: 0; }
+
+#map_satellite .windy-weather { position: absolute; bottom: 25px; left: 73%; z-index: 9; border-radius: 10px; opacity: 0.9; display: block; }
+#map_satellite .control.weather { cursor: pointer; position: absolute; top: 20px; right: 50px; z-index: 99; display: block; opacity: 0.75; width: 64px; height: 64px; background: transparent url('../images/windy-64x64.png') no-repeat; }
+#map_weather .windy { height: 110vh; }
+
 
 #directions_panel { position: absolute; left: 410px; width: 240px; height: 400px; overflow: auto; }
 #overlay_canvas { background: black; width: 100%; height: 50px; z-index: 10; position: absolute; bottom: 0px; }
@@ -21,6 +27,7 @@ body { font-family: Ubuntu; height: 100%; margin: 0; padding: 0; overflow: hidde
 #map_controls .control.night {}
 #map_controls .control.satellite {}
 #map_controls .control.street {}
+#map_controls .control.weather {}
 
 #coordinate { display: block; color: white; float: right; position: relative; top: 15px; left: -50px; }
 #coordinate label { font-size: 10px; font-weight: bolder; margin: 10px; }
