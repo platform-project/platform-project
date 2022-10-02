@@ -1,0 +1,81 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+body {
+    overflow: hidden;
+    background: #000;
+}
+
+#logo {
+    background: #000;
+    width: 256px;
+    height: 256px;
+    border: 10px solid white;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 99;
+    cursor: pointer;
+}
+
+video { 
+    width: 384px;
+    height: 365px;
+    overflow: hidden;
+    background-size: cover;
+    z-index: 99;
+    position: absolute;
+    top: -72px;
+    left: -60px;
+}
+
+#globe {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 100;
+    opacity: 0.4;
+    position: absolute;
+}
+
+#nav {
+    background: #000;
+    width: 100vw;
+    height: 10vh;
+    position: absolute;
+    top: 0;
+    z-index: 9;
+}
+
+#status {
+    background: #000;
+    width: 100vw;
+    height: 10vh;
+    position: absolute; 
+    bottom: 0;  
+    z-index: 9;
+}
+
+h3 {
+    position: absolute;
+    top: 84%;
+    left: 86px;
+    z-index: 10000;
+    color: white;
+    padding: 2px 20px;
+    border-radius: 5px;
+    background-color: red;
+    font-weight: bolder;
+    font-family: Helvetica;
+}
+
+.camera { position: absolute; top: 0; }
+.screen1 { display: none; }
+.screen2 { display: block; }
+
+#nav-controls { position: absolute; top: 25px; z-index: 100; left: -80px; width: 100vw; font-family: Poppins; font-weight: bold; }
+#nav-controls .control { color: white; }
+#nav-controls .datetime { position: relative; left: 68vw; }
+#nav-controls .control .current { color: white; }

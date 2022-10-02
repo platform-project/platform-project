@@ -19,5 +19,3 @@
 
 // initilizing platform for self-contained objects
 platform_launch_initialize();
-
-echo "Hello World!";
