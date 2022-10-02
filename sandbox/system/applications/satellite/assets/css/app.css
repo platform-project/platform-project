@@ -9,7 +9,7 @@ body {
     background: #000;
 }
 
-#logo {
+#radar {
     background: #000;
     width: 256px;
     height: 256px;
@@ -53,7 +53,7 @@ video {
     background: #000;
     width: 100vw;
     height: 10vh;
-    position: absolute; 
+    position: fixed; 
     bottom: 0;  
     z-index: 9;
 }
@@ -75,7 +75,11 @@ h3 {
 .screen1 { display: none; }
 .screen2 { display: block; }
 
-#nav-controls { position: absolute; top: 25px; z-index: 100; left: -80px; width: 100vw; font-family: Poppins; font-weight: bold; }
+#nav-controls { color: white; position: absolute; top: 0px; z-index: 100; left: -80px; width: 100vw; font-family: Poppins; font-weight: bold; height: 120px; }
 #nav-controls .control { color: white; }
-#nav-controls .datetime { position: relative; left: 68vw; }
+#nav-controls #datetime { position: relative; left: 72vw; top: -8px; }
+#nav-controls #time { position: relative; top: 0px; left: -8vw; font-size: 32px; }
+#nav-controls .satellite { position: absolute; top: 10px; left: 60vw; background: transparent url("../images/icons/satellite-56x56.png") no-repeat; width: 56px; height: 56px; border-radius: 50%; border: 0px solid white; cursor: pointer; }
+#nav-controls .iss-satellite { position: absolute; left: 50vw; top: 10px; background: transparent url("../images/icons/iss-satellite-56x56.png") no-repeat; width: 56px; height: 56px; border-radius: 50%; border: 0px solid white; cursor: pointer; }
+#nav-controls .shuttle { position: absolute; top: 10px; left: 28vw; background: transparent url("../images/icons/shuttle.png") no-repeat;  width: 56px; height: 56px; border-radius: 50%; border: 0px solid white; cursor: pointer; }
 #nav-controls .control .current { color: white; }
