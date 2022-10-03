@@ -6,7 +6,9 @@ $(function(){
     }
 
     $('#radar').click(function(){
-        $('.camera').toggle();
+        $('.camera.screen1').toggle();
+        $('.camera.screen2').toggle();
+        $('.camera.iss').toggle();
     });
 
     $('#satellite').click(function(){
@@ -25,16 +27,16 @@ $(function(){
     }, 60000);
 
     function isNight(h){
-        return (h >= 18 || h <= 5) ? true : false;
+        return (h >= 18 && h <= 5) ? true : false;
     }
 
     function isDay(h){
-        return (h >= 6 || h <= 11) ? true : false;
+        return (h >= 6 && h <= 11) ? true : false;
     }
 
     function isSunnyDay(h)
     {
-        return (h >= 12 || h <= 17) ? true : false;
+        return (h >= 12 && h <= 17) ? true : false;
     }
     
     function letThereBeLight(){
@@ -43,12 +45,15 @@ $(function(){
         switch(true){
             case isDay(h):
                 $('video').attr('src', clip.day)
+                console.log('Day time is ' + h)
                 break;
             case isNight(h):
                 $('video').attr('src', clip.night)
+                console.log('Night time is ' + h)
                 break;
             case isSunnyDay(h):
                 $('video').attr('src', clip.default)
+                console.log('Afternoon time is ' + h);
                 break;
         }
     }

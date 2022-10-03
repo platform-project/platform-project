@@ -675,6 +675,126 @@ iframe#site::-webkit-scrollbar-thumb {
     left: 36px;
 }
 
+#plane {
+    position: relative;
+    top: 0px;
+    left: -32px;
+    float: left;
+}
+
+#plane .plane.icon {
+    background: #111;
+    width: 24px;
+    height: 24px;
+    border-radius: 20px;
+    padding: 6px 6px;
+    position: relative;
+    bottom: 28px;
+    border: 3px solid white;
+    z-index: 3;
+    display: block;
+    float: left;
+    left: 40px;
+}
+
+#plane .plane.icon .fa.fa-plane {
+    font-size: 28px;
+    color: white;
+    position: relative;
+    left: 0px;
+}
+
+#uav .uav.wrapper {
+    display: none;
+    float: left;
+    position: relative;
+    top: -3px;
+    padding: 0px;
+    margin: 0px;
+    z-index: 0;
+    left: 36px;
+}
+
+#drone {
+    position: relative;
+    top: 0px;
+    left: -32px;
+    float: left;
+}
+
+#drone .drone.icon {
+    background: #111 url("../images/drone-mini.png") center no-repeat;
+    width: 24px;
+    height: 24px;
+    border-radius: 20px;
+    padding: 6px 6px;
+    position: relative;
+    bottom: 28px;
+    border: 3px solid white;
+    z-index: 3;
+    display: block;
+    float: left;
+    left: 40px;
+}
+
+#drone .drone.icon .fa.fa-drone {
+    font-size: 24px;
+    color: white;
+    position: relative;
+    left: 0px;
+}
+
+#uav .uav.wrapper {
+    display: none;
+    float: left;
+    position: relative;
+    top: -3px;
+    padding: 0px;
+    margin: 0px;
+    z-index: 0;
+    left: 36px;
+}
+
+#uav {
+    position: relative;
+    top: 0px;
+    left: -32px;
+    float: left;
+}
+
+#uav .uav.icon {
+    background: #111 url("../images/uav-mini.png") center no-repeat;
+    width: 24px;
+    height: 24px;
+    border-radius: 20px;
+    padding: 6px 6px;
+    position: relative;
+    bottom: 28px;
+    border: 3px solid white;
+    z-index: 3;
+    display: block;
+    float: left;
+    left: 40px;
+}
+
+#uav .uav.icon .fa.fa-plane {
+    font-size: 24px;
+    color: white;
+    position: relative;
+    left: 0px;
+}
+
+#uav .uav.wrapper {
+    display: none;
+    float: left;
+    position: relative;
+    top: -3px;
+    padding: 0px;
+    margin: 0px;
+    z-index: 0;
+    left: 36px;
+}
+
 #launcher {
     position: relative;
     top: 0px;
