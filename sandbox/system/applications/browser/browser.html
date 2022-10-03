@@ -70,7 +70,7 @@
             });
 
             $('#location').click(function() {
-                urlprotocol('tests://gmap');
+                urlprotocol('tests://gmap/');
             });
 
             $('#player .player.icon').click(function() {
@@ -83,6 +83,18 @@
 
             $('#game .game.icon').click(function() {
                 urlprotocol('games://');
+            });
+
+            $('#plane .plane.icon').click(function() {
+                urlprotocol('apps://webeye/');
+            });
+
+            $('#drone .drone.icon').click(function() {
+                urlprotocol('apps://airmap/');
+            });
+
+            $('#uav .uav.icon').click(function() {
+                urlprotocol('apps://uav/');
             });
 
             $('#launcher .launcher.icon').click(function() {
@@ -653,8 +665,32 @@
         </div>
 
         <div id="game">
-            <a class="game icon" href="javascript:{}"><i class="fa fa-gamepad"></i></a>
+            <a class="game icon" href="javascript:{}"><i class="fa fa-gamepad"></i>
             <div class="game wrapper">
+
+            </div>
+            </a>
+        </div>
+
+        <div id="drone">
+            <a class="drone icon" href="javascript:{}"><i class="fal fa-drone"></i>
+            <div class="drone wrapper">
+
+            </div>
+            </a>
+        </div>
+
+        <div id="uav">
+            <a class="uav icon" href="javascript:{}">
+            <div class="uav wrapper">
+
+            </div>
+            </a>
+        </div>
+
+        <div id="plane">
+            <a class="plane icon" href="javascript:{}"><i class="fa fa-plane"></i></a>
+            <div class="plane wrapper">
 
             </div>
         </div>

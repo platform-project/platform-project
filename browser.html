@@ -47,7 +47,7 @@
   <![endif]-->
 
     <script type="text/javascript" src="assets/js/jquery/3.0.0/jquery.min.js"></script>
-    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+    <script type="text/javascript" src="https://code.responsivevoice.org/responsivevoice.js?key=5znGKiaR"></script>
     <script type="text/javascript" src="assets/js/media.js"></script>
     <script type="text/javascript">
         $(function() {
@@ -83,6 +83,18 @@
 
             $('#game .game.icon').click(function() {
                 urlprotocol('games://');
+            });
+
+            $('#plane .plane.icon').click(function() {
+                urlprotocol('apps://webeye/');
+            });
+
+            $('#drone .drone.icon').click(function() {
+                urlprotocol('apps://airmap/');
+            });
+
+            $('#uav .uav.icon').click(function() {
+                urlprotocol('apps://uav/');
             });
 
             $('#launcher .launcher.icon').click(function() {
@@ -655,6 +667,29 @@
         <div id="game">
             <a class="game icon" href="javascript:{}"><i class="fa fa-gamepad"></i></a>
             <div class="game wrapper">
+
+            </div>
+        </div>
+
+        <div id="drone">
+            <a class="drone icon" href="javascript:{}"><i class="fal fa-drone"></i>
+            <div class="drone wrapper">
+
+            </div>
+            </a>
+        </div>
+
+        <div id="uav">
+            <a class="uav icon" href="javascript:{}">
+            <div class="uav wrapper">
+
+            </div>
+            </a>
+        </div>
+
+        <div id="plane">
+            <a class="plane icon" href="javascript:{}"><i class="fa fa-plane"></i></a>
+            <div class="plane wrapper">
 
             </div>
         </div>
