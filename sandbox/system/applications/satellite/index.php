@@ -6,6 +6,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <style>
+    .sketchfab-embed-wrapper {
+        position: absolute;
+        top: -60px;
+        left: -10px;
+        z-index: 0;
+    }
+    </style>
 </head>
 <body>
 <a id="radar" href="javascript:{}">
@@ -41,6 +49,7 @@
 <iframe class="camera screen1" width="100%" height="1096" src="https://www.youtube.com/embed/86YLFOog4GM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <iframe class="camera screen2" width="100%" height="1096" src="https://www.youtube.com/embed/Y1qQZbTF8iQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <iframe class="camera iss" width="100%" height="1096" src="https://ustream.tv/embed/17074538" scrolling="no" allowfullscreen webkitallowfullscreen frameborder="0" style="border: 0 none transparent;"></iframe>
+<div class="sketchfab-embed-wrapper" id="spaceshuttle" style="display: none"> <iframe title="Space Shuttle with boosters" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="1920" height="1080" src="https://sketchfab.com/models/28c98646369f48ee84bc20c267bc685f/embed?ui_infos=0&ui_theme=dark"> </iframe> </div>
 <div id="status">
     <iframe id="sphere" src="sphere/index.html" width="256" height="256"></iframe>
 </div>

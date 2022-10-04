@@ -5,6 +5,13 @@ $(function(){
         "night": "./globe/assets/clips/earth-night.mp4",
     }
 
+    $('#shuttle').click(function(){
+        $('#spaceshuttle').css('display', 'block');
+        $('.camera.screen1').css('display', 'none');
+        $('.camera.screen2').css('display', 'none');
+        $('.camera.iss').css('display', 'none');
+    });
+
     $('#radar').click(function(){
         $('.camera.screen1').toggle();
         $('.camera.screen2').toggle();
@@ -12,13 +19,17 @@ $(function(){
     });
 
     $('#satellite').click(function(){
+        $('#spaceshuttle').css('display', 'none');
         $('.camera.screen1').css('display', 'block');
         $('.camera.screen2').css('display', 'none');
+        $('.camera.iss').css('display', 'none');
     });
 
     $('#iss-satellite').click(function(){
+        $('#spaceshuttle').css('display', 'none');
         $('.camera.screen1').css('display', 'none');
         $('.camera.screen2').css('display', 'block');
+        $('.camera.iss').css('display', 'none');
     });
 
     letThereBeLight();
