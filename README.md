@@ -1,4 +1,4 @@
-## Platform [![Codeship Status for platform-hq/platform](https://app.codeship.com/projects/0aa591f0-f2dd-0135-e1c2-66b5dd16fd19/status?branch=0.0)](https://app.codeship.com/projects/272130)
+## Platform
 
 
 ### About Platform
@@ -42,10 +42,10 @@ By implementing this solution, a developer should not be limited to one approach
  - Minimum 1 Gb Hard-disk space
  - 512MB - 1GB RAM
 
-### Build Status [![Codeship Status for platform-hq/platform](https://app.codeship.com/projects/0aa591f0-f2dd-0135-e1c2-66b5dd16fd19/status?branch=0.0)](https://app.codeship.com/projects/272130)
+### Build Status 
 - This project is built and tested specifically on [Chromium Browser](http://www.chromium.org)
 - This project has been tested to work on Ubuntu 16.04 up to the latest.
-- This project has been tested to work with PHP 7.3+ using [CodeShip](https://app.codeship.com/)
+- This project has been tested to work with PHP 7.3+
 
 ### Help
 - Please submit all issues and pull requests to the [Platform Project on GitHub](https://github.com/platform-project/platform-project/issues) repository!
