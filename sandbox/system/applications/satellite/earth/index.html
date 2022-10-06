@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Earth Rotation By Animating Translation Of Image</title>
+
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background: linear-gradient(to right, #000033, #ffffe6);
+            height: 80vh;
+            overflow: hidden;
+        }
+        
+        * {
+            box-sizing: border-box;
+            border: 0px solid black;
+        }
+        
+        #earth {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            margin: 100px auto;
+            overflow: hidden;
+            box-shadow: -3px 0px 20px #000, inset 50px 0 50px #000;
+        }
+        
+        @keyframes move {
+            0% {
+                left: -150px;
+            }
+            50% {
+                left: 100px;
+            }
+            100% {
+                left: -150px;
+            }
+        }
+        
+        #circle {
+            width: 800px;
+            height: 320px;
+            z-index: -10;
+            background-image: url(https://web.opendrive.com/api/v1/download/file.json/NTlfMTQ1MTkzNDhf?inline=1);
+            background-repeat: repeat-x;
+            animation: move 30s linear infinite;
+            margin-left: -140px;
+            position: relative;
+        }
+        
+        #sun {
+            width: 700px;
+            height: 700px;
+            border-radius: 50%;
+            background-color: #ffff80;
+            margin-left: 950px;
+            margin-top: -550px;
+            position: absolute;
+            overflow: hidden;
+            box-shadow: 0 0 100px #ffff80;
+            filter: blur(10px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="earth">
+        <div id='circle'></div>
+    </div>
+
+    <div id='sun'></div>
+
+</body>
+
+</html>

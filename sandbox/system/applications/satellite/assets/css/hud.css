@@ -1,0 +1,1385 @@
+*, *::before, *::after{
+	box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+}
+
+.bkg {
+	background: #000;
+}
+
+:root{
+	--math-pi: 3.14159265;
+	
+	--font-family-primary: "Roboto", "Century Gothic", "Futura", sans-serif;
+	--font-weight-primary: 300;
+	--font-size-primary: 1em;
+	
+	--cp-bkg-dark: rgba(29, 30, 34, 1);
+	
+	--hud-corner-size: 1em;
+	--hud-outline-width: 1px;
+	--hud-border-radius: 0.25em;
+	
+	--hud-corner-border: solid var(--hud-outline-width) currentColor;
+	
+	--color-wh: 255, 255, 255;
+	--color-bk: 0, 0, 0;
+	--hud-color-bu: 0, 102, 204;
+	
+	--wh-100: rgba(var(--color-wh), 1);
+	--wh-86: rgba(var(--color-wh), 0.86);
+	--wh-67: rgba(var(--color-wh), 0.667);
+	--wh-50: rgba(var(--color-wh), 0.5);
+	--wh-33: rgba(var(--color-wh), 0.333);
+	--wh-25: rgba(var(--color-wh), 0.25);
+	--wh-16: rgba(var(--color-wh), 0.16);
+	--wh-6: rgba(var(--color-wh), 0.0625);
+	--wh-0: rgba(var(--color-wh), 0);
+	
+	--bk-100: rgba(var(--color-bk), 1);
+	--bk-86: rgba(var(--color-bk), 0.86);
+	--bk-67: rgba(var(--color-bk), 0.667);
+	--bk-50: rgba(var(--color-bk), 0.5);
+	--bk-33: rgba(var(--color-bk), 0.333);
+	--bk-25: rgba(var(--color-bk), 0.25);
+	--bk-16: rgba(var(--color-bk), 0.16);
+	--bk-6: rgba(var(--color-bk), 0.0625);
+	--bk-0: rgba(var(--color-bk), 0);
+	
+	--hud-color-bu-100: rgba(var(--hud-color-bu), 1);
+	--hud-color-bu-86: rgba(var(--hud-color-bu), 0.86);
+	--hud-color-bu-67: rgba(var(--hud-color-bu), 0.667);
+	--hud-color-bu-50: rgba(var(--hud-color-bu), 0.5);
+	--hud-color-bu-33: rgba(var(--hud-color-bu), 0.333);
+	--hud-color-bu-25: rgba(var(--hud-color-bu), 0.25);
+	--hud-color-bu-16: rgba(var(--hud-color-bu), 0.16);
+	--hud-color-bu-6: rgba(var(--hud-color-bu), 0.0625);
+	--hud-color-bu-0: rgba(var(--hud-color-bu), 0);
+	
+	--hud-color-vi: rgba(102, 0, 204, 1);
+	--hud-color-og: rgba(204, 102, 0, 1);
+	--hud-color-pk: rgba(204, 0, 102, 1);
+	
+	--hud-linear-gradient-bu: linear-gradient(to bottom, var(--hud-color-bu-86), var(--hud-color-bu-16));
+	
+	--anim-multiplier: 1;
+	--anim-ease-cb: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	
+	--hud-ease: cubic-bezier(0, 0.667, 1, 0.333);
+	
+	--transition-duration: 0.25s;
+	--transition-easing: ease-in-out;
+	
+	--transition-suffix-default: var(--transition-duration) var(--transition-easing);
+	--transition-suffix-fast: calc(var(--transition-duration) / 2) var(--transition-easing);
+	--transition-suffix-slow: calc(2 * var(--transition-duration)) var(--transition-easing);
+	
+	--transition-wht: width var(--transition-suffix-default),
+		height var(--transition-suffix-default) var(--transition-duration),
+		transform var(--transition-suffix-default) calc(2 * var(--transition-duration));
+	
+	--transition-thw: transform var(--transition-suffix-default),
+		height var(--transition-suffix-default) var(--transition-duration),
+		width var(--transition-suffix-default) calc(2 * var(--transition-duration));
+	
+	--transition-hwt: height var(--transition-suffix-default),
+		width var(--transition-suffix-default) var(--transition-duration),
+		transform var(--transition-suffix-default) calc(2 * var(--transition-duration));
+	
+	--transition-twh: transform var(--transition-suffix-default),
+		width var(--transition-suffix-default) var(--transition-duration),
+		height var(--transition-suffix-default) calc(2 * var(--transition-duration));
+	
+}
+
+@media all and (prefers-color-scheme: light){
+	:root{
+		--body-bkg: var(--wh-100);
+		
+		/*--color-primary-100: rgba(var(--color-bk), 1);
+		--color-primary-86: rgba(var(--color-bk), 0.86);
+		--color-primary-67: rgba(var(--color-bk), 0.667);
+		--color-primary-50: rgba(var(--color-bk), 0.5);
+		--color-primary-33: rgba(var(--color-bk), 0.333);
+		--color-primary-25: rgba(var(--color-bk), 0.25);
+		--color-primary-16: rgba(var(--color-bk), 0.16);
+		--color-primary-0: rgba(var(--color-bk), 0);*/
+		
+		--color-primary-100: rgba(var(--hud-color-bu), 1);
+		--color-primary-86: rgba(var(--hud-color-bu), 0.86);
+		--color-primary-67: rgba(var(--hud-color-bu), 0.667);
+		--color-primary-50: rgba(var(--hud-color-bu), 0.5);
+		--color-primary-33: rgba(var(--hud-color-bu), 0.333);
+		--color-primary-25: rgba(var(--hud-color-bu), 0.25);
+		--color-primary-16: rgba(var(--hud-color-bu), 0.16);
+		--color-primary-6: rgba(var(--hud-color-bu), 0.0625);
+		--color-primary-0: rgba(var(--hud-color-bu), 0);
+		
+		--color-primary: var(--color-primary-86);
+		
+		--icon-fill-primary: var(--bk-100);
+		--icon-fill-secondary: rgba(var(--color-bk), 0.36);
+		
+		--section-title-bkg: var(--bk-25);
+		
+		--tool-tip-txt: var(--bk-100);
+		--tool-tip-bkg: rgba(var(--color-bk), 0.2);
+	}
+}
+
+@media all and (prefers-color-scheme: dark){
+	:root{
+		--body-bkg: var(--cp-bkg-dark);
+		
+		--color-primary-100: rgba(var(--color-wh), 1);
+		--color-primary-86: rgba(var(--color-wh), 0.86);
+		--color-primary-67: rgba(var(--color-wh), 0.667);
+		--color-primary-50: rgba(var(--color-wh), 0.5);
+		--color-primary-33: rgba(var(--color-wh), 0.333);
+		--color-primary-25: rgba(var(--color-wh), 0.25);
+		--color-primary-16: rgba(var(--color-wh), 0.16);
+		--color-primary-6: rgba(var(--color-wh), 0.0625);
+		--color-primary-0: rgba(var(--color-wh), 0);
+		
+		--color-primary: var(--color-primary-86);
+		
+		--icon-fill-primary: var(--wh-100);
+		--icon-fill-secondary: rgba(var(--color-wh), 0.36);
+		
+		--section-title-bkg: var(--wh-25);
+		
+		--tool-tip-txt: var(--wh-100);
+		--tool-tip-bkg: rgba(var(--color-wh), 0.2);
+	}
+}
+
+body{
+	width: 100vw;
+	height: 100vh;
+	color: var(--color-primary);
+	background-color: var(--body-bkg);
+	font-family: var(--font-family-primary);
+	font-size: var(--font-size-primary);
+	font-weight: var(--font-weight-primary);
+	overflow-x: hidden;
+}
+
+/*	*/	/*	*/	/*	*/ /*	BKG	*/	/*	*/	/*	*/	/*	*/ 
+
+.bkg{
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	opacity: 0.25;
+}
+
+.bkg, .bkg *{
+	user-select: none;
+	pointer-events: none;
+}
+
+.bkgCircleTransform{
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 50%;
+	transform-origin: center;
+}
+
+@keyframes bkgCircleTransform {
+  0% {
+    transform: translate(-20%, -80%) rotate(0) scale(1);
+  }
+	50%{
+		transform: translate(-50%, -50%) rotate(180deg) scale(1.5);
+	}
+  100% {
+    transform: translate(-50%, -50%) rotate(1turn) scale(1);
+  }
+}
+
+@keyframes bkgCirclePulse {
+	0%, 100%{
+		transform: scale(1);
+	}
+	50%{
+		transform: scale(4);
+	}
+}
+
+#circleTransform1{
+	width: 100em;
+	height: 100em;
+	top: 50%;
+	left: 50%;
+	background-color: rgba(0, 0, 0, 0.0625);
+	transform: translate(-50%, -50%) rotate(0) scale(1);
+	animation: bkgCircleTransform 60s infinite linear;
+}
+#circleTransform2{
+	width: 60em;
+	height: 60em;
+	left: 0;
+	top: 50%;
+	background-color: rgba(0, 0, 0, 0.0625);
+	transform: translate(-50%, -50%) rotate(0) scale(1);
+	animation: bkgCircleTransform 240s infinite linear;
+}
+#circleTransform3{
+	width: 40em;
+	height: 40em;
+	top: 50%;
+	margin-left: 100%;
+	background-color: rgba(0, 0, 0, 0.125);
+	transform: translate(-50%, -50%) rotate(0) scale(1);
+	animation: bkgCircleTransform 120s infinite linear;
+}
+
+.bkgCircle{
+	position: relative;
+	width: 70em;
+	height: 70em;
+	border-radius: 50%;
+	background-color: var(--hud-color-bu-25);
+}
+
+.bkgCircle.depth1{
+	background-color: var(--hud-color-bu-16);
+	box-shadow: 0 0 3em var(--hud-color-bu-50);
+	animation: bkgCirclePulse 30s infinite linear;
+}
+.bkgCircle.depth2{
+	background-color: var(--color-primary-16);
+	box-shadow: 0 0 0.25em var(--color-primary-50);
+	animation: bkgCirclePulse 45s infinite linear;
+}
+.bkgCircle.depth3{
+	background-color: var(--hud-color-bu-33);
+	box-shadow: 0 0 2em var(--hud-color-bu-50);
+	animation: bkgCirclePulse 60s infinite linear;
+}
+
+/*	*/	/*	*/	/*	*/ /*	CONTAINER	*/	/*	*/	/*	*/	/*	*/ 
+
+.container{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;	/*	careful now	*/
+}
+
+.transition-css {
+	-webkit-transition: .25s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+	-moz-transition: .25s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+	-ms-transition: .25s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+	-o-transition: .25s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+	-transition: .25s cubic-bezier(0.25, 0.45, 0.45, 0.95)
+}
+
+.transition-css-short {
+	-webkit-transition: .125s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	-moz-transition: .125s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	-ms-transition: .125s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	-o-transition: .125s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	-transition: .125s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+}
+
+/*	*/	/*	*/	/*	*/ /*	MOTION	*/	/*	*/	/*	*/	/*	*/ 
+
+.transition-in{
+	
+}
+.transition-out{
+	pointer-events: none;
+}
+
+@keyframes cycleOpacity {
+	0%{
+		opacity: 1;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+
+@keyframes pulseScale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(2);
+  }
+}
+
+@keyframes pulseGlow {
+	0%{
+		box-shadow: 0 0 0 currentColor, box-shadow: 0 0 0 currentColor inset;
+	}
+	100%{
+		box-shadow: 0 0 6px currentColor, box-shadow: 0 0 6px currentColor inset;
+	}
+}
+
+@keyframes blink {
+	0%{
+		opacity: 1;
+	}
+	50%{
+		opacity: 1;
+	}
+	51%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 0;
+	}
+}
+
+@keyframes transformElt {
+	0%{
+		transform: var(--transform-initial);
+	}
+	100%{
+		transform: var(--transform-target);
+	}
+}
+
+@keyframes toggleHUDElement{
+	0%{
+		transform: rotate(-180deg);
+	}
+	25%{
+		width: calc( 2 * var(--hud-corner-size));
+		height: calc( 2 * var(--hud-corner-size));
+		transform: rotate(0deg);
+	}
+	50%{
+		width: 18em;
+		height: calc( 2 * var(--hud-corner-size));
+	}
+	100%{
+		width: 18em;
+		height: 10em;
+	}
+}
+
+@keyframes pulseBorder{
+	0%{
+		transform: scale(1);
+	}
+	100%{
+		transform: scale(1.25);
+	}
+}
+
+@keyframes graphBar {
+  0%, 100% {
+		height: 33.333%;
+    /*transform: scale(1, 1);*/
+  }
+	16% {
+		height: 66.667%;
+	}
+	25% {
+		height: 50%;
+		/*transform: scale(1, 2);*/
+	}
+	33% {
+		height: 25%;
+	}
+  50% {
+		height: 42.5%;
+    /*transform: scale(1, 0.5);*/
+  }
+	67% {
+		height: 86%;
+	}
+	75%{
+		height: 16%;
+	}
+	86% {
+		height: 4%;
+	}
+}
+
+@keyframes hudCircleSpin {
+	0%{
+		transform: translate(-50%, -50%) rotate(-45deg) scale(1);
+	}
+	100%{
+		transform: translate(-50%, -50%) rotate(45deg) scale(1);
+	}
+}
+
+@keyframes hudCirclePulse {
+	0%, 100%{
+		transform: translate(-50%, -50%) rotate(0) scale(1);
+	}
+	50%{
+		transform: translate(-50%, -50%) rotate(0) scale(0.9);
+	}
+}
+
+@keyframes hudRadarSpin {
+	0%{
+		transform: rotate(0);
+	}
+	100%{
+		transform: rotate(-1turn);
+	}
+}
+
+@keyframes radarBlip1 {
+	0%, 100%{
+		opacity: 0.53;
+		box-shadow: 0 0 8px var(--hud-color-bu-100), 0 0 2px var(--hud-color-bu-86) inset;
+	}
+	48%{
+		box-shadow: 0 0 0 var(--hud-color-bu-50), 0 0 2px var(--hud-color-bu-86) inset;
+	}
+	53% {
+		opacity: 0;
+		box-shadow: 0 0 0 var(--hud-color-bu-50), 0 0 2px var(--hud-color-bu-86) inset;
+	}
+	58%{
+		opacity: 1;
+		box-shadow: 0 0 8px var(--hud-color-bu-100), 0 0 2px var(--hud-color-bu-86) inset;
+	}
+}
+
+@keyframes radarBlip2 {
+	0%, 100%{
+		opacity: 0.05;
+		box-shadow: 0 0 8px var(--hud-color-bu-100), 0 0 4px var(--hud-color-bu-86) inset;
+	}
+	7%{
+		box-shadow: 0 0 0 var(--hud-color-bu-50), 0 0 2px var(--hud-color-bu-86) inset;
+	}
+	12%{
+		opacity: 0;
+		box-shadow: 0 0 0 var(--hud-color-bu-50), 0 0 2px var(--hud-color-bu-86) inset;
+	}
+	17%{
+		opacity: 1;
+		box-shadow: 0 0 8px var(--hud-color-bu-100), 0 0 4px var(--hud-color-bu-86) inset;
+	}
+}
+
+@keyframes radarBlip3 {
+	0%, 100%{
+		opacity: 0.88;
+		box-shadow: 0 0 8px var(--hud-color-bu-100), 0 0 4px var(--hud-color-bu-86) inset;
+	}
+	83%{
+		box-shadow: 0 0 0 var(--hud-color-bu-50), 0 0 2px var(--hud-color-bu-86) inset;
+	}
+	88%{
+		opacity: 0;
+		box-shadow: 0 0 0 var(--hud-color-bu-50), 0 0 2px var(--hud-color-bu-86) inset;
+	}
+	93%{
+		opacity: 1;
+		box-shadow: 0 0 8px var(--hud-color-bu-100), 0 0 4px var(--hud-color-bu-86) inset;
+	}
+}
+
+/*	*/	/*	*/	/*	*/ /*	HUD BASICS	*/	/*	*/	/*	*/	/*	*/ 
+
+.containerHUD{
+	margin: 1em;
+}
+
+.containerHUD, .containerHUD *{
+	user-select: none;
+	pointer-events: none;
+}
+
+.hudEltParent{
+	display: block;
+	position: relative;
+	width: calc( 2 * var(--hud-corner-size));
+	height: calc( 2 * var(--hud-corner-size));
+	cursor: pointer;
+	transform: rotate(-135deg);
+	/*transform: rotate(-225deg);*/
+	/*animation: toggleHUDElement 0.5s reverse both cubic-bezier(0.25, 0.45, 0.45, 0.95);*/
+	transition: var(--transition-hwt);
+	pointer-events: auto;
+}
+
+.hudEltParent.transition-out{
+	pointer-events: none;
+}
+
+.hudEltParent:hover{
+	width: calc( 3 * var(--hud-corner-size));
+	height: calc( 3 * var(--hud-corner-size));
+	transform: rotate(-135deg);
+	transition: var(--transition-hwt);
+}
+
+.hudEltParent:hover .outlineCorner{
+	color: var(--color-primary-100);
+	animation: pulseBorder 0.5s infinite alternate linear;
+}
+
+.hudEltParent:active .outlineCorner{
+	border-width: 2px;
+}
+
+.hudEltParent.open{
+	width: 18em;
+	height: 10em;
+	transform: rotate(0);
+	transition: var(--transition-twh);
+}
+
+.hudEltParent.open:hover .containerHUDContent{
+	background-color: var(--color-primary-16);
+}
+
+/*	*/	/*	*/	/*	*/ /*	HUD CORNERS	*/	/*	*/	/*	*/	/*	*/ 
+
+.outlineCorner{
+	display: block;
+	position: absolute;
+	width: var(--hud-corner-size);
+	height: var(--hud-corner-size);
+	color: var(--color-primary-67);
+}
+
+.outlineCorner.top{
+	top: 0;
+	border-top: var(--hud-corner-border);
+}
+.outlineCorner.right{
+	left: calc(100% - var(--hud-corner-size));
+	border-right: var(--hud-corner-border);
+}
+.outlineCorner.bottom{
+	top: calc(100% - var(--hud-corner-size));
+	border-bottom: var(--hud-corner-border);
+}
+.outlineCorner.left{
+	left: 0;
+	border-left: var(--hud-corner-border);
+}
+
+.outlineCorner.top.left{
+	border-top-left-radius: var(--hud-border-radius);
+}
+.outlineCorner.top.right{
+	border-top-right-radius: var(--hud-border-radius);
+}
+.outlineCorner.bottom.right{
+	border-bottom-right-radius: var(--hud-border-radius);
+}
+.outlineCorner.bottom.left{
+	border-bottom-left-radius: var(--hud-border-radius);
+}
+
+/*	*/	/*	*/	/*	*/ /*	HUD CONTENT	*/	/*	*/	/*	*/	/*	*/ 
+
+.containerHUDContent{
+	display: block;
+	position: absolute;
+	top: 0;
+	width: calc(100% - 2em);
+	height: calc(100% - 2em);
+	margin: var(--hud-border-radius);
+	padding: calc(1em - var(--hud-border-radius));
+	background-color: var(--color-primary-6);
+	opacity: 0;
+	overflow: hidden;
+	transform: scale(0);
+	transition: opacity var(--transition-suffix-default) var(--transition-duration), transform var(--transition-suffix-default) var(--transition-duration);
+}
+
+.hudEltParent.open .containerHUDContent{
+	opacity: 1;
+	transform: scale(1);
+	transition: opacity var(--transition-suffix-default) var(--transition-duration), transform var(--transition-suffix-default) var(--transition-duration);
+	border-radius: var(--hud-border-radius);
+}
+
+/*	*/	/*	*/	/*	*/ /*	GRAPH	*/	/*	*/	/*	*/	/*	*/ 
+
+#containerGraphBars{
+	display: grid;
+	grid-template-columns: repeat(8, 1fr 1px);
+	grid-column-gap: 0;
+	transform-origin: center;
+	transform: rotate(180deg) scale(0);
+	transition: grid-column-gap var(--transition-suffix-default) var(--transition-duration);
+}
+
+.hudEltParent.open #containerGraphBars{
+	grid-column-gap: 0.5em;
+	transform: rotate(180deg);
+	transition: grid-column-gap var(--transition-suffix-default) var(--transition-duration);
+}
+
+.graphDivider{
+	background-color: var(--color-primary);
+	opacity: 0.0625;
+}
+
+.graphBar{
+	display: inline-block;
+	position: relative;
+	width: 0;
+	height: calc(50% - 1em);
+	/*top: calc(100% - 3em);*/
+	border: solid 0px var(--color-primary-0);
+	border-bottom-right-radius: var(--hud-border-radius);
+	border-bottom-left-radius: var(--hud-border-radius);
+	/*transform-origin: bottom;*/
+	transition: width var(--transition-suffix-default) var(--transition-duration), border var(--transition-suffix-default) var(--transition-duration), opacity var(--transition-suffix-default) var(--transition-duration);
+}
+
+.hudEltParent.open .graphBar{
+	width: calc(100% - 2px);
+	border: solid 1px transparent;
+	/*border: solid 1px var(--color-primary);*/
+	opacity: 0.5;
+	transition: width var(--transition-suffix-default) var(--transition-duration), border var(--transition-suffix-default) var(--transition-duration), opacity var(--transition-suffix-default) var(--transition-duration);
+}
+
+.graphBar:first-child{
+	left: 0;
+	/*margin-left: 0;*/
+	/*background-color: var(--hud-color-1);*/
+	background: linear-gradient(to bottom, var(--hud-color-bu-50), var(--hud-color-bu-33));
+	animation: graphBar calc(2s / var(--anim-multiplier)) infinite var(--hud-ease);
+}
+.graphBar:nth-child(3){
+	background: linear-gradient(to bottom, var(--hud-color-bu-86), var(--hud-color-bu-67));
+	animation: graphBar calc(1.667s / var(--anim-multiplier)) infinite var(--hud-ease);
+}
+.graphBar:nth-child(5){
+	background: linear-gradient(to bottom, var(--hud-color-bu-33), var(--hud-color-bu-16));
+	animation: graphBar calc(2.25s / var(--anim-multiplier)) reverse infinite var(--hud-ease);
+}
+.graphBar:nth-child(7){
+	background: linear-gradient(to bottom, var(--hud-color-bu-67), var(--hud-color-bu-50));
+	animation: graphBar calc(3s / var(--anim-multiplier)) reverse infinite var(--hud-ease);
+}
+.graphBar:nth-child(9){
+	background: linear-gradient(to bottom, var(--hud-color-bu-67), var(--hud-color-bu-50));
+	animation: graphBar calc(1s / var(--anim-multiplier)) forwards infinite var(--hud-ease);
+}
+.graphBar:nth-child(11){
+	background: linear-gradient(to bottom, var(--hud-color-bu-67), var(--hud-color-bu-50));
+	animation: graphBar calc(0.86s / var(--anim-multiplier)) reverse infinite var(--hud-ease);
+}
+.graphBar:nth-child(13){
+	background: linear-gradient(to bottom, var(--hud-color-bu-67), var(--hud-color-bu-50));
+	animation: graphBar calc(2.333s / var(--anim-multiplier)) reverse infinite var(--hud-ease);
+}
+.graphBar:nth-child(15){
+	background: linear-gradient(to bottom, var(--hud-color-bu-67), var(--hud-color-bu-50));
+	animation: graphBar calc(1.333s / var(--anim-multiplier)) forwards infinite var(--hud-ease);
+}
+
+/*	*/	/*	*/	/*	*/ /*	CIRCLES	*/	/*	*/	/*	*/	/*	*/ 
+
+#hudCircles.open{
+	--width-lg: 43.351%;
+	--height-lg: 98.03%;
+	--width-sm: 35.267%;
+	--height-sm: 79.749%;
+	--left-1: 5.833%;
+	/*--left-1-2: calc(var(--left-1) + (var(--width-sm) / 2));*/
+	--left-2: 19.48%;
+	/*--left-2-2: calc(var(--left-2) + (var(--width-lg) / 2));*/
+	--left-3: 37.169%;
+	/*--left-3-2: calc(var(--left-3) + (var(--width-lg) / 2));*/
+	--left-4: 58.9%;
+	/*--left-4-2: calc(var(--left-4) + (var(--width-sm) / 2));*/
+	width: 18em;
+	height: 18em;
+}
+
+.hudCircle{
+	--radius: var(--hud-corner-size);
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	transition: width var(--transition-suffix-default) var(--transition-duration), height var(--transition-suffix-default) var(--transition-duration);
+}
+
+#hudCircles.open .hudCircle{
+	width: calc(2 * var(--radius));
+	height: calc(2 * var(--radius));
+	overflow: hidden;
+}
+
+#hudCircles.open .hudCircle.r90{
+	/*display: none;*/
+	--radius: calc(5.5 * var(--hud-corner-size));
+	transform: translate(-50%, -50%) rotate(90deg);
+	background: linear-gradient(to bottom, var(--hud-color-bu-33), var(--hud-color-bu-6));
+	opacity: 0.5;
+	animation: hudCirclePulse 6s infinite ease-in-out;
+}
+
+#hudCircles.open .hudCircle:first-child{
+	--radius: calc(8 * var(--hud-corner-size));
+	background: linear-gradient(to bottom, var(--hud-color-bu-50), var(--hud-color-bu-33));
+	animation: hudCircleSpin 4s infinite alternate ease-in-out;
+}
+#hudCircles.open .hudCircle:nth-child(2){
+	--radius: calc(2 * var(--hud-corner-size));
+	background: linear-gradient(to bottom, var(--hud-color-bu-86), var(--hud-color-bu-67));
+	animation: hudCircleSpin 3s infinite alternate ease-in-out;
+}
+#hudCircles.open .hudCircle:nth-child(4){
+	--radius: calc(5 * var(--hud-corner-size));
+	background: linear-gradient(to bottom, var(--hud-color-bu-33), var(--hud-color-bu-6));
+	animation: hudCircleSpin 12s infinite alternate ease-in-out;
+}
+/*#hudCircles.open .hudCircle:nth-child(4){
+	--radius: calc(5 * var(--hud-corner-size));
+	background: linear-gradient(to bottom, var(--hud-color-bu-33), var(--hud-color-bu-6));
+	animation: hudCircleSpin 6s infinite alternate ease-in-out;
+}*/
+#hudCircles.open .hudCircle:nth-child(6){
+	--radius: calc(7 * var(--hud-corner-size));
+	background: linear-gradient(to bottom, var(--hud-color-bu-67), var(--hud-color-bu-33));
+	/*border: solid 2px var(--wh-25);*/
+	animation: hudCircleSpin 1.5s infinite alternate ease-in-out;
+}
+
+#hudCircles.open .hudCircle.center{
+	--radius: calc(2 * var(--hud-corner-size));
+	background: linear-gradient(to bottom, var(--wh-25) 0%, var(--hud-color-bu-86) 45%, var(--hud-color-bu-86) 55%, var(--bk-25) 100%);
+	/*background-image: radial-gradient(circle, var(--wh-33) 0%, var(--wh-0) 90%, var(--wh-25) 100%);*/
+	background-color: var(--hud-color-bu-100);
+	/*animation: hudCircleSpin 6s infinite alternate-reverse ease-in-out;*/
+	z-index: 20;
+	opacity: 1;
+}
+
+#hudCircles.open .hudCircle.center.solid{
+	--radius: calc(2 * var(--hud-corner-size));
+	background: unset;
+	background-color: var(--bk-100);
+	opacity: 1;
+	z-index: 20;
+}
+
+#hudCircles.open .hudCircle.center.shine{
+	background: linear-gradient(to bottom, var(--wh-25) 0%, var(--bk-86) 45%, var(--bk-86) 55%, var(--bk-25) 100%);
+	animation: hudCirclePulse 6s reverse infinite ease-in-out;
+	z-index: 20;
+}
+
+#hudCircles.open .sphereStroke{
+	--stroke-width: 1px;
+	--transform-initial: translate(0, -50%);
+	position: absolute;
+	height: 100%;
+	top: 50%;
+	color: var(--wh-100);
+	border-radius: 50%;
+	background: radial-gradient(circle, var(--wh-6) 0%, var(--wh-0) 100%);
+	transform: translate(0, -50%);
+	overflow: hidden;
+	animation: pulseGlow 2s infinite alternate ease-in-out;
+}
+
+#hudCircles.open .sphereStroke.back{
+	z-index: 10;
+}
+#hudCircles.open .sphereStroke.front{
+	z-index: 30;
+}
+
+#hudCircles.open .sphereStroke .side{
+	position: absolute;
+	width: 50%;
+	height: 100%;
+	top: 0;
+	overflow: hidden;
+	/*animation: pulseGlow 2s infinite alternate ease-in-out;*/
+}
+	
+#hudCircles.open .sphereStroke .side.L{
+	left: 0;
+}
+#hudCircles.open .sphereStroke .side.R{
+	left: 50%;
+	opacity: 0.5;
+	/*background: linear-gradient(to top, var(--hud-color-bu-25) 0%, var(--hud-color-bu-0) 90%);*/
+	/*box-shadow: 0 16px 16px #151618 inset, 48px 0 48px #151618 inset;*/
+}
+
+#hudCircles.open .sphereStroke.LL{
+	--transform-target: translate(-25%, -50%) scale(0.8);
+	width: var(--width-sm);
+	height: var(--height-sm);
+	left: var(--left-1);
+	animation: transformElt 2s infinite alternate ease-in-out;
+}
+
+#hudCircles.open .sphereStroke.L{
+	--transform-target: translate(-12.5%, -50%) scale(0.95);
+	width: var(--width-lg);
+	height: var(--height-lg);
+	left: var(--left-2);
+	animation: transformElt 2s infinite alternate ease-in-out .5s;
+}
+
+#hudCircles.open .sphereStroke.R{
+	--transform-target: translate(12.5%, -50%) scale(0.95);
+	width: var(--width-lg);
+	height: var(--height-lg);
+	left: var(--left-3);
+	animation: transformElt 2s infinite alternate ease-in-out 1s;
+}
+
+#hudCircles.open .sphereStroke.RR{
+	--transform-target: translate(25%, -50%) scale(0.8);
+	width: var(--width-sm);
+	height: var(--height-sm);
+	left: var(--left-4);
+	animation: transformElt 2s infinite alternate ease-in-out 1.5s;
+}
+
+#hudCircles.open .sphereStroke .strokeElt{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: calc(200% - (2 * var(--stroke-width)));
+	height: calc(100% - (2 * var(--stroke-width)));
+	border: solid var(--stroke-width) var(--wh-67);
+	border-radius: 50%;
+}
+
+#hudCircles.open .sphereStroke .side.R .strokeElt{
+	left: calc(-100% - var(--stroke-width));
+	border: solid var(--stroke-width) var(--wh-100);
+}
+
+#hudCircles.open .sphereStroke.r90{
+	animation: cycleOpacity 4s infinite alternate ease-in-out;
+}
+
+#hudCircles.open .sphereStroke.r90 .side.R{
+	animation-duration: 3s;
+}
+
+@keyframes scannerFX {
+	0%, 50%, 100%{
+		box-shadow: 0 0 0 var(--hud-color-bu-0),
+			0 0 0 var(--hud-color-bu-0) inset,
+			0 0 0 var(--wh-0),
+			0 0 0 var(--wh-0) inset;
+	}
+	25%{
+		box-shadow: -16px 0 32px var(--hud-color-bu-86),
+			-16px 0 32px var(--hud-color-bu-86) inset,
+			-2px 0 1px var(--wh-33),
+			-2px 0 1px var(--wh-33) inset;
+	}
+	75%{
+		box-shadow: 16px 0 32px var(--hud-color-bu-86),
+			16px 0 32px var(--hud-color-bu-86) inset,
+			2px 0 1px var(--wh-33),
+			2px 0 1px var(--wh-33) inset;
+	}
+}
+
+@keyframes sphereTranslate {
+	0%{
+		transform: translate(-50%, -97%) rotate(90deg);
+	}
+	100%{
+		transform: translate(-50%, -3%) rotate(90deg);
+	}
+}
+
+@keyframes sphereScale {
+	0%, 100%{
+		transform: translate(-50%, -50%) scale(0.1);
+	}
+	10%, 90%{
+		transform: translate(-50%, -50%) scale(0.333);
+	}
+	25%, 75%{
+		transform: translate(-50%, -50%) scale(0.8135);
+	}
+	40%, 60%{
+		transform: translate(-50%, -50%) scale(0.93);
+	}
+	50%{
+		transform: translate(-50%, -50%) scale(1);
+	}
+}
+
+#hudCircles.open .sphereStroke.scanner{
+	/*--ttx: -50%;
+	--tty: -50%;
+	--tr: 90deg;
+	--tsx: 1;
+	--tsy: 1;*/
+	width: var(--width-lg);
+	height: var(--height-lg);
+	top: 50%;
+	left: 50%;
+	/*transform: translate(var(--ttx), var(--tty)) rotate(var(--tr)) scale(var(--tsx), var(--tsy));*/
+	animation: sphereScale 4s infinite alternate linear;
+}
+
+#hudCircles.open .sphereStroke.scanner .strokeElt{
+	border: solid var(--stroke-width) var(--wh-100);
+	animation: scannerFX 8s infinite both ease-in-out;
+}
+
+#hudCircles.open .sphereStroke.transform{
+	width: calc(var(--width-lg) + (2 * var(--stroke-width)));
+	height: calc(var(--height-lg) + (2 * var(--stroke-width)));
+	top: 50%;
+	left: 50%;
+	/*background-color: rgba(204, 102, 0, 0.5);*/
+	background: unset;
+	animation: sphereTranslate 4s infinite alternate both ease-in-out;
+}
+
+#hudCircles.open #sphereScanner2L, #hudCircles.open #sphereScanner2R{
+	animation: sphereTranslate 4s infinite alternate both ease-in-out 1s;
+}
+
+#hudCircles.open #sphereScanner3L, #hudCircles.open #sphereScanner3R{
+	animation: sphereTranslate 4s infinite alternate both ease-in-out 2s;
+}
+
+#hudCircles.open #sphereScanner4L, #hudCircles.open #sphereScanner4R{
+	animation: sphereTranslate 4s infinite alternate both ease-in-out 3s;
+}
+
+#hudCircles.open #sphereScanner2L .sphereStroke.scanner, #hudCircles.open #sphereScanner2R .sphereStroke.scanner{
+	animation: sphereScale 4s infinite alternate both linear 1s;
+}
+
+#hudCircles.open #sphereScanner3L .sphereStroke.scanner, #hudCircles.open #sphereScanner3R .sphereStroke.scanner{
+	animation: sphereScale 4s infinite alternate both linear 2s;
+}
+
+#hudCircles.open #sphereScanner4L .sphereStroke.scanner, #hudCircles.open #sphereScanner4R .sphereStroke.scanner{
+	animation: sphereScale 4s infinite alternate both linear 3s;
+}
+
+#hudCircles.open #sphereScanner2L .sphereStroke.scanner .strokeElt, #hudCircles.open #sphereScanner2R .sphereStroke.scanner .strokeElt{
+	animation: scannerFX 8s infinite ease-in-out 1s;
+}
+
+#hudCircles.open #sphereScanner3L .sphereStroke.scanner .strokeElt, #hudCircles.open #sphereScanner3R .sphereStroke.scanner .strokeElt{
+	animation: scannerFX 8s infinite ease-in-out 2s;
+}
+
+#hudCircles.open #sphereScanner4L .sphereStroke.scanner .strokeElt, #hudCircles.open #sphereScanner4R .sphereStroke.scanner .strokeElt{
+	animation: scannerFX 8s infinite ease-in-out 3s;
+}
+
+#hudCircles.open .hudCircleDash{
+	
+}
+
+/*	*/	/*	*/	/*	*/ /*	RADAR	*/	/*	*/	/*	*/	/*	*/ 
+
+#hudRadar{
+	--color-radar-bkg: #151618;
+}
+
+#hudRadar.open{
+	width: 18em;
+	height: 18em;
+}
+
+#hudRadarMask{
+	width: 100%;
+	/*height: 100%;*/
+	padding-bottom: 100%;
+	border-radius: 50%;
+	transform: scale(0);
+	transition: transform var(--transition-suffix-default) var(--transition-duration);
+	overflow: hidden;
+}
+
+#hudRadar.open #hudRadarMask{
+	width: 100%;
+	/*height: 100%;*/
+	padding-bottom: 100%;
+	background-color: var(--color-radar-bkg);
+	transform: scale(1);
+	transition: transform var(--transition-suffix-default) calc(2.25 * var(--transition-duration));
+}
+
+#hudRadar.open .hudRadarRing{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: calc(75% - 2px);
+	height: calc(75% - 2px);
+	border: solid 1px var(--hud-color-bu-50);
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#hudRadar.open #radarRing1{
+	width: calc(25% - 2px);
+	height: calc(25% - 2px);
+}
+#hudRadar.open #radarRing2{
+	width: calc(50% - 2px);
+	height: calc(50% - 2px);
+}
+#hudRadar.open #radarRing3{
+	width: calc(75% - 2px);
+	height: calc(75% - 2px);
+}
+
+#hudRadar.open .hudRadarBlip{
+	position: absolute;
+	width: 0.5em;
+	height: 0.5em;
+	border-radius: 50%;
+	background-color: var(--wh-86);
+}
+#hudRadar.open #radarBlip1{
+	left: 44%;
+	top: 33%;
+	animation: radarBlip1 5s infinite;
+}
+#hudRadar.open #radarBlip2{
+	left: 80%;
+	top: 80%;
+	animation: radarBlip2 5s infinite;
+}
+#hudRadar.open #radarBlip3{
+	left: 33%;
+	top: 67%;
+	animation: radarBlip3 5s infinite;
+}
+
+#hudRadar.open #hudRadarGradient{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	/*border-radius: 50%;*/
+	animation: hudRadarSpin 5s infinite linear;
+}
+
+#hudRadar.open #hudRadarGradient::before, #hudRadar.open #hudRadarGradient::after{
+	content: "";
+	top: 0;
+	left: 0;
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	border-bottom-left-radius: 100%;
+}
+	
+#hudRadar.open #hudRadarGradient::before{
+	top: 50%;
+	background: linear-gradient(160deg, var(--hud-color-bu-0) 0%, var(--hud-color-bu-25) 100%);
+	box-shadow: 0 1em 1em var(--color-radar-bkg) inset;
+}
+#hudRadar.open #hudRadarGradient::after{
+	/*top: 50%;*/
+	/*background: linear-gradient(to top, var(--hud-color-bu-25) 0%, var(--hud-color-bu-0) 90%);*/
+	/*box-shadow: 0 16px 16px #151618 inset, 48px 0 48px #151618 inset;*/
+}
+
+#hudRadar.open #hudRadarLine{
+	position: absolute;
+	width: 4px;
+	height: 50%;
+	left: 50%;
+	top: 50%;
+	background-color: var(--wh-86);
+	box-shadow: 4px 0 8px var(--hud-color-bu-50), -4px 0 8px var(--hud-color-bu-50), -1px 0 2px var(--hud-color-bu-50) inset, 1px 0 2px var(--hud-color-bu-50) inset;
+	transform-origin: top;
+	animation: hudRadarSpin 5s infinite linear;
+}
+
+/*	*/	/*	*/	/*	*/ /*	HUD Terminal	*/	/*	*/	/*	*/	/*	*/ 
+
+#hudTerminal.open #hudTerminalBkg{
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	color: var(--wh-86);
+	background-color: var(--bk-86);
+}
+
+@keyframes terminalCarat {
+	0%{
+		left: 1em;
+		top: 1.5em;
+	}
+	100%{
+		left: 15.125em;
+		top: 1.5em;
+	}
+}
+
+@keyframes txtReturn1 {
+	0%{
+		left: 15.125em;
+		top: 1.5em;
+	}
+	100%{
+		left: 1em;
+		top: 3em;
+	}
+}
+
+@keyframes txtReturn2 {
+	0%{
+		left: 1em;
+		/*left: 15.125em;*/
+		top: 3em;
+	}
+	100%{
+		left: 1em;
+		top: 4.5em;
+	}
+}
+
+@keyframes txtReturn3 {
+	0%{
+		left: 1em;
+		/*left: 15.125em;*/
+		top: 4.5em;
+	}
+	100%{
+		left: 1em;
+		top: 6em;
+	}
+}
+
+@keyframes txtReturn4 {
+	0%{
+		left: 1em;
+		/*left: 15.125em;*/
+		top: 6em;
+	}
+	100%{
+		left: 1em;
+		top: 7.5em;
+	}
+}
+
+#hudTerminal.open #hudTerminalCarat{
+	position: absolute;
+	top: 3em;
+	left: 1em;
+	width: 0.75em;
+	height: 0.125em;
+	background-color: var(--wh-33);
+	animation: blink 1s infinite linear, terminalCarat 5s backwards steps(25) 1s, txtReturn1 0.4s steps(1) 6s;
+}
+
+#hudTerminal.open #hudTerminalText{
+	position: relative;
+	top: 0;
+	left: 0;
+	width: calc(100% - 1em);
+	height: calc(100% - 1em);
+	padding: 0.5em 1em;
+	color: var(--wh-67);
+	background-color: transparent;
+	user-select: none;
+	pointer-events: none;
+	white-space: nowrap;
+}
+
+#hudTerminal.open #hudTerminalText .txtTerminal{
+	--text-top: 0;
+	--text-left: 0;
+	position: absolute;
+	top: calc(0.125em + var(--text-top));
+	margin-left: calc(1em + var(--text-left));
+	font-weight: 600;
+	font-family: Consolas, Monospace;
+}
+
+.txtTerminal.syntax{
+	color: var(--hud-color-bu-67);
+}
+
+.txtTerminal.operator{
+	color: var(--wh-33);
+}
+
+#hudTerminal.open #hudTerminalText .txtTerminal::after{
+	content: "test";
+	line-height: 1em;
+	font-size: 1em;
+}
+
+@keyframes txtConst {
+	0%{
+		color: var(--wh-67);
+		content: "";
+	}
+	20%{
+		content: "c";
+	}
+	40%{
+		content: "co";
+	}
+	60%{
+		content: "con";
+	}
+	80%{
+		color: var(--wh-67);
+		content: "const";
+	}
+	80.1%{
+		color: inherit;
+	}
+	100%{
+		content: "const";
+	}
+}
+
+/*@keyframes txtConst {
+	0%{
+		content: "A";
+		color: var(--wh-67);
+	}
+	50%{
+		content: "con";
+		color: var(--wh-67);
+	}
+	100%{
+		content: "const";
+		color: var(--wh-67);
+	}
+}*/
+
+#hudTerminal.open #hudTerminalText .txtTerminal:first-child::after{
+	/*--txt-content: "";*/
+	/*--txt-content-length: 5;*/
+	content: "const";
+	animation: txtConst 1s both steps(5) 1s;
+}
+
+@keyframes txtLeetHax {
+	0%{
+		content: "";
+	}
+	14.29%{
+		content: "P";
+	}
+	28.58%{
+		content: "PL";
+	}
+	42.87%{
+		content: "PLA";
+	}
+	57.16%{
+		content: "PLAT";
+	}
+	71.45%{
+		content: "PLATF";
+	}
+	85.74%{
+		content: "PLATFOR";
+	}
+	100%{
+		content: "PLATFORM=";
+	}
+}
+
+#hudTerminal.open #hudTerminalText .txtTerminal:nth-child(2){
+	--text-left: 2.25em;
+}
+
+#hudTerminal.open #hudTerminalText .txtTerminal:nth-child(2)::after{
+	content: "PLATFORM><";
+	animation: txtLeetHax 1.4s both steps(7) 2.2s;
+}
+
+@keyframes txtEq {
+	0%{
+		content: "";
+	}
+	100%{
+		content: "=";
+	}
+}
+
+#hudTerminal.open #hudTerminalText .txtTerminal:nth-child(3){
+	--text-left: 6.5em;
+}
+
+#hudTerminal.open #hudTerminalText .txtTerminal:nth-child(3)::after{
+	content: "=";
+	animation: txtEq 0.2s both linear 3.8s;
+}
+
+@keyframes txtFn {
+	0%{
+		content: "";
+	}
+	10%{
+		content: "p";
+	}
+	20%{
+		content: "pl";
+	}
+	30%{
+		content: "pl.";
+	}
+	40%{
+		content: "pl.l";
+	}
+	50%{
+		content: "pl.lo";
+	}
+	60%{
+		content: "pl.loa";
+	}
+	70%{
+		content: "pl.load";
+	}
+	80%{
+		content: "pl.load(";
+	}
+	90%{
+		content: "pl.load()";
+	}
+	100%{
+		content: "pl.load();";
+	}
+}
+
+#hudTerminal.open #hudTerminalText .txtTerminal:nth-child(4){
+	--text-left: 7.5em;
+}
+
+#hudTerminal.open #hudTerminalText .txtTerminal:nth-child(4)::after{
+	content: "aw.yiss();";
+	animation: txtFn 2s both steps(10) 4s;
+}

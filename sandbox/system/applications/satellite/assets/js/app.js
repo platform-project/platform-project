@@ -18,6 +18,14 @@ $(function(){
         $('.camera.iss').toggle();
     });
 
+    $('#human').click(function(){
+        $('#human').css('display', 'none');
+    });
+
+    $('#humanoid').click(function(){
+        $('#human').toggle();
+    });
+
     $('#satellite').click(function(){
         $('#spaceshuttle').css('display', 'none');
         $('.camera.screen1').css('display', 'block');

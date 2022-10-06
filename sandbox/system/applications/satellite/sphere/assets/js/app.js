@@ -30,7 +30,7 @@ vertex.z = distance * Math.cos(theta);
 
 geometry.vertices.push(vertex);
 }
-var particles = new THREE.Points(geometry, new THREE.PointsMaterial({color: 0xff00ff, size: 2}));
+var particles = new THREE.Points(geometry, new THREE.PointsMaterial({color: 0x0000ff, size: 2}));
 particles.boundingSphere = 50;
 
 
