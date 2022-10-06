@@ -1,0 +1,86 @@
+html.js.canvas.canvastext.geolocation.history.websockets.video.audio.localstorage.webworkers.applicationcache {
+  background: transparent -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e2e2e2), to(#a2a2a2));
+  background-size: cover;
+  background-image: url('../apple-brushed-metal-texture.jpg') repeat-x;
+}
+
+a.music.icon {
+  border: none;
+  margin: 2px 5px 5px;
+}
+
+div.music.wrapper {
+  border: none;
+}
+
+a.photo.icon {
+  border: none;
+  margin: 2px 5px 5px;
+}
+
+a.player.icon {
+  border: none;
+  margin: 2px 5px 5px;
+}
+
+a.game.icon {
+  border: none;
+  margin: 2px 5px 5px;
+}
+
+a.drone.icon {
+  border: none;
+  margin: 2px 5px 5px;
+}
+
+a.uav.icon {
+  border: none;
+  margin: 2px 5px 5px;
+}
+
+a.plane.icon {
+  border: none;
+  margin: 2px 5px 5px;
+}
+
+a.launcher.icon {
+  border: none;
+  margin: 2px 5px 5px;
+}
+
+a.satellite.icon {
+  border: none;
+  margin: 2px 5px 5px;
+}
+
+a.weather.icon {
+  border: none;
+  margin: 2px 5px 5px;
+}
+
+a.info.icon {
+  border: none;
+  margin: 2px 5px 5px;
+}
+
+#address-bar {
+  border: 0 solid black;
+}
+
+#address-bar-input {
+  background: white;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+#go {
+  background: #000;
+  color: white;
+  margin: 0px 15px;
+  padding-left: 0px;
+  border: 2px solid black;
+}
+
+#canvas {
+  
+}

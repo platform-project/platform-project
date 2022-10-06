@@ -30,7 +30,7 @@ body {
 #address-bar {
     float: left;
     /*-webkit-border-radius: 1ex;*/
-    background: #e5e5e5 -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F0F0F0), to(#D2D2D2));
+    background: t -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F0F0F0), to(#D2D2D2));
     font: bold 14px Arial;
     width: 88%;
     min-width: 640px;
