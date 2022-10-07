@@ -17,24 +17,118 @@
 
     .hud-controls {
         position: absolute;
-        bottom: 0vh;
-        left: 0;
+        bottom: -3vh;
+        left: -50px;
         z-index: 3;
+        display: none;
+        width: 113vw;
+        height: 45vh;
+        scale: 80%;
+    }
+
+    #hud {
+        z-index: 100010;
+        position: absolute;
+        bottom: 100px;
+        left: 20vw;
+    }
+
+    #hud-ui {
         display: block;
-        width: 100vw;
-        height: 40vh;
-        scale: 90%;
+        height: 600px;
+        width: 800px;
+        position: absolute;
+        bottom: -14vw;
+        left: 30vw;
+        z-index: 100010;
+        scale: 30%;
+        color: white;
+        font-weight: bold;
+        background: transparent url(assets/images/hud-ui.gif) no-repeat;
+        cursor: pointer;
+        border-radius: 50%;
+        border: 10px solid white;
+    }
+
+    #atom {
+        display: block;
+        height: 300px;
+        width: 300px;
+        position: relative;
+        bottom: 0vw;
+        left: 98vw;
+        z-index: 100030;
+        color: white;
+        font-weight: bold;
+        border-radius: 10px;
+        background: transparent url(assets/images/hud-atom2.gif) no-repeat;
+        cursor: pointer;
+        scale: 80%;
+        opacity: 0.6;
+    }
+
+    #hud-humanoid {
+        z-index: 100021;
+        position: absolute;
+        bottom: -12vh;
+        right: -8vw;
+        background: transparent url(assets/images/human.webp) no-repeat;
+        width: 540px;
+        height: 304px;
+        scale: 40%;
+        cursor: pointer;
+    }
+
+    #hud-atom {
+        z-index: 100021;
+        position: absolute;
+        bottom: -200px;
+        left: 84vw;
+        width: 500px;
+        height: 500px;
+        scale: 20%;
+        opacity: 0.75;
+        background: transparent url(assets/images/hud-atom.gif) no-repeat;
+    }
+
+    #hud-widget-0 {
+        z-index: 10002;
+        position: absolute;
+        bottom: -10vh;
+        left: -72px;
+        background: transparent url(assets/images/hud-widget.gif) no-repeat;
+        width: 540px;
+        height: 304px;
+        scale: 30%;
+        cursor: pointer;
+    }
+
+    #hud-widget-1 {
+        z-index: 100023;
+        position: absolute;
+        bottom: -10vh;
+        left: 70vw;
+        background: transparent url(assets/images/hud-widget.gif) no-repeat;
+        width: 540px;
+        height: 304px;
+        scale: 30%;
+        cursor: pointer;
+    }
+
+    #sphere {
+        position: relative;
+        left: -72px;
     }
 
     #console {
-        display: block;
+        display: none;
         height: 50px;
-        width: 64vw;
+        width: 60vw;
         position: relative;
         bottom: 12.5vw;
         border: 0px solid lightblue;
-        left: 13vw;
-        z-index: 10000;
+        left: 19vw;
+        z-index: 10;
         color: white;
         font-weight: bold;
     }
@@ -53,25 +147,6 @@
         display: none;
     }
 
-    #humanoid {
-        z-index: 10001;
-        position: absolute;
-        bottom: -11vh;
-        right: 0vw;
-        background: transparent url(assets/images/human.webp) no-repeat;
-        width: 540px;
-        height: 304px;
-        scale: 40%;
-        cursor: pointer;
-    }
-
-    #hud {
-        z-index: 100010;
-        position: absolute;
-        bottom: 100px;
-        left: 20vw;
-    }
-
     #calendar {
         display: block;
         height: 8vw;
@@ -86,6 +161,47 @@
         padding: 10px;
         opacity: 0.6;
         border-radius: 10px;
+        cursor: pointer;
+    }
+
+    #hud-monitor1 {
+        display: block;
+        height: 500px;
+        width: 500px;
+        position: absolute;
+        bottom: -11vw;
+        border: 0px solid lightblue;
+        left: 27vw;
+        z-index: 100032;
+        color: white;
+        font-weight: bold;
+        background: transparent url(assets/images/monitor.png) no-repeat;
+        scale: 20%;
+        opacity: 0.1;
+    }
+
+    #hud-monitor1:hover {
+        opacity: 0.2;
+    }
+
+    #hud-monitor2 {
+        display: block;
+        height: 500px;
+        width: 500px;
+        position: absolute;
+        bottom: -11vw;
+        border: 0px solid lightblue;
+        left: 50vw;
+        z-index: 100033;
+        color: white;
+        font-weight: bold;
+        background: transparent url(assets/images/monitor.png) no-repeat;
+        scale: 20%;
+        opacity: 0.1;
+    }
+
+    #hud-monitor2:hover {
+        opacity: 0.2;
     }
     </style>
 </head>
@@ -326,16 +442,26 @@
     </div>
 
     <pre id="calendar"></pre>
+
+    <div id="atom"></div>
 </div>
 
 <iframe class="camera screen1" width="100%" height="1096" src="https://www.youtube.com/embed/86YLFOog4GM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 <iframe class="camera screen2" width="100%" height="1096" src="https://www.youtube.com/embed/Y1qQZbTF8iQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<iframe class="camera iss" width="100%" height="1096" src="https://ustream.tv/embed/17074538" scrolling="no" allowfullscreen webkitallowfullscreen frameborder="0" style="border: 0 none transparent;"></iframe>
-<div class="sketchfab-embed-wrapper" id="spaceshuttle" style="display: none"> <iframe title="Space Shuttle with boosters" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="1920" height="1080" src="https://sketchfab.com/models/28c98646369f48ee84bc20c267bc685f/embed?ui_infos=0&ui_theme=dark"> </iframe> </div>
+<iframe class="camera iss monitor1" width="100%" height="1096" src="https://ustream.tv/embed/17074538" scrolling="no" allowfullscreen webkitallowfullscreen frameborder="0" style="border: 0 none transparent;"></iframe>
+<iframe class="camera iss monitor2" width="100%" height="1096" src="https://ustream.tv/embed/9408562" scrolling="no" allowfullscreen webkitallowfullscreen frameborder="0" style="border: 0 none transparent;"></iframe>
+<div class="sketchfab-embed-wrapper" id="spaceshuttle" style="display: none"> <iframe title="Space Shuttle with boosters" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="1920" height="1080" src="https://sketchfab.com/models/28c98646369f48ee84bc20c267bc685f/embed?autospin=1&autostart=1&preload=1&&transparent=1&ui_infos=0&ui_watermark_link=0&ui_watermark=0ui_hint=0&ui_theme=dark&dnt=1"> </iframe> </div>
 <div id="status">
     <iframe id="sphere" src="sphere/index.html" width="256" height="256"></iframe>
-    <div id="console"></div>
-    <a id="humanoid" href="javascript:{}"></a>
+    <a id="hud-widget-0" href="javascript:{}"></a>
+    <h3 style="color: white; position: absolute; top: 37px; left: 16vw; opacity: 0.5"><strong>Alt: </strong><span id="altitude">424.08</span>KM &nbsp; <strong>Speed: </strong>27572.79 KM/H<!--<strong>Long: </strong><span id="longitude">0</span> <strong>Lat: </strong><span id="latitude">0</span>--> </h3>
+    <div id="hud-console"></div>
+    <a id="hud-monitor1" href="javascript:{}"></a>
+    <a id="hud-ui" href="javascript:{}"></a>
+    <a id="hud-monitor2" href="javascript:{}"></a>
+    <a id="hud-widget-1" href="javascript:{}"></a>
+    <a id="hud-humanoid" href="javascript:{}"></a>
+    <a id="hud-atom" href="javascript:{}"></a>
 </div>
 <script type="text/javascript" src="https://code.responsivevoice.org/responsivevoice.js?key=5znGKiaR"></script>
 <script type="text/javascript" src="./assets/js/jquery/3.0.0/jquery.min.js"></script>
