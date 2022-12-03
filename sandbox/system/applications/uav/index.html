@@ -1,6 +1,7 @@
 <html>
 <title>UAV - Unmanned Aircraft Vehicle</title>
 <head>
+    
 <style>
 * {
     margin: 0;
@@ -8,12 +9,60 @@
     overflow: hidden;   
 }
 
+body {
+    background: transparent url(assets/images/clouds.gif) no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;   
+}
+
+iframe {
+    overflow: hidden;   
+}
+
 #nav {
-    position: absolute;
-    top: 0;
+    position: relative;
+    top: -25px;
     height: 100px;
     background: #000;
     z-index: 999;
+}
+
+#nav .logo {
+    position: absolute;
+    top: -36px;
+    left: 0px;
+    background: transparent url(assets/images/uav.png) no-repeat;
+    width: 200px;
+    height: 200px;
+    scale: 50%;
+    z-index: 10;
+}
+
+#nav ul {
+    position: relative;
+    top: 30px;
+    color: white;
+    left: 10vw;
+}
+
+#nav ul li {
+    padding: 10px;
+    margin: 10px;
+    float: left;
+    list-style: none;
+}
+
+#nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+#nav ul li a:hover {
+    color: white;
+    text-decoration: none;
 }
 
 .sketchfab-embed-wrapper {
@@ -23,54 +72,36 @@
     z-index: 0;
 }
 
-#uav-0 {
-    display: none;
-}
-
-#uav-1 {
-    display: none;
-}
-
-#uav-2 {
-    display: none;
-}
-
-#uav-3 {
-    display: block;
-}
-
-#uav-4 {
-    display: none;
-}
-
-#uav-5 {
-    display: none;
-}
-
-#uav-6 {
-    display: none;
-}
-
-#uav-7 {
-    display: none;
-}
-
-#uav-8 {
-    display: none;
+#uav {
+    position: relative;
+    top: -80px;
+    width: 102vw;
+    height: 100vh;
+    z-index: 1;
+    left: -10px;
+    overflow: hidden;
 }
 </style>
 <script type="text/javascript" src="https://code.responsivevoice.org/responsivevoice.js?key=5znGKiaR"></script>
 </head>
 <body>
-    <div id="nav"></div>
-    <!--<div id="uav-0" class="sketchfab-embed-wrapper"> <iframe title="Northrop Grumman X-47B Drone" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="1920" height="1080" src="https://sketchfab.com/models/22446ab51499464f85c4662731c425a1/embed?autospin=1&autostart=1&preload=1&ui_hint=0&ui_theme=dark&dnt=1"> </iframe> </div>
-    <div id="uav-1" class="sketchfab-embed-wrapper"> <iframe title="UCAV Stealth Drone 3D Model" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="1920" height="1080" src="https://sketchfab.com/models/17511f3815d64383990cc530d5fef9c2/embed?autospin=1&autostart=1&preload=1&ui_hint=0&ui_theme=dark&dnt=1"> </iframe> </div>
-    <div id="uav-2" class="sketchfab-embed-wrapper"> <iframe title="B-2 Spirit" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="1920" height="1080" src="https://sketchfab.com/models/26c27581f5ba45a9b43eb4747d2019eb/embed?autospin=1&autostart=1&preload=1&ui_hint=0&ui_theme=dark&dnt=1"> </iframe> </div>-->
-    <div id="uav-3" class="sketchfab-embed-wrapper"> <iframe title="X-1 Hornet" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="1920" height="1080" src="https://sketchfab.com/models/2189120069cb459cb483625737798fc8/embed?autospin=1&autostart=1&preload=1&&transparent=1&ui_infos=0&ui_watermark_link=0&ui_watermark=0ui_hint=0&ui_theme=dark&dnt=1"> </iframe> </div>
-    <!--<div id="uav-4" class="sketchfab-embed-wrapper"> <iframe title="Stealth Drone concept" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="1920" height="1080" src="https://sketchfab.com/models/c1f0bfab4e924753994a8d953aad2621/embed?autospin=1&autostart=1&preload=1&ui_hint=0&ui_theme=dark&dnt=1"> </iframe> </div>
-    <div id="uav-5" class="sketchfab-embed-wrapper"> <iframe title="RQ-180" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="1920" height="1080" src="https://sketchfab.com/models/6375f7c27afb4f79a6c271b9684ac2fe/embed?autospin=1&autostart=1&preload=1&transparent=1&ui_hint=0&ui_theme=dark&dnt=1"> </iframe> </div>
-    <div id="uav-6" class="sketchfab-embed-wrapper"> <iframe title="Parrot AR-Drone 2 Elite Edition" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="1920" height="1080" src="https://sketchfab.com/models/41ff1f916707421f8dbba5e6a752f398/embed?autospin=1&autostart=1&preload=1&transparent=1&ui_infos=0&ui_watermark_link=0&ui_watermark=0&ui_hint=0&ui_theme=dark&dnt=1"> </iframe> </div>
-    <div id="uav-7" class="sketchfab-embed-wrapper"> <iframe title="S9 Mini Drone" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="1920" height="1080" src="https://sketchfab.com/models/cf3ed83c1b87486d90435f54c074e16e/embed?autospin=1&autostart=1&preload=1&ui_hint=0&ui_theme=dark&dnt=1"> </iframe> </div>
-    <div id="uav-8" class="sketchfab-embed-wrapper"> <iframe title="Flying Drone" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="1920" height="1080" src="https://sketchfab.com/models/7f0b4e1f6757437ead0ee0d8d14bde3f/embed?autospin=1&autostart=1&preload=1&ui_hint=0&ui_theme=dark&dnt=1"> </iframe> </div>-->
+    <div id="nav">
+        <a class="logo" href="index.html"></a>
+        <ul class="navbar">
+            <li><a class="uav uav-0" href="javascript:{}">UAV 0</a></li>
+            <li><a class="uav uav-1" href="javascript:{}">UAV 1</a></li>
+            <li><a class="uav uav-2" href="javascript:{}">UAV 2</a></li>
+            <li><a class="uav uav-3" href="javascript:{}">UAV 3</a></li>
+            <li><a class="uav uav-4" href="javascript:{}">UAV 4</a></li>
+            <li><a class="uav uav-5" href="javascript:{}">UAV 5</a></li>
+            <li><a class="uav uav-6" href="javascript:{}">UAV 6</a></li>
+            <li><a class="uav uav-7" href="javascript:{}">UAV 7</a></li>
+            <li><a class="uav uav-8" href="javascript:{}">UAV 8</a></li>
+            <li><a class="uav uav-9" href="javascript:{}">UAV 9</a></li>
+        </ul>
+    </div>
+    <iframe id="uav" src="uav-5.html" width="1920" height="1096"></iframe>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/app.js" type="text/javascript"></script>
 </body>
 </html>
