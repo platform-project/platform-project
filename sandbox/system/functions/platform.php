@@ -463,7 +463,16 @@ function platform_launch_listview_lists_exact($pages=null){
           $url = HTTP_URI.$_SERVER['SERVER_NAME']."/?".$page;
       endif;
     ?>
-      <li><a class="listview_link" href="<?php e($url) ?>"><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></a></li>
+      <li><a class="listview_link <?php e($page) ?>" href="<?php e($url) ?>"><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></a></li>
+      <?php js_start(); ?>
+      $('.listview_link.<?php e($page) ?>').hover(function(){
+          $.getJSON('/platform.json', function(data) {
+            $('#main_content').html('<h3><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></h3><p style="text-align: justify; font-size: 14px; padding: 10px">'+ data.platform.<?php e($page)?> + '</p>');
+          });
+      }, function(){
+          $('#main_content').html('');
+      });
+      <?php js_end(); ?>
     <?php
     endforeach;
   endif;
@@ -494,7 +503,16 @@ function platform_launch_listview_lists($path, $exclusion=null){
           $url = HTTP_URI.$_SERVER['SERVER_NAME']."/?".$page;
       endif;
     ?>
-      <li><a class="listview_link" href="<?php e($url) ?>"><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></a></li>
+      <li><a class="listview_link <?php e($page) ?>" href="<?php e($url) ?>"><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></a></li>
+      <?php js_start(); ?>
+      $('.listview_link.<?php e($page) ?>').hover(function(){
+          $.getJSON('/platform.json', function(data) {
+            $('#main_content').html('<h3><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></h3><p style="text-align: justify; font-size: 14px; padding: 10px">'+ data.platform.<?php e($page)?> + '</p>');
+          });
+      }, function(){
+          $('#main_content').html('');
+      });
+      <?php js_end(); ?>
     <?php
     endforeach;
   endif;
