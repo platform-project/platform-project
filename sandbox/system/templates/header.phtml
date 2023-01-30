@@ -15,6 +15,8 @@
 <title>Platform Browser [platform://<?php echo strtolower($_SERVER['SERVER_NAME']) ?><?php echo dirname($_SERVER['SCRIPT_NAME']) ?>]</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script type="text/javascript" src="https://code.responsivevoice.org/responsivevoice.js?key=5znGKiaR"></script>
 <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
@@ -85,20 +87,25 @@ td img {
   width: 8px;
 }
 
+#main #navigation ul {
+  
+}
+
 #main #navigation ul li {
- width: 300px;
+  width: 300px;
 }
 #main #main_content {
   display: block;
   float: left;
   position: relative;
   top: 20px;
-  left: -40px;
+  left: 0px;
   width: 470px;
   height: 350px;
   background: #f2f2f2;
   border-radius: 20px;
   padding: 20px;
+  margin-left: 20px;
   z-index: 0;
 }
 .wrapper {
@@ -602,6 +609,14 @@ a.listview_link:hover {
   height: 52px;
   margin: -18px 10px 0px 20px;
 }
+.listview_platform {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_platform_applications.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
 .listview_plugins {
   background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_system_plugins.png) no-repeat;
   display: block;
@@ -684,6 +699,14 @@ a.listview_link:hover {
 }
 .listview_workspace {
   background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_listview_sandbox_workspace.png) no-repeat;
+  display: block;
+  float: left;
+  width: 61px;
+  height: 52px;
+  margin: -18px 10px 0px 20px;
+}
+.listview_videos {
+  background: transparent url(<?php echo PLATFORM_SITES_ICONS_URI . DS ?>icon_hd-video-x-generic.png) no-repeat;
   display: block;
   float: left;
   width: 61px;

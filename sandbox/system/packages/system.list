@@ -98,3 +98,7 @@ webp
 gwenview
 gthumb
 supervisor
+memcached
+php-memcache
+php-memcached
+gradle
