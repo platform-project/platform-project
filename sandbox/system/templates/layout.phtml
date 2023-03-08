@@ -21,6 +21,7 @@
   <?php platform_launch_default_icon($_SERVER['QUERY_STRING']) ?>
   <div class="toolbar">
     <?php
+    $page = $_SERVER['QUERY_STRING'];
     $qstr = explode(':', $_SERVER['QUERY_STRING']);
     $title = end($qstr); ?>
     <?php $title = empty($title) ? 'platform' : $title; ?>
@@ -39,6 +40,7 @@
   <div id="main">
     <?php platform_launch_sandbox_system_template('navigation'); ?>
     <div id="main_content">
+    <?php (empty($page) || !isset($page)) ? e(platform_launch_splash_documentation("platform")) : e(platform_launch_splash_documentation($page)); ?>
       <div class="splash_screen">
         
       </div>

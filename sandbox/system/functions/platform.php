@@ -178,7 +178,7 @@ function platform_launch_dispatch($request=null){
 function platform_launch_path_to($request){
   $exclude_hidden = array('.AppleDouble', '.config', '.svn', '.git', '.chromium',
                           '.dude', '.icons', '.fonts', '.mac4lin', '.prebuilds',
-                          '.torrents', '.trash');
+                          '.torrents', '.trash','.files');
   switch($request){
     case 'platform':
     default:
@@ -464,15 +464,7 @@ function platform_launch_listview_lists_exact($pages=null){
       endif;
     ?>
       <li><a class="listview_link <?php e($page) ?>" href="<?php e($url) ?>"><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></a></li>
-      <?php js_start(); ?>
-      $('.listview_link.<?php e($page) ?>').hover(function(){
-          $.getJSON('/platform.json', function(data) {
-            $('#main_content').html('<h3><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></h3><p style="text-align: justify; font-size: 14px; padding: 10px">'+ data.platform.<?php e($page)?> + '</p>');
-          });
-      }, function(){
-          $('#main_content').html('');
-      });
-      <?php js_end(); ?>
+      <?php e(platform_launch_splash_documentation($page)); ?>
     <?php
     endforeach;
   endif;
@@ -504,15 +496,8 @@ function platform_launch_listview_lists($path, $exclusion=null){
       endif;
     ?>
       <li><a class="listview_link <?php e($page) ?>" href="<?php e($url) ?>"><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></a></li>
-      <?php js_start(); ?>
-      $('.listview_link.<?php e($page) ?>').hover(function(){
-          $.getJSON('/platform.json', function(data) {
-            $('#main_content').html('<h3><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></h3><p style="text-align: justify; font-size: 14px; padding: 10px">'+ data.platform.<?php e($page)?> + '</p>');
-          });
-      }, function(){
-          $('#main_content').html('');
-      });
-      <?php js_end(); ?>
+
+      <?php e(platform_launch_splash_documentation($page)); ?>
     <?php
     endforeach;
   endif;
@@ -550,6 +535,29 @@ function platform_launch_listview_lists_raw($pages=null){
   </ul>
  <?php
 }
+
+/**
+ * platform_launch_splash_documentation: used to display splash documentation.
+ * 
+ * @param string $page  The page being displayed
+ *
+ * @return void
+ */
+function platform_launch_splash_documentation($page){
+  $page = empty($page) || !isset($page) ? "platform" : $page;
+  js_start(); ?>
+$('.listview_link.<?php e($page) ?>').hover(function(){
+    $.getJSON('/platform.json', function(data) {
+      $('#main_content').html('<h3><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></h3><a href="javascript:{}" onclick="responsiveVoice.speak(' + data.platform.<?php e($page)?> + '\')"><span class="fa fa-headphones object"> &nbsp;  &nbsp; Listen &nbsp; </span></a><p style="text-align: justify; font-size: 14px; padding: 10px">'+ data.platform.<?php e($page)?> + '</p>');
+    });
+}, function(){
+  $.getJSON('/platform.json', function(data) {
+      $('#main_content').html('<h3><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></h3><a href="javascript:{}" onclick="responsiveVoice.speak(\'' + data.platform.<?php e($page)?> + '\')"><span class="fa fa-headphones object"> &nbsp;  &nbsp; Listen &nbsp; </span></a><p style="text-align: justify; font-size: 14px; padding: 10px">'+ data.platform.<?php e($page)?> + '</p>');
+    });
+});
+  <?php js_end();
+}
+
 
 /**
  * platform_launch_listview_lists_applications: used to list applications.
