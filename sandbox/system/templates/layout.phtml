@@ -40,9 +40,13 @@
   <div id="main">
     <?php platform_launch_sandbox_system_template('navigation'); ?>
     <div id="main_content">
-    <?php empty($page) || !isset($page) ? e(platform_launch_splash_documentation("platform")) : e(platform_launch_splash_documentation($page)); ?>
-      <div class="splash_screen">
-        
+      <script>
+        $.getJSON('/platform.json', function(data) {
+      $('#main_content').html('<h3><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></h3><a href="javascript:{}" onclick="responsiveVoice.speak(\'' + data.platform.<?php e($page)?> + '\')"><span class="fa fa-headphones object"> &nbsp;  &nbsp; Listen &nbsp; </span></a><p style="text-align: justify; font-size: 14px; padding: 10px">'+ data.platform.<?php e($page)?> + '</p>');
+    });
+      </script>
+      <div> 
+      <?php platform_launch_splash_documentation($page); ?>
       </div>
     </div>
   </div>
