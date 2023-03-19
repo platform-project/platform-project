@@ -1,4 +1,4 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoiYmlsZWNrbWUiLCJhIjoiY2szMDFsM2VzMGw2aTNubW1kam1hdDFyeCJ9.S9Gj66W6-72sdRnfZfOXTg';
+mapboxgl.accessToken = 'pk.eyJ1IjoiYmlsZWNrbWUiLCJhIjoiY2xmZmc4ZXZzM2NyYTQwbzQ2djBpNWU5OSJ9.c58xGCvKBuR4biE2GY1TAQ';
 
 navigator.geolocation.getCurrentPosition( successLocation, errorLocation, { enableHighAccuracy: true });
 
@@ -7,12 +7,12 @@ function successLocation(position){
 }
 
 function errorLocation(){
-    setUpMap([28.13830,-25.91269]);
+    setUpMap([0, 0]);
 }
 
 function setUpMap(center){
 
-    // satellite view
+    // satellite view`
     var map_satellite = new mapboxgl.Map({
         container: 'map_satellite',
         style: 'mapbox://styles/mapbox/satellite-streets-v11',
