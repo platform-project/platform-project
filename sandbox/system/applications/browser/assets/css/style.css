@@ -5,6 +5,7 @@ html {
 body {
   font: bold 14px Arial;
   overflow: hidden;
+  color: #fff;
 }
 
 #canvas {
