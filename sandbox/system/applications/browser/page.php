@@ -28,14 +28,5 @@ $cache = 'cache.html';
 $f = fopen($cache, 'w+');
 fwrite($f, $xml);
 fclose($f);
-header('X-Frame-Options: Allow-From http://www.yahoo.com');
-header('X-Frame-Options: Allow-From http://www.bing.com');
-header('X-Frame-Options: Allow-From http://www.google.com');
-header('X-Frame-Options: Allow-From http://www.facebook.com');
-header('X-Frame-Options: Allow-From http://www.stackoverflow.com');
-header('X-Frame-Options: GOFORIT');
-if (PHPVERSION >= '5.3'){
-	header_remove('X-Frame-Options');
-}
-//var_dump(get_headers($url));
+header("Access-Control-Allow-Origin: *");
 echo $xml;
