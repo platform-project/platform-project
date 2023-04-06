@@ -49,7 +49,7 @@ body {
 }
 
 #page {
-    background: transparent;
+    background: white;
     border: 3px solid black;
     margin: 0 auto;
     width: 99%;
