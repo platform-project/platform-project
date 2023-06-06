@@ -4,7 +4,7 @@
     "description": "The Platform Project",
     "keywords": ["platform","framework","application","library","component"],
     "homepage": "http://platform-project.github.io/platform-project",
-    "license": "GPL-3.0",
+    "license": "GPL-3.0-or-later",
     "authors": [
         {
             "name": "The Platform Authors",
