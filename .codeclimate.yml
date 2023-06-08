@@ -6,3 +6,6 @@ languages:
   Python: true
 # exclude_paths:
 # - "foo/bar.rb"
+plugins:
+  sonar-php:
+    enabled: true
