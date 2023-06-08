@@ -1,5 +1,7 @@
 ## Platform
 [![PHP Composer](https://github.com/platform-project/platform-project/actions/workflows/php.yml/badge.svg)](https://github.com/platform-project/platform-project/actions/workflows/php.yml)
+[![Code Climate](https://codeclimate.com/github/platform-project/platform-project/badges/gpa.svg)](https://codeclimate.com/github/platform-project/platform-project)
+[![Test Coverage](https://codeclimate.com/github/codeclimate-community/codeclimate-markdownlint/badges/coverage.svg)](https://codeclimate.com/github/platform-project/platform-project/coverage)
 
 ### About Platform
 Platform is a simple framework that allows website developers and webmasters to manage and maintain web-based projects and web applications.
