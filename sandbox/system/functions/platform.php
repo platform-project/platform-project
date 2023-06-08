@@ -426,6 +426,7 @@ function platform_launch_default_icon($page=null){
     case 'mirrors':
     case 'system':
     case 'applications':
+    case 'nodes':
     case 'framework':
     case 'libraries':
     case 'platforms':
