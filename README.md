@@ -1,5 +1,5 @@
 ## Platform
-
+[![PHP Composer](https://github.com/platform-project/platform-project/actions/workflows/php.yml/badge.svg)](https://github.com/platform-project/platform-project/actions/workflows/php.yml)
 
 ### About Platform
 Platform is a simple framework that allows website developers and webmasters to manage and maintain web-based projects and web applications.
@@ -43,6 +43,7 @@ By implementing this solution, a developer should not be limited to one approach
  - 512MB - 1GB RAM
 
 ### Build Status 
+[![PHP Composer](https://github.com/platform-project/platform-project/actions/workflows/php.yml/badge.svg)](https://github.com/platform-project/platform-project/actions/workflows/php.yml)
 - This project is built and tested specifically on [Chromium Browser](http://www.chromium.org)
 - This project has been tested to work on Ubuntu 16.04 up to the latest.
 - This project has been tested to work with PHP 7.3+
