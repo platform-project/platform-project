@@ -454,7 +454,6 @@
 <div id="status">
     <iframe id="sphere" src="sphere/index.html" width="256" height="256"></iframe>
     <a id="hud-widget-0" href="javascript:{}"></a>
-    <h3 style="color: white; position: absolute; top: 37px; left: 16vw; opacity: 0.5"><strong>Alt: </strong><span id="altitude">424.08</span>KM &nbsp; <strong>Speed: </strong>27572.79 KM/H<!--<strong>Long: </strong><span id="longitude">0</span> <strong>Lat: </strong><span id="latitude">0</span>--> </h3>
     <div id="hud-console"></div>
     <a id="hud-monitor1" href="javascript:{}"></a>
     <a id="hud-ui" href="javascript:{}"></a>
