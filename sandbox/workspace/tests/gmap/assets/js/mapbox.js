@@ -83,7 +83,7 @@ function setUpMap(center){
         new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,
                 localGeocoder: coordinatesGeocoder,
-                zoom: 17,
+                zoom: 19,
                 placeholder: '',
                 mapboxgl: mapboxgl,
                 reverseGeocode: true
@@ -110,7 +110,7 @@ function setUpMap(center){
         new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,
                 localGeocoder: coordinatesGeocoder,
-                zoom: 17,
+                zoom: 19,
                 placeholder: '',
                 mapboxgl: mapboxgl,
                 reverseGeocode: true
@@ -137,7 +137,7 @@ function setUpMap(center){
         new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,
                 localGeocoder: coordinatesGeocoder,
-                zoom: 17,
+                zoom: 19,
                 placeholder: '',
                 mapboxgl: mapboxgl,
                 reverseGeocode: true
