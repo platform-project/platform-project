@@ -705,25 +705,21 @@ function platform_launch_ip_authorization_checks(){
   $browser = detect_browser();
 
   switch($ip){
+    // TODO: rewrite function
     // allowed ip addresses
 
-    // from localhost
+    // localhost network
     case '127.0.0.1':
     case '127.0.1.1':
 
-    // from starbright
-    //case '10.10.50.121':
-    case '10.10.50.192':
-    case '10.10.50.193':
-
-    // from ehonet
+    // ehonet network
     case '192.168.43.1':
     case '192.168.43.2':
     case '192.168.43.42':
     case '192.168.43.65':
     case '192.168.43.174':
 
-    // from ehonet-wifi
+    // ehonet-wifi network
     case '10.10.2.200':
     case '10.10.2.210':
     case '10.10.2.220':
