@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/assets/css/github.css" />
+
+<h1 id="lumen-installation-guide">Lumen Installation Guide</h1>
+<p>This guide will walk you through the steps to install the Lumen micro-framework, a lightweight version of Laravel, on your local development environment. Lumen is well-suited for building microservices and small-scale APIs.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before you begin, make sure you have the following prerequisites installed on your system:</p>
+<ul>
+<li>PHP (recommended version 7.3 or higher)</li>
+<li>Composer (a PHP package manager)</li>
+<li>Git (for version control)</li>
+</ul>
+<h2 id="step-1-install-composer">Step 1: Install Composer</h2>
+<p>Composer is a PHP dependency manager and is used to install Lumen. You can download and install Composer from <a href="https://getcomposer.org/">https://getcomposer.org/</a>.</p>
+<h2 id="step-2-create-a-new-lumen-project">Step 2: Create a New Lumen Project</h2>
+<p>Open your terminal or command prompt and run the following command to create a new Lumen project:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">composer</span> create-project --prefer-dist laravel/lumen my-lumen-app</span></code></pre></div>
+<p>Replace <code>my-lumen-app</code> with the desired name of your Lumen project directory. Composer will fetch Lumen and its dependencies and set up the project for you.</p>
+<h2 id="step-3-configure-environment">Step 3: Configure Environment</h2>
+<p>Lumen uses environment variables for configuration. Create a .env file in the root of your project by copying the .env.example file:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">cp</span> .env.example .env</span></code></pre></div>
+<p>Edit the <code>.env</code> file to set up your database connection, application name, and other configuration options as needed.</p>
+<h2 id="step-4-generate-an-application-key">Step 4: Generate an Application Key</h2>
+<p>Run the following command to generate a unique application key:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">php</span> artisan key:generate</span></code></pre></div>
+<p>This key is used for encryption and should be kept secret.</p>
+<h2 id="step-5-run-the-development-server">Step 5: Run the Development Server</h2>
+<p>To start a local development server, run the following command:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">php</span> -S localhost:8000 -t public</span></code></pre></div>
+<p>This will start the server, and you can access your Lumen application at <a href="http://localhost:8000">http://localhost:8000</a> in your web browser.</p>
+<h2 id="step-6-additional-setup-optional">Step 6: Additional Setup (Optional)</h2>
+<p>Configure your web server (e.g., Apache or Nginx) to point to the public directory of your Lumen project if you're not using the built-in development server. Set up your database and configure your <code>.env</code> file accordingly. Start building your Lumen application by creating routes, controllers, and models as needed.</p>
+<h2 id="step-7-start-building">Step 7: Start Building</h2>
+<p>You're now ready to start building your Lumen application! Refer to the Lumen documentation for more information on how to develop with Lumen.</p>
+<p>Happy coding!</p>
