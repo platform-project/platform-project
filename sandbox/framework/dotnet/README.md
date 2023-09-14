@@ -50,8 +50,8 @@ You're now ready to start developing .NET Core applications. You can use various
 Refer to the [.NET documentation](https://docs.microsoft.com/en-us/dotnet/core/) for detailed information on using .NET Core, including creating web applications, APIs, and more.
 
 ## Step 5: Additional Resources
-[.NET Core SDK Documentation](https://docs.microsoft.com/en-us/dotnet/core/)
-[Learn .NET Core](https://learn.microsoft.com/en-us/dotnet/core/)
-[Official .NET Blog](https://devblogs.microsoft.com/dotnet/)
+- [.NET Core SDK Documentation](https://docs.microsoft.com/en-us/dotnet/core/)
+- [Learn .NET Core](https://learn.microsoft.com/en-us/dotnet/core/)
+- [Official .NET Blog](https://devblogs.microsoft.com/dotnet/)
 
 Happy coding with .NET Core!
