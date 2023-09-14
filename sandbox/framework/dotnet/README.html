@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="/assets/css/github.css" />
+<h1 id="net-core-installation-guide">.NET Core Installation Guide</h1>
+<p>This guide will walk you through the steps to install the .NET Core framework on your system. .NET Core is a cross-platform, open-source framework developed by Microsoft for building modern, high-performance applications.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before you begin, make sure you have the following prerequisites installed on your system:</p>
+<ul>
+<li>A compatible operating system (Windows, macOS, or Linux)</li>
+<li>An internet connection to download the .NET Core SDK</li>
+</ul>
+<h2 id="step-1-download-the-net-core-sdk">Step 1: Download the .NET Core SDK</h2>
+<p>Visit the official .NET website to download the .NET Core SDK for your operating system: <a href="https://dotnet.microsoft.com/download">https://dotnet.microsoft.com/download</a></p>
+<p>Choose the appropriate download link based on your operating system (Windows, macOS, or Linux), and follow the installation instructions for your platform.</p>
+<h2 id="step-2-verify-installation">Step 2: Verify Installation</h2>
+<p>After the installation is complete, open your terminal or command prompt and run the following command to verify that .NET Core has been successfully installed:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">dotnet</span> --version</span></code></pre></div>
+<p>This command will display the installed version of the .NET Core SDK. If you see the version number, it means .NET Core is installed and ready to use.</p>
+<h2 id="step-3-create-a-sample-net-core-application-optional">Step 3: Create a Sample .NET Core Application (Optional)</h2>
+<p>To ensure that .NET Core is working correctly, you can create a sample "Hello World" application. Here are the steps to create and run a simple console application:</p>
+<p>Create a new directory for your project:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="fu">mkdir</span> my-dotnet-app</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true"></a><span class="bu">cd</span> my-dotnet-app</span></code></pre></div>
+<p>Create a new console application:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">dotnet</span> new console</span></code></pre></div>
+<p>Build and run the application:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">dotnet</span> build</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true"></a><span class="ex">dotnet</span> run</span></code></pre></div>
+<p>You should see "Hello World!" displayed in your terminal, indicating that the application has been successfully created and executed.</p>
+<h2 id="step-4-start-developing">Step 4: Start Developing</h2>
+<p>You're now ready to start developing .NET Core applications. You can use various tools, such as Visual Studio Code, Visual Studio, or JetBrains Rider, to write and build .NET Core projects.</p>
+<p>Refer to the <a href="https://docs.microsoft.com/en-us/dotnet/core/">.NET documentation</a> for detailed information on using .NET Core, including creating web applications, APIs, and more.</p>
+<h2 id="step-5-additional-resources">Step 5: Additional Resources</h2>
+<p><a href="https://docs.microsoft.com/en-us/dotnet/core/">.NET Core SDK Documentation</a> <a href="https://learn.microsoft.com/en-us/dotnet/core/">Learn .NET Core</a> <a href="https://devblogs.microsoft.com/dotnet/">Official .NET Blog</a></p>
+<p>Happy coding with .NET Core!</p>
