@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="/assets/css/github.css" />
+
+<h1 id="ruby-on-rails-installation-guide">Ruby on Rails Installation Guide</h1>
+<p>This guide will walk you through the steps to install the Ruby on Rails framework on your system. Ruby on Rails, often simply called Rails, is a popular and powerful web application framework written in Ruby.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before you begin, make sure you have the following prerequisites installed on your system:</p>
+<ul>
+<li>Ruby (recommended version 2.6.0 or higher)</li>
+<li>RubyGems (a Ruby package manager)</li>
+<li>Node.js (for managing frontend assets)</li>
+<li>Yarn (a package manager for JavaScript)</li>
+<li>Git (for version control)</li>
+<li>SQLite (a lightweight database, or you can choose a different database)</li>
+</ul>
+<h2 id="step-1-install-ruby">Step 1: Install Ruby</h2>
+<p>You can download and install Ruby from the official Ruby website: <a href="https://www.ruby-lang.org/en/documentation/installation/">https://www.ruby-lang.org/en/documentation/installation/</a></p>
+<p>Follow the installation instructions for your specific operating system.</p>
+<p>To check if Ruby is installed, open your terminal or command prompt and run:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">ruby</span> -v</span></code></pre></div>
+<p>You should see the installed Ruby version.</p>
+<h2 id="step-2-install-rubygems">Step 2: Install RubyGems</h2>
+<p>RubyGems is included with Ruby by default, so you don't need to install it separately.</p>
+<p>To check if RubyGems is installed, run:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">gem</span> -v</span></code></pre></div>
+<p>You should see the installed RubyGems version.</p>
+<h2 id="step-3-install-nodejs-and-yarn">Step 3: Install Node.js and Yarn</h2>
+<p>Node.js and Yarn are used for managing JavaScript dependencies and frontend assets in a Rails application.</p>
+<p>Install Node.js and Yarn by following the instructions on their official websites:</p>
+<ul>
+<li>Node.js: <a href="https://nodejs.org/">https://nodejs.org/</a></li>
+<li>Yarn: <a href="https://classic.yarnpkg.com/en/docs/install">https://classic.yarnpkg.com/en/docs/install</a> To check if Node.js and Yarn are installed, run:</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">node</span> -v</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true"></a><span class="ex">yarn</span> -v</span></code></pre></div>
+<p>You should see the installed versions.</p>
+<h2 id="step-4-install-rails">Step 4: Install Rails</h2>
+<p>Open your terminal or command prompt and run the following command to install Rails:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">gem</span> install rails</span></code></pre></div>
+<p>This command will download and install the latest version of the Rails gem.</p>
+<p>To check if Rails is installed, run:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true"></a><span class="ex">rails</span> -v</span></code></pre></div>
+<p>You should see the installed Rails version.</p>
+<h2 id="step-5-create-a-new-rails-application">Step 5: Create a New Rails Application</h2>
+<p>Now that Rails is installed, you can create a new Rails application. Navigate to the directory where you want to create your app and run:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true"></a><span class="ex">rails</span> new my-rails-app</span></code></pre></div>
+<p>Replace my-rails-app with the desired name of your Rails project directory.</p>
+<h2 id="step-6-configure-the-database">Step 6: Configure the Database</h2>
+<p>By default, Rails uses SQLite as the database. If you'd like to use a different database (e.g., MySQL or PostgreSQL), you'll need to update your config/database.yml file with the appropriate settings.</p>
+<h2 id="step-7-start-the-development-server">Step 7: Start the Development Server</h2>
+<p>Navigate to your Rails project directory:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true"></a><span class="bu">cd</span> my-rails-app</span></code></pre></div>
+<p>Start the development server by running:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true"></a><span class="ex">rails</span> server</span></code></pre></div>
+<p>You can now access your Rails application in your web browser at <a href="http://localhost:3000">http://localhost:3000</a>.</p>
+<h2 id="step-8-additional-setup-optional">Step 8: Additional Setup (Optional)</h2>
+<p>Set up version control for your project using Git. Install any additional gems or libraries your project requires. Create controllers, models, and views to start building your application.</p>
+<h2 id="step-9-start-building">Step 9: Start Building</h2>
+<p>You're now ready to start building your Ruby on Rails application! Refer to the Ruby on Rails Guides for comprehensive documentation and tutorials on using Rails.</p>
+<h2 id="step-10-additional-resources">Step 10: Additional Resources</h2>
+<p>Ruby on Rails Official Website RubyGems Node.js Yarn Git Happy coding with Ruby on Rails!</p>

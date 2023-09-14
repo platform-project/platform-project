@@ -16,4 +16,4 @@
  * See COPYRIGHT.php for copyright notices and details.
  */
 
-platform_launch_redirect('http://rubyonrails.com/');
+platform_launch_redirect('http://rubyonrails.org/');
