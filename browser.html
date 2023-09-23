@@ -32,7 +32,16 @@
     <link rel="stylesheet" href="assets/fonts/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="assets/css/weather-icons.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="" href="assets/css/jquery.jgrowl.css" />
+    <link rel="stylesheet" href="assets/css/jquery.jgrowl.css" />
+    
+    <script>
+    const hours = new Date().getHours()
+    const isDayTime = hours > 6 && hours < 20
+    var markup = "<link rel=\"stylesheet\" href=\"assets/skins/dark/default.css\" />";
+    if (!isDayTime){
+        document.writeln(markup);
+    }
+    </script>
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color">
     <!-- http://html5doctor.com/web-manifest-specification/#appname -->

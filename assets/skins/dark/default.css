@@ -1,65 +1,63 @@
 html.js.canvas.canvastext.geolocation.history.websockets.video.audio.localstorage.webworkers.applicationcache {
-  background: transparent -webkit-gradient(linear, 0% 0%, 0% 100%, from(#828282), to(#1e1e1e));
-  background-size: cover;
-  background-image: url('../apple-brushed-metal-texture.jpg') repeat-x;
+  background-color: #1e1e1e;
 }
 
 a.music.icon {
-  border: none;
+  border: none !important;
   margin: 2px 5px 5px;
 }
 
 div.music.wrapper {
-  border: none;
+  border: none !important;
 }
 
 a.photo.icon {
-  border: none;
+  border: none !important;
   margin: 2px 5px 5px;
 }
 
 a.player.icon {
-  border: none;
+  border: none !important;
   margin: 2px 5px 5px;
 }
 
 a.game.icon {
-  border: none;
+  border: none !important;
   margin: 2px 5px 5px;
 }
 
 a.drone.icon {
-  border: none;
+  border: none !important;
   margin: 2px 5px 5px;
 }
 
 a.uav.icon {
-  border: none;
+  border: none !important;
   margin: 2px 5px 5px;
 }
 
 a.plane.icon {
-  border: none;
+  border: none !important;
   margin: 2px 5px 5px;
 }
 
 a.launcher.icon {
-  border: none;
+  border: none !important;
   margin: 2px 5px 5px;
 }
 
 a.satellite.icon {
-  border: none;
+  border: none !important;
   margin: 2px 5px 5px;
 }
 
 a.weather.icon {
-  border: none;
+  border: none !important;
   margin: 2px 5px 5px;
 }
 
 a.info.icon {
-  border: none;
+  border: none !important;
   margin: 2px 5px 5px;
 }
 
@@ -82,5 +80,5 @@ a.info.icon {
 }
 
 #canvas {
-  
+  background-color: #1e1e1e;
 }
