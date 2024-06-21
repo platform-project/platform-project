@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todoly</title>
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=5znGKiaR"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!--<div class="slider">
+        <img id="sliderImage" src="assets/images/13882329_xl.jpg" alt="Wallpaper">
+    </div>-->
+    <div class="container">
+        <h1>Todoly</h1>
+        <form id="taskForm">
+            <label for="description">Task Description:</label>
+            <input type="text" id="description" required>
+            <label for="time">Time:</label>
+            <input type="datetime-local" id="time" required>
+            <button type="submit">Add Task</button>
+        </form>
+        <h2>Tasks</h2>
+        <ul id="taskList"></ul>
+    </div>
+
+    <!-- Modal -->
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalText"></p>
+            <button id="confirmButton">Confirm</button>
+            <button id="snoozeButton">Snooze</button>
+        </div>
+    </div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
