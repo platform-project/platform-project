@@ -1,6 +1,6 @@
 {
     "features": [
-        { "id": "editor", "name": "Editor", "description": "Editor application", "link": "http://platform/sandbox/system/applications/editor/", "installed": false },
+        { "id": "editor", "name": "Editor", "description": "Editor application", "link": "http://platform/sandbox/system/applications/editor/editor.html", "installed": true },
         { "id": "ebooks", "name": "Ebooks", "description": "Ebooks application", "link": "http://platform/sandbox/system/applications/ebooks/", "installed": false },
         { "id": "games", "name": "Online Games", "description": "Gaming application.", "link": "http://platform/sandbox/system/applications/games/", "installed": true },
         { "id": "maps", "name": "Maps", "description": "Maps application.", "link": "http://platform/sandbox/workspace/tests/gmap/index.php", "installed": true },
