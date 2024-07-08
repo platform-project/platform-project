@@ -606,6 +606,20 @@
             }
         }
     </script>
+    <style>
+        #album-artwork {
+            display: block;
+            width: 125px;
+            height: 125px;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+        #track-info {
+            color: #f5f5f5;
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -634,12 +648,13 @@
             <a class="music icon" href="javascript:{}"><i class="fi-music"></i></a>
             <div class="music wrapper">
                 <div id="ticker">
-                    <div class="album image">
-                        <i class="album icon fi-music" style="font-size: 48px; color: #f5f5f5; "></i>
-                        <div class="album artwork"></div>
+                    <div id="metadata">
+                        <img id="album-artwork" alt="Album Artwork" src="sites/icons/no-album.png" style="display: block;"/>
+                        <div id="track-info">
+                            <p id="artist-name">Artist: Unknown</p>
+                            <p id="track-name">Track: Unknown</p>
+                        </div>
                     </div>
-                    <div class="album artist"></div>
-                    <div class="album track"></div>
                 </div>
 
                 <div class="controls">
@@ -647,15 +662,16 @@
                     <a class="control pause" href="javascript:{}"><i class="fi-pause"></i></a>
                     <a class="control stop" href="javascript:{}" onclick="responsiveVoice.speak('Stop');"><i class="fi-stop"></i></a>
                     <a class="control scrolling" onclick="" href="javascript:{}" onclick="responsiveVoice.speak('Play music');">
-                        <marques>Play music</marques>
+                        <marques>View Artwork</marques>
                     </a>
                     <a class="control eject" href="javascript:{}"><i class="fi-eject"></i></a>
-                    <input type="file" id="addTrack" class="control" title="Play music" />
+                    <input type="file" id="addTrack" class="control" title="Play music" accept="audio/*" />
                 </div>
 
-                <audio controls loop name="media" src="">
-        <source src="" type="audio/mp3;">
-      </audio>
+                <audio id="audio" controls loop name="media" src="">
+                    <source src="" type="audio/mp3;">
+                </audio>
+                
             </div>
         </div>
 
@@ -730,5 +746,66 @@
         <div id="map" style="display: none"></div>
     </div>
     <script src="assets/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('addTrack').addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                const audioElement = document.getElementById('audio');
+                const artworkElement = document.getElementById('album-artwork');
+                const trackNameElement = document.getElementById('track-name');
+                const artistNameElement = document.getElementById('artist-name');
+
+                if (file) {
+                    // Load the audio file into the audio element
+                    const objectURL = URL.createObjectURL(file);
+                    audioElement.src = objectURL;
+
+                    // Read tags from the file
+                    jsmediatags.read(file, {
+                        onSuccess: function(tag) {
+                            const tags = tag.tags;
+
+                            // Display album artwork
+                            const picture = tags.picture;
+                            if (picture) {
+                                let base64String = "";
+                                for (let i = 0; i < picture.data.length; i++) {
+                                    base64String += String.fromCharCode(picture.data[i]);
+                                }
+                                const base64 = "data:" + picture.format + ";base64," + btoa(base64String);
+                                artworkElement.src = base64;
+                                artworkElement.style.display = 'block';
+                            } else {
+                                artworkElement.style.backgroundImage = 'sites/icons/no-album.png';
+                            }
+
+                            // Display track name
+                            if (tags.title) {
+                                trackNameElement.textContent = "Track: " + tags.title;
+                            } else {
+                                trackNameElement.textContent = "Track: Unknown";
+                            }
+
+                            // Display artist name
+                            if (tags.artist) {
+                                artistNameElement.textContent = "Artist: " + tags.artist;
+                            } else {
+                                artistNameElement.textContent = "Artist: Unknown";
+                            }
+                        },
+                        onError: function(error) {
+                            console.log(error);
+                            artworkElement.style.display = 'none';
+                            trackNameElement.textContent = "Track: Unknown";
+                            artistNameElement.textContent = "Artist: Unknown";
+                        }
+                    });
+                } else {
+                    console.error("No file selected or file not found.");
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -514,9 +514,9 @@ iframe#site::-webkit-scrollbar-thumb {
     position: absolute;
     bottom: 48px;
     right: 0;
-    width: 320px;
-    height: 80px;
-    background: #141414;
+    width: 345px;
+    height: 200px;
+    background: rgba(1,1,1,0.88);
     border-radius: 5px;
     opacity: 0.9;
     display: none;
