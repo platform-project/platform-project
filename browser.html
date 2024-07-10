@@ -624,6 +624,26 @@
             left: 130px;
             word-wrap: break-word;
         }
+        #progress-container {
+            width: 96%;
+            background: rgba(200,200,200, 0.3);
+            height: 10px;
+            position: relative;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        #progress-bar {
+            width: 0;
+            height: 100%;
+            background-color: red;
+            position: absolute;
+            border-radius: 5px;
+        }
+        #timer {
+            position: relative;
+            color: white;
+        }
+
     </style>
 </head>
 
@@ -658,6 +678,10 @@
                         <div id="track-info">
                             <p id="artist-name">Artist: Unknown</p>
                             <p id="track-name">Track: Unknown</p>
+                            <div id="progress-container">
+                                <div id="progress-bar"></div>
+                            </div>
+                            <p id="timer">00:00 / 00:00</p>
                         </div>
                     </div>
                 </div>
@@ -760,6 +784,8 @@
                 const artworkElement = document.getElementById('album-artwork');
                 const trackNameElement = document.getElementById('track-name');
                 const artistNameElement = document.getElementById('artist-name');
+                const progressBar = document.getElementById('progress-bar');
+                const timerElement = document.getElementById('timer');
 
                 if (file) {
                     // Load the audio file into the audio element
@@ -806,6 +832,31 @@
                             artistNameElement.textContent = "Artist: Unknown";
                         }
                     });
+
+                    // Reset progress bar and timer
+                    progressBar.style.width = '0%';
+                    timerElement.textContent = '00:00 / 00:00';
+
+                    // Update progress bar and timer during playback
+                    audioElement.ontimeupdate = function() {
+                        const currentTime = audioElement.currentTime;
+                        const duration = audioElement.duration;
+
+                        if (!isNaN(duration)) {
+                            const progressPercent = (currentTime / duration) * 100;
+                            progressBar.style.width = progressPercent + '%';
+
+                            const formatTime = (time) => {
+                                const minutes = Math.floor(time / 60);
+                                const seconds = Math.floor(time % 60);
+                                return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                            };
+
+                            timerElement.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+                        } else {
+                            timerElement.textContent = '00:00 / 00:00';
+                        }
+                    };
                 } else {
                     console.error("No file selected or file not found.");
                 }
