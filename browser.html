@@ -681,7 +681,7 @@
                             <div id="progress-container">
                                 <div id="progress-bar"></div>
                             </div>
-                            <p id="timer">00:00 / 00:00</p>
+                            <p id="timer">00:00:00 / 00:00:00</p>
                         </div>
                     </div>
                 </div>
@@ -835,7 +835,7 @@
 
                     // Reset progress bar and timer
                     progressBar.style.width = '0%';
-                    timerElement.textContent = '00:00 / 00:00';
+                    timerElement.textContent = '00:00:00 / 00:00:00';
 
                     // Update progress bar and timer during playback
                     audioElement.ontimeupdate = function() {
@@ -847,14 +847,15 @@
                             progressBar.style.width = progressPercent + '%';
 
                             const formatTime = (time) => {
-                                const minutes = Math.floor(time / 60);
+                                const hours = Math.floor(time / 3600);
+                                const minutes = Math.floor((time % 3600) / 60);
                                 const seconds = Math.floor(time % 60);
-                                return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                                return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
                             };
 
                             timerElement.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
                         } else {
-                            timerElement.textContent = '00:00 / 00:00';
+                            timerElement.textContent = '00:00:00 / 00:00:00';
                         }
                     };
                 } else {
