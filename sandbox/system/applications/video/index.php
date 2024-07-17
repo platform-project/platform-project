@@ -134,7 +134,7 @@ if ($request) {
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,regular,bold&subset=Latin" />
   <link rel="stylesheet" type="text/css" href="assets/css/app.css" />
   <link rel="stylesheet" type="text/css" href="assets/css/fab.css" />
-  <link rel="stylesheet" type="text/css" href="assets/css/video.js/video-js.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/video.js@4.1.0/dist/video-js.min.css" />
   <link rel="stylesheet" href="assets/css/foundation.css" />
   <link rel="stylesheet" href="assets/css/foundation-icons.css" />
   <?php js_add_jquery_plugin_css("jgrowl"); ?>
@@ -198,10 +198,7 @@ if ($request) {
   ?>
   <script language="javascript" type="text/javascript" src="assets/js/app.js"></script>
   <script language="javascript" type="text/javascript" src="assets/js/fab.js"></script>
-  <script language="javascript" type="text/javascript" src="assets/video.js/video.js"></script>
-  <script language="javascript" type="text/javascript">
-    videojs.options.flash.swf = "assets/video.js/video-js.swf";
-  </script>
+  <script language="javascript" type="text/javascript" src="https://cdn.jsdelivr.net/npm/video.js@4.1.0/dist/video.min.js"></script>
   <script language="javascript" type="text/javascript" src="assets/js/vendor/modernizr.js"></script>
 </body>
 
