@@ -20,6 +20,9 @@
 // initilizing platform for self-contained objects
 platform_launch_initialize();
 
+
+define('VIDEOS_PATH', PLATFORM_PATH . 'sandbox/workspace/videos');
+define('VIDEOS_URI', PLATFORM_URI . DS . 'sandbox/workspace/videos');
 /**
  * Get the videos and their thumbnails
  *
@@ -35,12 +38,13 @@ platform_launch_initialize();
 function get_videos($location)
 {
   $cache_path = PLATFORM_SANDBOX_SYSTEM_CACHES_PATH . DS . 'video';
-
-  $video_mkv = find_filetype('mkv', $location);
+  $video_files = [];
+  //$video_mkv = find_filetype('mkv', $location);
   $video_mp4 = find_filetype('mp4', $location);
-  $video_m4v = find_filetype('m4v', $location);
-  $video_files = array_merge($video_mkv, $video_mp4);
-  $video_files = array_merge($video_files, $video_m4v);
+  //$video_m4v = find_filetype('m4v', $location);
+  //$video_files = array_merge($video_files, $video_mkv);
+  $video_files = array_merge($video_files, $video_mp4);
+  //$video_files = array_merge($video_files, $video_m4v);
   $video_files = array_unique($video_files);
 
   $c = 0;
@@ -74,27 +78,29 @@ function build_gallery($clips, $location)
   ob_start();
   echo "<div>";
   foreach ($clips['thumb'] as $thumbnail) {
-    if (!file_exists($thumbnail)) {
-      $thumbnail = PLATFORM_BASE_PATH . 'assets/images/missing.png';
+    if (empty($thumbnail) || !file_exists($thumbnail) || !is_readable($thumbnail) || filesize($thumbnail) === 0 || !getimagesize($thumbnail)) {
+      $thumbnail_missing = true;
     }
-    $uri_array = explode($location, $thumbnail);
+    $uri_array = explode(PLATFORM_PATH, $thumbnail);
     $thumbnail_url = $uri_array[1];
     $uri_array = explode($location, $clips['video'][$c]);
     $clip_name = wordwrap(basename($clips['video'][$c]), 80);
-    $clip_url = $uri_array[1];
-    $clip_url = DS . $clip_url;
+    $clip_url = VIDEOS_URI . $uri_array[1];
     $clip_name = substr($clip_name, 0, strlen($clip_name) - 4);
     $clip_title = substr($clip_name, 0, 34);
     $extra = '...';
-    echo '<div id="clip-' . $c . '" class="clip">
-           <a class="clip-item" title="' . $clip_name . '" data-url="' . $clip_url . '">
-            <img src="' . $thumbnail_url . '" border="0" />
-            <span class="video-time"></span>
+
+    if (!empty($thumbnail_url) || !is_null($thumbnail_url) || !($thumbnail_missing)) {
+      echo '<div id="clip-' . $c . '" class="clip">
+           <a class="clip-item" title="' . $clip_name . '" data-url="' . $clip_url . '">';
+      echo '<img src="' . ($thumbnail_url) . '" border="0" />';
+      echo '<span class="video-time"></span>
             <span class="video-name">' . (strlen($clip_name) < 34 ? $clip_title : $clip_title . $extra) . '</span>
             <span class="video-play"></span>
            </a>
           </div>
           <br />';
+    }
     $c++;
   }
   echo "</div>";
@@ -106,7 +112,7 @@ $request = isset($_GET['request']) ? $_GET['request'] : null;
 $location = isset($_GET['location']) ? $_GET['location'] : null;
 
 if ($request) {
-  $search_path = PLATFORM_BASE_PATH;
+  $search_path =  VIDEOS_PATH;
   $clips = get_videos($search_path);
   $gallery = build_gallery($clips, $search_path);
 
