@@ -60,7 +60,7 @@ function get_videos($location)
       $thumb = $cache_path . DS . substr($video_file, 0, 5) . "-" . $c . ".png";
       $clips['thumb'][$c] = $thumb;
       $clips['video'][$c] = $video;
-      $command = "/usr/bin/ffmpegthumbnailer -i'" . $video . "' -o'" . $thumb . "'";
+      $command = "/usr/bin/ffmpegthumbnailer -i'" . addslashes($video) . "' -o'" . $thumb . "'";
       exec($command, $output, $return);
       $c++;
     }
@@ -78,7 +78,7 @@ function build_gallery($clips, $location)
   ob_start();
   echo "<div>";
   foreach ($clips['thumb'] as $thumbnail) {
-    if (empty($thumbnail) || !file_exists($thumbnail) || !is_readable($thumbnail) || filesize($thumbnail) === 0 || !getimagesize($thumbnail)) {
+    if (is_null($thumbnail) || empty($thumbnail) || !file_exists($thumbnail) || !is_readable($thumbnail) || filesize($thumbnail) === 0 || !getimagesize($thumbnail)) {
       $thumbnail_missing = true;
     }
     $uri_array = explode(PLATFORM_PATH, $thumbnail);
@@ -90,7 +90,7 @@ function build_gallery($clips, $location)
     $clip_title = substr($clip_name, 0, 34);
     $extra = '...';
 
-    if (!empty($thumbnail_url) || !is_null($thumbnail_url) || !($thumbnail_missing)) {
+    if (!($thumbnail_missing)) {
       echo '<div id="clip-' . $c . '" class="clip">
            <a class="clip-item" title="' . $clip_name . '" data-url="' . $clip_url . '">';
       echo '<img src="' . ($thumbnail_url) . '" border="0" />';
