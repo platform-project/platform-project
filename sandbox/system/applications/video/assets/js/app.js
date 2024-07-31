@@ -94,10 +94,11 @@ $(function () {
    });
 
   function show_ticker(message) {
+    message = '<span style="color: white; font-size: 12px;">'+ message + '</span>';
     $('#ticker').jGrowl(message,
       {
-        header: 'Now playing...',
-        lifetime: 10000,
+        header: '<span style="color: white; font-size: 17px;"><strong>Now playing...</strong></span>',
+        lifetime: 2500,
         sticky: false
       }
     );
