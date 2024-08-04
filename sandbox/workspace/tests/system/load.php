@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tests system load
  * @version     $Id: load.php 40 2011-02-09 14:10:00Z biyi $
@@ -17,7 +18,7 @@
 
 platform_launch_initialize();
 
-switch($_REQUEST['request']){
+switch ($_REQUEST['request']) {
   case 'network':
     benchmark_network_view();
     break;
@@ -32,5 +33,11 @@ switch($_REQUEST['request']){
     break;
   case 'memory':
     benchmark_memory_usage_view();
+    break;
+  case 'installer':
+    benchmark_installer_view();
+    break;
+  case 'updater':
+    benchmark_updater_view();
     break;
 }

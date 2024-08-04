@@ -1,7 +1,8 @@
 <?php
+
 /**
  *  test
- * Test case:   This is a  test file
+ * Test case:   This is the Platform API file
  *
  * @version     $Id: index.php {REVISIION} 2014-03-28_11h55m05s biyi $
  * @package     Platform
@@ -17,7 +18,5 @@
  * See COPYRIGHT.md for copyright notices and details.
  */
 
-// initilizing platform for self-contained objects
+// initializing platform for self-contained objects
 platform_launch_initialize();
-
-echo "Hello World!";

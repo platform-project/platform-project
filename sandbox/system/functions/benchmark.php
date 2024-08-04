@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This contains all the system-wide benchmark functions
  * @version     $Id: benchmark.php 40 2011-02-09 14:10:00Z biyi $
@@ -15,37 +16,39 @@
  * See COPYRIGHT.php for copyright notices and details.
  */
 
-function benchmark_pageload(){
+function benchmark_pageload()
+{
   global $page_init, $page_load;
 
   $page_load = microtime();
-  $page_load_time = $page_load - $page_init;
+  $page_load_time = (float)$page_load - (float)$page_init;
 
   return abs($page_load_time);
 }
 
-function benchmark_pageload_output($format="raw"){
+function benchmark_pageload_output($format = "raw")
+{
   $page_load_time = benchmark_pageload();
   $raw = null;
   $xml = null;
   $html = null;
-  switch($format) {
+  switch ($format) {
     case 'xml':
       $xml_start_tag = '<?xml version="1.0">';
       $xml .= $xml_start_tag;
       $xml .= '<page>';
-      $xml .= '<attribute load="time"> '. $page_load_time . '</attribute>';
+      $xml .= '<attribute load="time"> ' . $page_load_time . '</attribute>';
       $xml .= '</page>';
       $page_load_output = $xml;
       break;
     case 'html':
       $html .= '<div class="pageload"><i class="fi-page fi-platform size-18"></i><span class="label">Pageload:</span> ';
-      $html .= '<span>' . $page_load_time . ' second(s)</span></div>';
+      $html .= '<span>' . $page_load_time . ' s</span></div>';
       $page_load_output = $html;
       break;
     case 'raw':
     default:
-      $raw = "Pageload: " . $page_load_time . " second(s)";
+      $raw = "Pageload: " . $page_load_time . " s";
       $page_load_output = $raw;
       break;
   }
@@ -53,29 +56,33 @@ function benchmark_pageload_output($format="raw"){
   return $page_load_output;
 }
 
-function benchmark_pageload_print(){
+function benchmark_pageload_print()
+{
   print benchmark_pageload_output();
 }
 
-function benchmark_pageload_view(){
+function benchmark_pageload_view()
+{
   print benchmark_pageload_output('html');
 }
 
-function benchmark_memory_usage() {
+function benchmark_memory_usage()
+{
   return format_bytes(memory_get_usage(true));
 }
 
-function benchmark_memory_usage_output($format="raw"){
+function benchmark_memory_usage_output($format = "raw")
+{
   $memory_usage = benchmark_memory_usage();
   $raw = null;
   $xml = null;
   $html = null;
-  switch($format) {
+  switch ($format) {
     case 'xml':
       $xml_start_tag = '<?xml version="1.0">';
       $xml .= $xml_start_tag;
       $xml .= '<system>';
-      $xml .= '<attribute memory="usage"> '. $memory_usage . '</attribute>';
+      $xml .= '<attribute memory="usage"> ' . $memory_usage . '</attribute>';
       $xml .= '</system>';
       $memory_usage_output = $xml;
       break;
@@ -94,19 +101,28 @@ function benchmark_memory_usage_output($format="raw"){
   return $memory_usage_output;
 }
 
-function benchmark_memory_usage_print(){
+function benchmark_memory_usage_print()
+{
   print benchmark_memory_usage_output();
 }
 
-function benchmark_memory_usage_view(){
+function benchmark_memory_usage_view()
+{
   print benchmark_memory_usage_output('html');
 }
 
-function benchmark_network(){
+function benchmark_network()
+{
   return network_is_online();
 }
 
-function benchmark_network_output($format="raw"){
+function benchmark_system()
+{
+  return system_updater_detection();
+}
+
+function benchmark_network_output($format = "raw")
+{
   $network_status = benchmark_network() ? 'Online' : 'Offline';
   if (strtolower(trim($network_status)) == 'online') {
     $network_indicator = '<a href="#" onclick="system_load(\'notification_network\'); return false;" title="Internet On" class="notification-indicator"><span class="network-online"></span></a>';
@@ -117,12 +133,12 @@ function benchmark_network_output($format="raw"){
   $raw = null;
   $xml = null;
   $html = null;
-  switch($format) {
+  switch ($format) {
     case 'xml':
       $xml_start_tag = '<?xml version="1.0">';
       $xml .= $xml_start_tag;
       $xml .= '<system>';
-      $xml .= '<attribute network="status"> '. $network_status . '</attribute>';
+      $xml .= '<attribute network="status"> ' . $network_status . '</attribute>';
       $xml .= '</system>';
       $network_output = $xml;
       break;
@@ -141,29 +157,38 @@ function benchmark_network_output($format="raw"){
   return $network_output;
 }
 
-function benchmark_network_print(){
+function benchmark_network_print()
+{
   print benchmark_network_output();
 }
 
-function benchmark_network_view(){
+function benchmark_network_view()
+{
   print benchmark_network_output('html');
 }
 
-function benchmark_device_detect() {
+function benchmark_device_detect()
+{
   return system_device_detection();
 }
 
-function benchmark_device_output($format="raw"){
+function benchmark_updater_detect()
+{
+  return system_updater_detection();
+}
+
+function benchmark_device_output($format = "raw")
+{
   $device_type = benchmark_device_detect();
   $raw = null;
   $xml = null;
   $html = null;
-  switch($format) {
+  switch ($format) {
     case 'xml':
       $xml_start_tag = '<?xml version="1.0">';
       $xml .= $xml_start_tag;
       $xml .= '<system>';
-      $xml .= '<attribute device="type"> '. $device_type . '</attribute>';
+      $xml .= '<attribute device="type"> ' . $device_type . '</attribute>';
       $xml .= '</system>';
       $device_output = $xml;
       break;
@@ -181,29 +206,33 @@ function benchmark_device_output($format="raw"){
   return $device_output;
 }
 
-function benchmark_device_print(){
+function benchmark_device_print()
+{
   print benchmark_device_output();
 }
 
-function benchmark_device_view(){
+function benchmark_device_view()
+{
   print benchmark_device_output('html');
 }
 
-function benchmark_location_detect() {
+function benchmark_location_detect()
+{
   return system_location();
 }
 
-function benchmark_location_output($format="raw"){
+function benchmark_location_output($format = "raw")
+{
   $location = benchmark_location_detect();
   $raw = null;
   $xml = null;
   $html = null;
-  switch($format) {
+  switch ($format) {
     case 'xml':
       $xml_start_tag = '<?xml version="1.0">';
       $xml .= $xml_start_tag;
       $xml .= '<system>';
-      $xml .= '<attribute location="coordinate"> '. $location . '</attribute>';
+      $xml .= '<attribute location="coordinate"> ' . $location . '</attribute>';
       $xml .= '</system>';
       $location_output = $xml;
       break;
@@ -221,10 +250,89 @@ function benchmark_location_output($format="raw"){
   return $location_output;
 }
 
-function benchmark_location_print(){
+function benchmark_updater_output($format = "raw")
+{
+  $updater = benchmark_updater_detect();
+  $raw = null;
+  $xml = null;
+  $html = null;
+  switch ($format) {
+    case 'xml':
+      $xml_start_tag = '<?xml version="1.0">';
+      $xml .= $xml_start_tag;
+      $xml .= '<system>';
+      $xml .= '<attribute location="coordinate"> ' . $updater . '</attribute>';
+      $xml .= '</system>';
+      $updater_output = $xml;
+      break;
+    case 'html':
+      $html .= '<div class="location"><i class="fi-wrench fi-platform size-18"></i><span class="label">System is up to date!</span> ';
+      $updater_output = $html;
+      break;
+    case 'raw':
+    default:
+      $raw = "Updates: " . $updater . " &nbsp; ";
+      $updater_output = $raw;
+      break;
+  }
+  return $updater_output;
+}
+
+function benchmark_installer_output($format = "raw")
+{
+  $format = 'html';
+  $installer = null;
+  $raw = null;
+  $xml = null;
+  $html = null;
+  switch ($format) {
+    case 'xml':
+      $xml_start_tag = '<?xml version="1.0">';
+      $xml .= $xml_start_tag;
+      $xml .= '<system>';
+      $xml .= '<attribute installer="true"> ' . $installer . '</attribute>';
+      $xml .= '</system>';
+      $installer_output = $xml;
+      break;
+    case 'html':
+      $html .= '<div class="location"><i class="fi-upload-cloud fi-platform size-18"></i><span class="label"> Installed Apps</span> ';
+      $installer_output = $html;
+      break;
+    case 'raw':
+    default:
+      $raw = "Installed Apps" . $installer . " ";
+      $installer_output = $raw;
+      break;
+  }
+  return $installer_output;
+}
+
+function benchmark_location_print()
+{
   print benchmark_location_output();
 }
 
-function benchmark_location_view(){
+function benchmark_location_view()
+{
   print benchmark_location_output('html');
+}
+
+function benchmark_installer_view()
+{
+  print benchmark_installer_output();
+}
+
+function benchmark_installer_print()
+{
+  print benchmark_installer_output();
+}
+
+function benchmark_updater_view()
+{
+  print benchmark_updater_output('html');
+}
+
+function benchmark_updater_print()
+{
+  print benchmark_updater_output();
 }

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This contains all platform specific functions
  * @version     $Id: platform.php 40 2011-02-09 14:10:00Z biyi $
@@ -21,11 +22,12 @@
  *
  * @return void
  */
-function platform(){
+function platform()
+{
   global $paths;
-  
+
   platform_launch_initialize();
-  platform_launch_debug(false);
+  //platform_launch_debug(false);
   if (!IS_CLI) platform_launch_dispatch($_SERVER['QUERY_STRING']);
   //debug_complete_stack($paths);
 }
@@ -36,7 +38,8 @@ function platform(){
  *
  * @return void
  */
-function platform_launch($file){
+function platform_launch($file)
+{
   require_once "{$file}";
 }
 
@@ -46,7 +49,8 @@ function platform_launch($file){
  *
  * @return void
  */
-function platform_launch_php($file){
+function platform_launch_php($file)
+{
   platform_launch("{$file}.php");
 }
 
@@ -56,7 +60,8 @@ function platform_launch_php($file){
  *
  * @return void
  */
-function platform_launch_phtml($file){
+function platform_launch_phtml($file)
+{
   platform_launch("{$file}.phtml");
 }
 
@@ -66,7 +71,8 @@ function platform_launch_phtml($file){
  *
  * @return mixed An array of standard output of system shell application
  */
-function platform_launch_application($command){
+function platform_launch_application($command)
+{
   exec($command, $output, $return_value);
   // TODO:
   //   debug output from failed commands using $return_value
@@ -82,12 +88,10 @@ function platform_launch_application($command){
 function platform_launch_autoload($file)
 {
   global $paths;
-  foreach ($paths as $instance => $path)
-  {
+  foreach ($paths as $instance => $path) {
     $filename = $path . DS . $file;
-    if (file_exists($filename))
-    {
-      if (!stristr($instance, 'templates')){
+    if (file_exists($filename)) {
+      if (!stristr($instance, 'templates')) {
         platform_launch_php($filename);
       }
       break;
@@ -101,21 +105,22 @@ function platform_launch_autoload($file)
  *
  * @return void
  */
-function platform_launch_initialize(){
+function platform_launch_initialize()
+{
   global $paths;
   foreach ($paths as $instance => &$path) {
     $contents = platform_launch_list_php($path);
-    if (is_dir($path)) { 
-      if (!empty($contents)){
+    if (is_dir($path)) {
+      if (!empty($contents)) {
         foreach ($contents as $file) {
           $full_filename = $path . DS . $file;
-          if (STDLIB == APP_ENGINE){ 
+          if (STDLIB == APP_ENGINE) {
             $allowed = !stristr($instance, 'classes') && !stristr($instance, 'templates');
           } else {
             $allowed = !stristr($instance, 'templates');
           }
 
-          if ($allowed){
+          if ($allowed) {
             platform_launch($full_filename);
           }
         }
@@ -124,9 +129,9 @@ function platform_launch_initialize(){
       continue;
     }
   }
-  
+
   if (isset($_REQUEST['editor']) && $_REQUEST['editor'] == 'on') {
-    $path = PLATFORM_SANDBOX_SYSTEM_APPLICATIONS_PATH . DS . 'editor' . DS ;
+    $path = PLATFORM_SANDBOX_SYSTEM_APPLICATIONS_PATH . DS . 'editor' . DS;
     platform_launch_php($path . 'index.php');
   }
 }
@@ -137,8 +142,9 @@ function platform_launch_initialize(){
  *
  * @return void
  */
-function platform_launch_browser(){
-  $path = PLATFORM_SANDBOX_SYSTEM_APPLICATIONS_PATH . DS . 'browser' . DS ;
+function platform_launch_browser()
+{
+  $path = PLATFORM_SANDBOX_SYSTEM_APPLICATIONS_PATH . DS . 'browser' . DS;
   $filename = $path . 'index.php';
   platform_launch($filename);
 }
@@ -149,8 +155,9 @@ function platform_launch_browser(){
  *
  * @return void
  */
-function platform_launch_dispatch($request=null){
-  switch($request){
+function platform_launch_dispatch($request = null)
+{
+  switch ($request) {
     case 'platform':
       platform_launch_sandbox_system_index();
       break;
@@ -159,7 +166,7 @@ function platform_launch_dispatch($request=null){
       break;
     case 'browser':
     default:
-      if (empty($request) || is_null($request)){
+      if (empty($request) || is_null($request)) {
         platform_launch_browser();
       } else {
         platform_launch_sandbox_system_index();
@@ -175,21 +182,28 @@ function platform_launch_dispatch($request=null){
  *
  * @return void
  */
-function platform_launch_path_to($request){
-  $exclude_hidden = array('.AppleDouble', '.config', '.svn', '.git', '.chromium',
-                          '.dude', '.icons', '.fonts', '.mac4lin', '.prebuilds',
-                          '.torrents', '.trash','.files');
-  switch($request){
+function platform_launch_path_to($request)
+{
+  $exclude_hidden = array(
+    '.AppleDouble', '.config', '.svn', '.git', '.chromium',
+    '.dude', '.icons', '.fonts', '.mac4lin', '.prebuilds',
+    '.torrents', '.trash', '.files'
+  );
+  switch ($request) {
     case 'platform':
     default:
-      $exclusions = array('services', 'laboratory', 'projects',
-                          'README', 'TODO');
+      $exclusions = array(
+        'services', 'laboratory', 'projects',
+        'README', 'TODO'
+      );
       $exclusions = array_merge($exclusions, $exclude_hidden);
       // TODO: dynamically load all listings, no hard-fixing listings
       // $path = PLATFORM_BASE_PATH . DS;
       // $pages = platform_launch_list_path($path, true, $exclusions);
-      $pages = array('sandbox', 'servers', 'networks', 'sites',
-                     'mirrors', 'help', 'info');
+      $pages = array(
+        'sandbox', 'servers', 'networks', 'sites',
+        'mirrors', 'help', 'info'
+      );
       platform_launch_listview_lists_exact($pages);
       break;
     case 'sandbox':
@@ -198,9 +212,9 @@ function platform_launch_path_to($request){
       $path = PLATFORM_BASE_PATH . DS;
       platform_launch_listview_lists($path . $request, $exclusions);
       $pages = array(
-                     'README' => $path . 'README',
-                     'TODO' => $path . 'TODO',
-                     );
+        'README' => $path . 'README',
+        'TODO' => $path . 'TODO',
+      );
       platform_launch_listview_lists_raw($pages);
       break;
     case 'servers':
@@ -295,23 +309,27 @@ function platform_launch_path_to($request){
       platform_launch_listview_lists($path . $request, $exclusions);
       // rewrite output
       $pages = array(
-                     'README' => '/sandbox/repository/README',
-                     'TODO' => '/sandbox/repository/TODO',
-                     );
+        'README' => '/sandbox/repository/README',
+        'TODO' => '/sandbox/repository/TODO',
+      );
       platform_launch_listview_lists_raw($pages);
       break;
     case 'system':
-      $exclusions = array('caches', 'classes', 'components', 'contributions', 'configurations', 'crons',
-                          'daemons', 'databases', 'executables', 'extensions', 'functions', 
-                          'hooks', 'languages', 'logs', 'migrations', 'schemas', 'services',
-                          'structs', 'tests', 'templates', 'ui', 'vendors');
+      $exclusions = array(
+        'caches', 'classes', 'components', 'contributions', 'configurations', 'crons',
+        'daemons', 'databases', 'executables', 'extensions', 'functions',
+        'hooks', 'languages', 'logs', 'migrations', 'schemas', 'services',
+        'structs', 'tests', 'templates', 'ui', 'vendors'
+      );
       $exclusions = array_merge($exclusions, $exclude_hidden);
       $path = PLATFORM_SANDBOX_PATH . DS;
       platform_launch_listview_lists($path . $request, $exclusions);
       break;
     case 'applications':
-      $exclusions = array('browser', 'gnump3d', 'ktorrent','nagios',
-                          'quicknote', 'sugarcrm', 'webmin');
+      $exclusions = array(
+        'browser', 'gnump3d', 'ktorrent', 'nagios',
+        'quicknote', 'sugarcrm', 'webmin'
+      );
       $exclusions = array_merge($exclusions, $exclude_hidden);
       platform_launch_listview_lists_applications($exclusions);
       break;
@@ -321,9 +339,10 @@ function platform_launch_path_to($request){
       $path = PLATFORM_SANDBOX_PATH . DS;
       platform_launch_listview_lists($path . $request, $exclusions);
       // rewrite output
-      $pages = array('README' => '/sandbox/workspace/README',
-                     'TODO' => '/sandbox/workspace/TODO',
-                     );
+      $pages = array(
+        'README' => '/sandbox/workspace/README',
+        'TODO' => '/sandbox/workspace/TODO',
+      );
       platform_launch_listview_lists_raw($pages);
       break;
     case 'mirrors':
@@ -338,7 +357,6 @@ function platform_launch_path_to($request){
       platform_launch_listview_lists($pages);
       break;
   }
-
 }
 
 /**
@@ -348,11 +366,12 @@ function platform_launch_path_to($request){
  *
  * @return string $back_path The output of number of relative back paths
  */
-function platform_launch_back_paths(){
+function platform_launch_back_paths()
+{
   $base_path_array = explode('/', APPLICATION_BASE_PATH);
   $current_path_array = explode('/', getcwd());
   $back_count = count($base_path_array) - count($current_path_array);
-  for($i=0; $i < abs($back_count); $i++){
+  for ($i = 0; $i < abs($back_count); $i++) {
     $back_path .= PDS . DS;
   }
   return $back_path;
@@ -364,7 +383,8 @@ function platform_launch_back_paths(){
  *
  * @return Mixed The standard output of the result
  */
-function platform_launch_update_index(){
+function platform_launch_update_index()
+{
   return platform_launch_application('updatedb');
 }
 
@@ -374,7 +394,8 @@ function platform_launch_update_index(){
  *
  * @return Mixed $contents Array containing the list of php files within $path
  */
-function platform_launch_list_php($path){
+function platform_launch_list_php($path)
+{
   platform_launch_php(PLATFORM_SANDBOX_SYSTEM_FUNCTIONS_PATH . DS . 'filesystem');
   $contents = list_files($path, 'php');
   return $contents;
@@ -388,17 +409,19 @@ function platform_launch_list_php($path){
  *
  * @return Mixed $contents Array containing the list of files within $path
  */
-function platform_launch_list_path($path, $dir=false, $exclusion=null){
+function platform_launch_list_path($path, $dir = false, $exclusion = null)
+{
   platform_launch_php(PLATFORM_SANDBOX_SYSTEM_FUNCTIONS_PATH . DS . 'filesystem');
   $lists = array();
   $contents = read_path($path);
-  if (!is_null($contents) && is_array($contents)){
-    foreach($contents as $content){
-      if (stristr($content, '.php') || stristr($content, '.txt') || stristr($content, '.css')
-          || stristr($content, '.html')){
-
+  if (!is_null($contents) && is_array($contents)) {
+    foreach ($contents as $content) {
+      if (
+        stristr($content, '.php') || stristr($content, '.txt') || stristr($content, '.css')
+        || stristr($content, '.html')
+      ) {
       } else {
-        if ($dir && is_dir($path . DS . $content)){
+        if ($dir && is_dir($path . DS . $content)) {
           $lists[] = $content;
         }
       }
@@ -414,10 +437,10 @@ function platform_launch_list_path($path, $dir=false, $exclusion=null){
  *
  * @return void
  */
-function platform_launch_default_icon($page=null){
+function platform_launch_default_icon($page = null)
+{
   //e($page);
-  switch($page)
-  {
+  switch ($page) {
     case 'bugs':
     case 'networks':
     case 'wireless':
@@ -434,14 +457,14 @@ function platform_launch_default_icon($page=null){
     case 'libraries':
     case 'platforms':
 
-    ?>
-    <div class="default_<?php e($page) ?>_icon"> </div>
+?>
+      <div class="default_<?php e($page) ?>_icon"> </div>
     <?php
       break;
     default:
     ?>
-    <div class="default_icon"> </div>
-    <?php
+      <div class="default_icon"> </div>
+  <?php
       break;
   }
 }
@@ -453,28 +476,29 @@ function platform_launch_default_icon($page=null){
  *
  * @return void
  */
-function platform_launch_listview_lists_exact($pages=null){
+function platform_launch_listview_lists_exact($pages = null)
+{
   $request = $_SERVER['QUERY_STRING'];
   $pages = (!is_array($pages)) ? platform_launch_list_path(PLATFORM_BASE_PATH . DS . $request, true) : $pages;
-?>
-  <ul>
-  <?php
-  if (!is_null($pages) && is_array($pages)):
-    foreach($pages as $page):
-      if (stristr('readme', $page)):
-          $url = platform_launch_load_raw_object($page);
-      else:
-          $url = HTTP_URI.$_SERVER['SERVER_NAME']."/?".$page;
-      endif;
-    ?>
-      <li><a class="listview_link <?php e($page) ?>" href="<?php e($url) ?>"><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></a></li>
-      <?php e(platform_launch_splash_documentation($page)); ?>
-    <?php
-    endforeach;
-  endif;
   ?>
+  <ul>
+    <?php
+    if (!is_null($pages) && is_array($pages)) :
+      foreach ($pages as $page) :
+        if (stristr('readme', $page)) :
+          $url = platform_launch_load_raw_object($page);
+        else :
+          $url = HTTP_URI . $_SERVER['SERVER_NAME'] . "/?" . $page;
+        endif;
+    ?>
+        <li><a class="listview_link <?php e($page) ?>" href="<?php e($url) ?>"><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></a></li>
+        <?php e(platform_launch_splash_documentation($page)); ?>
+    <?php
+      endforeach;
+    endif;
+    ?>
   </ul>
- <?php
+<?php
 }
 
 /**
@@ -485,29 +509,30 @@ function platform_launch_listview_lists_exact($pages=null){
  *
  * @return void
  */
-function platform_launch_listview_lists($path, $exclusion=null){
+function platform_launch_listview_lists($path, $exclusion = null)
+{
   $pages = platform_launch_list_path($path, true);
   $pages = exclude($pages, $exclusion);
 ?>
   <ul>
-  <?php
-  if (!is_null($pages) && is_array($pages)):
-    foreach($pages as $page):
-      if (stristr('readme', $page)):
-          $url = platform_launch_load_raw_object($page);
-      else:
-          $url = HTTP_URI.$_SERVER['SERVER_NAME']."/?".$page;
-      endif;
-    ?>
-      <li><a class="listview_link <?php e($page) ?>" href="<?php e($url) ?>"><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></a></li>
-
-      <?php e(platform_launch_splash_documentation($page)); ?>
     <?php
-    endforeach;
-  endif;
-  ?>
+    if (!is_null($pages) && is_array($pages)) :
+      foreach ($pages as $page) :
+        if (stristr('readme', $page)) :
+          $url = platform_launch_load_raw_object($page);
+        else :
+          $url = HTTP_URI . $_SERVER['SERVER_NAME'] . "/?" . $page;
+        endif;
+    ?>
+        <li><a class="listview_link <?php e($page) ?>" href="<?php e($url) ?>"><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></a></li>
+
+        <?php e(platform_launch_splash_documentation($page)); ?>
+    <?php
+      endforeach;
+    endif;
+    ?>
   </ul>
- <?php
+<?php
 }
 
 /**
@@ -517,27 +542,28 @@ function platform_launch_listview_lists($path, $exclusion=null){
  *
  * @return void
  */
-function platform_launch_listview_lists_raw($pages=null){
+function platform_launch_listview_lists_raw($pages = null)
+{
   $request = $_SERVER['QUERY_STRING'];
   $pages = (!is_array($pages)) ? platform_launch_list_path(PLATFORM_BASE_PATH . DS . $request, true) : $pages;
 ?>
   <ul>
-  <?php
-  if (!is_null($pages) && is_array($pages)):
-    foreach($pages as $page => $link):
-        if (!is_numeric($page)){
+    <?php
+    if (!is_null($pages) && is_array($pages)) :
+      foreach ($pages as $page => $link) :
+        if (!is_numeric($page)) {
           $url = platform_launch_load_raw_object($link);
         } else {
           $url = null;
         }
     ?>
-      <li><a class="listview_link" href="<?php e($url) ?>"><span class="listview_<?php e($page) ?>"> </span><?php e($page) ?></a></li>
+        <li><a class="listview_link" href="<?php e($url) ?>"><span class="listview_<?php e($page) ?>"> </span><?php e($page) ?></a></li>
     <?php
-    endforeach;
-  endif;
-  ?>
+      endforeach;
+    endif;
+    ?>
   </ul>
- <?php
+<?php
 }
 
 /**
@@ -547,20 +573,23 @@ function platform_launch_listview_lists_raw($pages=null){
  *
  * @return void
  */
-function platform_launch_splash_documentation($page){
+function platform_launch_splash_documentation($page)
+{
   $exists = (isset($page) && !empty($page) && $page == 'platform');
   js_start(); ?>
   $('.listview_link.<?php e($page) ?>').hover(function(){
-    $.getJSON('/platform.json', function(data) {
-        $('#main_content').html('<h3><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></h3><a href="javascript:{}" onclick="responsiveVoice.speak(' + data.platform.<?php e($page)?> + '\')"><span class="fa fa-headphones object"> &nbsp;  &nbsp; Listen &nbsp; </span></a><p style="text-align: justify; font-size: 14px; padding: 10px">'+ data.platform.<?php e($page)?> + '</p>');
-        
-    });
-}, function(){
   $.getJSON('/platform.json', function(data) {
-      $('#main_content').html('<h3><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></h3><a href="javascript:{}" onclick="responsiveVoice.speak(\'' + data.platform.<?php e($page)?> + '\')"><span class="fa fa-headphones object"> &nbsp;  &nbsp; Listen &nbsp; </span></a><p style="text-align: justify; font-size: 14px; padding: 10px">'+ data.platform.<?php e($page)?> + '</p>');
-    });
-});
-  <?php js_end();
+  $('#main_content').html('<h3><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></h3><a href="javascript:{}" onclick="responsiveVoice.speak(' + data.platform.<?php e($page) ?> + '\')"><span class="fa fa-headphones object"> &nbsp; &nbsp; Listen &nbsp; </span></a>
+  <p style="text-align: justify; font-size: 14px; padding: 10px">'+ data.platform.<?php e($page) ?> + '</p>');
+
+  });
+  }, function(){
+  $.getJSON('/platform.json', function(data) {
+  $('#main_content').html('<h3><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></h3><a href="javascript:{}" onclick="responsiveVoice.speak(\'' + data.platform.<?php e($page) ?> + '\')"><span class="fa fa-headphones object"> &nbsp; &nbsp; Listen &nbsp; </span></a>
+  <p style="text-align: justify; font-size: 14px; padding: 10px">'+ data.platform.<?php e($page) ?> + '</p>');
+  });
+  });
+<?php js_end();
 }
 
 
@@ -571,28 +600,29 @@ function platform_launch_splash_documentation($page){
  *
  * @return void
  */
-function platform_launch_listview_lists_applications($exclusions=null){
+function platform_launch_listview_lists_applications($exclusions = null)
+{
   $request = $_SERVER['QUERY_STRING'];
   $pages = platform_launch_list_path(PLATFORM_SANDBOX_SYSTEM_PATH . DS . $request, true);
   $pages = exclude($pages, $exclusions);
 ?>
   <ul>
-  <?php
-  if (!is_null($pages) && is_array($pages)):
-    foreach($pages as $page):
-        if (stristr('readme', $page) || stristr('todo', $page)):
+    <?php
+    if (!is_null($pages) && is_array($pages)) :
+      foreach ($pages as $page) :
+        if (stristr('readme', $page) || stristr('todo', $page)) :
           $url = platform_launch_load_raw_object($page);
-        else:
+        else :
           $url = PLATFORM_SANDBOX_SYSTEM_URI . DS . $request . DS . $page;
         endif;
     ?>
-      <li><a class="listview_link" href="<?php e($url) ?>"><span class="listview_applications"> </span><?php e($page) ?></a></li>
+        <li><a class="listview_link" href="<?php e($url) ?>"><span class="listview_applications"> </span><?php e($page) ?></a></li>
     <?php
-    endforeach;
-  endif;
-  ?>
+      endforeach;
+    endif;
+    ?>
   </ul>
- <?php
+<?php
 }
 
 /**
@@ -602,28 +632,29 @@ function platform_launch_listview_lists_applications($exclusions=null){
  *
  * @return void
  */
-function platform_launch_listview_lists_executables($exclusions=null){
+function platform_launch_listview_lists_executables($exclusions = null)
+{
   $request = $_SERVER['QUERY_STRING'];
   $pages = platform_launch_list_path(PLATFORM_SANDBOX_SYSTEM_PATH . DS . $request, true);
   $pages = exclude($pages, $exclusions);
 ?>
   <ul>
-  <?php
-  if (!is_null($pages) && is_array($pages)):
-    foreach($pages as $page):
-        if (stristr('readme', $page) || stristr('todo', $page)):
+    <?php
+    if (!is_null($pages) && is_array($pages)) :
+      foreach ($pages as $page) :
+        if (stristr('readme', $page) || stristr('todo', $page)) :
           $url = platform_launch_load_raw_object($page);
-        else:
+        else :
           $url = PLATFORM_SANDBOX_SYSTEM_URI . DS . $request . DS . $page;
         endif;
     ?>
-      <li><a class="listview_link" href="<?php e($url) ?>"><span class="listview_executables"> </span><?php e($page) ?></a></li>
+        <li><a class="listview_link" href="<?php e($url) ?>"><span class="listview_executables"> </span><?php e($page) ?></a></li>
     <?php
-    endforeach;
-  endif;
-  ?>
+      endforeach;
+    endif;
+    ?>
   </ul>
- <?php
+<?php
 }
 
 /**
@@ -633,8 +664,9 @@ function platform_launch_listview_lists_executables($exclusions=null){
  *
  * @return string $file The converted URI format of $file
  */
-function platform_launch_load_raw_object($file){
-  $file = HTTP_URI.$_SERVER['SERVER_NAME']."$file";
+function platform_launch_load_raw_object($file)
+{
+  $file = HTTP_URI . $_SERVER['SERVER_NAME'] . "$file";
   return $file;
 }
 
@@ -645,23 +677,24 @@ function platform_launch_load_raw_object($file){
  *
  * @return void
  */
-function platform_launch_listicon_lists($path, $exclusion=null){
+function platform_launch_listicon_lists($path, $exclusion = null)
+{
   $request = $_SERVER['QUERY_STRING'];
   $pages = platform_launch_list_path($path, true);
   $pages = exclude($pages, $exclusion);
 ?>
   <ul>
-  <?php
-  if (!is_null($pages) && is_array($pages)):
-    foreach($pages as $page):
-    ?>
-      <li><a class="listicon_link" href="http://<?php e($_SERVER['SERVER_NAME']) ?>/<?php e($request) ?>/<?php e(strtolower($page)) ?>"><span class="listicon_<?php e($request) ?>_icon"> </span><?php e(strtolower($page)) ?></a></li>
     <?php
-    endforeach;
-  endif;
-  ?>
+    if (!is_null($pages) && is_array($pages)) :
+      foreach ($pages as $page) :
+    ?>
+        <li><a class="listicon_link" href="http://<?php e($_SERVER['SERVER_NAME']) ?>/<?php e($request) ?>/<?php e(strtolower($page)) ?>"><span class="listicon_<?php e($request) ?>_icon"> </span><?php e(strtolower($page)) ?></a></li>
+    <?php
+      endforeach;
+    endif;
+    ?>
   </ul>
- <?php
+<?php
 }
 
 /**
@@ -670,7 +703,8 @@ function platform_launch_listicon_lists($path, $exclusion=null){
  *
  * @return void
  */
-function platform_launch_debug($status=0){
+function platform_launch_debug($status = 0)
+{
   platform_launch_php('debug');
   debug_php($status);
 }
@@ -682,7 +716,8 @@ function platform_launch_debug($status=0){
  *
  * @return void
  */
-function platform_launch_log($log, $type='system'){
+function platform_launch_log($log, $type = 'system')
+{
   sys_log($log, $type);
 }
 
@@ -692,7 +727,8 @@ function platform_launch_log($log, $type='system'){
  *
  * @return void
  */
-function platform_launch_redirect($url){
+function platform_launch_redirect($url)
+{
   header('location:' . $url);
 }
 
@@ -702,27 +738,28 @@ function platform_launch_redirect($url){
  *
  * @return void
  */
-function platform_launch_ip_authorization_checks(){
+function platform_launch_ip_authorization_checks()
+{
   platform_launch_php('global');
   $ip = network_get_real_ip();
   $browser = detect_browser();
 
-  switch($ip){
-    // TODO: rewrite function
-    // allowed ip addresses
+  switch ($ip) {
+      // TODO: rewrite function
+      // allowed ip addresses
 
-    // localhost network
+      // localhost network
     case '127.0.0.1':
     case '127.0.1.1':
 
-    // ehonet network
+      // ehonet network
     case '192.168.43.1':
     case '192.168.43.2':
     case '192.168.43.42':
     case '192.168.43.65':
     case '192.168.43.174':
 
-    // ehonet-wifi network
+      // ehonet-wifi network
     case '10.10.2.200':
     case '10.10.2.210':
     case '10.10.2.220':
@@ -733,8 +770,8 @@ function platform_launch_ip_authorization_checks(){
       //redirect_to('http://'.$_SERVER['HTTP_HOST'].'/platform/');
       break;
     default:
-      redirect_to('http://www.entilda.com?api='.base64_encode(base64_encode(base64_encode(time()))).
-                  '&encdata=true&tracking=enabled&cryptocheck='.base64_encode(base64_encode(base64_encode($ip))).'&detected='.$ip.'&client='.$browser);
+      redirect_to('http://www.entilda.com?api=' . base64_encode(base64_encode(base64_encode(time()))) .
+        '&encdata=true&tracking=enabled&cryptocheck=' . base64_encode(base64_encode(base64_encode($ip))) . '&detected=' . $ip . '&client=' . $browser);
       break;
   }
 }
@@ -745,7 +782,8 @@ function platform_launch_ip_authorization_checks(){
  *
  * @return void
  */
-function platform_launch_sandbox_system_template($template){
+function platform_launch_sandbox_system_template($template)
+{
   platform_launch_phtml(PLATFORM_SANDBOX_SYSTEM_TEMPLATES_PATH . DS . $template);
 }
 
@@ -755,7 +793,8 @@ function platform_launch_sandbox_system_template($template){
  *
  * @return void
  */
-function platform_launch_sandbox_system_index(){
+function platform_launch_sandbox_system_index()
+{
   // loading sandbox system templates
   platform_launch_sandbox_system_template('header');
   platform_launch_sandbox_system_template('layout');

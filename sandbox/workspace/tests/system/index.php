@@ -1,4 +1,5 @@
 <?php
+
 /**
  * System
  * Test case: Determine the optimal approach to implementing system behaviours
@@ -19,5 +20,5 @@
 
 platform_launch_initialize();
 platform_launch_php('detect');
-//platform_launch_php('info');
-//platform_launch_php('load');
+platform_launch_php('info');
+platform_launch_php('load');

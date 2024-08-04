@@ -10,7 +10,7 @@ body {
 
 #canvas {
     width: 100%;
-    height: 98%;
+    height: 97.75vh;
     overflow: hidden;
 }
 
@@ -170,7 +170,9 @@ iframe#site::-webkit-scrollbar-thumb {
 #device,
 #memory,
 #pageload,
-#help {
+#help,
+#installer,
+#updater {
     display: block;
     float: left;
     padding: 0 10px 0 0;
@@ -205,6 +207,7 @@ iframe#site::-webkit-scrollbar-thumb {
 
 .help {
     font-size: 11px;
+    background: #000;
     width: 125px;
     height: 20px;
     border-radius: 8px;
@@ -224,6 +227,59 @@ iframe#site::-webkit-scrollbar-thumb {
 }
 
 .help span {
+    position: relative;
+    top: 3px;
+    left: 25px;
+}
+
+#installer {
+    font-size: 11px;
+    width: 155px;
+    height: 20px;
+    border-radius: 8px;
+    opacity: 0.8;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    top: -13px;
+    left: 10px;
+}
+
+.installer span.label {
+    position: relative;
+    top: 3px;
+    left: 15px;
+}
+
+.installer span {
+    position: relative;
+    top: 3px;
+    left: 25px;
+}
+
+.updater {
+    font-size: 11px;
+    background: #000;
+    width: 125px;
+    height: 20px;
+    border-radius: 8px;
+    opacity: 0.8;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    top: -13px;
+    left: 10px;
+    float: right;
+}
+
+.updater span.label {
+    position: relative;
+    top: 3px;
+    left: 15px;
+}
+
+.updater span {
     position: relative;
     top: 3px;
     left: 25px;
@@ -379,6 +435,33 @@ iframe#site::-webkit-scrollbar-thumb {
 }
 
 .notification-indicator .network-offline {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 100px;
+    background-color: #C22626;
+    background-color: #634242;
+    background-image: -moz-linear-gradient(#C22626, #634242);
+    background-image: -webkit-linear-gradient(#C22626, #634242);
+    background-image: linear-gradient(#C22626, #634242);
+    background-repeat: repeat-x;
+    box-shadow: inset 0 10px 0 rgba(0, 0, 0, 0.1), 0 10px 0 #fff;
+}
+
+.notification-indicator .system-up2date {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 100px;
+    background-color: #26C22C;
+    background-image: -moz-linear-gradient(#26C22C, #1A521C);
+    background-image: -webkit-linear-gradient(#26C22C, #1A521C);
+    background-image: linear-gradient(#26C22C, #1A521C);
+    background-repeat: repeat-x;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 0 rgba(0, 0, 0, 0.1), 0 0 10px #26C22C;
+}
+
+.notification-indicator .system-behind {
     display: inline-block;
     width: 12px;
     height: 12px;
@@ -940,7 +1023,7 @@ iframe#site::-webkit-scrollbar-thumb {
 }
 
 #info .info.wrapper {
-    display: none;
+    display: inline;
     float: left;
     position: relative;
     top: -3px;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Tests system detect device
  * @version     $Id: detect.php 40 2011-02-09 14:10:00Z biyi $
@@ -17,4 +18,4 @@
 
 platform_launch_initialize();
 
-system_device_detection(true);
+system_device_detection(false);

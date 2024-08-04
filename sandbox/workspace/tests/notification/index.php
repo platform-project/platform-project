@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Notifications
  * Test case: Determine the optimal use of displaying notifications
@@ -23,11 +24,17 @@ platform_launch_initialize();
 js_add_jquery();    // adding jquery library
 js_add_jquery_ui(); // adding jquery ui library
 
-switch($_REQUEST['request']){
+switch ($_REQUEST['request']) {
   case 'network':
     $network_status = network_is_online();
     $title = ($network_status) ? "Network Online" : "Network Offline";
     $message = ($network_status) ? "You are connected to the internet!" : "It seems like your internet connection is gone. Check your connection settings!";
+    system_notification($title, $message);
+    break;
+  case 'updater':
+    $network_status = network_is_online();
+    $title = ($network_status) ? "System Up-to-date" : "System requires an update!";
+    $message = ($network_status) ? "Your system is up to date!" : "Your system requires an update. Checkout your repository for new updates!";
     system_notification($title, $message);
     break;
 }

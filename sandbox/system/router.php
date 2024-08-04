@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Initializes  platform sandbox system router
  * @version     $Id: router.php 40 2011-02-09 14:10:00Z biyi $
@@ -15,18 +16,19 @@
  * See COPYRIGHT.php for copyright notices and details.
  */
 
-$route = parse_url(substr($_SERVER["REQUEST_URI"], 1))["path"];
-switch (is_file($route)) {
-	case true :
-	    if(substr($route, -4) == ".php"){
-	        require $route;         // Include requested script files
-	        exit;
-	    }
-	    return false;               // Serve file as is
-	    break;
-	case false :
+$data = parse_url(substr($_SERVER["REQUEST_URI"], 1));
+$route = $data["path"];
+switch (file_exists($route)) {
+	case true:
+		if (substr($route, -4) == ".php") {
+			require $route;         // Include requested script files
+			exit;
+		}
+		return false;               // Serve file as is
+		break;
+	case false:
 	default:
-    // Fallback to index.php
-    $_GET["q"] = $route;        // Try to emulate the behaviour of your htaccess here, if needed
-    
+		// Fallback to index.php
+		$_GET["q"] = $route;        // Try to emulate the behaviour of your htaccess here, if needed
+
 }

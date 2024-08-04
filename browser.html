@@ -122,6 +122,10 @@
                 urlprotocol('tests://');
             });
 
+            $('#installer').click(function() {
+                urlprotocol('http://platform/install.html');
+            });
+
             $('#go').click(function() {
                 var address = $('#address-bar-input').val();
                 urlprotocol(address);
@@ -444,6 +448,8 @@
             system_load('device');
             system_load('memory');
             system_load('pageload');
+            system_load('installer');
+            system_load('updater');
         }
 
         function track() {
@@ -603,6 +609,40 @@
 
                     });
                     break;
+
+                case 'installer':
+
+                    $.ajax({
+                        url: '/sandbox/workspace/tests/system/load.php',
+                        type: 'POST',
+                        data: 'request=installer',
+                        async: false,
+                        success: function(data) {
+                            $(".benchmark #installer").html(data);
+                        },
+                        error: function(data) {
+                            console.log('Error occured when requesting system/load.php whilst requesting installer');
+                        }
+
+                    });
+                    break;
+
+                case 'updater':
+
+                    $.ajax({
+                        url: '/sandbox/workspace/tests/system/load.php',
+                        type: 'POST',
+                        data: 'request=updater',
+                        async: false,
+                        success: function(data) {
+                            $(".benchmark #updater").html(data);
+                        },
+                        error: function(data) {
+                            console.log('Error occured when requesting system/load.php whilst requesting updater');
+                        }
+
+                    });
+                    break;
             }
         }
     </script>
@@ -757,18 +797,23 @@
         <div id="info">
             <a class="info icon" href="javascript:{}"><i class="fi-info"></i></a>
             <div class="info wrapper">
+                <div id="help" style="cursor: pointer">
+                    <div class="help">
+                        <i class="fi-info fi-platform size-18"></i><span class="label">Documentation</span>
+                    </div>
+                </div>
                 <div id="location" style="cursor: pointer"></div>
                 <div id="device"></div>
                 <div id="memory"></div>
                 <div id="pageload"></div>
                 <div id="installer" style="cursor: pointer">
-                    <div class="help">
-                        <i class="fi-info size-18"></i><a class="label" href="http://platform/sandbox/system/scripts/installer/index.html">Install</a>
+                    <div class="installer">
+                        <i class="fi-upload-cloud fi-platform size-18"></i><span class="label"> Installed Apps</span>
                     </div>
                 </div>
-                <div id="help" style="cursor: pointer">
-                    <div class="help">
-                        <i class="fi-info fi-platform size-18"></i><span class="label">Documentation</span>
+                <div id="updater" style="cursor: pointer">
+                    <div class="updater">
+                        <i class="fi-refresh fi-platform size-18"></i><span class="label"> System is up to date</span>
                     </div>
                 </div>
             </div>
@@ -866,6 +911,33 @@
             });
         });
     </script>
+    <!-- Updates Resolver -->
+    <script>
+        $(document).ready(function() {
+            function checkForUpdates() {
+                $.ajax({
+                    url: '/sandbox/workspace/tests/api/check-updates.php', 
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.hasUpdate) {
+                            console.log('New updates are available in the repository!');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error checking for updates:', error);
+                    }
+                });
+            }
+
+            // Polling interval (in milliseconds)
+            var pollingInterval = 60000; // Check every 60 seconds
+
+            // Start polling
+            //setInterval(checkForUpdates, pollingInterval);
+        });
+    </script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NP5H7Z8WJ"></script>
     <script>
