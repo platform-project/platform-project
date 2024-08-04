@@ -151,5 +151,5 @@ function system_track()
 
 function system_location()
 {
-  return "Home";
+  return "";
 }

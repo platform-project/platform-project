@@ -243,7 +243,7 @@ function benchmark_location_output($format = "raw")
       break;
     case 'raw':
     default:
-      $raw = "Location: " . $location . " &nbsp; ";
+      $raw = "Navigate " . $location . " &nbsp; ";
       $location_output = $raw;
       break;
   }
