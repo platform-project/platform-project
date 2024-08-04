@@ -237,7 +237,7 @@ function benchmark_location_output($format = "raw")
       $location_output = $xml;
       break;
     case 'html':
-      $html .= '<div class="location"><i class="fi-marker fi-platform size-18"></i><span class="label">Location:</span> ';
+      $html .= '<div class="location"><i class="fi-marker fi-platform size-18"></i><span class="label">Navigate</span> ';
       $html .= '<span>' . $location . '</span></div>';
       $location_output = $html;
       break;
