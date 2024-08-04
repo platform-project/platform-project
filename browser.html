@@ -653,6 +653,8 @@
             height: 125px;
             margin-top: 10px;
             margin-left: 10px;
+            position: relative;
+            top: 10px;
         }
         #track-info {
             color: #f5f5f5;
@@ -796,24 +798,26 @@
 
         <div id="info">
             <a class="info icon" href="javascript:{}"><i class="fi-info"></i></a>
-            <div class="info wrapper">
-                <div id="help" style="cursor: pointer">
-                    <div class="help">
-                        <i class="fi-info fi-platform size-18"></i><span class="label">Documentation</span>
+            <div class="info wrapper" style="display: none">
+                <div id="updater" style="cursor: pointer">
+                    <div class="updater">
+                        <i class="fi-refresh fi-platform size-18"></i><span class="label"> System up to date</span>
                     </div>
                 </div>
-                <div id="location" style="cursor: pointer"></div>
-                <div id="device"></div>
-                <div id="memory"></div>
-                <div id="pageload"></div>
                 <div id="installer" style="cursor: pointer">
                     <div class="installer">
                         <i class="fi-upload-cloud fi-platform size-18"></i><span class="label"> Installed Apps</span>
                     </div>
                 </div>
-                <div id="updater" style="cursor: pointer">
-                    <div class="updater">
-                        <i class="fi-refresh fi-platform size-18"></i><span class="label"> System is up to date</span>
+                <div id="memory"></div>
+                <div id="device"></div>
+                <div id="pageload"></div>
+                <div id="location" style="cursor: pointer">
+
+                </div>
+                <div id="help" style="cursor: pointer">
+                    <div class="help">
+                        <i class="fi-info fi-platform size-18"></i><span class="label">Documentation</span>
                     </div>
                 </div>
             </div>

@@ -266,7 +266,7 @@ function benchmark_updater_output($format = "raw")
       $updater_output = $xml;
       break;
     case 'html':
-      $html .= '<div class="location"><i class="fi-wrench fi-platform size-18"></i><span class="label">System is up to date!</span> ';
+      $html .= '<div class="location"><i class="fi-wrench fi-platform size-18"></i><span class="label">System up to date</span> ';
       $updater_output = $html;
       break;
     case 'raw':
