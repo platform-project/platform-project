@@ -116,9 +116,9 @@ function benchmark_network()
   return network_is_online();
 }
 
-function benchmark_system()
+function benchmark_updater()
 {
-  return system_updater_detection();
+  return false;
 }
 
 function benchmark_network_output($format = "raw")
@@ -252,6 +252,13 @@ function benchmark_location_output($format = "raw")
 
 function benchmark_updater_output($format = "raw")
 {
+  $system_status = benchmark_updater() ? 'up-to-date' : 'update';
+  if (strtolower(trim($system_status)) == 'up-to-date') {
+    $system_indicator = '<a href="#" onclick="system_load(\'notification_updater\'); return false;" title="System up-to-date" class="notification-indicator"><span class="system-up-to-date"></span></a>';
+  } else {
+    $system_indicator = '<a href="#" onclick="system_load(\'notification_updater\'); return false;"  title="System requires an update" class="notification-indicator"><span class="system-update"></span></a>';
+  }
+
   $updater = benchmark_updater_detect();
   $raw = null;
   $xml = null;

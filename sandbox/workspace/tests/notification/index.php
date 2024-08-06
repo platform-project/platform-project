@@ -32,9 +32,9 @@ switch ($_REQUEST['request']) {
     system_notification($title, $message);
     break;
   case 'updater':
-    $network_status = network_is_online();
-    $title = ($network_status) ? "System Up-to-date" : "System requires an update!";
-    $message = ($network_status) ? "Your system is up to date!" : "Your system requires an update. Checkout your repository for new updates!";
+    $system_status = false;
+    $title = ($system_status) ? "System is up-to-date" : "System requires an update!";
+    $message = ($system_status) ? "Your system is up to date!" : "Your system requires an update. Checkout your repository for new updates!";
     system_notification($title, $message);
     break;
 }

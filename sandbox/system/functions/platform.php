@@ -568,7 +568,7 @@ function platform_launch_listview_lists_raw($pages = null)
 
 /**
  * platform_launch_splash_documentation: used to display splash documentation.
- * 
+ *
  * @param string $page  The page being displayed
  *
  * @return void
@@ -577,18 +577,16 @@ function platform_launch_splash_documentation($page)
 {
   $exists = (isset($page) && !empty($page) && $page == 'platform');
   js_start(); ?>
-  $('.listview_link.<?php e($page) ?>').hover(function(){
+  try {
+  $('.listview_link.<?php e($page) ?>').click(function(){
   $.getJSON('/platform.json', function(data) {
-  $('#main_content').html('<h3><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></h3><a href="javascript:{}" onclick="responsiveVoice.speak(' + data.platform.<?php e($page) ?> + '\')"><span class="fa fa-headphones object"> &nbsp; &nbsp; Listen &nbsp; </span></a>
-  <p style="text-align: justify; font-size: 14px; padding: 10px">'+ data.platform.<?php e($page) ?> + '</p>');
+  //
+  });
+  });
+  } catch(error){
+  console.warn('Invalid or Unexpected token');
+  }
 
-  });
-  }, function(){
-  $.getJSON('/platform.json', function(data) {
-  $('#main_content').html('<h3><span class="listview_<?php e($page) ?>"> </span><?php e(ucfirst($page)) ?></h3><a href="javascript:{}" onclick="responsiveVoice.speak(\'' + data.platform.<?php e($page) ?> + '\')"><span class="fa fa-headphones object"> &nbsp; &nbsp; Listen &nbsp; </span></a>
-  <p style="text-align: justify; font-size: 14px; padding: 10px">'+ data.platform.<?php e($page) ?> + '</p>');
-  });
-  });
 <?php js_end();
 }
 

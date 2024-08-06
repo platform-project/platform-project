@@ -28,15 +28,7 @@ function _system()
 
 function system_updater_detection()
 {
-  return system_check_updates();
-}
-
-function system_check_updates()
-{
-  // $request = "http://platform/sandbox/workspace/tests/api/check-updates.php";
-  // $xml = @file_get_contents($request);
-  // echo $xml;
-  // die();
+  return false;
 }
 
 function system_authenticate()
@@ -78,8 +70,8 @@ function system_notification_render($request)
       break;
     case 'system':
       $system_status = system_updater_detection();
-      $title = ($system_status) ? "System Up-to-date" : "System Requires Update";
-      $message = ($system_status) ? "Your system is up-to-date!" : "Your system requires an update! Checkout the latest updates from the repository!";
+      $title = ($system_status) ? "System is up-to-date" : "System requires an update";
+      $message = ($system_status) ? "Your system is currently up-to-date!" : "Your system requires an update! Checkout the latest updates from the repository!";
       notification_slider($title, $message, "'a.notification-indicator'", "mouseover");
       break;
   }
