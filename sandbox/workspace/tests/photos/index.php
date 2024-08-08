@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Loads the sandbox system applications photos index  page
  * @version     $Id: page.php 40 2011-02-09 14:10:00Z biyi $
@@ -24,69 +25,67 @@ define('SLIDESHOW_PATH', 'supersized/slideshow');
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Photo Viewer</title>
-<?php
-js_add_jquery();    // adding jquery library
-js_add_jquery_ui(); // adding jquery ui library
-html_add_link_css(SLIDESHOW_PATH . DS . 'css/supersized.css', 'media="screen"');
-html_add_link_css(SLIDESHOW_PATH . DS . 'theme/supersized.shutter.css', 'media="screen"');
-html_add_js('https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js');
-html_add_js(SLIDESHOW_PATH . DS . 'js/jquery.easing.min.js');
-html_add_js(SLIDESHOW_PATH . DS . 'js/supersized.3.2.7.min.js');		
-html_add_js(SLIDESHOW_PATH . DS . 'theme/supersized.shutter.min.js');
-$cache_path = PLATFORM_SANDBOX_SYSTEM_CACHES_PATH . DS . 'photo';
-$photo_files = find_filetype('jpg', PLATFORM_SANDBOX_WORKSPACE_PATH);
+	<title>Photo Viewer</title>
+	<?php
+	js_add_jquery();    // adding jquery library
+	js_add_jquery_ui(); // adding jquery ui library
+	html_add_link_css(SLIDESHOW_PATH . DS . 'css/supersized.css', 'media="screen"');
+	html_add_link_css(SLIDESHOW_PATH . DS . 'theme/supersized.shutter.css', 'media="screen"');
+	html_add_js('https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js');
+	html_add_js(SLIDESHOW_PATH . DS . 'js/jquery.easing.min.js');
+	html_add_js(SLIDESHOW_PATH . DS . 'js/supersized.3.2.7.min.js');
+	html_add_js(SLIDESHOW_PATH . DS . 'theme/supersized.shutter.min.js');
+	$cache_path = PLATFORM_SANDBOX_SYSTEM_CACHES_PATH . DS . 'photo';
+	$photo_files = find_filetype('jpg', PLATFORM_SANDBOX_WORKSPACE_PATH);
 
-$c = 0;
+	$c = 0;
 
-?>	
-		<script type="text/javascript">
-			
-			jQuery(function($){
-				
-				$.supersized({
-				
-					// Functionality
-					slide_interval          :   3000,		// Length between transitions
-					transition              :   3, 			// 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
-					transition_speed		:	700,		// Speed of transition
-															   
-					// Components							
-					slide_links				:	'blank',	// Individual links for each slide (Options: false, 'num', 'name', 'blank')
-					slides 					:  	[			// Slideshow Images
-					
+	?>
+	<script type="text/javascript">
+		jQuery(function($) {
+
+			$.supersized({
+
+				// Functionality
+				slide_interval: 3000, // Length between transitions
+				transition: 3, // 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
+				transition_speed: 700, // Speed of transition
+
+				// Components							
+				slide_links: 'blank', // Individual links for each slide (Options: false, 'num', 'name', 'blank')
+				slides: [ // Slideshow Images
+
 
 					<?php
-					foreach ($photo_files as $file){
-					  ++$c;
-					  $photo_path = dirname($file);
-					  $photo_file = basename($file);
-					  $thumb_file = "thumb." . $photo_file;
-					  $photo = $photo_path . DS . $photo_file;
-					  $thumb = $cache_path . DS . $thumb_file;
-					  $command = "/usr/bin/convert -thumbnail 200x200 " . $photo . " " . $thumb;
-				      exec($command, $output, $return);
+					foreach ($photo_files as $file) {
+						++$c;
+						$photo_path = dirname($file);
+						$photo_file = basename($file);
+						$thumb_file = "thumb." . $photo_file;
+						$photo = $photo_path . DS . $photo_file;
+						$thumb = $cache_path . DS . $thumb_file;
+						$command = "/usr/bin/convert -thumbnail 200x200 " . $photo . " " . $thumb;
+						exec($command, $output, $return);
 
-					  $photo_array = explode("/var/www/platform/", $photo);
-					  $thumb_array = explode("/var/www/platform/", $thumb);
-					  $photo = PLATFORM_URI . $photo_array[1];
-				      $thumb = PLATFORM_URI . $thumb_array[1];
-					  echo "{image : '$photo', title : 'Photo: $c', thumb : '$thumb', url : 'http://platform/'},
+						$photo_array = explode("/var/www/platform/", $photo);
+						$thumb_array = explode("/var/www/platform/", $thumb);
+						$photo = PLATFORM_URI . $photo_array[1];
+						$thumb = PLATFORM_URI . $thumb_array[1];
+						echo "{image : '$photo', title : 'Photo: $c', thumb : '$thumb', url : 'http://platform/'},
 					  ";
-
 					}
 					?>
-													
-												]
-					
-				});
-		    });
-		    
-		</script>
-		
-	</head>
-	
+
+				]
+
+			});
+		});
+	</script>
+
+</head>
+
 
 <body>
 
@@ -94,43 +93,55 @@ $c = 0;
 	<!--Thumbnail Navigation-->
 	<div id="prevthumb"></div>
 	<div id="nextthumb"></div>
-	
+
 	<!--Arrow Navigation-->
 	<a id="prevslide" class="load-item"></a>
 	<a id="nextslide" class="load-item"></a>
-	
+
 	<div id="thumb-tray" class="load-item">
 		<div id="thumb-back"></div>
 		<div id="thumb-forward"></div>
 	</div>
-	
+
 	<!--Time Bar-->
 	<div id="progress-back" class="load-item">
 		<div id="progress-bar"></div>
 	</div>
-	
+
 	<!--Control Bar-->
 	<div id="controls-wrapper" class="load-item">
 		<div id="controls">
-			
-			<a id="play-button"><img id="pauseplay" src="<?php echo SLIDESHOW_PATH . DS ?>img/pause.png"/></a>
-		
+
+			<a id="play-button"><img id="pauseplay" src="<?php echo SLIDESHOW_PATH . DS ?>img/pause.png" /></a>
+
 			<!--Slide counter-->
 			<div id="slidecounter">
 				<span class="slidenumber"></span> / <span class="totalslides"></span>
 			</div>
-			
+
 			<!--Slide captions displayed here-->
 			<div id="slidecaption"></div>
-			
+
 			<!--Thumb Tray button-->
-			<a id="tray-button"><img id="tray-arrow" src="<?php echo SLIDESHOW_PATH . DS ?>img/button-tray-up.png"/></a>
-			
+			<a id="tray-button"><img id="tray-arrow" src="<?php echo SLIDESHOW_PATH . DS ?>img/button-tray-up.png" /></a>
+
 			<!--Navigation-->
 			<ul id="slide-list"></ul>
-			
+
 		</div>
 	</div>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-1NP5H7Z8WJ"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
 
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-1NP5H7Z8WJ');
+	</script>
 </body>
+
 </html>

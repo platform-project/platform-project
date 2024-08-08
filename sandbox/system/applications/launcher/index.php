@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Platform Launcher
  * The Plaform Launcher app
@@ -190,6 +191,19 @@ platform_launch_initialize();
     <script type="text/javascript" src="assets/js/orbit.js"></script>
     <script type="text/javascript" src="assets/js/solar.js"></script>
     <script type="text/javascript" src="assets/js/app.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NP5H7Z8WJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-1NP5H7Z8WJ');
+    </script>
+
     <!--References
 https://threejs.org/editor/
 https://jsfiddle.net/kmturley/N9YD3/

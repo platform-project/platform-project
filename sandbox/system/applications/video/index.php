@@ -206,6 +206,18 @@ if ($request) {
   <script language="javascript" type="text/javascript" src="assets/js/fab.js"></script>
   <script language="javascript" type="text/javascript" src="https://cdn.jsdelivr.net/npm/video.js@4.1.0/dist/video.min.js"></script>
   <script language="javascript" type="text/javascript" src="assets/js/vendor/modernizr.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NP5H7Z8WJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-1NP5H7Z8WJ');
+  </script>
 </body>
 
 </html>

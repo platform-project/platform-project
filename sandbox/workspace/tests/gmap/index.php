@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Editor
  * Test case: Determine the optimal approach to implement an editor
@@ -19,11 +20,13 @@
 
 platform_launch_initialize();
 
-function load_mapbox(){
+function load_mapbox()
+{
   ob_start();
 ?>
-<!DOCTYPE html>
-<html>
+  <!DOCTYPE html>
+  <html>
+
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,8 +37,9 @@ function load_mapbox(){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
     <?php js_add_jquery(); ?>
-    <?php js_add('gmap/assets/js/mapbox.js'); ?>  
+    <?php js_add('gmap/assets/js/mapbox.js'); ?>
   </head>
+
   <body>
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
     <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.1/mapbox-gl-directions.js"></script>
@@ -43,7 +47,7 @@ function load_mapbox(){
     <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
     <div id="map_satellite">
       <a class="control weather" href="javascript:{}">&nbsp;</a>
-      <div class="windy-weather" 
+      <div class="windy-weather"
         data-windywidget="windy-weather"
         data-thememode="dark"
         data-appid="bb55adfb185d93350bb6bf1911e36d73"
@@ -70,7 +74,7 @@ function load_mapbox(){
       <script async="true" data-cfasync="false" type="text/javascript" src="https://windy.app/widget3/windy_map_async.js"></script>
     </div>
     <div id="map_windy">
-      <iframe width="1920" height="1080" style="width: 100vw; height: 108vh;"  src="https://embed.windy.com/embed2.html?lat=-25.760&lon=28.260&detailLat=-25.760&detailLon=28.260&width=650&height=450&zoom=5&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1" frameborder="0"></iframe>
+      <iframe width="1920" height="1080" style="width: 100vw; height: 108vh;" src="https://embed.windy.com/embed2.html?lat=-25.760&lon=28.260&detailLat=-25.760&detailLon=28.260&width=650&height=450&zoom=5&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1" frameborder="0"></iframe>
     </div>
     <div id="directions_panel"></div>
     <div id="overlay_canvas">
@@ -80,68 +84,81 @@ function load_mapbox(){
         </a>
       </div>
       <div id="map_controls">
-        <span class="control satellite"><a href="javascript:{}"><i class="fa-solid fa-satellite"></i> Satellite</a></span> &nbsp; 
-        <span class="control street"><a href="javascript:{}"><i class="fa-solid fa-road"></i> Street</a></span> &nbsp; 
-        <span class="control night"><a href="javascript:{}"><i class="fa-solid fa-moon"></i> Night</a></span> &nbsp; 
-        <span class="control weather"><a href="javascript:{}"><i class="fa-solid fa-sun"></i> Weather</a></span> &nbsp; 
-        <span class="control windy"><a href="javascript:{}"><i class="fa-solid fa-cloud"></i> Windy</a></span> &nbsp; 
+        <span class="control satellite"><a href="javascript:{}"><i class="fa-solid fa-satellite"></i> Satellite</a></span> &nbsp;
+        <span class="control street"><a href="javascript:{}"><i class="fa-solid fa-road"></i> Street</a></span> &nbsp;
+        <span class="control night"><a href="javascript:{}"><i class="fa-solid fa-moon"></i> Night</a></span> &nbsp;
+        <span class="control weather"><a href="javascript:{}"><i class="fa-solid fa-sun"></i> Weather</a></span> &nbsp;
+        <span class="control windy"><a href="javascript:{}"><i class="fa-solid fa-cloud"></i> Windy</a></span> &nbsp;
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" integrity="sha512-yFjZbTYRCJodnuyGlsKamNE/LlEaEAxSUDe5+u61mV8zzqJVFOH7TnULE2/PP/l5vKWpUNnF4VGVkXh3MjgLsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
-      $(function (){
+      $(function() {
 
-        $('#brand .home').click(function(){
-            location.reload(true);
+        $('#brand .home').click(function() {
+          location.reload(true);
         });
 
-        $('#map_satellite .control.weather').click(function(){
-            $('.windy-weather').toggle();
+        $('#map_satellite .control.weather').click(function() {
+          $('.windy-weather').toggle();
         });
 
-        $('#map_controls .control.satellite a').click(function(){
-            $('#map_satellite').css('display', 'block');
-            $('#map_street').css('display', 'none');
-            $('#map_night').css('display', 'none');
-            $('#map_weather').css('display', 'none');
-            $('#map_windy').css('display', 'none');
+        $('#map_controls .control.satellite a').click(function() {
+          $('#map_satellite').css('display', 'block');
+          $('#map_street').css('display', 'none');
+          $('#map_night').css('display', 'none');
+          $('#map_weather').css('display', 'none');
+          $('#map_windy').css('display', 'none');
         });
 
-        $('#map_controls .control.street a').click(function(){
-            $('#map_satellite').css('display', 'none');
-            $('#map_street').css('display', 'block');
-            $('#map_night').css('display', 'none');
-            $('#map_weather').css('display', 'none');
-            $('#map_windy').css('display', 'none');
+        $('#map_controls .control.street a').click(function() {
+          $('#map_satellite').css('display', 'none');
+          $('#map_street').css('display', 'block');
+          $('#map_night').css('display', 'none');
+          $('#map_weather').css('display', 'none');
+          $('#map_windy').css('display', 'none');
         });
 
-        $('#map_controls .control.night a').click(function(){
-            $('#map_satellite').css('display', 'none');
-            $('#map_street').css('display', 'none');
-            $('#map_night').css('display', 'block');
-            $('#map_weather').css('display', 'none');
-            $('#map_windy').css('display', 'none');
-        });
-        
-        $('#map_controls .control.weather a').click(function(){
-            $('#map_satellite').css('display', 'none');
-            $('#map_street').css('display', 'none');
-            $('#map_night').css('display', 'none');
-            $('#map_weather').css('display', 'block');
-            $('#map_windy').css('display', 'none');
+        $('#map_controls .control.night a').click(function() {
+          $('#map_satellite').css('display', 'none');
+          $('#map_street').css('display', 'none');
+          $('#map_night').css('display', 'block');
+          $('#map_weather').css('display', 'none');
+          $('#map_windy').css('display', 'none');
         });
 
-        $('#map_controls .control.windy a').click(function(){
-            $('#map_satellite').css('display', 'none');
-            $('#map_street').css('display', 'none');
-            $('#map_night').css('display', 'none');
-            $('#map_weather').css('display', 'none');
-            $('#map_windy').css('display', 'block');
+        $('#map_controls .control.weather a').click(function() {
+          $('#map_satellite').css('display', 'none');
+          $('#map_street').css('display', 'none');
+          $('#map_night').css('display', 'none');
+          $('#map_weather').css('display', 'block');
+          $('#map_windy').css('display', 'none');
+        });
+
+        $('#map_controls .control.windy a').click(function() {
+          $('#map_satellite').css('display', 'none');
+          $('#map_street').css('display', 'none');
+          $('#map_night').css('display', 'none');
+          $('#map_weather').css('display', 'none');
+          $('#map_windy').css('display', 'block');
         });
       });
     </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NP5H7Z8WJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-1NP5H7Z8WJ');
+    </script>
   </body>
-</html>
+
+  </html>
 <?php
   return ob_get_clean();
 }

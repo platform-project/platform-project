@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Games
  *
@@ -21,6 +22,7 @@ platform_launch_initialize();
 ?>
 <!DOCTYPE html>
 <html lang="en" data-ember-extension="1" data-cast-api-enabled="true">
+
 <head>
     <title>Games</title>
     <meta charset="utf-8">
@@ -35,9 +37,10 @@ platform_launch_initialize();
     <link rel="stylesheet" type="text/css" href="./assets/css/app.css" />
     <?php js_add_jquery(); ?>
 </head>
+
 <body>
     <div class="dashboard wrapper">
-        
+
         <div class="games catalog">
             <h2>Online Games</h2>
 
@@ -52,12 +55,25 @@ platform_launch_initialize();
             <div id="entanglement" class="item" title="Entanglement" data-href="http://entanglement.gopherwoodstudios.com/en-US-index.html">
                 <a href="http://entanglement.gopherwoodstudios.com/en-US-index.html"><img src="assets/images/catalogs/entanglement.png" border="0" alt="Entanglement" title="Entanglement" style="width: 300px; height: 180px;" /></a>
             </div>
-            
+
             <div id="polycraft" class="item" title="Poly Craft" data-href="http://polycraftgame.com/">
                 <a href="http://polycraftgame.com/"><img src="assets/images/catalogs/polycraft.png" border="0" alt="Free Rider HD" title="Free Rider HD" style="width: 300px; height: 180px;" /></a>
             </div>
         </div>
     </div>
     <?php js_add('assets/js/app.js'); ?>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NP5H7Z8WJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-1NP5H7Z8WJ');
+    </script>
 </body>
+
 </html>
