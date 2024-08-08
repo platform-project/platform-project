@@ -32,7 +32,16 @@
     <link rel="stylesheet" href="assets/fonts/font-awesome/css/font-awesome.css" />
     <link rel="stylesheet" href="assets/css/weather-icons.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link rel="" href="assets/css/jquery.jgrowl.css" />
+    <link rel="stylesheet" href="assets/css/jquery.jgrowl.css" />
+
+    <script>
+    const hours = new Date().getHours()
+    const isDayTime = hours > 6 && hours < 20
+    var markup = "<link rel=\"stylesheet\" href=\"assets/skins/dark/default.css\" />";
+    if (!isDayTime){
+        document.writeln(markup);
+    }
+    </script>
     <link rel="manifest" href="manifest.json" />
     <meta name="theme-color">
     <!-- http://html5doctor.com/web-manifest-specification/#appname -->
@@ -113,6 +122,10 @@
                 urlprotocol('tests://');
             });
 
+            $('#installer').click(function() {
+                urlprotocol('http://platform/install.html');
+            });
+
             $('#go').click(function() {
                 var address = $('#address-bar-input').val();
                 urlprotocol(address);
@@ -122,8 +135,13 @@
                 show_info();
             });
 
+            $('#network').click(function(){
+                system_load('notification_network');
+            });
 
-            system_load('notification_network');
+            $('#updater').click(function(){
+                system_load('notification_updater');
+            });
 
         });
     </script>
@@ -396,7 +414,7 @@
                     address = server + "/?platform";
                     break;
             }
-            track();
+            //track();
             network_status();
             pageloader(address);
             console.log(address);
@@ -435,6 +453,8 @@
             system_load('device');
             system_load('memory');
             system_load('pageload');
+            system_load('installer');
+            system_load('updater');
         }
 
         function track() {
@@ -503,6 +523,22 @@
                         url: '/sandbox/workspace/tests/system/notification.php',
                         type: 'POST',
                         data: 'request=network',
+                        async: true,
+                        success: function(data) {
+                            $(".system-notification").html(data);
+                        },
+                        error: function(data) {
+                            console.log('Error occured when requesting system/notification.php whilst requesting network');
+                        }
+                    });
+                    break;
+
+                case 'notification_updater':
+
+                    $.ajax({
+                        url: '/sandbox/workspace/tests/system/notification.php',
+                        type: 'POST',
+                        data: 'request=updater',
                         async: true,
                         success: function(data) {
                             $(".system-notification").html(data);
@@ -594,9 +630,85 @@
 
                     });
                     break;
+
+                case 'installer':
+
+                    $.ajax({
+                        url: '/sandbox/workspace/tests/system/load.php',
+                        type: 'POST',
+                        data: 'request=installer',
+                        async: false,
+                        success: function(data) {
+                            $(".benchmark #installer").html(data);
+                        },
+                        error: function(data) {
+                            console.log('Error occured when requesting system/load.php whilst requesting installer');
+                        }
+
+                    });
+                    break;
+
+                case 'updater':
+
+                    $.ajax({
+                        url: '/sandbox/workspace/tests/system/load.php',
+                        type: 'POST',
+                        data: 'request=updater',
+                        async: false,
+                        success: function(data) {
+                            $(".benchmark #updater").html(data);
+                        },
+                        error: function(data) {
+                            console.log('Error occured when requesting system/load.php whilst requesting updater');
+                        }
+
+                    });
+                    break;
             }
         }
     </script>
+    <style>
+        #album-artwork {
+            display: block;
+            width: 125px;
+            height: 125px;
+            margin-top: 10px;
+            margin-left: 10px;
+            position: relative;
+            top: 10px;
+        }
+        #track-info {
+            color: #f5f5f5;
+            margin-top: 10px;
+            margin-left: 10px;
+            width: 200px;
+            position: relative;
+            top: -125px;
+            left: 130px;
+            word-wrap: break-word;
+        }
+        #progress-container {
+            width: 96%;
+            background: rgba(200,200,200, 0.3);
+            height: 10px;
+            position: relative;
+            margin-top: 22px;
+            border-radius: 5px;
+        }
+        #progress-bar {
+            width: 0;
+            height: 100%;
+            background-color: red;
+            position: absolute;
+            border-radius: 5px;
+        }
+        #timer {
+            position: relative;
+            color: white;
+            top: -10px;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -625,12 +737,17 @@
             <a class="music icon" href="javascript:{}"><i class="fi-music"></i></a>
             <div class="music wrapper">
                 <div id="ticker">
-                    <div class="album image">
-                        <i class="album icon fi-music" style="font-size: 48px; color: #f5f5f5; "></i>
-                        <div class="album artwork"></div>
+                    <div id="metadata">
+                        <img id="album-artwork" alt="Album Artwork" src="sites/icons/no-album.png" style="display: block;"/>
+                        <div id="track-info">
+                            <p id="artist-name">Artist: Unknown</p>
+                            <p id="track-name">Track: Unknown</p>
+                            <div id="progress-container">
+                                <div id="progress-bar"></div>
+                            </div>
+                            <p id="timer">00:00:00 / 00:00:00</p>
+                        </div>
                     </div>
-                    <div class="album artist"></div>
-                    <div class="album track"></div>
                 </div>
 
                 <div class="controls">
@@ -638,15 +755,16 @@
                     <a class="control pause" href="javascript:{}"><i class="fi-pause"></i></a>
                     <a class="control stop" href="javascript:{}" onclick="responsiveVoice.speak('Stop');"><i class="fi-stop"></i></a>
                     <a class="control scrolling" onclick="" href="javascript:{}" onclick="responsiveVoice.speak('Play music');">
-                        <marques>Play music</marques>
+                        <marques>View Artwork</marques>
                     </a>
                     <a class="control eject" href="javascript:{}"><i class="fi-eject"></i></a>
-                    <input type="file" id="addTrack" class="control" title="Play music" />
+                    <input type="file" id="addTrack" class="control" title="Play music" accept="audio/*" />
                 </div>
 
-                <audio controls loop name="media" src="">
-        <source src="" type="audio/mp3;">
-      </audio>
+                <audio id="audio" controls loop name="media" src="">
+                    <source src="" type="audio/mp3;">
+                </audio>
+                
             </div>
         </div>
 
@@ -670,22 +788,6 @@
 
             </div>
         </div>
-
-        <!--<div id="drone">
-            <a class="drone icon" href="javascript:{}"><i class="fal fa-drone"></i>
-            <div class="drone wrapper">
-
-            </div>
-            </a>
-        </div>
-
-        <div id="uav">
-            <a class="uav icon" href="javascript:{}">
-            <div class="uav wrapper">
-
-            </div>
-            </a>
-        </div>-->
 
         <div id="plane">
             <a class="plane icon" href="javascript:{}"><i class="fa fa-plane"></i></a>
@@ -717,11 +819,23 @@
 
         <div id="info">
             <a class="info icon" href="javascript:{}"><i class="fi-info"></i></a>
-            <div class="info wrapper">
-                <div id="location" style="cursor: pointer"></div>
-                <div id="device"></div>
+            <div class="info wrapper" style="display: none">
+                <div id="updater" style="cursor: pointer">
+                    <div class="updater">
+                        <i class="fi-refresh fi-platform size-18"></i><span class="label"> System up to date</span>
+                    </div>
+                </div>
+                <div id="installer" style="cursor: pointer">
+                    <div class="installer">
+                        <i class="fi-upload-cloud fi-platform size-18"></i><span class="label"> Installed Apps</span>
+                    </div>
+                </div>
                 <div id="memory"></div>
+                <div id="device"></div>
                 <div id="pageload"></div>
+                <div id="location" style="cursor: pointer">
+
+                </div>
                 <div id="help" style="cursor: pointer">
                     <div class="help">
                         <i class="fi-info fi-platform size-18"></i><span class="label">Documentation</span>
@@ -731,6 +845,148 @@
         </div>
         <div id="map" style="display: none"></div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('addTrack').addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                const audioElement = document.getElementById('audio');
+                const artworkElement = document.getElementById('album-artwork');
+                const trackNameElement = document.getElementById('track-name');
+                const artistNameElement = document.getElementById('artist-name');
+                const progressBar = document.getElementById('progress-bar');
+                const timerElement = document.getElementById('timer');
+
+                if (file) {
+                    // Load the audio file into the audio element
+                    const objectURL = URL.createObjectURL(file);
+                    audioElement.src = objectURL;
+
+                    // Read tags from the file
+                    jsmediatags.read(file, {
+                        onSuccess: function(tag) {
+                            const tags = tag.tags;
+
+                            // Display album artwork
+                            const picture = tags.picture;
+                            if (picture) {
+                                let base64String = "";
+                                for (let i = 0; i < picture.data.length; i++) {
+                                    base64String += String.fromCharCode(picture.data[i]);
+                                }
+                                const base64 = "data:" + picture.format + ";base64," + btoa(base64String);
+                                artworkElement.src = base64;
+                                artworkElement.style.display = 'block';
+                            } else {
+                                artworkElement.src = 'sites/icons/no-album.png';
+                                artworkElement.style.display = 'block';
+                            }
+
+                            // Display track name
+                            if (tags.title) {
+                                trackNameElement.textContent = "Track: " + tags.title;
+                            } else {
+                                trackNameElement.textContent = "Track: Unknown";
+                            }
+
+                            // Display artist name
+                            if (tags.artist) {
+                                artistNameElement.textContent = "Artist: " + tags.artist;
+                            } else {
+                                artistNameElement.textContent = "Artist: Unknown";
+                            }
+                        },
+                        onError: function(error) {
+                            console.log(error);
+                            artworkElement.style.backgroundImage = 'sites/icons/no-album.png';
+                            trackNameElement.textContent = "Track: Unknown";
+                            artistNameElement.textContent = "Artist: Unknown";
+                        }
+                    });
+
+                    // Reset progress bar and timer
+                    progressBar.style.width = '0%';
+                    timerElement.textContent = '00:00:00 / 00:00:00';
+
+                    // Update progress bar and timer during playback
+                    audioElement.ontimeupdate = function() {
+                        const currentTime = audioElement.currentTime;
+                        const duration = audioElement.duration;
+
+                        if (!isNaN(duration)) {
+                            const progressPercent = (currentTime / duration) * 100;
+                            progressBar.style.width = progressPercent + '%';
+
+                            const formatTime = (time) => {
+                                const hours = Math.floor(time / 3600);
+                                const minutes = Math.floor((time % 3600) / 60);
+                                const seconds = Math.floor(time % 60);
+                                return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                            };
+
+                            timerElement.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+                        } else {
+                            timerElement.textContent = '00:00:00 / 00:00:00';
+                        }
+                    };
+                } else {
+                    console.error("No file selected or file not found.");
+                }
+            });
+        });
+    </script>
+    <!-- Updates Resolver -->
+    <script>
+        $(document).ready(function() {
+            var lastCommitSha = '';
+
+            function checkForCommits() {
+                $.ajax({
+                    url: 'https://api.github.com/repos/platform-project/platform-project/commits', // Replace {owner} and {repo} with actual values
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(commits) {
+                        if (commits.length > 0) {
+                            var latestCommitSha = commits[0].sha;
+                            if (latestCommitSha !== lastCommitSha) {
+                                if (lastCommitSha !== '') {
+                                    system_load('notification_updater');
+                                    console.log('New commit detected: ' + commits[0].commit.message);
+                                } else {
+                                    system_load('notification_updater');
+                                    console.log('No commits detected');
+                                }
+                                lastCommitSha = latestCommitSha;
+                            }
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching commits:', error);
+                    }
+                });
+            }
+
+            // Polling interval (in milliseconds)
+            var pollingInterval = 60000; // Check every 60 seconds
+
+            // Start polling
+            setInterval(checkForCommits, pollingInterval);
+
+            // Initial check
+            checkForCommits();
+        });
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NP5H7Z8WJ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1NP5H7Z8WJ');
+    </script>
 </body>
 </html>

@@ -1,5 +1,4 @@
-<?php
-
+<!--
 /**
  * Loading platform sandbox system applications browser
  * @version     $Id: platform.php 40 2011-02-09 14:10:00Z biyi $
@@ -16,10 +15,7 @@
  * other free or open source software licenses.
  * See COPYRIGHT.php for copyright notices and details.
  */
-
-// initilizing platform for self-contained objects
-platform_launch_initialize();
-?>
+-->
 <!DOCTYPE HTML>
 <html lang="en" manifest="cache.manifest" class="js canvas canvastext geolocation history websockets video audio localstorage webworkers applicationcache">
 
@@ -54,36 +50,21 @@ platform_launch_initialize();
     <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
     <script type="text/javascript" src="assets/js/media.js"></script>
     <script>
-        $(function() {
-            splash(3000);
-
-            function splash(param) {
-                var time = param;
-                setTimeout(function() {
-                    window.location = "browser.html";
-                }, time);
-            }
-        });
+    window.location = "http://platform/sandbox/workspace/projects/php/drupal/web/";
     </script>
 </head>
 
 <body>
-    <div id="splash">
-        <div class="splash_logo"></div>
-    </div>
-    <script src="assets/js/app.js"></script>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NP5H7Z8WJ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
+  <!-- TODO: Add Login Page -->
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NP5H7Z8WJ"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-1NP5H7Z8WJ');
-    </script>
+  gtag('config', 'G-1NP5H7Z8WJ');
+  </script>
 </body>
-
 </html>
