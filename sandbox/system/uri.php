@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Initializes  platform sandbox system variables
  * @version     $Id: uri.php 40 2011-02-09 14:10:00Z biyi $
@@ -27,7 +28,7 @@ define('PLATFORM_SANDBOX_URI',            PLATFORM_BASE_URI . DS . 'sandbox');
 define('PLATFORM_SERVERS_URI',            PLATFORM_BASE_URI . DS . 'servers');
 define('PLATFORM_SITES_URI',              PLATFORM_BASE_URI . DS . 'sites');
 define('PLATFORM_SITES_ICONS_URI',        PLATFORM_SITES_URI . DS . 'icons');
-define('PLATFORM_SITES_IMAGES_URI' ,      PLATFORM_SITES_URI . DS . 'images');
+define('PLATFORM_SITES_IMAGES_URI',      PLATFORM_SITES_URI . DS . 'images');
 
 // defining platform sandbox uris
 define('PLATFORM_SANDBOX_FRAMEWORK_URI',    PLATFORM_SANDBOX_URI . DS . 'framework');
@@ -52,8 +53,9 @@ define('PLATFORM_SANDBOX_SYSTEM_PLUGINS_URI',         PLATFORM_SANDBOX_SYSTEM_UR
 define('PLATFORM_SANDBOX_SYSTEM_SCRIPTS_URI',         PLATFORM_SANDBOX_SYSTEM_URI . DS . 'scripts');
 define('PLATFORM_SANDBOX_SYSTEM_STRUCTS_URI',         PLATFORM_SANDBOX_SYSTEM_URI . DS . 'structs');
 define('PLATFORM_SANDBOX_SYSTEM_TEMPLATES_URI',       PLATFORM_SANDBOX_SYSTEM_URI . DS . 'templates');
-define('PLATFORM_SANDBOX_SYSTEM_TESTS_URI',    				PLATFORM_SANDBOX_SYSTEM_URI . DS . 'tests');
+define('PLATFORM_SANDBOX_SYSTEM_TESTS_URI',              PLATFORM_SANDBOX_SYSTEM_URI . DS . 'tests');
 define('PLATFORM_SANDBOX_SYSTEM_TOOLS_URI',           PLATFORM_SANDBOX_SYSTEM_URI . DS . 'tools');
 define('PLATFORM_SANDBOX_SYSTEM_VENDORS_URI',         PLATFORM_SANDBOX_SYSTEM_URI . DS . 'vendors');
 
+// defining platform sandbox system functions uris
 define('PLATFORM_SANDBOX_SYSTEM_FUNCTIONS_PSEUDO_URI',    PLATFORM_SANDBOX_SYSTEM_FUNCTIONS_URI . DS . 'pseudo');

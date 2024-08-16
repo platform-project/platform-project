@@ -28,7 +28,7 @@ function platform()
 
   platform_launch_initialize();
   //platform_launch_debug(false);
-  if (!IS_CLI) platform_launch_dispatch($_SERVER['QUERY_STRING']);
+  if (!IS_CLI && is_array($_SERVER)) platform_launch_dispatch($_SERVER['QUERY_STRING']);
   //debug_complete_stack($paths);
 }
 
@@ -185,24 +185,42 @@ function platform_launch_dispatch($request = null)
 function platform_launch_path_to($request)
 {
   $exclude_hidden = array(
-    '.AppleDouble', '.config', '.svn', '.git', '.chromium',
-    '.dude', '.icons', '.fonts', '.mac4lin', '.prebuilds',
-    '.torrents', '.trash', '.files'
+    '.AppleDouble',
+    '.config',
+    '.svn',
+    '.git',
+    '.chromium',
+    '.dude',
+    '.icons',
+    '.fonts',
+    '.mac4lin',
+    '.prebuilds',
+    '.torrents',
+    '.trash',
+    '.files'
   );
   switch ($request) {
     case 'platform':
     default:
       $exclusions = array(
-        'services', 'laboratory', 'projects',
-        'README', 'TODO'
+        'services',
+        'laboratory',
+        'projects',
+        'README',
+        'TODO'
       );
       $exclusions = array_merge($exclusions, $exclude_hidden);
       // TODO: dynamically load all listings, no hard-fixing listings
       // $path = PLATFORM_BASE_PATH . DS;
       // $pages = platform_launch_list_path($path, true, $exclusions);
       $pages = array(
-        'sandbox', 'servers', 'networks', 'sites',
-        'mirrors', 'help', 'info'
+        'sandbox',
+        'servers',
+        'networks',
+        'sites',
+        'mirrors',
+        'help',
+        'info'
       );
       platform_launch_listview_lists_exact($pages);
       break;
@@ -316,10 +334,28 @@ function platform_launch_path_to($request)
       break;
     case 'system':
       $exclusions = array(
-        'caches', 'classes', 'components', 'contributions', 'configurations', 'crons',
-        'daemons', 'databases', 'executables', 'extensions', 'functions',
-        'hooks', 'languages', 'logs', 'migrations', 'schemas', 'services',
-        'structs', 'tests', 'templates', 'ui', 'vendors'
+        'caches',
+        'classes',
+        'components',
+        'contributions',
+        'configurations',
+        'crons',
+        'daemons',
+        'databases',
+        'executables',
+        'extensions',
+        'functions',
+        'hooks',
+        'languages',
+        'logs',
+        'migrations',
+        'schemas',
+        'services',
+        'structs',
+        'tests',
+        'templates',
+        'ui',
+        'vendors'
       );
       $exclusions = array_merge($exclusions, $exclude_hidden);
       $path = PLATFORM_SANDBOX_PATH . DS;
@@ -327,8 +363,13 @@ function platform_launch_path_to($request)
       break;
     case 'applications':
       $exclusions = array(
-        'browser', 'gnump3d', 'ktorrent', 'nagios',
-        'quicknote', 'sugarcrm', 'webmin'
+        'browser',
+        'gnump3d',
+        'ktorrent',
+        'nagios',
+        'quicknote',
+        'sugarcrm',
+        'webmin'
       );
       $exclusions = array_merge($exclusions, $exclude_hidden);
       platform_launch_listview_lists_applications($exclusions);

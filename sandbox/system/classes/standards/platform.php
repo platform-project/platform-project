@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This is platform class implementation
  * @version     $Id: platform.php 40 2011-02-09 14:10:00Z biyi $
@@ -14,15 +15,20 @@
  * other free or open source software licenses.
  * See COPYRIGHT.php for copyright notices and details.
  */
-class Platform {
+
+namespace Platform;
+
+class Platform
+{
   /**
    * default class contructor
    * @access public
    * @param void
    * @return void
    */
-  public function __construct(){
-    platform();
+  public function __construct(&$server)
+  {
+    platform($server);
   }
 
   /**
@@ -31,7 +37,8 @@ class Platform {
    *
    * @return void
    */
-  public function launch($file){
+  public function launch($file)
+  {
     platform_launch($file);
   }
 
@@ -41,7 +48,8 @@ class Platform {
    *
    * @return void
    */
-  public function launch_php($file){
+  public function launch_php($file)
+  {
     platform_launch_php($file);
   }
 
@@ -51,8 +59,5 @@ class Platform {
    * @param void
    * @return void
    */
-  public function __destruct(){
-
-  }
-
+  public function __destruct() {}
 }
