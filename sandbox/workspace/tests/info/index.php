@@ -463,9 +463,9 @@ platform_launch_initialize();
       </ul>
     </div>
     <div class="clear"></div>
-    <a href="http://git.entilda.com/platform.git" target="_self">
-      <p class="pull-right semi-bold">Check out our Project Homepage</p>
-    </a>
+    <a href="https://platform.entilda.com/" target="_self">
+      <p class="pull-center semi-bold">Project Homepage</p>
+    </a>&nbsp; &nbsp;
   </div>
 </section>
 <!-- Google tag (gtag.js) -->
