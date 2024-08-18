@@ -28,105 +28,106 @@ function _system()
 
 function system_updater_detection()
 {
-  return false;
+    return true;
 }
 
 function system_authenticate()
 {
-  @session_start();
-  global $auth, $subscription, $session, $smarty;
-  if (!$auth->online($session) && !$auth->authorize($session)) {
-    if (is_null($_SESSION['auth_user'])) {
-      @header('Location: index.php?page=frontend&section=site&view=home');
-      exit(0);
+    @session_start();
+    global $auth, $subscription, $session, $smarty;
+    if (!$auth->online($session) && !$auth->authorize($session)) {
+        if (is_null($_SESSION['auth_user'])) {
+            @header('Location: index.php?page=frontend&section=site&view=home');
+            exit(0);
+        }
+    } else {
+        $auth_user = $auth->retrieve_auth_user($session);
+        $session->add_content('auth_user', $auth_user);
     }
-  } else {
-    $auth_user = $auth->retrieve_auth_user($session);
-    $session->add_content('auth_user', $auth_user);
-  }
 }
 
 function system_notification()
 {
-  system_notification_render($_REQUEST['request']);
+    system_notification_render($_REQUEST['request']);
 }
 
 function system_notification_render($request)
 {
-  switch ($request) {
-    case 'about':
-      $build = date("Ymd");
-      $title = "Platform Browser";
-      $message = "<br />You are currently running: <br /><br />
+    switch ($request) {
+        case 'about':
+            $build = date("Ymd");
+            $title = "Platform Browser";
+            $message = "<br />You are currently running: <br /><br />
                <strong>Platform Browser</strong> <br /><br />
                <strong>Version</strong> <br />0.01<br /><br />
                <strong>Build</strong> <br /> " . $build;
-      notification_slider($title, $message, "'#about'", "mouseover");
-    case 'network':
-      $network_status = network_is_online();
-      $title = ($network_status) ? "Network Online" : "Network Offline";
-      $message = ($network_status) ? "You are connected to the internet!" : "You seem to be disconnected from the internet!";
-      notification_slider($title, $message, "'a.notification-indicator'", "mouseover");
-      break;
-    case 'system':
-      $system_status = system_updater_detection();
-      $title = ($system_status) ? "System is up-to-date" : "System requires an update";
-      $message = ($system_status) ? "Your system is currently up-to-date!" : "Your system requires an update! Checkout the latest updates from the repository!";
-      notification_slider($title, $message, "'a.notification-indicator'", "mouseover");
-      break;
-  }
+            notification_slider($title, $message, "'#about'", "mouseover");
+            // no break
+        case 'network':
+            $network_status = network_is_online();
+            $title = ($network_status) ? "Network Online" : "Network Offline";
+            $message = ($network_status) ? "You are connected to the internet!" : "You seem to be disconnected from the internet!";
+            notification_slider($title, $message, "'a.notification-indicator'", "mouseover");
+            break;
+        case 'updater':
+            $system_status = system_updater_detection();
+            $title = ($system_status) ? "System up to date" : "System outdated";
+            $message = ($system_status) ? "Your system is currently up to date!" : "Your system requires an update! <br /><br />Checkout the latest updates from the repository!";
+            notification_slider($title, $message, "'a.notification-indicator'", "mouseover");
+            break;
+    }
 }
 
 function system_device_detection($debug = false)
 {
-  platform_launch(PLATFORM_SANDBOX_SYSTEM_VENDORS_PATH . DS . PLATFORM_VENDORS_OPENDDR . DS . 'BuilderDataSource.class.php');
-  platform_launch(PLATFORM_SANDBOX_SYSTEM_VENDORS_PATH . DS . PLATFORM_VENDORS_OPENDDR . DS . 'DeviceDetection.class.php');
+    platform_launch(PLATFORM_SANDBOX_SYSTEM_VENDORS_PATH . DS . PLATFORM_VENDORS_OPENDDR . DS . 'BuilderDataSource.class.php');
+    platform_launch(PLATFORM_SANDBOX_SYSTEM_VENDORS_PATH . DS . PLATFORM_VENDORS_OPENDDR . DS . 'DeviceDetection.class.php');
 
-  $device_detection = new DeviceDetection($_SERVER['HTTP_USER_AGENT']);
-  $device_options = $device_detection->getAllCapabilities();
-  $device_type = 'Unknown';
-  if ($device_options['all']) {
-    $user_agent = detect_user_agent();
-    $device_type = get_device_type();
-  } else {
-    $device_type = $device_options['vendor'] . ' ' . $device_options['model'];
-  }
+    $device_detection = new DeviceDetection($_SERVER['HTTP_USER_AGENT']);
+    $device_options = $device_detection->getAllCapabilities();
+    $device_type = 'Unknown';
+    if ($device_options['all']) {
+        $user_agent = detect_user_agent();
+        $device_type = get_device_type();
+    } else {
+        $device_type = $device_options['vendor'] . ' ' . $device_options['model'];
+    }
 
-  if ($debug) {
-    echo "<h2>Device Info</h2>";
-    echo "<h3>User Agent: " . $user_agent . "</h3>";
-    echo "<pre>";
-    print_r($device_options);
-    echo "</pre>";
-  }
-  unset($device_detection);
-  return $device_type;
+    if ($debug) {
+        echo "<h2>Device Info</h2>";
+        echo "<h3>User Agent: " . $user_agent . "</h3>";
+        echo "<pre>";
+        print_r($device_options);
+        echo "</pre>";
+    }
+    unset($device_detection);
+    return $device_type;
 }
 
 function system_track()
 {
-  $system = PLATFORM_SANDBOX_SYSTEM_CACHES_PATH . DS . 'system.db';
+    $system = PLATFORM_SANDBOX_SYSTEM_CACHES_PATH . DS . 'system.db';
 
-  $db = db_create_sqlite($system);
-  $ip = $_SERVER["REMOTE_ADDR"];
-  $ua = detect_user_agent();
-  $dt = system_device_detection();
-  $uri = $_SERVER["REQUEST_URI"];
-  $input = $_POST['input'];
+    $db = db_create_sqlite($system);
+    $ip = $_SERVER["REMOTE_ADDR"];
+    $ua = detect_user_agent();
+    $dt = system_device_detection();
+    $uri = $_SERVER["REQUEST_URI"];
+    $input = $_POST['input'];
 
-  if ($ip == PLATFORM_WHOIS) {
-    $ip = $_SERVER["HTTP_X_REAL_IP"];
-  }
-  if (count($_GET) > 0) {
-    $get = print_r($_GET, true);
-  }
-  if (count($_POST) > 0) {
-    $post = print_r($_POST, true);
-  }
+    if ($ip == PLATFORM_WHOIS) {
+        $ip = $_SERVER["HTTP_X_REAL_IP"];
+    }
+    if (count($_GET) > 0) {
+        $get = print_r($_GET, true);
+    }
+    if (count($_POST) > 0) {
+        $post = print_r($_POST, true);
+    }
 
-  $sql = "CREATE TABLE IF NOT EXISTS visits_" . date("Y_m_d") . " AS SELECT * FROM visits WHERE 0";
-  db_query_sqlite($sql, $db);
-  $sql = "INSERT INTO visits_" . date("Y_m_d") . " 
+    $sql = "CREATE TABLE IF NOT EXISTS visits_" . date("Y_m_d") . " AS SELECT * FROM visits WHERE 0";
+    db_query_sqlite($sql, $db);
+    $sql = "INSERT INTO visits_" . date("Y_m_d") . " 
                  ( url, get, post, input, ua, dt, ip ) 
           VALUES 
                  ('" . sqlite_escape_string($uri) . "', 
@@ -137,11 +138,11 @@ function system_track()
                   '" . sqlite_escape_string($dt) . "', 
                   '" . sqlite_escape_string($ip) . "')";
 
-  db_query_sqlite($sql, $db);
-  unset($db);
+    db_query_sqlite($sql, $db);
+    unset($db);
 }
 
 function system_location()
 {
-  return "";
+    return "";
 }

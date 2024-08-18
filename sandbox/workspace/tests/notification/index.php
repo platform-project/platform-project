@@ -25,18 +25,18 @@ js_add_jquery();    // adding jquery library
 js_add_jquery_ui(); // adding jquery ui library
 
 switch ($_REQUEST['request']) {
-  case 'network':
-    $network_status = network_is_online();
-    $title = ($network_status) ? "Network Online" : "Network Offline";
-    $message = ($network_status) ? "You are connected to the internet!" : "It seems like your internet connection is gone. Check your connection settings!";
-    system_notification($title, $message);
-    break;
-  case 'updater':
-    $system_status = false;
-    $title = ($system_status) ? "System is up-to-date" : "System requires an update!";
-    $message = ($system_status) ? "Your system is up to date!" : "Your system requires an update. Checkout your repository for new updates!";
-    system_notification($title, $message);
-    break;
+    case 'network':
+        $network_status = network_is_online();
+        $title = ($network_status) ? "Network Online" : "Network Offline";
+        $message = ($network_status) ? "You are connected to the internet!" : "It seems like your internet connection is gone. Check your connection settings!";
+        system_notification($title, $message);
+        break;
+    case 'updater':
+        $system_status = system_updater_detection();
+        $title = ($system_status) ? "System up to date" : "System outdated";
+        $message = ($system_status) ? "Your system is up to date!" : "Your system requires an update. Checkout your repository for new updates!";
+        system_notification($title, $message);
+        break;
 }
 ?>
 <!--<link rel="stylesheet" href="//cloud.typography.com/610186/691184/css/fonts.css">-->
