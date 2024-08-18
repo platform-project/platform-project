@@ -222,10 +222,6 @@ function platform_launch_path_to($request)
         'help'
       );
       platform_launch_listview_lists_exact($pages);
-
-      // rewrite output
-      $pages = array('Info' => '/sandbox/workspace/tests/info/');
-      platform_launch_listview_lists_raw($pages);
       break;
     case 'sandbox':
       $exclusions = array('README', 'TODO');
@@ -284,7 +280,10 @@ function platform_launch_path_to($request)
       $path = PLATFORM_BASE_PATH . DS;
       platform_launch_listview_lists($path . $request, $exclusions);
       // rewrite output
-      $pages = array('Wiki' => '/help/wiki/');
+      $pages = array(
+                  'Info' => '/sandbox/workspace/tests/info/',
+                  'Wiki' => '/help/wiki/'
+                );
       platform_launch_listview_lists_raw($pages);
       break;
     case 'bugs':
