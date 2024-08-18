@@ -49,11 +49,11 @@ body {
 }
 
 #page {
-    background: white;
+    background: transparent;
     border: 3px solid black;
     margin: 0 auto;
     width: 99%;
-    height: 88%;
+    height: 948px !important;
     overflow-y: auto;
     /*-webkit-border-radius: 2ex;*/
 }

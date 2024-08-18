@@ -219,10 +219,13 @@ function platform_launch_path_to($request)
         'networks',
         'sites',
         'mirrors',
-        'help',
-        'info'
+        'help'
       );
       platform_launch_listview_lists_exact($pages);
+
+      // rewrite output
+      $pages = array('Info' => '/sandbox/workspace/tests/info/');
+      platform_launch_listview_lists_raw($pages);
       break;
     case 'sandbox':
       $exclusions = array('README', 'TODO');
