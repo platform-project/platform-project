@@ -32,6 +32,7 @@ platform_launch_initialize();
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/screen.css" />
   <link rel="icon" type="image/png" href="favicon.png" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="js/modernizr-2.5.3.min.js"></script>
 </head>
 
