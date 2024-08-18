@@ -132,11 +132,20 @@
             });
 
             $('#info .info.icon').click(function() {
+                urlprotocol('tests://info/');
+            });
+
+            $('#info .info.icon').dblclick(function() {
                 show_info();
             });
 
+            $('#network').click(function(){
+                system_load('notification_network');
+            });
 
-            system_load('notification_network');
+            $('#updater').click(function(){
+                system_load('notification_updater');
+            });
 
         });
     </script>
@@ -528,6 +537,22 @@
                     });
                     break;
 
+                case 'notification_updater':
+
+                    $.ajax({
+                        url: '/sandbox/workspace/tests/system/notification.php',
+                        type: 'POST',
+                        data: 'request=updater',
+                        async: true,
+                        success: function(data) {
+                            $(".system-notification").html(data);
+                        },
+                        error: function(data) {
+                            console.log('Error occured when requesting system/notification.php whilst requesting network');
+                        }
+                    });
+                    break;
+
                 case 'location':
 
                     $.ajax({
@@ -824,6 +849,7 @@
         </div>
         <div id="map" style="display: none"></div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
     <script>
@@ -918,18 +944,30 @@
     <!-- Updates Resolver -->
     <script>
         $(document).ready(function() {
-            function checkForUpdates() {
+            var lastCommitSha = '';
+
+            function checkForCommits() {
                 $.ajax({
-                    url: '/sandbox/workspace/tests/api/check-updates.php', 
+                    url: 'https://api.github.com/repos/platform-project/platform-project/commits', // Replace {owner} and {repo} with actual values
                     method: 'GET',
                     dataType: 'json',
-                    success: function(response) {
-                        if (response.hasUpdate) {
-                            console.log('New updates are available in the repository!');
+                    success: function(commits) {
+                        if (commits.length > 0) {
+                            var latestCommitSha = commits[0].sha;
+                            if (latestCommitSha !== lastCommitSha) {
+                                if (lastCommitSha !== '') {
+                                    system_load('notification_updater');
+                                    console.log('New commit detected: ' + commits[0].commit.message);
+                                } else {
+                                    system_load('notification_updater');
+                                    console.log('No commits detected');
+                                }
+                                lastCommitSha = latestCommitSha;
+                            }
                         }
                     },
                     error: function(xhr, status, error) {
-                        console.error('Error checking for updates:', error);
+                        console.error('Error fetching commits:', error);
                     }
                 });
             }
@@ -938,7 +976,10 @@
             var pollingInterval = 60000; // Check every 60 seconds
 
             // Start polling
-            //setInterval(checkForUpdates, pollingInterval);
+            setInterval(checkForCommits, pollingInterval);
+
+            // Initial check
+            checkForCommits();
         });
     </script>
 
