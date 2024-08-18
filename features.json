@@ -1,7 +1,7 @@
 {
     "features": [
         { "id": "games", "name": "Games", "description": "Gaming application.", "link": "http://platform/sandbox/system/applications/games/", "installed": true },
-        { "id": "maps", "name": "Maps", "description": "Maps application.", "link": "http://platform/sandbox/workspace/tests/gmaps/", "installed": true },
+        { "id": "navigate", "name": "Navigate", "description": "Navigate map application.", "link": "http://platform/sandbox/workspace/tests/gmaps/", "installed": true },
         { "id": "todoly", "name": "Todoly", "description": "To do task application.", "link": "http://platform/sandbox/system/applications/todoly/", "installed": true },
         { "id": "feature1", "name": "Feature One", "description": "Description of Feature Two", "link": "http://platform/", "installed": false },
         { "id": "feature2", "name": "Feature Two", "description": "Description of Feature Two", "link": "http://platform/", "installed": false }

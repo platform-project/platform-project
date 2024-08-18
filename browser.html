@@ -954,18 +954,22 @@
                                 if (lastCommitSha !== '') {
                                     view = '<a class="notification-indicator" href="javascript:{}"><div class="updater"><i class="fi-wrench fi-platform size-18"></i> <span class="label">System outdated</span></a> ';
                                     $('#updater').html(view);
+                                    console.log('New commit detected: ' + commits[0].commit.message);
                                 } else {
                                     view = '<a class="notification-indicator" href="javascript:{}"><div class="updater"><i class="fi-wrench fi-platform size-18"></i> <span class="label">System up to date</span></a> ';
                                     $('#updater').html(view);
+                                    console.log('No commits detected');
                                 }
                                 lastCommitSha = latestCommitSha;
                             } else {
                                 view = '<a class="notification-indicator" href="javascript:{}"><div class="updater"><i class="fi-wrench fi-platform size-18"></i> <span class="label">System up to date</span></a> ';
                                 $('#updater').html(view);
+                                console.log('No commits detected');
                             }
                         } else {
                             view = '<a class="notification-indicator" href="javascript:{}"><div class="updater"><i class="fi-wrench fi-platform size-18"></i> <span class="label">System up to date</span></a> ';
                             $('#updater').html(view);
+                            console.log('No commits detected');
                         }
                     },
                     error: function(xhr, status, error) {
