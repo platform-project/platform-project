@@ -65,5 +65,13 @@
 
   gtag('config', 'G-1NP5H7Z8WJ');
   </script>
+  <script>
+    window.onload = function() {
+        if(!window.location.hash) {
+            window.location = window.location + '#loaded';
+            window.location.reload();
+        }
+    }
+  </script>
 </body>
 </html>
