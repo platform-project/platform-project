@@ -952,7 +952,7 @@
                             var latestCommitSha = commits[0].sha;
                             if (latestCommitSha !== lastCommitSha) {
                                 if (lastCommitSha !== '') {
-                                    view = '<a class="notification-indicator" href="javascript:{}"><div class="updater"><i class="fi-wrench fi-platform size-18"></i> <span class="label">System outdated</span></a> ';
+                                    view = '<a class="notification-indicator" href="javascript:{}"><div class="updater"><i class="fi-wrench fi-platform size-18"></i> <span class="label">New update available</span></a> ';
                                     $('#updater').html(view);
                                     console.log('New commit detected: ' + commits[0].commit.message);
                                 } else {

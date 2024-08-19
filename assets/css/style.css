@@ -260,7 +260,7 @@ iframe#site::-webkit-scrollbar-thumb {
 .updater {
     font-size: 11px;
     background: #000;
-    width: 125px !important;
+    width: 150px !important;
     height: 20px;
     border-radius: 8px;
     opacity: 0.8;
