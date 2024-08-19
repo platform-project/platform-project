@@ -56,18 +56,17 @@ body {
     height: 92.5%;
     overflow-y: auto;
     /*-webkit-border-radius: 2ex;*/
+    position: fixed;
 }
 
 #logo {
     background: url("../images/logo-small.png") no-repeat;
     width: 96px;
     height: 38px;
-    position: relative;
-    top: 0px;
-    right: 0px;
-    left: 75px;
-    float: right;
-    margin: -22px 40px 0px 0px;
+    position: fixed;
+    bottom: 5px;
+    left: 0px;
+    margin: 0 98%;
     z-index: 999;
 }
 
