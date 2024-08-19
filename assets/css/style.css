@@ -524,7 +524,7 @@ iframe#site::-webkit-scrollbar-thumb {
     margin: 0px;
     border-radius: 20px;
     background: #333;
-    width: 280px;
+    width: 230px;
     height: 24px;
     z-index: 0;
 }
@@ -568,8 +568,7 @@ iframe#site::-webkit-scrollbar-thumb {
 }
 
 #media .controls .control.scrolling marques {
-    min-width: 120px;
-    max-width: 210px;
+    min-width: 70px;
     position: absolute;
     top: 2px;
     right: 0px;
@@ -640,7 +639,7 @@ iframe#site::-webkit-scrollbar-thumb {
 #player {
     position: relative;
     top: 0px;
-    left: -32px;
+    left: -42px;
     float: left;
 }
 
@@ -681,7 +680,7 @@ iframe#site::-webkit-scrollbar-thumb {
 #photo {
     position: relative;
     top: 0px;
-    left: -32px;
+    left: -36px;
     float: left;
 }
 
@@ -721,7 +720,7 @@ iframe#site::-webkit-scrollbar-thumb {
 #game {
     position: relative;
     top: 0px;
-    left: -32px;
+    left: -48px;
     float: left;
 }
 
@@ -761,7 +760,7 @@ iframe#site::-webkit-scrollbar-thumb {
 #plane {
     position: relative;
     top: 0px;
-    left: -32px;
+    left: -60px;
     float: left;
 }
 
@@ -801,7 +800,7 @@ iframe#site::-webkit-scrollbar-thumb {
 #drone {
     position: relative;
     top: 0px;
-    left: -32px;
+    left: -54px;
     float: left;
 }
 
@@ -841,7 +840,7 @@ iframe#site::-webkit-scrollbar-thumb {
 #uav {
     position: relative;
     top: 0px;
-    left: -32px;
+    left: -60px;
     float: left;
 }
 
@@ -881,7 +880,7 @@ iframe#site::-webkit-scrollbar-thumb {
 #launcher {
     position: relative;
     top: 0px;
-    left: -32px;
+    left: -60px;
     float: left;
 }
 
@@ -927,7 +926,7 @@ iframe#site::-webkit-scrollbar-thumb {
 #satellite {
     position: relative;
     top: 0px;
-    left: -32px;
+    left: -60px;
     float: left;
 }
 
@@ -967,7 +966,7 @@ iframe#site::-webkit-scrollbar-thumb {
 #weather {
     position: relative;
     top: 0px;
-    left: -32px;
+    left: -60px;
     float: left;
 }
 
@@ -997,6 +996,7 @@ iframe#site::-webkit-scrollbar-thumb {
     position: relative;
     top: 0px;
     float: left;
+    left: -32px;
 }
 
 #info .info.icon {
