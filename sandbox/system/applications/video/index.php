@@ -37,98 +37,98 @@ define('VIDEOS_URI', PLATFORM_URI . DS . 'sandbox/workspace/videos');
  */
 function get_videos($location)
 {
-  $cache_path = PLATFORM_SANDBOX_SYSTEM_CACHES_PATH . DS . 'video';
-  $video_files = [];
-  //$video_mkv = find_filetype('mkv', $location);
-  $video_mp4 = find_filetype('mp4', $location);
-  //$video_m4v = find_filetype('m4v', $location);
-  //$video_files = array_merge($video_files, $video_mkv);
-  $video_files = array_merge($video_files, $video_mp4);
-  //$video_files = array_merge($video_files, $video_m4v);
-  $video_files = array_unique($video_files);
+    $cache_path = PLATFORM_SANDBOX_SYSTEM_CACHES_PATH . DS . 'video';
+    $video_files = [];
+    //$video_mkv = find_filetype('mkv', $location);
+    $video_mp4 = find_filetype('mp4', $location);
+    //$video_m4v = find_filetype('m4v', $location);
+    //$video_files = array_merge($video_files, $video_mkv);
+    $video_files = array_merge($video_files, $video_mp4);
+    //$video_files = array_merge($video_files, $video_m4v);
+    $video_files = array_unique($video_files);
 
-  $c = 0;
-  $clips = array();
-  foreach ($video_files as $file) {
-    $video_path = dirname($file);
-    $video_file = basename($file);
+    $c = 0;
+    $clips = array();
+    foreach ($video_files as $file) {
+        $video_path = dirname($file);
+        $video_file = basename($file);
 
-    $video = $video_path . DS . $video_file;
-    if (stristr($video, 'jwplayer/demo.mp4')) { // skip
-      continue;
-    } else {
-      $thumb = $cache_path . DS . substr($video_file, 0, 5) . "-" . $c . ".png";
-      $clips['thumb'][$c] = $thumb;
-      $clips['video'][$c] = $video;
-      $command = "/usr/bin/ffmpegthumbnailer -i'" . addslashes($video) . "' -o'" . $thumb . "'";
-      exec($command, $output, $return);
-      $c++;
+        $video = $video_path . DS . $video_file;
+        if (stristr($video, 'jwplayer/demo.mp4')) { // skip
+            continue;
+        } else {
+            $thumb = $cache_path . DS . substr($video_file, 0, 5) . "-" . $c . ".png";
+            $clips['thumb'][$c] = $thumb;
+            $clips['video'][$c] = $video;
+            $command = "/usr/bin/ffmpegthumbnailer -i'" . addslashes($video) . "' -o'" . $thumb . "'";
+            exec($command, $output, $return);
+            $c++;
+        }
     }
-  }
-  //debug_print_array($video_files);
-  //exit;
-  //$video_out = sort_video_by_length($video_files);
-  unset($video_files);
-  return $clips;
+    //debug_print_array($video_files);
+    //exit;
+    //$video_out = sort_video_by_length($video_files);
+    unset($video_files);
+    return $clips;
 }
 
 function build_gallery($clips, $location)
 {
-  $c = 0;
-  ob_start();
-  echo "<div>";
-  foreach ($clips['thumb'] as $thumbnail) {
-    if (is_null($thumbnail) || empty($thumbnail) || !file_exists($thumbnail) || !is_readable($thumbnail) || filesize($thumbnail) === 0 || !getimagesize($thumbnail)) {
-      $thumbnail_missing = true;
-    }
-    $uri_array = explode(PLATFORM_PATH, $thumbnail);
-    $thumbnail_url = $uri_array[1];
-    $uri_array = explode($location, $clips['video'][$c]);
-    $clip_name = wordwrap(basename($clips['video'][$c]), 80);
-    $clip_url = VIDEOS_URI . $uri_array[1];
-    $clip_name = substr($clip_name, 0, strlen($clip_name) - 4);
-    $clip_title = substr($clip_name, 0, 34);
-    $extra = '...';
+    $c = 0;
+    ob_start();
+    echo "<div>";
+    foreach ($clips['thumb'] as $thumbnail) {
+        if (is_null($thumbnail) || empty($thumbnail) || !file_exists($thumbnail) || !is_readable($thumbnail) || filesize($thumbnail) === 0 || !getimagesize($thumbnail)) {
+            $thumbnail_missing = true;
+        }
+        $uri_array = explode(PLATFORM_PATH, $thumbnail);
+        $thumbnail_url = $uri_array[1];
+        $uri_array = explode($location, $clips['video'][$c]);
+        $clip_name = wordwrap(basename($clips['video'][$c]), 80);
+        $clip_url = VIDEOS_URI . $uri_array[1];
+        $clip_name = substr($clip_name, 0, strlen($clip_name) - 4);
+        $clip_title = substr($clip_name, 0, 34);
+        $extra = '...';
 
-    if (!($thumbnail_missing)) {
-      echo '<div id="clip-' . $c . '" class="clip">
+        if (!($thumbnail_missing)) {
+            echo '<div id="clip-' . $c . '" class="clip">
            <a class="clip-item" title="' . $clip_name . '" data-url="' . $clip_url . '">';
-      echo '<img src="' . ($thumbnail_url) . '" border="0" />';
-      echo '<span class="video-time"></span>
+            echo '<img src="' . ($thumbnail_url) . '" border="0" />';
+            echo '<span class="video-time"></span>
             <span class="video-name">' . (strlen($clip_name) < 34 ? $clip_title : $clip_title . $extra) . '</span>
             <span class="video-play"></span>
            </a>
           </div>
           <br />';
+        }
+        $c++;
     }
-    $c++;
-  }
-  echo "</div>";
-  $gallery = ob_get_clean();
-  return $gallery;
+    echo "</div>";
+    $gallery = ob_get_clean();
+    return $gallery;
 }
 
 $request = isset($_GET['request']) ? $_GET['request'] : null;
 $location = isset($_GET['location']) ? $_GET['location'] : null;
 
 if ($request) {
-  $search_path =  VIDEOS_PATH;
-  $clips = get_videos($search_path);
-  $gallery = build_gallery($clips, $search_path);
-
-  if (!empty($location)) {
-    $search_path = $location;
+    $search_path =  VIDEOS_PATH;
     $clips = get_videos($search_path);
-    $gallery .= build_gallery($clips, $search_path);
-  }
+    $gallery = build_gallery($clips, $search_path);
 
-  if (!empty($gallery)) {
-    echo $gallery;
-    die;
-  } else {
-    echo 'No video';
-    die;
-  }
+    if (!empty($location)) {
+        $search_path = $location;
+        $clips = get_videos($search_path);
+        $gallery .= build_gallery($clips, $search_path);
+    }
+
+    if (!empty($gallery)) {
+        echo $gallery;
+        die;
+    } else {
+        echo 'No video';
+        die;
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -154,12 +154,12 @@ if ($request) {
     </div>
     <div id="splash"><i class="icon fi-play"></i></div>
     <div id="player">
-      <video id="video" class="video-js vjs-default-skin" autoplay="autoplay" controls name="media" src="">
+      <video class="video-js vjs-default-skin" controls name="media" src="">
         <source src="" type="video/webm; codecs=vp8,vorbis">
       </video>
     </div>
     <div id="domain" style="display: none;"><br />
-      <input type="text" id="url" name="url" value="" placeholder="Enter Video URL e.g. https://youtube.com/watch?v=EJqgiY-2em8" style="padding: 2px; font-size: 16px; border-radius: 10px; border: 3px solid white; width: 96%; text-align: center; margin: 0 auto;" /> 
+      <input type="text" id="url" name="url" value="" placeholder="Enter Video URL e.g. https://youtube.com/watch?v=xWtziJdp9Vg" style="padding: 2px; font-size: 16px; border-radius: 10px; border: 3px solid white; width: 96%; text-align: center; margin: 0 auto;" /> 
       <input type="button" id="playURL" value="Play" style="border-radius: 10px;
                                                             color: white;
                                                             width: 64px;
@@ -174,7 +174,7 @@ if ($request) {
                                                             background: black; cursor: pointer" />
 
     </div>
-    <iframe id="yt-player" width="560" height="315" style="display: none; width: 100%; height: 100%; z-index: 999" src="https://www.youtube.com/embed/EJqgiY-2em8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe id="ytplayer" width="640" height="30" style="display: none; width: 100%; height: 100%; z-index: 999" src="https://www.youtube.com/embed/xWtziJdp9Vg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <div style="clear: both"></div>
     <div class="floatingContainer">
       <div class="subActionButton url">
@@ -213,17 +213,17 @@ if ($request) {
         <a class="control button language" title="Language"></a>
         <a class="control button favorite" title="Favorite"></a>
         <a class="control button settings" title="Settings"></a>
-        <a class="control button player" title="Player"></a>
         <a class="control button viewer" title="Viewer"></a>
+        <a class="control button player" title="Player"></a>
         <a class="control button screen" title="Screen Toggle"></a>
       </div>
     </div>
   </div>
-  <?php
-  js_add_jquery();    // adding jquery library
-  js_add_jquery_ui();
-  js_add_jquery_plugin("jgrowl");
-  ?>
+<?php
+js_add_jquery();    // adding jquery library
+js_add_jquery_ui();
+js_add_jquery_plugin("jgrowl");
+?>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script language="javascript" type="text/javascript" src="assets/js/app.js"></script>
   <script language="javascript" type="text/javascript" src="assets/js/fab.js"></script>
