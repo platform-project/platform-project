@@ -1,7 +1,15 @@
 $(function () {
-   var is_fullscreen = true;
-   var fileURL = false;
-   var URL = window.URL || window.webkitURL;
+  var is_fullscreen = true;
+  var fileURL = false;
+  var URL = window.URL || window.webkitURL;
+  var yt_player = "";
+  function onYouTubeIframeAPIReady() {
+    yt_player = new YT.Player('player');
+  }
+
+  function stopVideo() {
+    yt_player.stopVideo();
+  }
     
    $('#gallery').resizable().draggable();
    $('#gallery div.clip').resizable().draggable();
@@ -16,7 +24,55 @@ $(function () {
       show_ticker(message);
 		  console.log(src);
       show_clip(src);
+      $('#yt-player').hide();
+      stopVideo();
    });	
+   
+   $('.control.button.viewer').click(function(){
+     $('#domain').show();
+     $('#splash').hide();
+     $('#video').hide();
+     $('#yt-player').show();
+     stopVideo();
+   });
+
+    $('#playURL').click(function(){
+      // Get the YouTube URL from the input field
+      var videoUrl = $('#url').val();
+
+      // Check if videoUrl is empty or undefined
+      if (!videoUrl) {
+          videoUrl = "https://youtube.com/watch?v=EJqgiY-2em8"; // Default URL
+      }
+
+      // Extract the video ID using a regular expression
+      var videoId = videoUrl.split('v=')[1];
+      if (videoId) {
+          var ampersandPosition = videoId.indexOf('&');
+          if(ampersandPosition !== -1) {
+              videoId = videoId.substring(0, ampersandPosition);
+          }
+      }
+
+      // Create the iframe embed URL
+      var embedUrl = "https://www.youtube.com/embed/" + videoId;
+
+      // Create the iframe embed URL
+      var embedUrl = "https://www.youtube.com/embed/" + videoId;
+      $('#yt-player').attr('src', embedUrl);
+      $('#yt-player').show();
+      $('#domain').hide();
+      $('#splash').hide();
+      $('#video').hide();
+      stopVideo();
+  });
+
+  $('#addURL').click(function(){
+    $('#domain').toggle();
+    $('#video').hide();
+    $('#splash').hide();
+    stopVideo();
+  });
 
   $('#addFile').click(function(){
     selection(this, 'file');

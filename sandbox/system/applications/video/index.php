@@ -153,11 +153,33 @@ if ($request) {
       <div class="gallery-body"></div>
     </div>
     <div id="splash"><i class="icon fi-play"></i></div>
-    <div id="player"><video class="video-js vjs-default-skin" autoplay="autoplay" controls name="media" src="">
+    <div id="player">
+      <video id="video" class="video-js vjs-default-skin" autoplay="autoplay" controls name="media" src="">
         <source src="" type="video/webm; codecs=vp8,vorbis">
-      </video></div>
+      </video>
+    </div>
+    <div id="domain" style="display: none;"><br />
+      <input type="text" id="url" name="url" value="" placeholder="Enter Video URL e.g. https://youtube.com/watch?v=EJqgiY-2em8" style="padding: 2px; font-size: 16px; border-radius: 10px; border: 3px solid white; width: 96%; text-align: center; margin: 0 auto;" /> 
+      <input type="button" id="playURL" value="Play" style="border-radius: 10px;
+                                                            color: white;
+                                                            width: 64px;
+                                                            height: 28px;
+                                                            font-size: 14px;
+                                                            position: relative;
+                                                            display: block;
+                                                            float: right;
+                                                            right: 43px;
+                                                            top: -32px;
+                                                            font-weight: bold;
+                                                            background: black; cursor: pointer" />
+
+    </div>
+    <iframe id="yt-player" width="560" height="315" style="display: none; width: 100%; height: 100%; z-index: 999" src="https://www.youtube.com/embed/EJqgiY-2em8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     <div style="clear: both"></div>
     <div class="floatingContainer">
+      <div class="subActionButton url">
+        <a id="addURL" title="Watch URL" href="javascript:{}"><i class="icon fi-web"></i> </a>
+      </div>
       <div class="subActionButton file">
         <i class="icon fi-video"></i>
         <input type="file" id="addFile" title="Watch a Video" />
@@ -202,10 +224,12 @@ if ($request) {
   js_add_jquery_ui();
   js_add_jquery_plugin("jgrowl");
   ?>
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script language="javascript" type="text/javascript" src="assets/js/app.js"></script>
   <script language="javascript" type="text/javascript" src="assets/js/fab.js"></script>
   <script language="javascript" type="text/javascript" src="https://cdn.jsdelivr.net/npm/video.js@4.1.0/dist/video.min.js"></script>
   <script language="javascript" type="text/javascript" src="assets/js/vendor/modernizr.js"></script>
+  
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NP5H7Z8WJ"></script>
   <script>
