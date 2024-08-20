@@ -1,7 +1,7 @@
 $(function () {
-   var is_fullscreen = true;
-   var fileURL = false;
-   var URL = window.URL || window.webkitURL;
+  var is_fullscreen = true;
+  var fileURL = false;
+  var URL = window.URL || window.webkitURL;
     
    $('#gallery').resizable().draggable();
    $('#gallery div.clip').resizable().draggable();
@@ -12,11 +12,49 @@ $(function () {
       track = $(this).attr('title');
       image = $(this).find('img').attr('src');
       console.log(image);
-      message = '<div style="text-align: center"><br />' + '<img src="' + image + '" />' + '<br />' + track + '</div>';
+      message = '<div style="text-align: center"><br />' + '<img src="' + image + '" style="width: 160px; height: 90px;" />' + '<br />' + track + '</div>';
       show_ticker(message);
 		  console.log(src);
       show_clip(src);
+      
+      $('#ytplayer').hide();
    });	
+
+    $('#playURL').click(function(){
+      // Get the YouTube URL from the input field
+      var videoUrl = $('#url').val();
+
+      // Check if videoUrl is empty or undefined
+      if (!videoUrl) {
+          videoUrl = "https://youtube.com/watch?v=xWtziJdp9Vg"; // Default URL
+      }
+
+      // Extract the video ID using a regular expression
+      var videoId = videoUrl.split('v=')[1];
+      if (videoId) {
+          var ampersandPosition = videoId.indexOf('&');
+          if(ampersandPosition !== -1) {
+              videoId = videoId.substring(0, ampersandPosition);
+          }
+      }
+
+      // Create the iframe embed URL
+      var embedUrl = "https://www.youtube.com/embed/" + videoId;
+
+      // Create the iframe embed URL
+      var embedUrl = "https://www.youtube.com/embed/" + videoId;
+      $('#ytplayer').attr('src', embedUrl);
+      $('#ytplayer').show();
+      $('#domain').hide();
+      $('#splash').hide();
+      $('#video').hide();
+  });
+
+  $('#addURL').click(function(){
+    $('#domain').toggle();
+    $('#video').hide();
+    $('#splash').hide();
+  });
 
   $('#addFile').click(function(){
     selection(this, 'file');
@@ -69,8 +107,12 @@ $(function () {
      } else {
        playlist(false, '');
      }
-    
-     $('#gallery').toggle();
+      show_ticker("Please wait a few seconds for video clips to load!");
+      $('#domain').hide();
+      $('#gallery').toggle();
+      $('video').show();
+      $('.splash').hide();
+      $('#ytplayer').hide();
      
    });
 
@@ -83,9 +125,22 @@ $(function () {
     // toggle player
    $('#controls .player').click(function () {
 		 console.log('Player Toggle clicked');
+     $('#domain').hide();
+     $('#gallery').show();
      $('video').toggle();
-     //$('.splash').toggle();
+     $('.splash').toggle();
+     $('#ytplayer').hide();
    });
+
+   // toggle viewer
+   $('#controls .viewer').click(function(){
+    console.log('Viewer Toggle clicked');
+    $('#domain').toggle();
+    $('#gallery').hide();
+    $('video').hide();
+    $('.splash').hide();
+    $('#ytplayer').show();
+  });
     
    // toggle screen
    $('#controls .screen').click(function () {
@@ -97,7 +152,7 @@ $(function () {
     message = '<span style="color: white; font-size: 12px;">'+ message + '</span>';
     $('#ticker').jGrowl(message,
       {
-        header: '<span style="color: white; font-size: 17px;"><strong>Now playing...</strong></span>',
+        header: '<span style="color: white; font-size: 17px;"><strong>Loading...</strong></span>',
         lifetime: 2500,
         sticky: false
       }
@@ -158,7 +213,7 @@ $(function () {
   }
 
   function show_clip(src) {
-    markup = '<video autoplay controls name="media"><source src="' + src + '" type="video/webm"></video>';
+    markup = '<video controls name="media"><source src="' + src + '" type="video/webm"></video>';
     $('#player').html(markup);
   }
 
