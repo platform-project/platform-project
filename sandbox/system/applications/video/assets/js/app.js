@@ -30,13 +30,7 @@ $(function () {
       }
 
       // Extract the video ID using a regular expression
-      var videoId = videoUrl.split('v=')[1];
-      if (videoId) {
-          var ampersandPosition = videoId.indexOf('&');
-          if(ampersandPosition !== -1) {
-              videoId = videoId.substring(0, ampersandPosition);
-          }
-      }
+      var videoId = extractYouTubeID(videoUrl);
 
       // Create the iframe embed URL
       var embedUrl = "https://www.youtube.com/embed/" + videoId;
@@ -63,6 +57,12 @@ $(function () {
   $('#addDirectory').click(function(){
     selection(this, 'directory');
   });
+
+  function extractYouTubeID(url) {
+    const regex = /(?:youtube\.com\/(?:.*v=|.*\/)|youtu\.be\/)([^&?/]+)/;
+    const match = url.match(regex);
+    return match ? match[1] : null;
+  }
 
   function selection(element, action){
     
