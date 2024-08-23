@@ -1,15 +1,14 @@
 #!/bin/bash
-PLATFORM_OPENVSCODE_PATH="/platform/sandbox/workspace/builds/openvscode/"
-PLATFORM_OPENVSCODE_EXEC="${PLATFORM_OPENVSCODE_PATH}/bin/openvscode-server"
 PLATFORM_WORKSPACE_PATH="/platform/sandbox/workspace/"
 PLATFORM_BUILDS_PATH="/platform/sandbox/workspace/builds/"
+PLATFORM_OPENVSCODE_PATH="${PLATFORM_BUILDS_PATH}/openvscode/"
+PLATFORM_OPENVSCODE_EXEC="${PLATFORM_OPENVSCODE_PATH}/bin/openvscode-server"
 PARAM=$1
-
 
 init()
 {
     cd $PLATFORM_WORKSPACE_PATH
-    mkdir -p $PLATFORM_BUILDS_PATH
+    mkdir -p $PLATFORM_BUILDS_PATH > /dev/null 2>&1
 }
 
 install()
