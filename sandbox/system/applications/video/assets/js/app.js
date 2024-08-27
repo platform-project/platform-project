@@ -20,7 +20,15 @@ $(function () {
       $('#ytplayer').hide();
    });	
 
-    $('#playURL').click(function(){
+   $('#url').keypress(function(event) {
+      if (event.which === 13) { 
+        event.preventDefault();  
+        $('#playURL').click(); 
+        console.log('Enter key pressed.')
+      }
+    });
+
+   $('#playURL').click(function(){
       // Get the YouTube URL from the input field
       var videoUrl = $('#url').val();
 
@@ -48,14 +56,17 @@ $(function () {
     $('#domain').toggle();
     $('#video').hide();
     $('#splash').hide();
+    $('#ytplayer').hide();
   });
 
   $('#addFile').click(function(){
     selection(this, 'file');
+    $('#ytplayer').hide();
   });
 
   $('#addDirectory').click(function(){
     selection(this, 'directory');
+    $('#ytplayer').hide();
   });
 
   function extractYouTubeID(url) {
