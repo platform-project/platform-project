@@ -75,7 +75,18 @@ OS_REPOSITORY_PATH="/var/cache/apt/archives/"
 
 GIT_SSL_VERIFY="export GIT_SSL_NO_VERIFY=1"
 #GIT_SSL_VERIFY="git config --global http.sslverify false"
-GIT_REPOSITORY="https://github.com/platform-project/platform-project"
+GIT_REPOSITORY="https://github.com/platform-project/platform-project.git"
+
+
+platform_bootstrap(){
+  echo "platform bootstrapping..."
+  sudo -k
+  sudo apt install git php nodejs curl -y  > /dev/null 2>&1
+  sudo mkdir -p $APP_PATH  > /dev/null 2>&1
+  echo ""
+}
+
+platform_bootstrap
 
 # status gauage
 GIT_STATUS=`git branch -v | grep -E 'ahead|behind' | sed -r 's/[ *]\s(\S*).*(\[(ahead|behind).+?\]).*/\1 \2/g'`
@@ -716,7 +727,9 @@ platform_install_recommended()
 
   # run the following in your terminal
   . ~/.nvm/nvm.sh                  #
-  nvm install v8.1.3               # latest node as at time of writing
+  nvm install v8.6.0               # latest node as at time of writing
+  echo "installing yarn..."
+  npm install -g yarn              # adds yarn support
   echo "installing cordova..."
   npm install -g cordova           # adds cordova support and go to http://cordova.apache.org
   echo "installing phonegap..."

@@ -284,7 +284,9 @@
                 case 'screen':
                     address = server + "/sandbox/system/applications/video/";
                     break;
-
+                case 'youtube':
+                    address = 'https://www.youtube.com/embed/' + command;
+                    break;
                 case 'stream':
                     address = server + "/sandbox/workspace/tests/video/streaming?" + command;
                     break;
