@@ -730,6 +730,8 @@ platform_install_recommended()
   nvm install v8.6.0               # latest node as at time of writing
   echo "installing yarn..."
   npm install -g yarn              # adds yarn support
+  echo "installing husky..."
+  npm install husky --save-dev     # adds husky support
   echo "installing cordova..."
   npm install -g cordova           # adds cordova support and go to http://cordova.apache.org
   echo "installing phonegap..."
