@@ -27,8 +27,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function addTaskToList(task) {
         const li = document.createElement('li');
-        li.textContent = `${task.description} at ${task.time.toLocaleString()}`;
+        taskText = task.description;
+        dateText = task.time.toLocaleString();
+        li.textContent = `${taskText} at ${dateText}`;
+        li.innerHTML = `
+            <span>${taskText} - ${dateText}</span><br />
+            <button class="deleteButton">Delete</button>
+        `;
         taskList.appendChild(li);
+
+        // Add click event listener to the delete button
+        li.querySelector(".deleteButton").addEventListener("click", () => {
+            deleteTask(li);
+        });
     }
 
     function scheduleTask(task) {
@@ -42,6 +53,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 responsiveVoice.speak(`It's time for your task: ${task.description}`, "UK English Female");
             }, timeToTask);
         }
+    }
+
+    function deleteTask(taskElement) {
+        taskList.removeChild(taskElement);
     }
 
     function showModal(taskDescription) {
