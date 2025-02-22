@@ -1,11 +1,11 @@
 <?php
 /**
- * MIDI Keyboard
- * Test case: Determine the optimal approach to implement an midikeyboard
+ * todoly
+ * Bookmark link to URL
  *
- * @version     $Id: index.php 40 2011-02-09 14:10:00Z biyi $
+ * @version     : index.php 40 2011-02-09 14:10:00Z biyi $
  * @package     Platform
- * @category    Tests
+ * @category    Bookmarks
  * @author      Biyi Akinpelu
  * @link        mailto:biyi@entilda.com
  * @copyright   Copyright (C) 2011 Entilda IT Solutions. All rights reserved.
@@ -20,4 +20,5 @@
 // initilizing platform for self-contained objects
 platform_launch_initialize();
 
-redirect_to('index.html');
+redirect_to('todoly/wallpaper.html');
+?>

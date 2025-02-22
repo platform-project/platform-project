@@ -1,0 +1,16 @@
+chive:
+  - name: "Chive"
+  - type: "database"
+  - repository: https://github.com/fusonic/chive.git
+mongodb:
+  - name: "Mongo DB"
+  - type: "database"
+  - repository: https://github.com/mongodb/mongo.git
+omnidb:
+  - name: "Omni DB"
+  - type: "database"
+  - repository: https://github.com/OmniDB/OmniDB.git
+sqlpad:
+  - name: "SQL Pad"
+  - type: "database"
+  - repository: https://github.com/sqlpad/sqlpad.git

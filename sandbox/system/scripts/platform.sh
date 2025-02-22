@@ -2,13 +2,13 @@
 # App Name: Platform Core Engine
 # Author: The Platform Authors <platform@entilda.com>
 # Base System: Platform
-# Build Name: nojitsu
-# Build Initial: 0.00 build 20210328
-# Copyright: The Platform Authors 2011 - 2021
+# Build Name: omega
+# Build Initial: 0.00 build 20240823
+# Copyright: The Platform Authors 2011 - 2024
 # License: GNU Public Licence
 # Scripting Engine: Shell Script
-# Version Initial: 2011-03-28
-# Version: 0.00 build 20110328 nojitsu
+# Version Initial: 2024-08-23
+# Version: 0.00 build 20240328 omega
 # Website: http://platform.entilda.com
 APP_NAME="Platform"
 APP_UID="platform"
@@ -24,9 +24,9 @@ APP_M=`date +%B`                                # Month e.g January
 APP_W=`date +%V`                                # Week Number e.g 37
 APP_Y=`date +%Y`                                # Year e.g 2010
 APP_STATUS="Latest build"
-APP_BUILD_NAME="nojitsu"
+APP_BUILD_NAME="omega"
 APP_VERSION="$APP_REVISION build $APP_DATETIME $APP_BUILD_NAME"
-APP_CODENAME="Genie Ejekajo"
+APP_CODENAME="Genie Aleph"
 APP_PACKAGES_URI="http://platform.entilda.com/sandbox/system/packages/system.list"
 APP_SNAPSHOT_URI="http://platform.entilda.com/snapshots/platform.pva"
 APP_COMPOSER_URI="https://getcomposer.org/installer"
@@ -75,7 +75,18 @@ OS_REPOSITORY_PATH="/var/cache/apt/archives/"
 
 GIT_SSL_VERIFY="export GIT_SSL_NO_VERIFY=1"
 #GIT_SSL_VERIFY="git config --global http.sslverify false"
-GIT_REPOSITORY="https://github.com/platform-project/platform-project"
+GIT_REPOSITORY="https://github.com/platform-project/platform-project.git"
+
+
+platform_bootstrap(){
+  echo "platform bootstrapping..."
+  sudo -k
+  sudo apt install git php nodejs curl -y  > /dev/null 2>&1
+  sudo mkdir -p $APP_PATH  > /dev/null 2>&1
+  echo ""
+}
+
+platform_bootstrap
 
 # status gauage
 GIT_STATUS=`git branch -v | grep -E 'ahead|behind' | sed -r 's/[ *]\s(\S*).*(\[(ahead|behind).+?\]).*/\1 \2/g'`
@@ -106,9 +117,13 @@ PLATFORM_SANDBOX_PATH="$PLATFORM_HOME/sandbox"
 PLATFORM_FRAMEWORK_PATH="$PLATFORM_SANDBOX_PATH/framework"
 PLATFORM_REPOSITORY_PATH="$PLATFORM_SANDBOX_PATH/repository"
 PLATFORM_SYSTEM_PATH="$PLATFORM_SANDBOX_PATH/system"
+PLATFORM_APPS_PATH="$PLATFORM_SYSTEM_PATH/applications"
 PLATFORM_WORKSPACE_PATH="$PLATFORM_SANDBOX_PATH/workspace"
+PLATFORM_WORKSPACE_APPS_PATH="$PLATFORM_WORKSPACE_PATH/applications"
+PLATFORM_BUILDS_PATH="$PLATFORM_WORKSPACE_PATH/builds"
 PLATFORM_PACKAGES_PATH="$PLATFORM_SYSTEM_PATH/packages"
 PLATFORM_PROJECTS_PATH="$PLATFORM_WORKSPACE_PATH/projects"
+PLATFORM_SITES_PATH="$PLATFORM_HOME/sites"
 PLATFORM_TESTS_PATH="$PLATFORM_WORKSPACE_PATH/tests"
 
 platform_authenticate(){
@@ -712,19 +727,23 @@ platform_install_recommended()
 
   # run the following in your terminal
   . ~/.nvm/nvm.sh                  #
-  nvm install v8.1.3               # latest node as at time of writing
+  nvm install v8.6.0               # latest node as at time of writing
+  echo "installing yarn..."
+  npm install -g yarn              # adds yarn support
+  echo "installing husky..."
+  npm install husky --save-dev     # adds husky support
   echo "installing cordova..."
   npm install -g cordova           # adds cordova support and go to http://cordova.apache.org
   echo "installing phonegap..."
   npm install -g phonegap          # adds phonegap support and go to http://phonegap.com
   echo "installing ios-deploy..."
-  npm install -g ios-deploy        # adds phonegap's ios-deploy tool 
+  npm install -g ios-deploy        # adds phonegap's ios-deploy tool
   echo "installing ionic..."
   npm install -g ionic             # adds phonegap support and go to http://ionicframework.com
   echo "installing grunt..."
   npm install -g grunt grunt-cli   # adds grunt support and go to http://gruntjs.com
   echo "installing gulp..."
-  npm install -g gulp gulp-cli     # adds gulp support and go to https://gulpjs.com 
+  npm install -g gulp gulp-cli     # adds gulp support and go to https://gulpjs.com
   echo "installing bower..."
   npm install -g bower             # adds bower support and go to http://bower.io
   echo "installing react..."
@@ -737,7 +756,7 @@ platform_install_recommended()
   npm install -g polymer           # adds polymer support and go to https://elements.polymer-project.org/
   echo "installing yeoman..."
   npm install -g yo                # adds yeoman support and go to http://yeoman.io
-  echo "installing webpack..."     
+  echo "installing webpack..."
   npm install -g webpack --save-dev	# adds webpack support and go to https://webpack.js.org
   echo "installing vue-cli..."
   npm install -g vue-cli           # adds vue support and go to https://vuejs.org
@@ -962,6 +981,46 @@ CustomLog ${APP_LOGS}/platform-access.log combined
 </VirtualHost>"
 }
 
+platform_applications_init()
+{
+  cd $PLATFORM_WORKSPACE_APPS_PATH
+  mkdir -p $PLATFORM_WORKSPACE_APPS_PATH > /dev/null 2>&1
+}
+
+platform_applications_install()
+{
+  platform_applications_init
+  cd $PLATFORM_WORKSPACE_APPS_PATH
+  echo "installing..."
+  echo ""
+  echo "done."
+  echo ""
+}
+
+platform_builds_init()
+{
+  cd $PLATFORM_WORKSPACE_PATH
+  mkdir -p $PLATFORM_BUILDS_PATH > /dev/null 2>&1
+}
+
+platform_builds_install()
+{
+  platform_builds_init
+  cd $PLATFORM_BUILDS_PATH
+  echo "installing code..."
+  echo ""
+  git clone https://github.com/platform-org/platform-code.git code > /dev/null 2>&1
+  echo ""
+  echo "installing sqldesigner..."
+  echo ""
+  git clone https://github.com/platform-org/platform-sqldesigner.git sqldesigner > /dev/null 2>&1
+  echo ""
+  echo "installing webdesigner..."
+  echo ""
+  git clone https://github.com/platform-org/platform-webdesigner.git webdesigner > /dev/null 2>&1
+  echo ""
+}
+
 case $PARAM in
   install|--install)
   echo "installing platform..."
@@ -973,6 +1032,46 @@ case $PARAM in
   echo ""
   echo ""
   echo "installation completed."
+  ;;
+
+  build|--build)
+  echo $APP_DATETIME $APP_BUILD_NAME
+  ;;
+
+  install-build|--install-build)
+  echo "installing platform build..."
+  echo ""
+  platform_builds_install
+  echo ""
+  echo "installation completed."
+  ;;
+
+  service|--service)
+  echo "running service $2..."
+  echo ""
+  if [ "$1" != "" ]
+  then
+
+    if [ "$2" == "code" ]
+    then
+      #echo $0 $1 $2 $3
+      cd "$PLATFORM_BUILDS_PATH/$2" && "$PLATFORM_BUILDS_PATH/$2"/bin/openvscode-server --port 8883 --without-connection-token
+    fi
+
+    if [ "$2" == "sqldesigner" ]
+    then
+      cd "$PLATFORM_BUILDS_PATH/$2" && php -S localhost:8884 
+    fi
+
+    if [ "$2" == "webdesigner" ]
+    then
+      cd "$PLATFORM_BUILDS_PATH/$2" && php -S localhost:8885 
+    fi
+
+  else
+    echo "No service specified."
+  fi
+  echo ""
   ;;
 
   install-dependencies|--install-dependencies|install-dep|--install-dep)
@@ -1432,6 +1531,51 @@ case $PARAM in
   echo "do you have things to do? if 'yes', then start by editing your TODO list"
   echo ""
   echo "see $PLATFORM_PROJECTS_PATH/$2/TODO.md"
+  echo ""
+  echo ""
+  echo "Enjoy!"
+  ;;
+
+  create-site|--create-site)
+  echo "creating site $2..."
+  echo ""
+  sudo -k
+  fix_permissions(){
+    sudo chown -R :www-data . && sudo chmod -R 0755 .
+  }
+  if [ ! -d "$PLATFORM_SITES_PATH" ]
+  then
+    mkdir -p $PLATFORM_SITES_PATH
+  fi
+
+  if [ ! -d "$2" ]
+  then
+    mkdir -p $PLATFORM_SITES_PATH/$2
+    cp -ar $PLATFORM_SITES_PATH/assets $PLATFORM_SITES_PATH/$2
+    touch $PLATFORM_SITES_PATH/$2/index.php && platform_generate_sites_index > $PLATFORM_SITES_PATH/$2/index.php
+    touch $PLATFORM_SITES_PATH/$2/COPYRIGHT.md && echo "#COPYRIGHT" > $PLATFORM_SITES_PATH/$2/COPYRIGHT.md
+    touch $PLATFORM_SITES_PATH/$2/LICENSE.md && echo "#LICENSE" > $PLATFORM_SITES_PATH/$2/LICENSE.md
+    touch $PLATFORM_SITES_PATH/$2/README.md && echo "#README" > $PLATFORM_SITES_PATH/$2/README.md
+    touch $PLATFORM_SITES_PATH/$2/TODO.md && echo "#TODO" > $PLATFORM_SITES_PATH/$2/TODO.md
+    cd $PLATFORM_SITES_PATH/$2 && fix_permissions
+    echo ""
+    echo "creating site in '$PLATFORM_SITES_PATH/$2'..."
+    echo ""
+    echo ""
+    echo "site created."
+  else
+    echo ""
+    echo "site $2 already exists"
+    exit
+  fi
+  echo ""
+  echo "quick note"
+  echo "----------"
+  echo "start by adding content to '$PLATFORM_SITES_PATH/$2/README.md'..."
+  echo ""
+  echo "do you have things to do? if 'yes', then start by editing your TODO.md"
+  echo ""
+  echo "see $PLATFORM_SITES_PATH/$2/TODO.md"
   echo ""
   echo ""
   echo "Enjoy!"
