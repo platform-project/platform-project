@@ -20,5 +20,4 @@
 // initilizing platform for self-contained objects
 platform_launch_initialize();
 
-redirect_to('https://bitmidi.com/');
-?>
+redirect_to('index.html');
