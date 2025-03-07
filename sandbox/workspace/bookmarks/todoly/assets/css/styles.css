@@ -50,8 +50,67 @@ button.btn.btn-danger {
     background-color: #DC3545;
 }
 
+button.btn.btn-warning {
+    background-color: #FFC107;
+}
+
+button.btn.btn-success {
+    background-color: #28A745;
+}
+
+button.btn.btn-secondary {
+    background-color: #5A6268;
+}
+
 button:hover {
     background-color: #0056b3;
+}
+
+.deleteButton {
+    position: relative; 
+    top: 0px;
+}
+
+.confirmButtonX {
+    position: relative; 
+    top: -2px;
+}
+
+.snoozeButtonX {
+    position: relative; 
+    top: -2px;
+}
+
+.dateText {
+    position: relative; 
+    top: -20px; 
+    display: block; 
+    float: right; 
+    padding: 8px; 
+    font-size: 10px; 
+    border-radius: 10px; 
+    font-weight: bolder; 
+    color: #f5f5f5; 
+    background: #111;
+}
+
+.taskText {
+    position: relative; 
+    top: -10px;
+}
+
+.doneText {
+    position: relative;
+    top: -6px; 
+    display: block;
+    visibility: hidden; 
+    float: right; 
+    padding: 8px; 
+    font-size: 10px; 
+    border-radius: 10px; 
+    font-weight: bolder; 
+    color: #f5f5f5; 
+    background: #007BFF;
 }
 
 ul {
