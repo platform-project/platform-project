@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-    background-color: white;
+    background: rgba(0, 0, 0, 0.4);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -21,6 +21,7 @@ body {
     margin-top: 10%;
     margin-right: 111px;
     margin-left: 140px;
+    color: white;
 }
 
 h1, h2 {
@@ -45,6 +46,10 @@ button {
     cursor: pointer;
 }
 
+button.btn.btn-danger {
+    background-color: #DC3545;
+}
+
 button:hover {
     background-color: #0056b3;
 }
@@ -56,9 +61,11 @@ ul {
 
 li {
     padding: 10px;
-    background-color: #f9f9f9;
-    margin-bottom: 5px;
+    background: #f9f9f9;
+    margin-bottom: 30px;
     border-radius: 4px;
+    color: #111111;
+    font-size: 15px;
 }
 
 /* Modal styles */
@@ -119,4 +126,8 @@ li {
     max-height: 100%;
     object-fit: cover;
     border: 10px solid black;
+}
+
+#taskList {
+    border-radius: 10px;
 }
