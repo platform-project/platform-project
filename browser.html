@@ -649,7 +649,7 @@
                 <audio id="audio" controls loop name="media" src="">
                     <source src="" type="audio/mp3;">
                 </audio>
-                
+
             </div>
         </div>
 
@@ -832,58 +832,6 @@
                     console.error("No file selected or file not found.");
                 }
             });
-        });
-    </script>
-    <!-- Updates Resolver -->
-    <script>
-        $(document).ready(function() {
-            var lastCommitSha = '';
-
-            function checkForCommits() {
-                $.ajax({
-                    url: 'https://api.github.com/repos/platform-project/platform-project/commits', // Replace {owner} and {repo} with actual values
-                    method: 'GET',
-                    dataType: 'json',
-                    success: function(commits) {
-                        var view = '';
-                        if (commits.length > 0) {
-                            var latestCommitSha = commits[0].sha;
-                            if (latestCommitSha !== lastCommitSha) {
-                                if (lastCommitSha !== '') {
-                                    view = '<a class="notification-indicator" href="javascript:{}"><div class="updater"><i class="fi-wrench fi-platform size-18"></i> <span class="label">New update available</span></a> ';
-                                    $('#updater').html(view);
-                                    console.log('New commit detected: ' + commits[0].commit.message);
-                                } else {
-                                    view = '<a class="notification-indicator" href="javascript:{}"><div class="updater"><i class="fi-wrench fi-platform size-18"></i> <span class="label">System up to date</span></a> ';
-                                    $('#updater').html(view);
-                                    console.log('No commits detected');
-                                }
-                                lastCommitSha = latestCommitSha;
-                            } else {
-                                view = '<a class="notification-indicator" href="javascript:{}"><div class="updater"><i class="fi-wrench fi-platform size-18"></i> <span class="label">System up to date</span></a> ';
-                                $('#updater').html(view);
-                                console.log('No commits detected');
-                            }
-                        } else {
-                            view = '<a class="notification-indicator" href="javascript:{}"><div class="updater"><i class="fi-wrench fi-platform size-18"></i> <span class="label">System up to date</span></a> ';
-                            $('#updater').html(view);
-                            console.log('No commits detected');
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error fetching commits:', error);
-                    }
-                });
-            }
-
-            // Polling interval (in milliseconds)
-            var pollingInterval = 60000; // Check every 60 seconds
-
-            // Start polling
-            setInterval(checkForCommits, pollingInterval);
-
-            // Initial check
-            checkForCommits();
         });
     </script>
 
