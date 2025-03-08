@@ -127,15 +127,18 @@ document.addEventListener('DOMContentLoaded', function () {
     
             setTimeout(() => {
                 currentTask = task;
-                description = `It's time for your task: ${task.description}`, "UK English Female"
-                responsiveVoice.speak(description);
+                description = `It's time for your task: ${task.description}`;
+                speak(description);
             }, timeToTask);
         }
     }
 
     function deleteTask(taskElement, task) {
         taskList.removeChild(taskElement);
-        tasks = tasks.filter(t => t.description !== task.description || t.time !== task.time);
+        const index = tasks.findIndex(t => t.description === task.description && t.time === task.time);
+        if (index !== -1) {
+            tasks.splice(index, 1);
+        }
         localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 
@@ -155,11 +158,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // Find and update the task in the array
         const taskIndex = tasks.findIndex(t => t.description === task.description && t.time === task.time);
         if (taskIndex !== -1) {
-            tasks[taskIndex] = task; // Update the task in the array
+            tasks[taskIndex] = task;
         }
-    
-        // Update localStorage with modified tasks array
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+        localStorage.setItem('tasks', JSON.stringify(tasks)); // Store updated tasks
     
         if (doneText) {
             updateTaskDuration(taskElement, task);
@@ -169,16 +170,39 @@ document.addEventListener('DOMContentLoaded', function () {
             confirmButton.remove(); 
             snoozeButton.remove(); 
         }
-
-        responsiveVoice.speak(`Task "${task.description}" confirmed as done.`, "UK English Female");
+        description = `Task "${task.description}" confirmed as done.`;
+        speak(description);
     }
 
     function snoozeTask(taskElement, task) {
-        responsiveVoice.speak(`Task "${task.description}" snoozed for 5 minutes.`, "UK English Female");
+        task.time = new Date(new Date(task.time).getTime() + 5 * 60 * 1000).toISOString();
+        localStorage.setItem('tasks', JSON.stringify(tasks)); 
+        description = `Task "${task.description}" snoozed for 5 minutes.`;
+        speak(description);
         setTimeout(() => {
             beep.play();
-            responsiveVoice.speak(`Reminder: It's time for your task: ${task.description}`, "UK English Female");
+            description = `Reminder: It's time for your task: ${task.description}`;
+            speak(description);
         }, 5 * 60 * 1000); // 5-minute snooze
+    }
+
+    function showSpeechBubble(text) {
+        let speechBubble = document.getElementById('speechBubble');
+        if (!speechBubble) {
+            speechBubble = document.createElement('div');
+            speechBubble.id = 'speechBubble';
+            document.body.appendChild(speechBubble);
+        }
+        speechBubble.innerText = text;
+        speechBubble.style.display = 'block';
+        setTimeout(() => {
+            speechBubble.style.display = 'none';
+        }, 20000);
+    }
+
+    function speak(text) {
+        showSpeechBubble(text);
+        responsiveVoice.speak(text, "UK English Female");
     }
 
     function formatDate(isoString) {
@@ -228,4 +252,31 @@ document.addEventListener('DOMContentLoaded', function () {
     if (sliderImage) {
         setInterval(changeImage, changeInterval);
     }
+
+    // HTML Markup
+    const speechBubbleMarkup = `
+    <div id="speechBubble" class="speech-bubble" style="display: none;"></div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', speechBubbleMarkup);
+
+    // CSS Styles
+    document.head.insertAdjacentHTML('beforeend', `
+    <style>
+        .speech-bubble {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            max-width: 300px;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+    </style>
+    `);
 });
