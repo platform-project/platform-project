@@ -2,7 +2,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const taskForm = document.getElementById('taskForm');
     const taskList = document.getElementById('taskList');
     const beep = new Audio('assets/sounds/beep.mp3'); 
-    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    let tasks = JSON.parse(localStorage.getItem('tasks'));
+    if (!Array.isArray(tasks)) {
+        tasks = [];
+    }
     let currentTask = null;
 
     let startTime, endTime = null;
@@ -44,6 +47,49 @@ document.addEventListener('DOMContentLoaded', function () {
         return date.toLocaleString(); // Format date in local format
     }
 
+    function calculateDuration(startTime, endTime) {
+        if (!startTime || !endTime) return "0s"; // Ensure valid dates
+    
+        let diff = Math.floor((endTime - startTime) / 1000); // Difference in seconds
+        if (diff <= 0) return "0s"; // Prevent negative durations
+    
+        let result = "";
+    
+        const years = Math.floor(diff / (365 * 24 * 60 * 60));
+        diff %= (365 * 24 * 60 * 60);
+        const months = Math.floor(diff / (30 * 24 * 60 * 60));
+        diff %= (30 * 24 * 60 * 60);
+        const weeks = Math.floor(diff / (7 * 24 * 60 * 60));
+        diff %= (7 * 24 * 60 * 60);
+        const days = Math.floor(diff / (24 * 60 * 60));
+        diff %= (24 * 60 * 60);
+        const hours = Math.floor(diff / (60 * 60));
+        diff %= (60 * 60);
+        const minutes = Math.floor(diff / 60);
+        const seconds = diff % 60;
+    
+        if (years > 0) result += `${years} year${years > 1 ? "s" : ""} `;
+        if (months > 0) result += `${months} month${months > 1 ? "s" : ""} `;
+        if (weeks > 0) result += `${weeks} week${weeks > 1 ? "s" : ""} `;
+        if (days > 0) result += `${days} day${days > 1 ? "s" : ""} `;
+        if (hours > 0) result += `${hours}h `;
+        if (minutes > 0) result += `${minutes}m `;
+        if (seconds > 0) result += `${seconds}s`;
+    
+        return result.trim() || "0s"; // Ensure output is never empty
+    }
+    
+    
+    function updateTaskDuration(taskElement, task) {
+        const doneTask = taskElement.querySelector('.doneText');
+        if (doneTask) {
+            const startTime = new Date(task.time);
+            const endTime = new Date(task.completedAt);
+            doneTask.innerHTML = 'Took ' + calculateDuration(startTime, endTime);
+            doneTask.style.visibility = "visible";
+        }
+    }
+
     function addTaskToList(task) {
         const li = document.createElement('li');
         const taskText = task.description;
@@ -55,9 +101,9 @@ document.addEventListener('DOMContentLoaded', function () {
             <button class="btn btn-danger deleteButton">Delete</button>
             ${!task.confirmed ? '<button class="btn btn-warning snoozeButton">Snooze</button>' : ''}
             ${!task.confirmed ? '<button class="btn btn-success confirmButton">Confirm</button>' : ''}
-            <div class="done"><span class="doneText" style="${task.confirmed ? 'visibility:visible' : 'visibility:hidden'};">${task.confirmed ? 'Completed: ' + formatDate(new Date()) : ''}</span></div>
+            <div class="done"><span class="doneText" style="${task.confirmed ? 'visibility:visible' : 'visibility:hidden'};">${task.confirmed ? 'Took ' + calculateDuration(task.time, task.completedAt) : 'Took ' + calculateDuration(task.time, task.completedAt)}</span></div>
         `;
-        
+        console.log(task);
         taskList.appendChild(li);
 
         // Attach event listeners
@@ -65,6 +111,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!task.confirmed) {
             li.querySelector(".confirmButton").addEventListener("click", () => confirmTask(li, task));
             li.querySelector(".snoozeButton").addEventListener("click", () => snoozeTask(li, task));
+        } else {
+            updateTaskDuration(li, task); // Ensure duration is shown on page load
         }
     }
 
@@ -93,27 +141,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function confirmTask(taskElement, task) {
         if (!taskElement) return; // Ensure taskElement exists
-
+    
+        const startTime = new Date(task.time);
         const timeTaskDone = new Date();
         const doneText = taskElement.querySelector('.doneText'); 
         const confirmButton = taskElement.querySelector('.confirmButton'); // Find the confirm button
         const snoozeButton = taskElement.querySelector('.snoozeButton');
-
-        if (doneText) {
-            doneText.innerHTML = `Completed: ${formatDate(timeTaskDone)}`;
-            doneText.style.visibility = 'visible'; // Make the text visible
+    
+        // Update task properties
+        task.completedAt = timeTaskDone.toISOString(); // Store completion time
+        task.confirmed = true;
+    
+        // Find and update the task in the array
+        const taskIndex = tasks.findIndex(t => t.description === task.description && t.time === task.time);
+        if (taskIndex !== -1) {
+            tasks[taskIndex] = task; // Update the task in the array
         }
-
+    
+        // Update localStorage with modified tasks array
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    
+        if (doneText) {
+            updateTaskDuration(taskElement, task);
+        }
+    
         if (confirmButton) {
             confirmButton.remove(); 
             snoozeButton.remove(); 
         }
-
-        task.confirmed = true;
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-        beep.play();
         responsiveVoice.speak(`Task "${task.description}" confirmed as done.`, "UK English Female");
     }
+    
 
     function snoozeTask(taskElement, task) {
         responsiveVoice.speak(`Task "${task.description}" snoozed for 5 minutes.`, "UK English Female");

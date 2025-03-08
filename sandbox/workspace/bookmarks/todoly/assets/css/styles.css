@@ -44,6 +44,7 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 10px;
 }
 
 button.btn.btn-danger {
@@ -71,16 +72,6 @@ button:hover {
     top: 0px;
 }
 
-.confirmButtonX {
-    position: relative; 
-    top: -2px;
-}
-
-.snoozeButtonX {
-    position: relative; 
-    top: -2px;
-}
-
 .dateText {
     position: relative; 
     top: -20px; 
@@ -101,7 +92,7 @@ button:hover {
 
 .doneText {
     position: relative;
-    top: -6px; 
+    top: -4px; 
     display: block;
     visibility: hidden; 
     float: right; 
@@ -110,21 +101,28 @@ button:hover {
     border-radius: 10px; 
     font-weight: bolder; 
     color: #f5f5f5; 
-    background: #007BFF;
+    background-color: green;
 }
 
 ul {
     list-style: none;
-    padding: 0;
 }
 
 li {
     padding: 10px;
-    background: #f9f9f9;
+    background: rgba(0, 0, 0, 0.75);
     margin-bottom: 30px;
     border-radius: 4px;
-    color: #111111;
+    color: #f5f5f5;
     font-size: 15px;
+}
+
+li::-webkit-scrollbar-thumb {
+    background: #aaa;
+    -webkit-border-radius: 1ex;
+    padding: 2px;
+    height: 2px;
+    width: 5px;
 }
 
 /* Modal styles */
@@ -189,4 +187,21 @@ li {
 
 #taskList {
     border-radius: 10px;
+    padding: 10px;
+    overflow-x: hidden;
+    max-height: 336px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #aaa;
+    -webkit-border-radius: 1ex;
+    padding: 2px;
+    height: 2px;
+    width: 5px;
+}
+
+::-webkit-scrollbar {
+    background: #ddd;
+    height: 2px;
+    width: 5px;
 }
