@@ -172,7 +172,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         responsiveVoice.speak(`Task "${task.description}" confirmed as done.`, "UK English Female");
     }
-    
 
     function snoozeTask(taskElement, task) {
         responsiveVoice.speak(`Task "${task.description}" snoozed for 5 minutes.`, "UK English Female");
