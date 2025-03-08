@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
             confirmButton.remove(); 
             snoozeButton.remove(); 
         }
-    
+
         responsiveVoice.speak(`Task "${task.description}" confirmed as done.`, "UK English Female");
     }
     
@@ -177,6 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function snoozeTask(taskElement, task) {
         responsiveVoice.speak(`Task "${task.description}" snoozed for 5 minutes.`, "UK English Female");
         setTimeout(() => {
+            beep.play();
             responsiveVoice.speak(`Reminder: It's time for your task: ${task.description}`, "UK English Female");
         }, 5 * 60 * 1000); // 5-minute snooze
     }
