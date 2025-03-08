@@ -268,7 +268,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function changeImage() {
         sliderImage.style.backgroundSize = "cover";
-        sliderImage.style.backgroundPosition = "center";
         sliderImage.style.backgroundImage = `url(${images[Math.floor(Math.random() * images.length)]})`;
     }
 
