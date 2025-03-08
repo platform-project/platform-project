@@ -446,7 +446,7 @@ iframe#site::-webkit-scrollbar-thumb {
     background-image: -webkit-linear-gradient(#C22626, #634242);
     background-image: linear-gradient(#C22626, #634242);
     background-repeat: repeat-x;
-    box-shadow: inset 0 10px 0 rgba(0, 0, 0, 0.1), 0 10px 0 #fff;
+    box-shadow: inset 0 10px 0 rgba(0, 0, 0, 0.1), 0 10px 0 transparent;
 }
 
 .notification-indicator .system-up2date {
