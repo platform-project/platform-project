@@ -8,9 +8,6 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <!--<div class="slider">
-        <img id="sliderImage" src="assets/images/13882329_xl.jpg" alt="Wallpaper">
-    </div>-->
     <div class="container">
         <h1>Todoly</h1>
         <form id="taskForm">
@@ -18,12 +15,33 @@
             <input type="text" id="description" autocomplete="off" required>
             <label for="time">Time:</label>
             <input type="datetime-local" id="time" required>
+            <div id="categoryBlock">
+                <label for="category">Category:</label>
+                <select id="category">
+                    <option value="Personal">Personal</option>
+                    <option value="Family">Family</option>
+                    <option value="Work">Work</option>
+                    <option value="Urgent">Urgent</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div id="filterCategoryBlock">
+                <label for="filterCategory">Filter:</label>
+                <select id="filterCategory">
+                    <option value="All">All</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Family">Family</option>
+                    <option value="Work">Work</option>
+                    <option value="Urgent">Urgent</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
             <button type="submit">Add Task</button>
         </form>
         <h2>Tasks</h2>
         <ul id="taskList"></ul>
     </div>
-
+    <div id="speechBubble" class="speech-bubble" style="display: none;"></div>
     <script src="assets/js/script.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NP5H7Z8WJ"></script>

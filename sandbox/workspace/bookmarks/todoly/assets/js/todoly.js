@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const taskForm = document.getElementById('taskForm');
     const taskList = document.getElementById('taskList');
-    const beep = new Audio('assets/sounds/beep.mp3'); 
+    const beep = new Audio('assets/sounds/beep.mp3');
     let tasks = JSON.parse(localStorage.getItem('tasks'));
     if (!Array.isArray(tasks)) {
         tasks = [];
@@ -14,16 +14,31 @@ document.addEventListener('DOMContentLoaded', function () {
     // Load existing tasks
     tasks.forEach(addTaskToList);
 
+    document.getElementById('filterCategory').addEventListener('change', function () {
+        const selectedCategory = this.value;
+        taskList.innerHTML = ''; // Clear current tasks
+
+        tasks.forEach(task => {
+            if (selectedCategory === 'All' || task.category === selectedCategory) {
+                addTaskToList(task);
+            }
+        });
+    });
+
     taskForm.addEventListener('submit', function (e) {
         e.preventDefault();
         const description = document.getElementById('description').value.trim();
         const time = new Date(document.getElementById('time').value);
-    
+        const selectedCategory = document.getElementById('category').value;
+
         if (!description || isNaN(time)) return;
-    
-        const task = { 
-            description, 
+
+        const task = {
+            description,
             time: time.toISOString(),
+            category: selectedCategory, // Example: "Work", "Personal"
+            repeat: "daily", // Options: "none", "daily", "weekly", "monthly"
+            priority: "High", // Options: "Low", "Medium", "High"
             confirmed: false // Initially not confirmed
         };
         tasks.push(task);
@@ -41,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-    
+
     function formatDate(isoString) {
         const date = new Date(isoString);
         return date.toLocaleString(); // Format date in local format
@@ -49,12 +64,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function calculateDuration(startTime, endTime) {
         if (!startTime || !endTime) return "0s"; // Ensure valid dates
-    
+
         let diff = Math.floor((endTime - startTime) / 1000); // Difference in seconds
         if (diff <= 0) return "0s"; // Prevent negative durations
-    
+
         let result = "";
-    
+
         const years = Math.floor(diff / (365 * 24 * 60 * 60));
         diff %= (365 * 24 * 60 * 60);
         const months = Math.floor(diff / (30 * 24 * 60 * 60));
@@ -67,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
         diff %= (60 * 60);
         const minutes = Math.floor(diff / 60);
         const seconds = diff % 60;
-    
+
         if (years > 0) result += `${years} year${years > 1 ? "s" : ""} `;
         if (months > 0) result += `${months} month${months > 1 ? "s" : ""} `;
         if (weeks > 0) result += `${weeks} week${weeks > 1 ? "s" : ""} `;
@@ -75,11 +90,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (hours > 0) result += `${hours}h `;
         if (minutes > 0) result += `${minutes}m `;
         if (seconds > 0) result += `${seconds}s`;
-    
+
         return result.trim() || "0s"; // Ensure output is never empty
     }
-    
-    
+
     function updateTaskDuration(taskElement, task) {
         const doneTask = taskElement.querySelector('.doneText');
         if (doneTask) {
@@ -92,12 +106,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function addTaskToList(task) {
         const li = document.createElement('li');
+        const categoryColors = {
+            "Personal": "green",
+            "Family": "blue",
+            "Work": "purple",
+            "Urgent": "red",
+            "Other": "gray"
+        };
         const taskText = task.description;
         const dateText = formatDate(task.time);
-        
+
         li.innerHTML = `
             <span class="dateText">${dateText}</span> </span><br />
             <span class="taskText">${taskText}</span><br />
+            <span class="categoryLabel" style="background-color: ${categoryColors[task.category]};">${task.category}</span><br />
             <button class="btn btn-danger deleteButton">Delete</button>
             ${!task.confirmed ? '<button class="btn btn-warning snoozeButton">Snooze</button>' : ''}
             ${!task.confirmed ? '<button class="btn btn-success confirmButton">Confirm</button>' : ''}
@@ -123,8 +145,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (timeToTask > 0) {
             setTimeout(() => {
                 beep.play();
-            }, timeToTask - 2000); 
-    
+            }, timeToTask - 2000);
+
             setTimeout(() => {
                 currentTask = task;
                 description = `It's time for your task: ${task.description}`;
@@ -144,31 +166,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function confirmTask(taskElement, task) {
         if (!taskElement) return; // Ensure taskElement exists
-    
+
         const startTime = new Date(task.time);
         const timeTaskDone = new Date();
-        const doneText = taskElement.querySelector('.doneText'); 
+        const doneText = taskElement.querySelector('.doneText');
         const confirmButton = taskElement.querySelector('.confirmButton'); // Find the confirm button
         const snoozeButton = taskElement.querySelector('.snoozeButton');
-    
+
         // Update task properties
         task.completedAt = timeTaskDone.toISOString(); // Store completion time
         task.confirmed = true;
-    
+
         // Find and update the task in the array
         const taskIndex = tasks.findIndex(t => t.description === task.description && t.time === task.time);
         if (taskIndex !== -1) {
             tasks[taskIndex] = task;
         }
         localStorage.setItem('tasks', JSON.stringify(tasks)); // Store updated tasks
-    
+
         if (doneText) {
             updateTaskDuration(taskElement, task);
         }
-    
+
         if (confirmButton) {
-            confirmButton.remove(); 
-            snoozeButton.remove(); 
+            confirmButton.remove();
+            snoozeButton.remove();
         }
         description = `Task "${task.description}" confirmed as done.`;
         speak(description);
@@ -176,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function snoozeTask(taskElement, task) {
         task.time = new Date(new Date(task.time).getTime() + 5 * 60 * 1000).toISOString();
-        localStorage.setItem('tasks', JSON.stringify(tasks)); 
+        localStorage.setItem('tasks', JSON.stringify(tasks));
         description = `Task "${task.description}" snoozed for 5 minutes.`;
         speak(description);
         setTimeout(() => {
@@ -213,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const hh = String(date.getHours()).padStart(2, '0');
         const mi = String(date.getMinutes()).padStart(2, '0');
         const ss = String(date.getSeconds()).padStart(2, '0');
-        
+
         return `${yyyy}-${mm}-${dd} ${hh}:${mi}:${ss}`;
     }
 
@@ -241,42 +263,14 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
 
     let currentIndex = 0;
-    const sliderImage = document.getElementById('sliderImage');
-    const changeInterval = 60000; 
+    const sliderImage = document.body;
+    const changeInterval = 60000;
 
     function changeImage() {
-        currentIndex = (currentIndex + 1) % images.length;
-        sliderImage.src = images[currentIndex];
+        sliderImage.style.backgroundSize = "cover";
+        sliderImage.style.backgroundPosition = "center";
+        sliderImage.style.backgroundImage = `url(${images[Math.floor(Math.random() * images.length)]})`;
     }
 
-    if (sliderImage) {
-        setInterval(changeImage, changeInterval);
-    }
-
-    // HTML Markup
-    const speechBubbleMarkup = `
-    <div id="speechBubble" class="speech-bubble" style="display: none;"></div>
-    `;
-    document.body.insertAdjacentHTML('beforeend', speechBubbleMarkup);
-
-    // CSS Styles
-    document.head.insertAdjacentHTML('beforeend', `
-    <style>
-        .speech-bubble {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #333;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 16px;
-            max-width: 300px;
-            text-align: center;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
-    </style>
-    `);
+    setInterval(changeImage, changeInterval);
 });
