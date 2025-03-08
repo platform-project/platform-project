@@ -26,6 +26,10 @@
             height: 45vh;
             scale: 80%;
         }
+	
+	#nav { 
+	    position: fixed;	 
+	}
 
         #hud {
             z-index: 100010;
@@ -203,7 +207,12 @@
 
         #hud-monitor2:hover {
             opacity: 0.2;
-        }
+	}
+
+	#radar {
+	    position: fixed;
+            z-index: 999;
+	}
     </style>
 </head>
 
