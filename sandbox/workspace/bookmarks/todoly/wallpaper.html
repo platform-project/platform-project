@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todoly</title>
     <script src="https://code.responsivevoice.org/responsivevoice.js?key=5znGKiaR"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
 </head>
 <body>
+    <button id="darkModeToggle" style="visibility: hidden" class="btn theme-toggle">
+        <i class="fas fa-moon"></i> Dark Mode
+    </button>
     <div class="container">
-        <h1>Todoly</h1>
+        <h1><i class="fas fa-tasks"></i> Todoly</h1>
         <form id="taskForm">
             <label for="description">Task:</label>
             <input type="text" id="description" required>
@@ -36,10 +41,9 @@
                     <option value="Other">Other</option>
                 </select>
             </div>
-            <button type="submit">Add Task</button>
+            <button type="submit"> <i class="fas fa-square-plus"></i> &nbsp; Add Task</button>
         </form>
         <h2>Tasks</h2>
-        <ul id="taskList"></ul>
         <ul id="taskList"></ul>
     </div>
 
@@ -55,6 +59,7 @@
     <div class="block">&nbsp;</div>
     <div id="speechBubble" class="speech-bubble" style="display: none;"></div>
     <script src="assets/js/todoly.js"></script>
+    <script src="assets/js/themes.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1NP5H7Z8WJ"></script>
     <script>

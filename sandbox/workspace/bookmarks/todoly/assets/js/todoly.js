@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
         const taskText = task.description;
         const dateText = formatDate(task.time);
-        li.innerHTML = `
+        /* li.innerHTML = `
             <span class="dateText">${dateText}</span> </span><br />
             <span class="taskText">${taskText}</span><br />
             <span class="categoryLabel" style="background-color: ${categoryColors[task.category]};">${task.category}</span><br />
@@ -123,7 +123,29 @@ document.addEventListener('DOMContentLoaded', function () {
             ${!task.confirmed ? '<button class="btn btn-warning snoozeButton">Snooze</button>' : ''}
             ${!task.confirmed ? '<button class="btn btn-success confirmButton">Confirm</button>' : ''}
             <div class="done"><span class="doneText" style="${task.confirmed ? 'visibility:visible' : 'visibility:hidden'};">${task.confirmed ? 'Took ' + calculateDuration(task.time, task.completedAt) : 'Took ' + calculateDuration(task.time, task.completedAt)}</span></div>
-        `;
+        `; */
+
+        li.innerHTML = `
+            <span class="dateText">${dateText}</span> </span><br />
+            <span class="taskText">${taskText}</span><br />
+            <span class="categoryLabel" style="background-color: ${categoryColors[task.category]};">${task.category}</span><br />
+            <button class="btn btn-danger deleteButton">
+                <i class="fas fa-trash"></i> Delete
+            </button>
+            ${!task.confirmed ? `
+            <button class="btn btn-warning snoozeButton">
+                <i class="fas fa-clock"></i> Snooze
+            </button>
+            <button class="btn btn-success confirmButton">
+                <i class="fas fa-check"></i> Confirm
+            </button>
+            ` : ''}
+            <div class="done">
+                <span class="doneText" style="${task.confirmed ? 'visibility:visible' : 'visibility:hidden'};">
+                    ${task.confirmed ? `<i class="fas fa-check-circle"></i> Took ` + calculateDuration(task.time, task.completedAt) : ''}
+                </span>
+            </div>
+    `;
         console.log(task);
         taskList.appendChild(li);
 

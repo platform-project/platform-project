@@ -1,0 +1,41 @@
+/* Light Mode (default) */
+.container {
+    background: rgba(250, 250, 250, 0.4) !important;
+    color: #111 !important;
+    transition: background 0.3s, color 0.3s;
+}
+
+li {
+    background: rgba(250, 250, 250, 0.8) !important;
+    color: #111 !important;
+}
+
+/* Dark Mode */
+.container.dark-mode {
+    background: rgba(0, 0, 0, 0.4) !important;
+    color: #f5f5f5 !important;
+}
+
+li.dark-mode {
+    background: rgba(0, 0, 0, 0.4) !important;
+    color: #f5f5f5 !important;
+}
+
+/* Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 10px 15px;
+    background: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.theme-toggle:hover {
+    background: #333;
+}
+
+
