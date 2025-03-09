@@ -106,7 +106,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function addTaskToList(task) {
         const li = document.createElement('li');
-        const message = document.querySelector('.no-tasks');
         const categoryColors = {
             "Personal": "green",
             "Family": "blue",
@@ -116,7 +115,6 @@ document.addEventListener('DOMContentLoaded', function () {
         };
         const taskText = task.description;
         const dateText = formatDate(task.time);
-        message.innerHTML = '';
         li.innerHTML = `
             <span class="dateText">${dateText}</span> </span><br />
             <span class="taskText">${taskText}</span><br />
