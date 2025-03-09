@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="cache.manifest" class="js canvas canvastext geolocation history websockets video audio localstorage webworkers applicationcache">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
     <div class="container">
         <h1>Todoly</h1>
         <form id="taskForm">
-            <label for="description">Task Description:</label>
+            <label for="description">Task:</label>
             <input type="text" id="description" required>
             <label for="time">Time:</label>
             <input type="datetime-local" id="time" required>
@@ -40,6 +40,7 @@
         </form>
         <h2>Tasks</h2>
         <ul id="taskList"></ul>
+        <ul id="taskList"></ul>
     </div>
 
     <!-- Modal -->
@@ -51,6 +52,7 @@
             <button id="snoozeButton">Snooze</button>
         </div>
     </div>
+    <div class="block">&nbsp;</div>
     <div id="speechBubble" class="speech-bubble" style="display: none;"></div>
     <script src="assets/js/todoly.js"></script>
     <!-- Google tag (gtag.js) -->
