@@ -20,5 +20,5 @@
 // initilizing platform for self-contained objects
 platform_launch_initialize();
 
-redirect_to('todoly/wallpaper.html');
+redirect_to('todoly/index.html');
 ?>
