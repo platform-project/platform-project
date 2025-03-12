@@ -1,10 +1,10 @@
 {
     "features": [
         { "id": "editor", "name": "Editor", "description": "Editor application", "link": "http://platform/sandbox/system/applications/editor/editor.html", "installed": true },
-        { "id": "ebooks", "name": "Ebooks", "description": "Ebooks application", "link": "http://platform/sandbox/system/applications/ebooks/", "installed": false },
+        { "id": "ebooks", "name": "Ebooks", "description": "Ebooks application", "link": "http://platform/sandbox/system/applications/ebooks/", "installed": true },
         { "id": "games", "name": "Online Games", "description": "Gaming application.", "link": "http://platform/sandbox/system/applications/games/", "installed": true },
         { "id": "maps", "name": "Maps", "description": "Maps application.", "link": "http://platform/sandbox/workspace/tests/gmap/index.php", "installed": true },
-        { "id": "todoly", "name": "Todoly", "description": "To do task application.", "link": "http://platform/sandbox/system/applications/todoly/wallpaper.html", "installed": true },
+        { "id": "todoly", "name": "Todoly", "description": "To do task manager application.", "link": "http://platform/sandbox/system/applications/todoly/index.html", "installed": true },
         { "id": "video", "name": "Video", "description": "Video application", "link": "http://platform/sandbox/system/applications/video/", "installed": false }
     ]
 }
