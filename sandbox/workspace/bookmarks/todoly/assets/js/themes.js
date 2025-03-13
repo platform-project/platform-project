@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
         darkModeToggle.innerHTML = `<i class="fas fa-sun"></i> Light Mode`;
         darkModeToggle.style.color = 'black'
         darkModeToggle.style.background = 'white'
-        location.reload();
     }
 
     function removeDarkMode() {
@@ -20,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
         darkModeToggle.innerHTML = `<i class="fas fa-moon"></i> Dark Mode`;
         darkModeToggle.style.color = 'white'
         darkModeToggle.style.background = 'black'
-        location.reload();
     }
 
     function checkTimeForTheme() {
@@ -30,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             removeDarkMode();
         }
+        location.reload();
     }
 
     // Load stored preference or auto-detect
@@ -50,21 +49,9 @@ document.addEventListener("DOMContentLoaded", function () {
             applyDarkMode();
         }
     });
-
-    function checkTimeAndReload() {
-        const now = new Date();
-        const minutes = now.getMinutes();
-        const seconds = now.getSeconds();
-    
-        // Reload every hour
-        if (minutes === 0 && seconds === 0) {
-            location.reload();  // Reload the page
-        }
-    }
     
     // Run immediately when the page loads
     checkTimeForTheme();
-    checkTimeAndReload();
 
     // Auto-switch at 06:00 and 18:00
     setInterval(checkTimeForTheme, 60 * 1000); // Check every minute
