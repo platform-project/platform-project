@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let currentIndex = 0;
     const sliderImage = document.body;
-    const changeInterval = 60000;
+    const changeInterval = 3600000;  // every hour
 
     function changeImage() {
         sliderImage.style.backgroundSize = "cover";

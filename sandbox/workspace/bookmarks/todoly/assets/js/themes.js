@@ -55,7 +55,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Auto-switch at 06:00 and 18:00
     setInterval(checkTimeForTheme, 60 * 1000); // Check every minute
-
-    // Run checkTimeAndReload every minute
-    setInterval(checkTimeAndReload, 60 * 1000); // Check every minute
 });
