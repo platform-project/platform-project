@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         darkModeToggle.innerHTML = `<i class="fas fa-sun"></i> Light Mode`;
         darkModeToggle.style.color = 'black'
         darkModeToggle.style.background = 'white'
+        location.reload();
     }
 
     function removeDarkMode() {
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         darkModeToggle.innerHTML = `<i class="fas fa-moon"></i> Dark Mode`;
         darkModeToggle.style.color = 'white'
         darkModeToggle.style.background = 'black'
+        location.reload();
     }
 
     function checkTimeForTheme() {
@@ -52,9 +54,10 @@ document.addEventListener("DOMContentLoaded", function () {
     function checkTimeAndReload() {
         const now = new Date();
         const minutes = now.getMinutes();
+        const seconds = now.getSeconds();
     
         // Reload every hour
-        if (minutes === 0) {
+        if (minutes === 0 && seconds === 0) {
             location.reload();  // Reload the page
         }
     }
