@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             removeDarkMode();
         }
-        location.reload();
     }
 
     // Load stored preference or auto-detect
