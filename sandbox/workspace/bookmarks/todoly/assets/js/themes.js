@@ -42,12 +42,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Manual Theme Toggle
     darkModeToggle.addEventListener("click", () => {
+        checkDarkMode();
+    });
+
+    function checkDarkMode(){
         if (container.classList.contains("dark-mode")) {
             removeDarkMode();
         } else {
             applyDarkMode();
         }
-    });
+    }
     
     // Run immediately when the page loads
     checkTimeForTheme();
