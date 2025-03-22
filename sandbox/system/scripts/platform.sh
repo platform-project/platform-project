@@ -86,8 +86,6 @@ platform_bootstrap(){
   echo ""
 }
 
-platform_bootstrap
-
 # status gauage
 GIT_STATUS=`git branch -v | grep -E 'ahead|behind' | sed -r 's/[ *]\s(\S*).*(\[(ahead|behind).+?\]).*/\1 \2/g'`
 
@@ -1022,9 +1020,14 @@ platform_builds_install()
 }
 
 case $PARAM in
+  bootstrap|--bootstrap)
+  platform_bootstrap
+  ;;
+
   install|--install)
   echo "installing platform..."
   echo ""
+  platform_bootstrap
   platform_system_install
   platform_clone
   platform_composer_install
