@@ -1,6 +1,18 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoiYmlsZWNrbWUiLCJhIjoiY2xpZnNqaGF0MDNmcjNqcDU2bXBqOWN5MSJ9.92JMqMMFOZjX_otoyX67zA';
+mapboxgl.accessToken = 'pk.eyJ1IjoiYmlsZWNrbWUiLCJhIjoiY2x2ZWdoN3A0MDl4MTJscWZ2cnhkcTVrcCJ9.xTSDAZT4nnG4GtkvIcDtGw';
 
-navigator.geolocation.getCurrentPosition( successLocation, errorLocation, { enableHighAccuracy: true });
+// Automatically prompt user for geolocation on page load
+requestUserLocation();
+
+// Function to request location
+function requestUserLocation() {
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
+            enableHighAccuracy: true
+        });
+    } else {
+        console.log("Geolocation is not supported by your browser.");
+    }
+}
 
 /* Given a query in the form "lng, lat" or "lat, lng"
 * returns the matching geographic coordinate(s)
@@ -58,7 +70,8 @@ function successLocation(position){
 }
 
 function errorLocation(){
-    setUpMap([0, 0]);
+    setUpMap([28.203828,
+             -25.745353]);
 }
 
 function setUpMap(center){
@@ -67,7 +80,7 @@ function setUpMap(center){
     var map_satellite = new mapboxgl.Map({
         container: 'map_satellite',
         style: 'mapbox://styles/mapbox/satellite-streets-v11',
-        zoom: 17,
+        zoom: 10,
         center: center
     });
 
@@ -83,7 +96,7 @@ function setUpMap(center){
         new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,
                 localGeocoder: coordinatesGeocoder,
-                zoom: 19,
+                zoom: 10,
                 placeholder: '',
                 mapboxgl: mapboxgl,
                 reverseGeocode: true
@@ -94,7 +107,7 @@ function setUpMap(center){
     var map_street = new mapboxgl.Map({
         container: 'map_street',
         style: 'mapbox://styles/mapbox/streets-v11',
-        zoom: 17,
+        zoom: 10,
         center: center
     });
 
@@ -110,7 +123,7 @@ function setUpMap(center){
         new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,
                 localGeocoder: coordinatesGeocoder,
-                zoom: 19,
+                zoom: 10,
                 placeholder: '',
                 mapboxgl: mapboxgl,
                 reverseGeocode: true
@@ -121,7 +134,7 @@ function setUpMap(center){
     var map_night = new mapboxgl.Map({
         container: 'map_night',
         style: 'mapbox://styles/mapbox/dark-v10',
-        zoom: 17,
+        zoom: 10,
         center: center
     });
 
@@ -137,7 +150,7 @@ function setUpMap(center){
         new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,
                 localGeocoder: coordinatesGeocoder,
-                zoom: 19,
+                zoom: 10,
                 placeholder: '',
                 mapboxgl: mapboxgl,
                 reverseGeocode: true
