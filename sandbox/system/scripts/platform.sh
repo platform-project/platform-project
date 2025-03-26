@@ -77,13 +77,31 @@ GIT_SSL_VERIFY="export GIT_SSL_NO_VERIFY=1"
 #GIT_SSL_VERIFY="git config --global http.sslverify false"
 GIT_REPOSITORY="https://github.com/platform-project/platform-project.git"
 
+# Secure PATH export
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+# Function to check dependencies
+dependencies=("curl" "wget" "gawk" "git")
+for dep in "${dependencies[@]}"; do
+  if ! command -v "$dep" &> /dev/null; then
+    platform_bootstrap
+  fi
+done
+
+# Function to sanitize user input
+sanitize_input() {
+  local input="$1"
+  echo "${input//[^a-zA-Z0-9_ -]}"
+}
+
 
 platform_bootstrap(){
   echo "platform bootstrapping..."
   sudo -k
-  sudo apt install git php nodejs curl -y  > /dev/null 2>&1
+  sudo apt install git php nodejs curl gawk wget -y  > /dev/null 2>&1
   sudo mkdir -p $APP_PATH  > /dev/null 2>&1
   echo ""
+  echo "done."
 }
 
 # status gauage
