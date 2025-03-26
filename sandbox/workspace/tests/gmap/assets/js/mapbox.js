@@ -1,7 +1,9 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiYmlsZWNrbWUiLCJhIjoiY2x2ZWdoN3A0MDl4MTJscWZ2cnhkcTVrcCJ9.xTSDAZT4nnG4GtkvIcDtGw';
 
 // Automatically prompt user for geolocation on page load
-requestUserLocation();
+document.addEventListener("DOMContentLoaded", function() {
+    requestUserLocation();
+});
 
 let markers = {}; // Store markers by coordinates
 
@@ -106,27 +108,37 @@ function setUpMap(center) {
 
 function addMarker(maps, coords) {
     let key = coords.join(',');
-    
+
     if (!markers[key]) {
         markers[key] = {};
-        
-        Object.values(maps).forEach(map => {
+
+        Object.entries(maps).forEach(([mapId, map]) => {
             let marker = new mapboxgl.Marker()
                 .setLngLat(coords)
                 .addTo(map);
-            
-            markers[key][map.getContainer().id] = marker;
+
+            marker.getElement().addEventListener('contextmenu', function (e) {
+                e.preventDefault();
+                removeMarker(maps, coords);
+            });
+
+            markers[key][mapId] = marker; // Store marker instance
         });
-        
+
         saveToLocalStorage(key);
     }
 }
 
 function removeMarker(maps, coords) {
     let key = coords.join(',');
-    
+
     if (markers[key]) {
-        Object.values(markers[key]).forEach(marker => marker.remove());
+        Object.values(markers[key]).forEach(marker => {
+            if (marker) {
+                marker.remove();
+            }
+        });
+
         delete markers[key];
         removeFromLocalStorage(key);
     }
@@ -142,7 +154,8 @@ function saveToLocalStorage(key) {
 
 function removeFromLocalStorage(key) {
     let savedLocations = JSON.parse(localStorage.getItem('savedLocations')) || [];
-    localStorage.setItem('savedLocations', JSON.stringify(savedLocations.filter(loc => loc !== key)));
+    savedLocations = savedLocations.filter(loc => loc !== key);
+    localStorage.setItem('savedLocations', JSON.stringify(savedLocations));
 }
 
 function loadMarkers(maps) {
