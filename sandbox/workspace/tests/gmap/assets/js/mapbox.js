@@ -80,7 +80,7 @@ function setUpMap(center){
     var map_satellite = new mapboxgl.Map({
         container: 'map_satellite',
         style: 'mapbox://styles/mapbox/satellite-streets-v11',
-        zoom: 10,
+        zoom: 15,
         center: center
     });
 
@@ -96,7 +96,7 @@ function setUpMap(center){
         new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,
                 localGeocoder: coordinatesGeocoder,
-                zoom: 10,
+                zoom: 15,
                 placeholder: '',
                 mapboxgl: mapboxgl,
                 reverseGeocode: true
@@ -107,7 +107,7 @@ function setUpMap(center){
     var map_street = new mapboxgl.Map({
         container: 'map_street',
         style: 'mapbox://styles/mapbox/streets-v11',
-        zoom: 10,
+        zoom: 15,
         center: center
     });
 
@@ -123,7 +123,7 @@ function setUpMap(center){
         new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,
                 localGeocoder: coordinatesGeocoder,
-                zoom: 10,
+                zoom: 15,
                 placeholder: '',
                 mapboxgl: mapboxgl,
                 reverseGeocode: true
@@ -134,7 +134,7 @@ function setUpMap(center){
     var map_night = new mapboxgl.Map({
         container: 'map_night',
         style: 'mapbox://styles/mapbox/dark-v10',
-        zoom: 10,
+        zoom: 15,
         center: center
     });
 
@@ -150,7 +150,7 @@ function setUpMap(center){
         new MapboxGeocoder({
                 accessToken: mapboxgl.accessToken,
                 localGeocoder: coordinatesGeocoder,
-                zoom: 10,
+                zoom: 15,
                 placeholder: '',
                 mapboxgl: mapboxgl,
                 reverseGeocode: true
