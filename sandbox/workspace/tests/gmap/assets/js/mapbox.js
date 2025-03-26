@@ -3,7 +3,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYmlsZWNrbWUiLCJhIjoiY2x2ZWdoN3A0MDl4MTJscWZ2c
 // Automatically prompt user for geolocation on page load
 requestUserLocation();
 
-// Function to request location
+let markers = {}; // Store markers by coordinates
+
 function requestUserLocation() {
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(successLocation, errorLocation, {
@@ -14,146 +15,140 @@ function requestUserLocation() {
     }
 }
 
-/* Given a query in the form "lng, lat" or "lat, lng"
-* returns the matching geographic coordinate(s)
-* as search results in carmen geojson format,
-* https://github.com/mapbox/carmen/blob/master/carmen-geojson.md */
 const coordinatesGeocoder = function (query) {
-    // Match anything which looks like
-    // decimal degrees coordinate pair.
-    const matches = query.match(
-    /^[ ]*(?:Lat: )?(-?\d+\.?\d*)[, ]+(?:Lng: )?(-?\d+\.?\d*)[ ]*$/i
-    );
+    const matches = query.match(/^[ ]*(?:Lat: )?(-?\d+\.?\d*)[, ]+(?:Lng: )?(-?\d+\.?\d*)[ ]*$/i);
     if (!matches) {
         return null;
     }
-     
+    
     function coordinateFeature(lng, lat) {
         return {
             center: [lng, lat],
-            geometry: {
-                type: 'Point',
-                coordinates: [lng, lat]
-            },
-            place_name: 'Lat: ' + lat + ' Lng: ' + lng,
+            geometry: { type: 'Point', coordinates: [lng, lat] },
+            place_name: `Lat: ${lat} Lng: ${lng}`,
             place_type: ['coordinate'],
             properties: {},
             type: 'Feature'
         };
     }
-     
+    
     const coord1 = Number(matches[1]);
     const coord2 = Number(matches[2]);
     const geocodes = [];
-     
+    
     if (coord1 < -90 || coord1 > 90) {
-        // must be lng, lat
         geocodes.push(coordinateFeature(coord1, coord2));
     }
-     
     if (coord2 < -90 || coord2 > 90) {
-        // must be lat, lng
         geocodes.push(coordinateFeature(coord2, coord1));
     }
-     
     if (geocodes.length === 0) {
-        // else could be either lng, lat or lat, lng
         geocodes.push(coordinateFeature(coord1, coord2));
         geocodes.push(coordinateFeature(coord2, coord1));
     }
-     
-        return geocodes;
+    return geocodes;
 };
 
-function successLocation(position){
+function successLocation(position) {
     setUpMap([position.coords.longitude, position.coords.latitude]);
 }
 
-function errorLocation(){
-    setUpMap([28.203828,
-             -25.745353]);
+function errorLocation() {
+    setUpMap([28.203828, -25.745353]);
 }
 
-function setUpMap(center){
-
-    // satellite view`
-    var map_satellite = new mapboxgl.Map({
-        container: 'map_satellite',
-        style: 'mapbox://styles/mapbox/satellite-streets-v11',
-        zoom: 15,
-        center: center
+function setUpMap(center) {
+    const mapStyles = {
+        'map_satellite': 'mapbox://styles/mapbox/satellite-streets-v11',
+        'map_street': 'mapbox://styles/mapbox/streets-v11',
+        'map_night': 'mapbox://styles/mapbox/dark-v10'
+    };
+    
+    let maps = {};
+    
+    Object.keys(mapStyles).forEach(container => {
+        let map = new mapboxgl.Map({
+            container: container,
+            style: mapStyles[container],
+            zoom: 15,
+            center: center
+        });
+        
+        maps[container] = map;
+        
+        map.addControl(new mapboxgl.NavigationControl());
+        
+        const geocoder = new MapboxGeocoder({
+            accessToken: mapboxgl.accessToken,
+            localGeocoder: coordinatesGeocoder,
+            zoom: 15,
+            placeholder: '',
+            mapboxgl: mapboxgl,
+            reverseGeocode: true
+        });
+        
+        map.addControl(geocoder);
+        map.addControl(new MapboxDirections({ accessToken: mapboxgl.accessToken }), 'top-left');
+        
+        geocoder.on('result', function(e) {
+            let coords = e.result.center;
+            addMarker(maps, coords);
+        });
+        
+        map.on('contextmenu', function(e) {
+            let coords = [e.lngLat.lng, e.lngLat.lat];
+            removeMarker(maps, coords);
+        });
     });
+    
+    loadMarkers(maps);
+}
 
-    map_satellite.addControl(new mapboxgl.NavigationControl());
+function addMarker(maps, coords) {
+    let key = coords.join(',');
+    
+    if (!markers[key]) {
+        markers[key] = {};
+        
+        Object.values(maps).forEach(map => {
+            let marker = new mapboxgl.Marker()
+                .setLngLat(coords)
+                .addTo(map);
+            
+            markers[key][map.getContainer().id] = marker;
+        });
+        
+        saveToLocalStorage(key);
+    }
+}
 
-    map_satellite.addControl(new MapboxDirections({
-            accessToken: mapboxgl.accessToken
-        }), 
-        'top-left'
-    );
+function removeMarker(maps, coords) {
+    let key = coords.join(',');
+    
+    if (markers[key]) {
+        Object.values(markers[key]).forEach(marker => marker.remove());
+        delete markers[key];
+        removeFromLocalStorage(key);
+    }
+}
 
-    map_satellite.addControl(
-        new MapboxGeocoder({
-                accessToken: mapboxgl.accessToken,
-                localGeocoder: coordinatesGeocoder,
-                zoom: 15,
-                placeholder: '',
-                mapboxgl: mapboxgl,
-                reverseGeocode: true
-            })
-        );
+function saveToLocalStorage(key) {
+    let savedLocations = JSON.parse(localStorage.getItem('savedLocations')) || [];
+    if (!savedLocations.includes(key)) {
+        savedLocations.push(key);
+        localStorage.setItem('savedLocations', JSON.stringify(savedLocations));
+    }
+}
 
-    // streets view
-    var map_street = new mapboxgl.Map({
-        container: 'map_street',
-        style: 'mapbox://styles/mapbox/streets-v11',
-        zoom: 15,
-        center: center
+function removeFromLocalStorage(key) {
+    let savedLocations = JSON.parse(localStorage.getItem('savedLocations')) || [];
+    localStorage.setItem('savedLocations', JSON.stringify(savedLocations.filter(loc => loc !== key)));
+}
+
+function loadMarkers(maps) {
+    let savedLocations = JSON.parse(localStorage.getItem('savedLocations')) || [];
+    savedLocations.forEach(location => {
+        let coords = location.split(',').map(Number);
+        addMarker(maps, coords);
     });
-
-    map_street.addControl(new mapboxgl.NavigationControl());
-
-    map_street.addControl(new MapboxDirections({
-            accessToken: mapboxgl.accessToken
-        }), 
-        'top-left'
-    );
-
-    map_street.addControl(
-        new MapboxGeocoder({
-                accessToken: mapboxgl.accessToken,
-                localGeocoder: coordinatesGeocoder,
-                zoom: 15,
-                placeholder: '',
-                mapboxgl: mapboxgl,
-                reverseGeocode: true
-            })
-        );
-
-    // night view
-    var map_night = new mapboxgl.Map({
-        container: 'map_night',
-        style: 'mapbox://styles/mapbox/dark-v10',
-        zoom: 15,
-        center: center
-    });
-
-    map_night.addControl(new mapboxgl.NavigationControl());
-
-    map_night.addControl(new MapboxDirections({
-            accessToken: mapboxgl.accessToken
-        }), 
-        'top-left'
-    );
-
-    map_night.addControl(
-        new MapboxGeocoder({
-                accessToken: mapboxgl.accessToken,
-                localGeocoder: coordinatesGeocoder,
-                zoom: 15,
-                placeholder: '',
-                mapboxgl: mapboxgl,
-                reverseGeocode: true
-            })
-        );
 }

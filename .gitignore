@@ -6,3 +6,4 @@ networks/*
 mirrors/*
 node_modules
 ssh_tools.jsonc
+node_modules
