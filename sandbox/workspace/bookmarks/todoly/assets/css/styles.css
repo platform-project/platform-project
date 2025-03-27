@@ -193,7 +193,7 @@ li::-webkit-scrollbar-thumb {
     border-radius: 10px;
     padding: 10px;
     overflow-x: hidden;
-    max-height: 336px;
+    min-height: 336px;
 }
 
 .speech-bubble {

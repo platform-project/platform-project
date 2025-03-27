@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
         addTaskToList(task);
         scheduleTask(task);
         taskForm.reset();
+        window.location.href = 'index.html'
     });
 
     function enterKeyPressed() {
