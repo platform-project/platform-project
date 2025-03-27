@@ -9,210 +9,228 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <style>
-        .sketchfab-embed-wrapper {
-            position: absolute;
-            top: -60px;
-            left: -10px;
-            z-index: 0;
-        }
+    .sketchfab-embed-wrapper {
+        position: absolute;
+        top: -60px;
+        left: -10px;
+        z-index: 0;
+    }
 
-        .hud-controls {
-            position: absolute;
-            bottom: -3vh;
-            left: -50px;
-            z-index: 3;
-            display: none;
-            width: 113vw;
-            height: 45vh;
-            scale: 80%;
-        }
-	
-	#nav { 
-	    position: fixed;	 
-	}
+    .hud-controls {
+        position: absolute;
+        bottom: -3vh;
+        left: -50px;
+        z-index: 3;
+        display: none;
+        width: 113vw;
+        height: 45vh;
+        scale: 80%;
+    }
 
-        #hud {
-            z-index: 100010;
-            position: absolute;
-            bottom: 100px;
-            left: 20vw;
-        }
+    #nav { 
+        position: fixed;	 
+    }
 
-        #hud-ui {
-            display: block;
-            height: 600px;
-            width: 800px;
-            position: absolute;
-            bottom: -14vw;
-            left: 30vw;
-            z-index: 100010;
-            scale: 30%;
-            color: white;
-            font-weight: bold;
-            background: transparent url(assets/images/hud-ui.gif) no-repeat;
-            cursor: pointer;
-            border-radius: 50%;
-            border: 10px solid white;
-        }
+    #hud {
+        z-index: 100010;
+        position: absolute;
+        bottom: 100px;
+        left: 20vw;
+    }
 
-        #atom {
-            display: block;
-            height: 300px;
-            width: 300px;
-            position: relative;
-            bottom: 0vw;
-            left: 98vw;
-            z-index: 100030;
-            color: white;
-            font-weight: bold;
-            border-radius: 10px;
-            background: transparent url(assets/images/hud-atom2.gif) no-repeat;
-            cursor: pointer;
-            scale: 80%;
-            opacity: 0.6;
-        }
+    #hud-ui {
+        display: block;
+        height: 300px;
+        width: 400px;
+        position: absolute;
+        bottom: -111px;
+        left: 45vw;
+        z-index: 100010;
+        scale: 100%;
+        color: white;
+        font-weight: bold;
+        background: transparent url(assets/images/hud-ui.gif) no-repeat center center;
+        cursor: pointer;
+        border-radius: 50%;
+        border: 10px solid white;
+    }
 
-        #hud-humanoid {
-            z-index: 100021;
-            position: absolute;
-            bottom: -12vh;
-            right: -8vw;
-            background: transparent url(assets/images/human.webp) no-repeat;
-            width: 540px;
-            height: 304px;
-            scale: 40%;
-            cursor: pointer;
-        }
+    #atom {
+        display: block;
+        height: 300px;
+        width: 300px;
+        position: relative;
+        bottom: -5vh;
+        left: 98vw;
+        z-index: 100030;
+        color: white;
+        font-weight: bold;
+        border-radius: 10px;
+        background: transparent url(assets/images/hud-atom2.gif) no-repeat;
+        cursor: pointer;
+        scale: 80%;
+        opacity: 0.6;
+    }
 
-        #hud-atom {
-            z-index: 100021;
-            position: absolute;
-            bottom: -200px;
-            left: 84vw;
-            width: 500px;
-            height: 500px;
-            scale: 20%;
-            opacity: 0.75;
-            background: transparent url(assets/images/hud-atom.gif) no-repeat;
-        }
+    #hud-humanoid {
+        z-index: 100021;
+        position: absolute;
+        bottom: -110px;
+        right: 120px;
+        background: transparent url(assets/images/human.webp) no-repeat;
+        width: 540px;
+        height: 304px;
+        scale: 40%;
+        cursor: pointer;
+    }
 
-        #hud-widget-0 {
-            z-index: 10002;
-            position: absolute;
-            bottom: -10vh;
-            left: -72px;
-            background: transparent url(assets/images/hud-widget.gif) no-repeat;
-            width: 540px;
-            height: 304px;
-            scale: 30%;
-            cursor: pointer;
-        }
+    #hud-atom {
+        z-index: 100021;
+        position: absolute;
+        bottom: -200px;
+        left: 84vw;
+        width: 500px;
+        height: 500px;
+        scale: 20%;
+        opacity: 0.75;
+        background: transparent url(assets/images/hud-atom.gif) no-repeat;
+    }
 
-        #hud-widget-1 {
-            z-index: 100023;
-            position: absolute;
-            bottom: -10vh;
-            left: 70vw;
-            background: transparent url(assets/images/hud-widget.gif) no-repeat;
-            width: 540px;
-            height: 304px;
-            scale: 30%;
-            cursor: pointer;
-        }
+    #hud-widget-0 {
+        z-index: 10002;
+        position: absolute;
+        bottom: -100px;
+        left: -72px;
+        background: transparent url(assets/images/hud-widget.gif) no-repeat;
+        width: 540px;
+        height: 320px;
+        scale: 30%;
+        cursor: pointer;
+    }
 
-        #sphere {
-            position: relative;
-            left: -72px;
-        }
+    #hud-widget-1 {
+        z-index: 100023;
+        position: absolute;
+        bottom: -100px;
+        left: 75vw;
+        background: transparent url(assets/images/hud-widget.gif) no-repeat;
+        width: 540px;
+        height: 320px;
+        scale: 30%;
+        cursor: pointer;
+    }
 
-        #console {
-            display: none;
-            height: 50px;
-            width: 60vw;
-            position: relative;
-            bottom: 12.5vw;
-            border: 0px solid lightblue;
-            left: 19vw;
-            z-index: 10;
-            color: white;
-            font-weight: bold;
-        }
+    #sphere {
+        position: relative;
+        left: -72px;
+    }
 
-        #human {
-            z-index: 10000;
-            position: absolute;
-            bottom: 0vh;
-            left: 0vw;
-            background: transparent url(assets/images/human.gif) no-repeat;
-            width: 512px;
-            height: 512px;
-            opacity: 0.2;
-            scale: 50%;
-            cursor: pointer;
-            display: none;
-        }
+    #console {
+        display: none;
+        height: 50px;
+        width: 60vw;
+        position: relative;
+        bottom: 12.5vw;
+        border: 0px solid lightblue;
+        left: 19vw;
+        z-index: 10;
+        color: white;
+        font-weight: bold;
+    }
 
-        #calendar {
-            display: block;
-            height: 8vw;
-            width: 9vw;
-            position: absolute;
-            bottom: 9vw;
-            left: 88vw;
-            z-index: 10000;
-            color: white;
-            font-weight: bold;
-            background: #000;
-            padding: 10px;
-            opacity: 0.6;
-            border-radius: 10px;
-            cursor: pointer;
-        }
+    #human {
+        z-index: 10000;
+        position: absolute;
+        bottom: 0vh;
+        left: 0vw;
+        background: transparent url(assets/images/human.gif) no-repeat;
+        width: 512px;
+        height: 512px;
+        opacity: 0.2;
+        scale: 50%;
+        cursor: pointer;
+        display: none;
+    }
 
-        #hud-monitor1 {
-            display: block;
-            height: 500px;
-            width: 500px;
-            position: absolute;
-            bottom: -11vw;
-            border: 0px solid lightblue;
-            left: 27vw;
-            z-index: 100032;
-            color: white;
-            font-weight: bold;
-            background: transparent url(assets/images/monitor.png) no-repeat;
-            scale: 20%;
-            opacity: 0.1;
-        }
+    #calendar {
+        display: block;
+        height: 200px;
+        width: 200px;
+        position: absolute;
+        bottom: 150px;
+        left: 88vw;
+        z-index: 10000;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        background: #000;
+        padding: 10px;
+        opacity: 0.6;
+        border-radius: 10px;
+        cursor: pointer;
+    }
 
-        #hud-monitor1:hover {
-            opacity: 0.2;
-        }
+    #hud-monitor1 {
+        display: block;
+        height: 500px;
+        width: 500px;
+        position: absolute;
+        bottom: -200px;
+        border: 0px solid lightblue;
+        left: 27vw;
+        z-index: 100032;
+        color: white;
+        font-weight: bold;
+        background: transparent url(assets/images/monitor.png) no-repeat;
+        scale: 20%;
+        opacity: 0.1;
+    }
 
-        #hud-monitor2 {
-            display: block;
-            height: 500px;
-            width: 500px;
-            position: absolute;
-            bottom: -11vw;
-            border: 0px solid lightblue;
-            left: 50vw;
-            z-index: 100033;
-            color: white;
-            font-weight: bold;
-            background: transparent url(assets/images/monitor.png) no-repeat;
-            scale: 20%;
-            opacity: 0.1;
-        }
+    #hud-monitor1:hover {
+        opacity: 0.2;
+    }
 
-        #hud-monitor2:hover {
-            opacity: 0.2;
+    #hud-monitor2 {
+        display: block;
+        height: 500px;
+        width: 500px;
+        position: absolute;
+        bottom: -200px;
+        border: 0px solid lightblue;
+        left: 58vw;
+        z-index: 100033;
+        color: white;
+        font-weight: bold;
+        background: transparent url(assets/images/monitor.png) no-repeat;
+        scale: 20%;
+        opacity: 0.1;
+    }
+
+    #hud-monitor2:hover {
+        opacity: 0.2;
 	}
 
 	#radar {
 	    position: fixed;
-            z-index: 999;
+        z-index: 999;
 	}
+
+    .video-container {
+        position: relative;
+        width: 100%; 
+        height: 100vh; 
+        overflow: hidden;
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        transform: translate(-50%, -50%);
+        object-fit: cover; 
+    }
     </style>
 </head>
 
@@ -512,15 +530,16 @@
 
         <div id="atom"></div>
     </div><!--https://youtu.be/ts-bU5XBbHI?si=_vuFnZI-THVSusYu-->
-
-    <iframe class="camera screen1" width="100%" height="1080" src="https://www.youtube.com/embed/KG6SL6Mf7ak" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe class="camera screen2" width="100%" height="1080" src="https://www.youtube.com/embed/E5WpblyBR38" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe class="camera screen3" width="100%" height="1080" src="https://www.youtube.com/embed/_HGQZlK08gQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe class="camera screen4" width="100%" height="1080" src="https://www.youtube.com/embed/_fdQK4lfjL8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <iframe class="camera screen5" width="100%" height="1080" src="https://www.youtube.com/embed/tNkZsRW7h2c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <!--<iframe class="camera screen6" width="100%" height="1080" src="https://www.youtube.com/embed/3bgciNPHcC8?si=RwLcX5hOLtFazBn6" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
-    <iframe class="camera iss monitor1" width="100%" height="1096" src="https://ustream.tv/embed/17074538" scrolling="no" allowfullscreen webkitallowfullscreen frameborder="0" style="border: 0 none transparent;"></iframe>
-    <iframe class="camera iss monitor2" width="100%" height="1096" src="https://ustream.tv/embed/9408562" scrolling="no" allowfullscreen webkitallowfullscreen frameborder="0" style="border: 0 none transparent;"></iframe>
+    <div class="video-container">
+        <iframe class="camera screen1" src="https://www.youtube.com/embed/KG6SL6Mf7ak" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe class="camera screen2" src="https://www.youtube.com/embed/E5WpblyBR38" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe class="camera screen3" src="https://www.youtube.com/embed/_HGQZlK08gQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe class="camera screen4" src="https://www.youtube.com/embed/_fdQK4lfjL8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe class="camera screen5" src="https://www.youtube.com/embed/tNkZsRW7h2c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!--<iframe class="camera screen6" src="https://www.youtube.com/embed/3bgciNPHcC8?si=RwLcX5hOLtFazBn6" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+        <iframe class="camera iss monitor1" width="100%" height="1096" src="https://ustream.tv/embed/17074538" scrolling="no" allowfullscreen webkitallowfullscreen frameborder="0" style="border: 0 none transparent;"></iframe>
+        <iframe class="camera iss monitor2" width="100%" height="1096" src="https://ustream.tv/embed/9408562" scrolling="no" allowfullscreen webkitallowfullscreen frameborder="0" style="border: 0 none transparent;"></iframe>
+    </div>
     <div class="sketchfab-embed-wrapper" id="spaceshuttle" style="display: none"> <iframe title="Space Shuttle with boosters" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="1920" height="1080" src="https://sketchfab.com/models/28c98646369f48ee84bc20c267bc685f/embed?autospin=1&autostart=1&preload=1&&transparent=1&ui_infos=0&ui_watermark_link=0&ui_watermark=0ui_hint=0&ui_theme=dark&dnt=1"> </iframe> </div>
     <div id="status">
         <iframe id="sphere" src="sphere/index.html" width="256" height="256"></iframe>

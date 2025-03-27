@@ -43,7 +43,7 @@ video {
 #nav {
     background: #000;
     width: 100vw;
-    height: 10vh;
+    height: 100px;
     position: absolute;
     top: 0;
     z-index: 9;
@@ -52,7 +52,7 @@ video {
 #status {
     background: #000;
     width: 100vw;
-    height: 10vh;
+    height: 100px;
     position: fixed; 
     bottom: 0;  
     z-index: 9;
@@ -83,7 +83,7 @@ h3 {
 .camera.iss { display: block; }
 .camera.screen1 { display: none; }
 .camera.screen2 { display: none; }
-.camera { position: absolute; top: 0; }
+.camera { position: absolute; top: 0; height: 100%; }
 
 #nav-controls { color: white; position: absolute; top: 0px; z-index: 100; left: 0; width: 100vw; font-family: Poppins; font-weight: bold; height: 120px; }
 #nav-controls .control { color: white; }
@@ -93,4 +93,4 @@ h3 {
 #nav-controls .hst-satellite { position: absolute; left: 40vw; top: 10px; background: transparent url("../images/icons/hst-satellite-56x56.png") no-repeat; width: 56px; height: 56px; border-radius: 50%; border: 0px solid white; cursor: pointer; }
 #nav-controls .iss-satellite { position: absolute; left: 50vw; top: 10px; background: transparent url("../images/icons/iss-satellite-56x56.png") no-repeat; width: 56px; height: 56px; border-radius: 50%; border: 0px solid white; cursor: pointer; }
 #nav-controls .satellite { position: absolute; top: 10px; left: 60vw; background: transparent url("../images/icons/satellite-56x56.png") no-repeat; width: 56px; height: 56px; border-radius: 50%; border: 0px solid white; cursor: pointer; }
-#nav-controls #datetime { position: relative; left: 65vw; top: 6px; }
+#nav-controls #datetime { position: relative; left: 65vw; top: -15px; }
