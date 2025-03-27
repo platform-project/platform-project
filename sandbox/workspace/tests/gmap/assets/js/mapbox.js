@@ -108,23 +108,28 @@ function setUpMap(center) {
 
 function addMarker(maps, coords) {
     let key = coords.join(',');
-
+    
     if (!markers[key]) {
         markers[key] = {};
-
-        Object.entries(maps).forEach(([mapId, map]) => {
-            let marker = new mapboxgl.Marker()
+        
+        Object.values(maps).forEach(map => {
+            let marker = new mapboxgl.Marker({ draggable: true })
                 .setLngLat(coords)
                 .addTo(map);
-
-            marker.getElement().addEventListener('contextmenu', function (e) {
+            
+            marker.on('dragend', function () {
+                let newCoords = marker.getLngLat();
+                updateMarker(maps, coords, [newCoords.lng, newCoords.lat]);
+            });
+            
+            marker.getElement().addEventListener('contextmenu', function(e) {
                 e.preventDefault();
                 removeMarker(maps, coords);
             });
-
-            markers[key][mapId] = marker; // Store marker instance
+            
+            markers[key][map.getContainer().id] = marker;
         });
-
+        
         saveToLocalStorage(key);
     }
 }
@@ -142,6 +147,11 @@ function removeMarker(maps, coords) {
         delete markers[key];
         removeFromLocalStorage(key);
     }
+}
+
+function updateMarker(maps, oldCoords, newCoords) {
+    removeMarker(maps, oldCoords);
+    addMarker(maps, newCoords);
 }
 
 function saveToLocalStorage(key) {
